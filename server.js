@@ -22,13 +22,9 @@ client.categories = fs.readdirSync("./commands");
 });
 
 client.on("ready", () => {
-  function randomStatus() {
-    let status = [`${client.guilds.cache.size} servers!`, "type:!help for command" , "Created By BUDDY"] // You can change it whatever you want.
-    let rstatus = Math.floor(Math.random() * status.length);
-    client.user.setActivity(status[rstatus], {type: "WATCHING"});
-  }; setInterval(randomStatus, 300) // Time in ms. 3000ms = 3 seconds. Min: 20 seconds, to avoid ratelimit.
-  
-  console.log('Online.')
+  client.user.setActivity(db.get(`status`), {type : "WATCHING"})
+
+  console.log('ready to fuck xd')
   });
 //
 client.on("message", async message => {
