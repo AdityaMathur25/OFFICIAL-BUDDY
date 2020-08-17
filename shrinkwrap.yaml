@@ -2,9 +2,11 @@ dependencies:
   ascii-table: 0.0.9
   canvas-senpai: 0.1.6
   discord.js: 12.3.1
+  dotenv: 8.2.0
   express: 4.17.1
   fs: 0.0.2
   quick-db: 1.0.5
+  something-random-on-discord: 0.0.1
 packages:
   /@babel/runtime/7.11.2:
     dependencies:
@@ -888,6 +890,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==
+  /dotenv/8.2.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   /ee-first/1.1.1:
     dev: false
     resolution:
@@ -2206,6 +2214,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-bCR6cP+aTdScaQCnQKbPKtJOKDp/hj9EDLJo3Nw4y1QksqaovlW/bnptB6/c1e+qmNIDHRK+oXFDdEqBT8WzUA==
+  /something-random-on-discord/0.0.1:
+    dependencies:
+      node-fetch: 2.6.0
+    dev: false
+    resolution:
+      integrity: sha512-2MLnlryu0VlINo+MNcDANR4vfWdFFDdi4Dkuk1rKjtc+MIO0JCFW/iRj4a1J+iAOyEx581OqBG9dn2jx2j4tKg==
   /spdx-correct/3.1.1:
     dependencies:
       spdx-expression-parse: 3.0.1
@@ -2585,6 +2599,8 @@ specifiers:
   ascii-table: ^0.0.9
   canvas-senpai: ^0.1.6
   discord.js: ^12.3.1
+  dotenv: ^8.2.0
   express: ^4.17.1
   fs: ^0.0.2
   quick-db: ^1.0.5
+  something-random-on-discord: ^0.0.1

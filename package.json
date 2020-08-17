@@ -1,4 +1,4 @@
-{
+ {
   "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
@@ -15,7 +15,9 @@
     "fs": "^0.0.2",
     "canvas-senpai": "^0.1.6",
     "discord.js": "^12.3.1",
-    "ascii-table": "^0.0.9"
+    "ascii-table": "^0.0.9",
+    "something-random-on-discord": "^0.0.1",
+    "dotenv": "^8.2.0"
   },
   "engines": {
     "node": "12.x"
