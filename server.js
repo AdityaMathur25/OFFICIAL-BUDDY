@@ -17,8 +17,7 @@ client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
 
 // Run the command loader
-["command"].forEach(handler => {
-  //some error here
+["command"].forEach(handler => { //some error here
   require(`./handlers/${handler}`)(client);
 });
 
@@ -27,7 +26,7 @@ client.on("ready", () => {
     let status = [`${client.guilds.cache.size} servers!`, "type:!help for command" , "Created By BUDDY"] // You can change it whatever you want.
     let rstatus = Math.floor(Math.random() * status.length);
     client.user.setActivity(status[rstatus], {type: "WATCHING"});
-  }; setInterval(randomStatus, 3) // Time in ms. 3000ms = 3 seconds. Min: 20 seconds, to avoid ratelimit.
+  }; setInterval(randomStatus, 300) // Time in ms. 3000ms = 3 seconds. Min: 20 seconds, to avoid ratelimit.
   
   console.log('Online.')
   });
