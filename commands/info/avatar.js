@@ -12,7 +12,7 @@ module.exports = {
         roles.push(role.name);
       });
       Embed.setTitle(`Your avatar!`);
-      Embed.setThumbnail(message.author.displayAvatarURL());
+    Embed.setThumbnail(user.avatarURL({format: 'png', dynamic: true, size: 2048})
       Embed.setColor(`BLUE`);
       Embed.setDescription
     return message.channel.send(Embed);
