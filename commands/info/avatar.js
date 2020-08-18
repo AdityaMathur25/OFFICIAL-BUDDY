@@ -10,11 +10,10 @@ module.exports = {
     if (!message.mentions.users.first()) {
       message.member.roles.cache.forEach((role) => {
         roles.push(role.name);
-      });
-      Embed.setTitle(`Your avatar!`);
-      Embed.setThumbnail(message.author.displayAvatarURL());
+      });//worked ... how i get time on footer..
+      Embed.setTitle(`{user.username}`);
+      Embed.setImage(message.author.displayAvatarURL({size: 2048, dynamic: true}));
       Embed.setColor(`BLUE`);
-      Embed.setDescription
     return message.channel.send(Embed);
     } else {
       let User = message.mentions.members.first();
@@ -22,8 +21,8 @@ module.exports = {
         roles.push(role.name);
       });
       Embed.setTitle(`${bot.users.cache.get(User.id).tag}'s avatar!`);
-      Embed.setThumbnail(bot.users.cache.get(User.id).displayAvatarURL());
-      Embed.setColor(`RANDOM`);
+      Embed.setImage(bot.users.cache.get(User.id).displayAvatarURL({size: 2048, dynamic: true}));
+      Embed.setColor(`BLUE`);
       
       return message.channel.send(Embed);
     }
