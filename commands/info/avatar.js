@@ -11,9 +11,10 @@ module.exports = {
       message.member.roles.cache.forEach((role) => {
         roles.push(role.name);
       });//worked ... how i get time on footer..
-      Embed.setTitle(`{user.username}`);
+      Embed.setTitle(`${message.author.username}`);
       Embed.setImage(message.author.displayAvatarURL({size: 2048, dynamic: true}));
-      Embed.setColor(`BLUE`);
+      Embed.setColor(`#00FFFF`);
+      Embed.setTimestamp();
     return message.channel.send(Embed);
     } else {
       let User = message.mentions.members.first();
@@ -22,7 +23,8 @@ module.exports = {
       });
       Embed.setTitle(`${bot.users.cache.get(User.id).tag}'s avatar!`);
       Embed.setImage(bot.users.cache.get(User.id).displayAvatarURL({size: 2048, dynamic: true}));
-      Embed.setColor(`BLUE`);
+      Embed.setColor(`#00FFFF`);
+      Embed.setTimestamp();
       
       return message.channel.send(Embed);
     }
