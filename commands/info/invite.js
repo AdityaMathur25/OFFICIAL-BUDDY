@@ -9,8 +9,10 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
     embed.setTitle("BOT INVITE")
     embed.setDescription("[INVITE BOT](https://discord.com/oauth2/authorize?client_id=734289655310057493&scope=bot)");
-   embed.setColor("BLUE")
-    embed.setFooter("created by buddy")
+   embed.setColor("BLUE");
+    embed.setFooter("CREATED BY BUDDY");
+    embed.setTimestamp();
+    
     
     return message.channel.send(embed);
   //worked
