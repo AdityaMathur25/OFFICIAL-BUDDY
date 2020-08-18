@@ -1,12 +1,11 @@
-const { MessageEmbed } = require("discord.js");
-
+const Discord = require("discord.js")
 module.exports = {
-  name: "help",
+  name: "invite",
   description:
-    "Get list of all command and even get to know every command detials",
-  usage: "help <cmd>",
+    "Get link of bot invite ",
+  usage: "imvite bot",
   category: "info",
   run: async (client, message, args) => {
-    const Embed = new Discord.MessageEmbed();
-    Embed.settitle()
- Embed.setDescription("**INVITE LINK** - [OFFICIAL•BUDDY](Link here)")
+    const embed = new Discord.MessageEmbed();
+    embed.settitle( "BOT INVITE" )
+ embed.setDescription("**INVITE LINK** - [OFFICIAL•BUDDY](Link here)")
