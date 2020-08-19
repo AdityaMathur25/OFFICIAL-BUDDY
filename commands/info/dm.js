@@ -1,4 +1,3 @@
-const
 module.exports = {
   name: "dm",
   description: "DM a user in the guild",
@@ -19,6 +18,5 @@ module.exports = {
       .send(args.slice(1).join(" "))
       .catch(() => message.channel.send("That user could not be DMed!"))
       .then(() => message.channel.send(`Sent a message to ${user.user.tag}`));
-    const embed = new Discord.MessageEmbed();
-  }
+  },
 };
