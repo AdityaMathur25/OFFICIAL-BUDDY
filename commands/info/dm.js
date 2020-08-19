@@ -21,7 +21,7 @@ module.exports = {
       .then(() => message.channel.send(`Sent a message to ${user.user.tag}`));
     const embed = new Discord.MessageEmbed();
     embed.setColor("#00FFFF");
-  embed.setDescription(args.join(" "))
+  embed.setDescription(args.splice(1).join(" "))
     embed.setFooter("CREATED BY BUDDY");
     embed.setTimestamp();
     return message.member.send(embed);
