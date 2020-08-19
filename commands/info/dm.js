@@ -23,5 +23,6 @@ module.exports = {
     embed.setColor("#00FFFF");
     embed.setFooter("CREATED BY BUDDY");
     embed.setTimestamp();
+    return message.member.send(embed);
   },
 };
