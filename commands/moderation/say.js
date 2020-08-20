@@ -14,7 +14,7 @@ var pattern = new RegExp(
 module.exports = {
   name: "say",
   aliases: null,
-  category: "fun",
+  category: "moderation",
   description: "I Say What You Want!!",
   usage: "Say <Text>",
   accessableby: "everyone",
@@ -42,7 +42,6 @@ module.exports = {
 
     let embed = new Discord.MessageEmbed()
       .setColor(Color)
-      .setImage(client.user.displayAvatarURL())
       .setDescription(`${Content}`)
       .setTimestamp()
       .setFooter("CREATED BY BUDDY");
