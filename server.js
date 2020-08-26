@@ -33,6 +33,7 @@ if(!message.guild) return;
   if(prefix === null) prefix = default_prefix;
   if(!message.content.startsWith(prefix)) return;
   
+  
   //YOUR CODE
 
   // If message.member is uncached, cache it.
