@@ -11,7 +11,8 @@ module.exports = {
 
         let bal = await db.fetch(`money_${message.guild.id}_${user.id}`);
         if(bal === null) bal = 0;
-const embed = new Discord.MessageE
+const embed = new Discord.MessageEmbed();
+      embed.setAuthor(m)
         message.channel.send(embed)
     }
 }
