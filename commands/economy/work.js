@@ -18,7 +18,7 @@ module.exports = {
             db.add(`money_${message.guild.id}_${user.id}`, amount)
             db.set(`worked_${message.guild.id}_${user.id}`, Date.now())
 
-            message.channel.send(`${user}, you worked and earned ${amount} coins`)
+            message.channel.send(`${user}  you worked and earned ${amount} coins`)
         }
     }
 }
