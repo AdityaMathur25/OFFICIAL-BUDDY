@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: "bal",
     description: "know your balance",
-
+category: "economy",
     async run (client, message, args) {
 
         let user = message.mentions.users.first() || message.author;

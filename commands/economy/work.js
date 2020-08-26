@@ -4,7 +4,7 @@ const ms = require('parse-ms');
 module.exports = {
     name: "work",
     description: "Work for your money",
-
+    category: "economy",
     async run (client, message, args) {
         let user = message.author;
         let timeout = 600000;

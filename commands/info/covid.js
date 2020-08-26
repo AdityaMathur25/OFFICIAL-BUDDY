@@ -5,7 +5,8 @@ const Discord = require('discord.js');
 module.exports = {
     name: "covid",
     description: "Track a country or worldwide COVID-19 cases",
-
+    category: "info",
+  
     async run (client, message, args){
 
         let countries = args.join(" ");

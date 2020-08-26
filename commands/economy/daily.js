@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: "daily",
     description: "Receive a daily award of money",
-
+    category: "economy",
     async run (client, message, args) {
         let user = message.author;
         let timeout = 86400000;
