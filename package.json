@@ -21,7 +21,8 @@
     "quick.db": "^7.1.1",
     "figlet": "^1.5.0",
     "novelcovid": "^3.0.0",
-    "parse-ms": "^2.1.0"
+    "parse-ms": "^2.1.0",
+    "node-fetch": "^2.6.0"
   },
   "engines": {
     "node": "12.x"
