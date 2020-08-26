@@ -1,6 +1,6 @@
 const db = require('quick.db');
 const ms = require('parse-ms');
-
+const Discord = require('discord.js');
 module.exports = {
     name: "daily",
     description: "Receive a daily award of money",
@@ -19,8 +19,14 @@ module.exports = {
         } else {
             db.add(`money_${message.guild.id}_${user.id}`, amount);
             db.set(`daily_${message.guild.id}_${user.id}`, Date.now());
-
-            message.channel.send(`Successfully added ${amount} coins to your account`)
+const embed = new Discord.MessageEmbed();
+          embed.setAuthor( message.user.displayAvatarURL(), message.user.username)
+          embed.setTitle("DAILY")
+          embed.setColor("AQUA")
+          embed.Description(`YOU HAVE SUCCESSFULLY COLLECTED ${amount} MONEY!`)
+          embed.setTimestamp()
+          embed.setFooter("MADED BY BUDDY!")
+            message.channel.send(embed)
         }
     }
 }
