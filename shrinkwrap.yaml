@@ -7,6 +7,7 @@ dependencies:
   figlet: 1.5.0
   fs: 0.0.2
   novelcovid: 3.0.0
+  parse-ms: 2.1.0
   quick-db: 1.0.5
   quick.db: 7.1.1
   something-random-on-discord: 0.0.1
@@ -1949,6 +1950,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-9ID0BDTvgHQfhGkJn43qGPVaTck=
+  /parse-ms/2.1.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-kHt7kzLoS9VBZfUsiKjv43mr91ea+U05EyKkEtqp7vNbHxmaVuEqN7XxeEVnGrMtYOAxGrDElSi96K7EgO1zCA==
   /parse-passwd/1.0.0:
     dev: false
     engines:
@@ -2789,6 +2796,7 @@ specifiers:
   figlet: ^1.5.0
   fs: ^0.0.2
   novelcovid: ^3.0.0
+  parse-ms: ^2.1.0
   quick-db: ^1.0.5
   quick.db: ^7.1.1
   something-random-on-discord: ^0.0.1
