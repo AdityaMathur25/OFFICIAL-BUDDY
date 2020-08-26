@@ -12,7 +12,11 @@ module.exports = {
         let bal = await db.fetch(`money_${message.guild.id}_${user.id}`);
         if(bal === null) bal = 0;
 const embed = new Discord.MessageEmbed();
-      embed.setAuthor(m)
+      embed.setTitle("CHECK YOUR BALANCE")
+     embed.setColor("	#00FFFF")
+      embed.setDescription(`${user} YOU HAVE TOTAL ${bal} BALANCE!`)
+      embed.setTimestamp();
+      embed.setFooter("MADED BY BUDDY!")
         message.channel.send(embed)
     }
 }
