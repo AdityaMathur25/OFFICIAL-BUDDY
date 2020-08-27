@@ -58,7 +58,7 @@ if(!message.guild) return;
     }
 
   }) 
-const image = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpgcimage", "https://wallpapercave.com/wp/wp5128398.jpg", "https://wallpapercave.com/wp/wp5700007.jpg", "https://wallpapercave.com/wp/wp5243211.jpg", "" ]
+const image = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpgcimage", "https://wallpapercave.com/wp/wp5128398.jpg", "https://wallpapercave.com/wp/wp5700007.jpg", "https://wallpapercave.com/wp/wp5243211.jpg", "https://www.google.com/search?q=anime+banner&client=ms-android-vivo&sxsrf=ALeKk03xqUuHfZGJlsbrL-yPfiQrucZNLQ:1598531269038&source=lnms&tbm=isch#", "" ]
 const images = Math.floor((Math.random() * image.length)) 
 
 client.on("guildMemberAdd", async member => { //usage of welcome event
