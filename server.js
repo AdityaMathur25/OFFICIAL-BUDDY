@@ -61,7 +61,7 @@ if(!message.guild) return;
 client.on("guildMemberAdd", async member => { //usage of welcome event
   let chx = db.get(`welchannel_${member.guild.id}`);
   //defining var
-    let data = await canva.welcome(member, { Image: "https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpg"})
+    let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp6081521.jpg", })
     
     const attachment = new discord.MessageAttachment(
       data,
