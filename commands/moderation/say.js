@@ -41,7 +41,8 @@ module.exports = {
     }
 
     let embed = new Discord.MessageEmbed()
-      .setColor(Color)
+     
+    .setColor(Color)
       .setDescription(`${Content}`)
       .setTimestamp()
       .setFooter("CREATED BY BUDDY");
