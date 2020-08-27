@@ -69,6 +69,19 @@ client.on("guildMemberAdd", async member => { //usage of welcome event
     );
  client.channels.cache.get(chx).send(`Welcome to the server, ${member.user.username}!`,
       attachment) //get channel and send embed
+client.on("guildMemberRemove", async member => { //usage of welcome event
+  let chx = db.get(`leavchannel_${member.guild.id}`);
+  //defining var
+    let data = await canva.leave(member, { link: "https://wallpapercave.com/wp/wp6081431.jpg", blur: false  })
+    
+    const attachment = new discord.MessageAttachment(
+      data,
+      "leave-image.png"
+    );
+ client.channels.cache.get(chx).send(` ${member.user.username} JUST LEFT THE SERVER !`,
+      attachment) //get channel and send embed
+});
+
 });
 
     client.login(token);
