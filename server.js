@@ -58,7 +58,7 @@ if(!message.guild) return;
     }
 
   }) 
-const image = ["https://wallpapercave.com/wp/wp6081521.jpg", "image link"] 
+const image = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpgcimage", "https://wallpapercave.com/wp/wp5128398.jpg", "https://wallpapercave.com/wp/wp5700007.jpg", "https://wallpapercave.com/wp/wp5243211.jpg", "" ]
 const images = Math.floor((Math.random() * image.length)) 
 
 client.on("guildMemberAdd", async member => { //usage of welcome event
