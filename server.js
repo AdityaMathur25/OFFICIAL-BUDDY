@@ -7,7 +7,8 @@ const discord = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-
+const URL = "";
+//for image ?
 const client = new Client({
   disableEveryone: true
 });
