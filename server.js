@@ -93,4 +93,37 @@ client.on("guildMemberRemove", async member => { //usage of welcome event
       attachment) //get channel and send embed
 });
 
-    client.login(token);
+client.on("guildCreate", guild => {
+switch (message.guild.verificationLevel) {
+  case 0:
+let vLevel = "None";
+break;
+
+// lol we neeed icons xd 
+ case 1:
+let vLevel = "Low";
+break;
+case 2:
+let vLevel = "Medium";
+break;
+case 3:
+let vLevel = "High";
+//no i
+break;
+}
+let join = new discord.MessageEmbed()
+.setColor("#00FFFF")
+.setTitle("New Server Joined")
+.addField("Server ID :", guild.id)
+.addField("Server Members :", guild.memberCount)
+.addField("Server Name :", guild.name)
+.setThumbnail(guild.iconURL())
+.addField("Server Owner :", guild.owner.user.tag)
+.addField("VERIFICATION LEVEL :", )
+
+
+
+})
+
+   //make it embed. 
+client.login(token);
