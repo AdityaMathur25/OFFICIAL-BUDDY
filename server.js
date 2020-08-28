@@ -58,16 +58,17 @@ if(!message.guild) return;
     }
 
   }) 
-const image = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpgcimage", "https://wallpapercave.com/wp/wp5128398.jpg", "https://wallpapercave.com/wp/wp5700007.jpg", "https://wallpapercave.com/wp/wp5243211.jpg", "https://www.google.com/search?q=anime+banner&client=ms-android-vivo&sxsrf=ALeKk03xqUuHfZGJlsbrL-yPfiQrucZNLQ:1598531269038&source=lnms&tbm=isch#", "" ]
-const images = Math.floor((Math.random * image.length))
+
 client.on("guildMemberAdd", async member => { //usage of welcome event
   let chx = db.get(`welchannel_${member.guild.id}`);
   //defining var
-  console.log(`error`)
+ if(!chx) return; 
+  const image = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpgcimage", "https://wallpapercave.com/wp/wp5128398.jpg", "https://wallpapercave.com/wp/wp5700007.jpg", "https://wallpapercave.com/wp/wp5243211.jpg", "https://www.google.com/search?q=anime+banner&client=ms-android-vivo&sxsrf=ALeKk03xqUuHfZGJlsbrL-yPfiQrucZNLQ:1598531269038&source=lnms&tbm=isch#", "" ]
+const images = Math.floor((Math.random * image.length))
     let data = await canva.welcome(member, { link: `${image[images]}`}, )
     const attachment = new discord.MessageAttachment(
       data,
-      "welcome-image.png", `${image[images]}`
+      "welcome-image.png"
     );
  client.channels.cache.get(chx).send(`Welcome to the server, ${member.user.username}!`,
       attachment) //get channel and send embed 
@@ -76,7 +77,7 @@ client.on("guildMemberAdd", async member => { //usage of welcome event
 client.on("guildMemberRemove", async member => { //usage of welcome event
   let chx = db.get(`leavchannel_${member.guild.id}`);
   //defining var
-    let data = await canva.leave(member, { link: "https://wallpapercave.com/wp/wp6081431.jpg", blur: false  })
+    let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp6081431.jpg", blur: false  })
     
     const attachment = new discord.MessageAttachment(
       data,
