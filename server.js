@@ -59,7 +59,7 @@ if(!message.guild) return;
 
   }) 
 const image = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpgcimage", "https://wallpapercave.com/wp/wp5128398.jpg", "https://wallpapercave.com/wp/wp5700007.jpg", "https://wallpapercave.com/wp/wp5243211.jpg", "https://www.google.com/search?q=anime+banner&client=ms-android-vivo&sxsrf=ALeKk03xqUuHfZGJlsbrL-yPfiQrucZNLQ:1598531269038&source=lnms&tbm=isch#", "" ]
-const images =[Math.floor((Math.random * image.length))]
+const images = Math.floor((Math.random * image.length))
 client.on("guildMemberAdd", async member => { //usage of welcome event
   let chx = db.get(`welchannel_${member.guild.id}`);
   //defining var
@@ -70,7 +70,9 @@ client.on("guildMemberAdd", async member => { //usage of welcome event
       "welcome-image.png", `${image[images]}`
     );
  client.channels.cache.get(chx).send(`Welcome to the server, ${member.user.username}!`,
-      attachment) //get channel and send embed
+      attachment) //get channel and send embed 
+  });
+
 client.on("guildMemberRemove", async member => { //usage of welcome event
   let chx = db.get(`leavchannel_${member.guild.id}`);
   //defining var
@@ -82,8 +84,6 @@ client.on("guildMemberRemove", async member => { //usage of welcome event
     );
  client.channels.cache.get(chx).send(` ${member.user.username} JUST LEFT THE SERVER !`,
       attachment) //get channel and send embed
-});
-
 });
 
     client.login(token);
