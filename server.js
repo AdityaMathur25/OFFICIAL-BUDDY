@@ -29,7 +29,7 @@ client.categories = fs.readdirSync("./commands");
 client.on("ready", () => {
   client.user.setActivity(db.get(`status`), {type : "WATCHING"})
 
-  console.log('ready to fuck xd')
+  console.log('ready as badass')
   });
 //
 client.on("message", async message => {
@@ -83,7 +83,7 @@ let random = Math.floor(Math.random() * 4);//no i dont want 4 image 1 omly
 client.on("guildMemberRemove", async member => { //usage of welcome event
   let chx = db.get(`leavchannel_${member.guild.id}`);
   //defining var
-    let data = await canva.welcome(member, { link: random , blur: false  })
+    let data = await canva.welcome(member, { link: random   })
     //its leave .
     const attachment = new discord.MessageAttachment(
       data,
