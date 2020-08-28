@@ -79,7 +79,7 @@ client.on("guildMemberRemove", async member => { //usage of welcome event
       data,
       "leave-image.png"
     );
- client.channels.cache.get(chx).send(` ${member.user.username} JUST LEFT THE SERVER !`,
+ client.channls.cache.get(chx).send(` ${member.user.username} JUST LEFT THE SERVER !`,
       attachment) //get channel and send embed
 });
 
