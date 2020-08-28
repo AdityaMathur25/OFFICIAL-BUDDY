@@ -63,10 +63,11 @@ const images =[Math.floor((Math.random * image.length))]
 client.on("guildMemberAdd", async member => { //usage of welcome event
   let chx = db.get(`welchannel_${member.guild.id}`);
   //defining var
+  console.log(`error`)
     let data = await canva.welcome(member, { link: `${image[images]}`}, )
     const attachment = new discord.MessageAttachment(
       data,
-      "welcome-image.png"
+      "welcome-image.png",`${image[images]}`
     );
  client.channels.cache.get(chx).send(`Welcome to the server, ${member.user.username}!`,
       attachment) //get channel and send embed
