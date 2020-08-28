@@ -4,7 +4,9 @@ const { MessageEmbed } = require("discord.js")
 
 
 const { Util } = require("discord.js");
-const { YOUTUBE_API_KEY, COLOR } = require("./config.json");
+const { YOUTUBE_API_KEY } = "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg";
+const {COLOR}= "#0FFFF";
+const {QUEUE_LIMIT}= "0";
 const ytdl = require("ytdl-core");
 const YoutubeAPI = require("simple-youtube-api");
 const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
@@ -12,7 +14,7 @@ const { play } = require("../system/music.js");
 module.exports = {
   name: "play",
   description: "Play the song and feel the music",
-  category:"",
+  category:"MUSIC",
   async execute(client, message, args) {
     let embed = new MessageEmbed()
 .setColor(COLOR);
