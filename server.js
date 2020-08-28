@@ -10,7 +10,7 @@ const { addexp } = require("./handlers/xp.js");
 
 
 
-let random = Math.floor(Math.random() * 2);
+let random = Math.floor(Math.random() * 4);
 //for image ?
 const client = new Client({
   disableEveryone: true
@@ -69,8 +69,8 @@ client.on("guildMemberAdd", async member => { //usage of welcome event
   //defining var
  if(!chx) return; 
   //u not define at random for image ?
-  var images = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpgcimage"]
-let random = Math.floor(Math.random() * 2);
+  var images = ["https://wallpapercave.com/wp/wp6081521.jpg", "https://wallpapercave.com/wp/wp5128415.jpg", "https://wallpapercave.com/wp/wp5128398.jpg", "https://wallpapercave.com/wp/wp5700007.jpg", "https://wallpapercave.com/wp/wp5243211.jpg" ]
+let random = Math.floor(Math.random() * 1);//no i dont want 4 image 1 omly
     let data = await canva.welcome(member, { link:  `${images[random]}`} )
     const attachment = new discord.MessageAttachment(
       data,
