@@ -150,7 +150,7 @@ break;
     .setThumbnail(guild.iconURL())
     .addField("Server Owner :", guild.owner.user.tag)
     .addField("VERIFICATION LEVEL :", `${vLevel}`)
-client.channels.find(r => r.id == "").send(join)
+client.channels.find(r => r.id == "748936869022007376").send(join)
 message.channel.send(join);
   
 })})
