@@ -107,7 +107,9 @@ const args = message.content
 .tirm()
 .split(/ +/g);
 
-const command = args.shift(/t)})
+const command = args.shift().toLowerCase();
+
+
 client.on("guildCreate", guild => {
   switch (message.guild.verificationLevel) {
     case 0:
@@ -147,10 +149,10 @@ break;
     .addField("Server Name :", guild.name)
     .setThumbnail(guild.iconURL())
     .addField("Server Owner :", guild.owner.user.tag)
-    .addField("VERIFICATION LEVEL :", `${vLevel}`);
-});
-
-//make it embed.
+    .addField("VERIFICATION LEVEL :", `${vLevel}`)
+client.channels.find(r => r.id == "").send(join)
+message.channel.send(join);
+  
+})})
 client.login(token);
 
-//define message.
