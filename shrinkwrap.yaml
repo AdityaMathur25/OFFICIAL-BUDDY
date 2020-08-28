@@ -12,6 +12,7 @@ dependencies:
   quick-db: 1.0.5
   quick.db: 7.1.1
   something-random-on-discord: 0.0.1
+  ytdl-core: 3.2.2
 packages:
   /@aero/centra/1.0.4:
     dev: false
@@ -1271,6 +1272,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+  /html-entities/1.3.1:
+    dev: false
+    resolution:
+      integrity: sha512-rhE/4Z3hIhzHAUKbW8jVcCyuT5oJCXXqhN/6mXXVCpzTmvJnoH2HL/bt3EZ6p55jbFJBeAe1ZNpL5BugLujxNA==
   /http-errors/1.7.2:
     dependencies:
       depd: 1.1.2
@@ -1606,6 +1611,15 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-vqPdNqzQuKckDXhza1uXxlREozQ=
+  /m3u8stream/0.7.1:
+    dependencies:
+      miniget: 1.7.2
+      sax: 1.2.4
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-z6ldnAdhbuWOL6LmMkwptSZGzj+qbRytMKLTbNicwF/bJMjf9U9lqD57RNQUFecvWadEkzy6PDjcNJFFgi19uQ==
   /matched/0.4.4:
     dependencies:
       arr-union: 3.1.0
@@ -1685,6 +1699,18 @@ packages:
     dev: false
     resolution:
       integrity: sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=
+  /miniget/1.7.2:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-USPNNK2bnHLOplX8BZVMehUkyQizS/DFpBdoH0TS+fM+hQoLNg9tWg4MeY9wE8gfY0pbzmx5UBEODujt3Lz8AA==
+  /miniget/2.0.1:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-MX+QfVIPAutz6c+T7WKuFKtjcw0nOyRRh1ubhTDD+z/e/pKcSAsfAV63aQKUgb1MFRT1GyfJeW53N5fHkX0wIA==
   /minimatch/3.0.4:
     dependencies:
       brace-expansion: 1.1.11
@@ -2774,6 +2800,17 @@ packages:
     dev: false
     resolution:
       integrity: sha1-eC7CHvQDNF+DCoCMo9UTr1YGUgg=
+  /ytdl-core/3.2.2:
+    dependencies:
+      html-entities: 1.3.1
+      m3u8stream: 0.7.1
+      miniget: 2.0.1
+      sax: 1.2.4
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-DVE7uhk4WYB2Op742QQVGE/b9G7cr9kSB3ZDpDXmyRPhO55h9u8gwORlDIHWKucWVmCsdsdKzNP89QylpJEgiw==
   /zip-stream/1.2.0:
     dependencies:
       archiver-utils: 1.3.0
@@ -2802,3 +2839,4 @@ specifiers:
   quick-db: ^1.0.5
   quick.db: ^7.1.1
   something-random-on-discord: ^0.0.1
+  ytdl-core: ^3.2.2
