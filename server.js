@@ -32,58 +32,11 @@ client.on("ready", () => {
 });
 //
 
-client.on("message", async message => {
-  if (message.author.client) return;
-
-  if (message.content.indexof(default_prefix) !== 0) return;
-  const args = message.content
-    .slice(default_prefix.length)
-    .tirm()
-    .split(/ +/g);
-
-  const command = args.shift().toLowerCase();
 
   //where are u ?
-  client.on("guildCreate", guild => {
-    let defaultChannel = "";
-    guild.channels.cache.forEach(channel => {
-      if (channel.type == "text" && defaultChannel == "") {
-        if (channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
-          defaultChannel = channel;
-        }
-        defaultChannel.send("Hello, Im a Bot!");
-      }
-    });
+  
 
-    let guildArray = client.guilds.array();
-    client.on("guildCreate", guild => {
-      let join = new discord.MessageEmbed()
-        .setColor("#00FFFF")
-        .setTitle("New Server Joined")
-        .addField("Server ID :", guild.id)
-        .addField("Server Members :", guild.memberCount)
-        .addField("Server Name :", guild.name)
-        .setThumbnail(guild.iconURL())
-        .addField("Server Owner :", guild.owner.user.tag)
-        .addField("VERIFICATION LEVEL :", "${vLevel}");
-      client.channels.find(r => r.id == "730844022020767815").send(join);
-      message.channel.send(join);
-      console.log("New Server Joined" + guild.name);
-    });
-    client.on("guildDelete", guild => {
-      let join = new discord.MessageEmbed()
-        .setColor("#00FFFF")
-        .setTitle("New Server Joined")
-        .addField("Server ID :", guild.id)
-        .addField("Server Members :", guild.memberCount)
-        .addField("Server Name :", guild.name)
-        .setThumbnail(guild.iconURL())
-        .addField("Server Owner :", guild.owner.user.tag)
-        .addField("VERIFICATION LEVEL :", "${vLevel}");
-      client.channels.find(r => r.id == "730844022020767815").send(join);
-      message.channel.send(join);
-      console.log("New Server left" + guild.name);
-    });
+    
 
     client.on("message", async message => {
       if (!message.guild) return;
@@ -139,11 +92,37 @@ client.on("message", async message => {
         .send(`Welcome to the server, ${member.user.username}!`, attachment); //get channel and send embed
     });
 
+client.on("guildCreate", guild => {
+  let join = new discord.MessageEmbed()
+    .setColor(0xff0000)
+    .setTitle("Server Joined")
+    .addField("Server Name :", guild.name)
+    .addField("Server Owner :", guild.owner.user.tag)
+    .setThumbnail(guild.iconURL)
+    .addField("Server ID :", guild.id)
+    .addField("Server Members :", guild.memberCount)
+    .setFooter(`Now Bot Is In ${c.guilds.size} Servers.`);
+  client.channels.find(r => r.id == "748936869022007376").send(join);
+  console.log("Joined a new guild: " + guild.name);
+});
+
+client.on("guildDelete", guild => {
+  let join = new discord.MessageEmbed()
+    .setColor(0xff0000)
+    .setTitle("Server Joined")
+    .addField("Server Name :", guild.name)
+    .addField("Server Owner :", guild.owner.user.tag)
+    .setThumbnail(guild.iconURL)
+    .addField("Server ID :", guild.id)
+    .addField("Server Members :", guild.memberCount)
+    .setFooter(`Now Bot Is In ${bot.guilds.size} Servers.`);
+  client.channels.find(r => r.id == "748936869022007376").send(join);
+  console.log("Joined a new guild: " + guild.name);
+});
     //define message lol
 
     // wait  dont do anything
-  });
-});
+  
 //what is used for v12 in ? for guildCreate i dont no that why
 client.login(token);
 //not get.
