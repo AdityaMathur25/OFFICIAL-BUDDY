@@ -109,7 +109,7 @@ const args = message.content
 
 const command = args.shift().toLowerCase();
 
-
+//where are u ? 
 client.on("guildCreate", guild => {
   switch (message.guild.verificationLevel) {
     case 0:
