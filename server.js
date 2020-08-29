@@ -98,6 +98,7 @@ client.on("guildMemberRemove", async member => {
 //define message lol
 
 
+
 client.on("message",async message => {
 if(message.author.client) return;
 
@@ -110,7 +111,7 @@ const args = message.content
 const command = args.shift().toLowerCase();
 
 //where are u ? 
-client.on("guildCreate", guild => {
+
   switch (message.guild.verificationLevel) {
     case 0:
       var vLevel = "None";
@@ -128,7 +129,6 @@ client.on("guildCreate", guild => {
       var vLevel = "┻━┻︵  (°□°）/ ︵ ┻━┻";
       break;
   }
-
 switch (message.guild.explicitContentFilter) {
   case 0: 
 var cFilter = "Dont Scan any messages";
@@ -140,7 +140,7 @@ break;
 var cFilter = "Scan messages sent by all members";
 break;
 }
-
+let guildArray = client.guilds.array();
   let join = new discord.MessageEmbed()
     .setColor("#00FFFF")
     .setTitle("New Server Joined")
@@ -150,9 +150,11 @@ break;
     .setThumbnail(guild.iconURL())
     .addField("Server Owner :", guild.owner.user.tag)
     .addField("VERIFICATION LEVEL :", `${vLevel}`)
-client.channels.find(r => r.id == "748936869022007376").send(join)
+client.channels.find(r => r.id == "730641883902115892").send(join)
 message.channel.send(join);
+console.log("New Server Joined" +guild.name )
   
 })})
 client.login(token);
-
+//not get.
+//nk
