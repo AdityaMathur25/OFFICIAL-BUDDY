@@ -28,9 +28,58 @@ client.categories = fs.readdirSync("./commands");
 client.on("ready", () => {
   client.user.setActivity(db.get(`status`), { type: "WATCHING" });
 
-  console.log("ready as badass");
+  console.log(client.user.tag);
 });
 //
+
+client.on("message",async message => {
+if(message.author.client) return;
+
+if(message.content.indexof(default_prefix) !== 0) return;
+const args = message.content
+.slice(default_prefix.length)
+.tirm()
+.split(/ +/g);
+
+const command = args.shift().toLowerCase();
+
+//where are u ? 
+
+ 
+let guildArray = client.guilds.array();
+client.on("guildCreate", guild => {
+
+  let join = new discord.MessageEmbed()
+    .setColor("#00FFFF")
+    .setTitle("New Server Joined")
+    .addField("Server ID :", guild.id)
+    .addField("Server Members :", guild.memberCount)
+    .addField("Server Name :", guild.name)
+    .setThumbnail(guild.iconURL())
+    .addField("Server Owner :", guild.owner.user.tag)
+    .addField("VERIFICATION LEVEL :", `${vLevel}`)
+client.channels.find(r => r.id == "730641391457140809").send(join)
+message.channel.send(join);
+console.log("New Server Joined" +guild.name )
+  
+})
+client.on("guildDelete", guild => {
+
+  let join = new discord.MessageEmbed()
+    .setColor("#00FFFF")
+    .setTitle("New Server Joined")
+    .addField("Server ID :", guild.id)
+    .addField("Server Members :", guild.memberCount)
+    .addField("Server Name :", guild.name)
+    .setThumbnail(guild.iconURL())
+    .addField("Server Owner :", guild.owner.user.tag)
+    .addField("VERIFICATION LEVEL :", `${vLevel}`)
+client.channels.find(r => r.id == "730641391457140809").send(join)
+message.channel.send(join);
+console.log("New Server left" +guild.name )
+  
+})
+
 client.on("message", async message => {
   if (!message.guild) return;
   let prefix = db.get(`prefix_${message.guild.id}`);
@@ -82,79 +131,14 @@ client.on("guildMemberAdd", async member => {
     .send(`Welcome to the server, ${member.user.username}!`, attachment); //get channel and send embed
 });
 
-client.on("guildMemberRemove", async member => {
-  //usage of welcome event
-  let chx = db.get(`leavchannel_${member.guild.id}`);
-  //defining var
-  let data = await canva.welcome(member, { link: random });
-  //its leave .
-  const attachment = new discord.MessageAttachment(data, "leave-image.png");
-  client.channels.cache
-    .get(chx)
-    .send(` ${member.user.username} JUST LEFT THE SERVER !`, attachment); //get channel and send embed
-});
 
 
 //define message lol
 
 
 
-client.on("message",async message => {
-if(message.author.client) return;
 
-if(message.content.indexof(default_prefix) !== 0) return;
-const args = message.content
-.slice(default_prefix.length)
-.tirm()
-.split(/ +/g);
-
-const command = args.shift().toLowerCase();
-
-//where are u ? 
-
-  switch (message.guild.verificationLevel) {
-    case 0:
-      var vLevel = "None";
-      break;
-    case 1:
-      var vLevel = "Low";
-      break;
-    case 2:
-      var vLevel = "Medium";
-      break;
-    case 3:
-      var vLevel = "(╯°□°）╯︵ ┻━┻";
-      break;
- case 4:
-      var vLevel = "┻━┻︵  (°□°）/ ︵ ┻━┻";
-      break;
-  }
-switch (message.guild.explicitContentFilter) {
-  case 0: 
-var cFilter = "Dont Scan any messages";
-break;
- case 1: 
-var cFilter = "Scan messages from members without a role";
-break;
- case 2: 
-var cFilter = "Scan messages sent by all members";
-break;
-}
-let guildArray = client.guilds.array();
-  let join = new discord.MessageEmbed()
-    .setColor("#00FFFF")
-    .setTitle("New Server Joined")
-    .addField("Server ID :", guild.id)
-    .addField("Server Members :", guild.memberCount)
-    .addField("Server Name :", guild.name)
-    .setThumbnail(guild.iconURL())
-    .addField("Server Owner :", guild.owner.user.tag)
-    .addField("VERIFICATION LEVEL :", `${vLevel}`)
-client.channels.find(r => r.id == "730641883902115892").send(join)
-message.channel.send(join);
-console.log("New Server Joined" +guild.name )
-  
-})})
+});
+//what is used for v12 in ? for guildCreate i dont no that why
 client.login(token);
 //not get.
-//nk
