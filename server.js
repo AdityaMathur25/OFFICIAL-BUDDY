@@ -69,35 +69,7 @@ client.on("message", async message => {
     .trim()
     .split(/ +/g);
   const cmd = args.shift().toLowerCase();
-
-  switch (message.guild.verificationLevel) {
-    case 0:
-      var vLevel = "None";
-      break;
-    case 1:
-      var vLevel = "Low";
-      break;
-    case 2:
-      var vLevel = "Medium";
-      break;
-    case 3:
-      var vLevel = "(╯°□°）╯︵ ┻━┻";
-      break;
-    case 4:
-      var vLevel = "┻━┻︵  (°□°）/ ︵ ┻━┻";
-      break;
-  }
-  switch (message.guild.explicitContentFilter) {
-    case 0:
-      var cFilter = "Dont Scan any messages";
-      break;
-    case 1:
-      var cFilter = "Scan messages from members without a role";
-      break;
-    case 2:
-      var cFilter = "Scan messages sent by all members";
-      break;
-  }
+  
 
   client.on("guildCreate", guild => {
     let join = new discord.MessageEmbed()
@@ -108,8 +80,7 @@ client.on("message", async message => {
       .setThumbnail(guild.iconURL)
       .addField("Server ID :", guild.id)
       .addField("Server Members :", guild.memberCount)
-.addField
-"VerificationLevel", `${vLevel}`    
+.addField("VERIFICATION LEVEL :", guild.VerificationLevel)   
 client.channels.cache.get("748936869022007376").send(join);
     console.log("Joined a new guild: " + guild.name);
   });
