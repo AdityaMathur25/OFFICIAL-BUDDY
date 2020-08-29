@@ -36,25 +36,9 @@ client.on("ready", () => {
   //where are u ?
   
 
+    wtf
+
     
-
-    client.on("message", async message => {
-      if (!message.guild) return;
-      let prefix = db.get(`prefix_${message.guild.id}`);
-      if (prefix === null) prefix = default_prefix;
-      if (!message.content.startsWith(prefix)) return;
-
-      //YOUR CODE
-
-      // If message.member is uncached, cache it.
-      if (!message.member)
-        message.member = await message.guild.fetchMember(message);
-      const args = message.content
-        .slice(prefix.length)
-        .trim()
-        .split(/ +/g);
-      const cmd = args.shift().toLowerCase();
-
       if (cmd.length === 0) return;
 
       // Get the command
@@ -92,6 +76,52 @@ client.on("ready", () => {
         .send(`Welcome to the server, ${member.user.username}!`, attachment); //get channel and send embed
     });
 
+client.on("message", async message => {
+      if (!message.guild) return;
+      let prefix = db.get(`prefix_${message.guild.id}`);
+      if (prefix === null) prefix = default_prefix;
+      if (!message.content.startsWith(prefix)) return;
+
+      //YOUR CODE
+
+      // If message.member is uncached, cache it.
+      if (!message.member)
+        message.member = await message.guild.fetchMember(message);
+      const args = message.content
+        .slice(prefix.length)
+        .trim()
+        .split(/ +/g);
+      const cmd = args.shift().toLowerCase();
+
+switch (message.guild.verificationLevel) {
+    case 0:
+      var vLevel = "None";
+      break;
+    case 1:
+      var vLevel = "Low";
+      break;
+    case 2:
+      var vLevel = "Medium";
+      break;
+    case 3:
+      var vLevel = "(╯°□°）╯︵ ┻━┻";
+      break;
+ case 4:
+      var vLevel = "┻━┻︵  (°□°）/ ︵ ┻━┻";
+      break;
+  }
+switch (message.guild.explicitContentFilter) {
+  case 0: 
+var cFilter = "Dont Scan any messages";
+break;
+ case 1: 
+var cFilter = "Scan messages from members without a role";
+break;
+ case 2: 
+var cFilter = "Scan messages sent by all members";
+break;
+}
+
 client.on("guildCreate", guild => {
   let join = new discord.MessageEmbed()
     .setColor(0xff0000)
@@ -101,10 +131,10 @@ client.on("guildCreate", guild => {
     .setThumbnail(guild.iconURL)
     .addField("Server ID :", guild.id)
     .addField("Server Members :", guild.memberCount)
-    .setFooter(`Now Bot Is In ${c.guilds.size} Servers.`);
-  client.channels.find(r => r.id == "748936869022007376").send(join);
+ client.channels.cache.get("748936869022007376").send(join)
   console.log("Joined a new guild: " + guild.name);
 });
+//mention the guild owner not tag. LOL YOU CANT MENTION THEN BZ THEY ARE NOT IN YOUR SERVER 
 
 client.on("guildDelete", guild => {
   let join = new discord.MessageEmbed()
@@ -115,9 +145,8 @@ client.on("guildDelete", guild => {
     .setThumbnail(guild.iconURL)
     .addField("Server ID :", guild.id)
     .addField("Server Members :", guild.memberCount)
-    .setFooter(`Now Bot Is In ${bot.guilds.size} Servers.`);
-  client.channels.find(r => r.id == "748936869022007376").send(join);
-  console.log("Joined a new guild: " + guild.name);
+   client.channels.cache.get("748936869022007376").send(join)
+  console.log("Left Server: " + guild.name);
 });
     //define message lol
 
