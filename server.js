@@ -97,16 +97,6 @@ client.on("guildMemberRemove", async member => {
 //Stupid kid!
 //define message lol
 //ok im stupid u do it thank you ! mam
-ifclient.on("guildCreate", guild => {  
-
- //ifjoi
-let ssage.content.indexof(default_prefix) !== 0) return;
-const args = message.content
-.slice(default_prefix.length)
-.tirm()
-.split(/ +/g);
-
-const command = args.shift().toLowerCase();
 
 
 client.on("guildCreate", guild => {
@@ -115,13 +105,12 @@ let join = new discord.MessageEmbed()
     .setTitle("New Server Joined")
     .addField("Server ID :", guild.id)
     .addField("Server Members :", guild.members.cache.size)
-    .addField("Server Name :"d.name)
-    .addField(" :",guild.VerificationLevel)
-    .setThumbnail(guild.iconURL())
+    .addField("Server Name :", guild.name)
+   .setThumbnail(guild.iconURL())
     .addField("Server Owner :", guild.owner)
     .addField("VERIFICATION LEVEL :", guild.VerificationLevel)
-client.guild.channels.cache.find(r => r.id === "748936869022007376").send(join);
+client.channels.cache.get("748936869022007376").send(join);
   console.log('NEW SERVER JOIN' + guild.name)
-})})
+});
 client.login(token);
 
