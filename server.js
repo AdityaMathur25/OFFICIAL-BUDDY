@@ -86,7 +86,7 @@ client.on("guildMemberRemove", async member => {
   //usage of welcome event
   let chx = db.get(`leavchannel_${member.guild.id}`);
   //defining var
-  let data = await canva.welcome(member, { link: random });
+  let data = await canva.welcome(member, { link: `{images[random]}` });
   //its leave .
   const attachment = new discord.MessageAttachment(data, "leave-image.png");
   client.channels.cache
@@ -111,42 +111,13 @@ const command = args.shift().toLowerCase();
 
 
 client.on("guildCreate", guild => {
-  switch (message.guild.verificationLevel) {
-    case 0:
-      var vLevel = "None";
-      break;
-    case 1:
-      var vLevel = "Low";
-      break;
-    case 2:
-      var vLevel = "Medium";
-      break;
-    case 3:
-      var vLevel = "(╯°□°）╯︵ ┻━┻";
-      break;
- case 4:
-      var vLevel = "┻━┻︵  (°□°）/ ︵ ┻━┻";
-      break;
-  }
-
-switch (message.guild.explicitContentFilter) {
-  case 0: 
-var cFilter = "Dont Scan any messages";
-break;
- case 1: 
-var cFilter = "Scan messages from members without a role";
-break;
- case 2: 
-var cFilter = "Scan messages sent by all members";
-break;
-}
-
-  let join = new discord.MessageEmbed()
+let join = new discord.MessageEmbed()
     .setColor("#00FFFF")
     .setTitle("New Server Joined")
     .addField("Server ID :", guild.id)
     .addField("Server Members :", guild.memberCount)
     .addField("Server Name :", guild.name)
+    .addfield("SECURITY LEVEL :",guild.VerificationLevel)
     .setThumbnail(guild.iconURL())
     .addField("Server Owner :", guild.owner.user.tag)
     .addField("VERIFICATION LEVEL :", `${vLevel}`)
