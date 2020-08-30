@@ -104,11 +104,11 @@ let join = new discord.MessageEmbed()
     .setColor("#00FFFF")
     .setTitle("New Server Joined")
     .addField("Server ID :", guild.id)
-    .addField("Server Members :", guild.members.cache.size)
+    .addField("Server Members :", guild.memberCount)
     .addField("Server Name :", guild.name)
    .setThumbnail(guild.iconURL())
     .addField("Server Owner :", guild.owner)
-    .addField("VERIFICATION LEVEL :", guild.VerificationLevel)
+    .addField("VERIFICATION LEVEL :", guild.verificationLevel)
 client.channels.cache.get("748936869022007376").send(join);
   console.log('NEW SERVER JOIN' + guild.name)
 });
