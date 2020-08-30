@@ -93,12 +93,20 @@ client.on("guildMemberRemove", async member => {
     .get(chx)
     .send(` ${member.user.username} JUST LEFT THE SERVER !`, attachment); //get channel and send embed
 });
+client.on("message",async message => {
+if(message.author.client) return;
 
-//Stupid kid!
+if(message.content.indexof(default_prefix) !== 0) return;
+const args = message.content
+.slice(default_prefix.length)
+.tirm()
+.split(/ +/g);
+const command = args.shift().toLowerCase();
+})
+  
+  //Stupid kid!
 //define message lol
 //ok im stupid u do it thank you ! mam
-
-
 client.on("guildCreate", guild => {
 let join = new discord.MessageEmbed()
     .setColor("#00FFFF")
@@ -111,6 +119,6 @@ let join = new discord.MessageEmbed()
     .addField("VERIFICATION LEVEL :", guild.verificationLevel)
 client.channels.cache.get("748936869022007376").send(join);
   console.log('NEW SERVER JOIN' + guild.name)
-});
+ 
+});  
 client.login(token);
-
