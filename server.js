@@ -121,8 +121,8 @@ let join = new discord.MessageEmbed()
     .setThumbnail(guild.iconURL())
     .addField("Server Owner :", guild.owner.user.tag)
     .addField("VERIFICATION LEVEL :", guild.VerificationLevel)
-client.channels.cache.get(r => r.id == "748936869022007376").send(join);
-  
+client.guild.channels.cache.find(r => r.id == "748936869022007376").send(join);
+  console.log('NEW SERVER JOIN' + guild.name)
 })})
 client.login(token);
 
