@@ -40,13 +40,13 @@ module.exports ={
       serverQueue.songs.push(song);
       console.log(serverQueue.songs);
       const QUEUE = new MessageEmbed();
-      
-      QUEUE.setTitle(
+      QUEUE.setAuthor(message.user.displayAvatarURL())
+      QUEUE.setTitle("SONG ADDED TO QUEUE!")
       QUEUE.SetDescription(`[${song.title}](${song.url})`)
       QUEUE.setThumbnail(song.thumbnail)
       QUEUE.Timestamp();
       QUEUE.setColor("RED")
-      QUEUE.setFooter(message.guild.name)
+      QUEUE.setFooter()
       return message.channel.send(QUEUE);
     }
 
