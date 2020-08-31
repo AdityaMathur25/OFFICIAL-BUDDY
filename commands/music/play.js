@@ -4,11 +4,11 @@ const ms = require("ms")
 
 
 const { Util } = require("discord.js");
-const { YOUTUBE_API_KEY, QUEUE_LIMIT, COLOR } = require('./config.json');
+const { YOUTUBE_API_KEY, QUEUE_LIMIT, COLOR } = require("./config.json");
 const ytdl = require("ytdl-core");
 const YoutubeAPI = require("simple-youtube-api");
 const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
-const { play } = require("../system/music.js");
+const { play } = require("./system/music.js");
 module.exports = {
   name: "play",
   description: "Play the song and feel the music",
