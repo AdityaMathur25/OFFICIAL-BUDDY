@@ -1,7 +1,7 @@
 module.exports ={
-  name
-  category: 
-  description: ""
+  name: "volume",
+  category: "music",
+  description: "set song volume ",
 run: (client, message, args) => {
   const { channel } = message.member.voice;
   if (!channel)
