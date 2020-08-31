@@ -1,8 +1,7 @@
 {
-    "YOUTUBE_API_KEY": "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg",
+  "YOUTUBE_API_KEY": "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg",
   "COLOR": "BLUE",
   "QUEUE_LIMIT": "0",
-  "default_prefix": "!",
-  "token": "NzM0Mjg5NjU1MzEwMDU3NDkz.XxPiiA.yQY5FW2VCz9KzPR_SxutvhgwYCI"
+  "TOKEN": "NzM0Mjg5NjU1MzEwMDU3NDkz.XxPiiA.yQY5FW2VCz9KzPR_SxutvhgwYCI"
 
 }
