@@ -33,8 +33,7 @@ client.on("ready", () => {
 client.config = {
   api: process.env.api,
 }
-client.queue = new Map()
-
+client.queue = new Map();
 client.on("message", async message => {
   if (!message.guild) return;
   let prefix = db.get(`prefix_${message.guild.id}`);
