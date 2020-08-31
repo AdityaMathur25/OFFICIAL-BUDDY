@@ -39,9 +39,15 @@ module.exports ={
     if (serverQueue) {
       serverQueue.songs.push(song);
       console.log(serverQueue.songs);
-      return message.channel.send(
-        `✅ **${song.title}** has been added to the queue!`
-      );
+      const QUEUE = new MessageEmbed();
+      QUEUE.setAuthor(message.user.displayAvatarURL())
+      QUEUE.setTitle("SONG ADDED TO QUEUE!")
+      QUEUE.SetDescription(`[${song.title}](${song.url})`)
+      QUEUE.setThumbnail(song.thumbnail)
+      QUEUE.Timestamp();
+      QUEUE.setColor("RED")
+      QUEUE.setFooter()
+      return message.channel.send(QUEUE);
     }
 
     const queueConstruct = {
@@ -72,7 +78,8 @@ module.exports ={
         .on("error", (error) => console.error(error));
       dispatcher.setVolumeLogarithmic(queue.volume / 5); 
       const playEmbed = new MessageEmbed() 
-      .setAuthor("Started Playing") 
+      .setAuthor(message.user.displayAvatarURL()) 
+      .setTitle("STARTED PLAYING")
       .setDescription(`[${song.title}](${song.url})`) 
       .setThumbnail(song.thumbnail) 
       .setColor("#00FFFF")
