@@ -78,9 +78,9 @@ module.exports ={
         .on("error", (error) => console.error(error));
       dispatcher.setVolumeLogarithmic(queue.volume / 5); 
       const playEmbed = new MessageEmbed() 
-      .setAuthor(message.user.displayAvatarURL()) 
+      .setAuthor(message.author.displayAvatar) 
       .setTitle("STARTED PLAYING")
-      .setDescription(`[${song.title}](${song.url})`) 
+      .setDescription(`[${song.title}]`) 
       .setThumbnail(song.thumbnail) 
       .setColor("#00FFFF")
       queue.textChannel.send(playEmbed);
