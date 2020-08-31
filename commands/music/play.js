@@ -40,7 +40,7 @@ module.exports ={
       serverQueue.songs.push(song);
       console.log(serverQueue.songs);
       const QUEUE = new MessageEmbed();
-      QUEUE.setAuthor(message.user.displayAvatarURL())
+      QUEUE.setAuthor(message.author.displayAvatarURL())
       QUEUE.setTitle("SONG ADDED TO QUEUE!")
       QUEUE.SetDescription(`[${song.title}](${song.url})`)
       QUEUE.setThumbnail(song.thumbnail)
@@ -78,7 +78,7 @@ module.exports ={
         .on("error", (error) => console.error(error));
       dispatcher.setVolumeLogarithmic(queue.volume / 5); 
       const playEmbed = new MessageEmbed() 
-      .setAuthor(message.author.displayAvatar) 
+      .setAuthor(message.author.displayAvatarURL()) 
       .setTitle("STARTED PLAYING")
       .setDescription(`[${song.title}]`) 
       .setThumbnail(song.thumbnail) 
