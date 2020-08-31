@@ -24,7 +24,8 @@
     "parse-ms": "^2.1.0",
     "node-fetch": "^2.6.0",
     "ytdl-core": "^3.2.2",
-    "simple-youtube-api": "^5.2.1"
+    "simple-youtube-api": "^5.2.1",
+    "erela.js": "^1.1.8"
   },
   "engines": {
     "node": "12.x"
