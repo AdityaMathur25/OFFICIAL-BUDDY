@@ -75,6 +75,7 @@ module.exports ={
       .setAuthor("Started Playing") 
       .setDescription(`[${song.title}](${song.url})`) 
       .setThumbnail(song.thumbnail) 
+      .setColor("#00FFFF")
       queue.textChannel.send(playEmbed);
     }; //thumbnail works only in embed
 //make a embed.
