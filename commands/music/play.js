@@ -40,8 +40,8 @@ module.exports ={
       serverQueue.songs.push(song);
       console.log(serverQueue.songs);
       const QUEUE = new MessageEmbed();
-      QUEUE.setAuthor(message.author.Avatar)
-      QUEUE.setTitle("SONG ADDED TO QUEUE!")
+      
+      QUEUE.setTitle(
       QUEUE.SetDescription(`[${song.title}](${song.url})`)
       QUEUE.setThumbnail(song.thumbnail)
       QUEUE.Timestamp();
