@@ -1,4 +1,4 @@
-const { Util } = require("discord.js");
+const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const YouTube = require("simple-youtube-api");
 
@@ -33,6 +33,7 @@ module.exports ={
       id: songInfo.video_id,
       title: Util.escapeMarkdown(songInfo.title),
       url: songInfo.url,
+      thumbnail: songInfo.thumbnails.high.url,
     };
 
     if (serverQueue) {
@@ -69,10 +70,14 @@ module.exports ={
           play(queue.songs[0]);
         })
         .on("error", (error) => console.error(error));
-      dispatcher.setVolumeLogarithmic(queue.volume / 5);
-      queue.textChannel.send(`🎶 Start playing: **${song.title}**`);
-    };
-
+      dispatcher.setVolumeLogarithmic(queue.volume / 5); 
+      const playEmbed = new MessageEmbed() 
+      .setAuthor("Started Playing") 
+      .setDescription(`[${song.title}](${song.url})`) 
+      .setThumbnail(song.thumbnail) 
+      queue.textChannel.send(playEmbed);
+    }; //thumbnail works only in embed
+//make a embed.
     try {
       const connection = await channel.join();
       queueConstruct.connection = connection;
