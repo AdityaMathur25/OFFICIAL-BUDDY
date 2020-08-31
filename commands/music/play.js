@@ -40,8 +40,7 @@ module.exports ={
       serverQueue.songs.push(song);
       console.log(serverQueue.songs);
       const QUEUE = new MessageEmbed();
-      QUEUE.setAuthor(message.author.displayAvatarURL())
-      QUEUE.setTitle("SONG ADDED TO QUEUE!")
+      QUEUE.setAuthor("SONG ADDED TO QUEUE!", message.author.displayAvatarURL({dynamic: true}))//queue also playing..
       QUEUE.SetDescription(`[${song.title}](${song.url})`)
       QUEUE.setThumbnail(song.thumbnail)
       QUEUE.Timestamp();
@@ -75,11 +74,10 @@ module.exports ={
           queue.songs.shift();
           play(queue.songs[0]);
         })
-        .on("error", (error) => console.error(error));
+        client.on("error", (error) => console.error(error));
       dispatcher.setVolumeLogarithmic(queue.volume / 5); 
       const playEmbed = new MessageEmbed() 
-      .setAuthor(message.author.displayAvatarURL()) 
-      .setTitle("STARTED PLAYING")
+      .setAuthor("STARTED PLAYING", message.author.displayAvatarURL({dynamic: true})) 
       .setDescription(`[${song.title}]`) 
       .setThumbnail(song.thumbnail) 
       .setColor("#00FFFF")
