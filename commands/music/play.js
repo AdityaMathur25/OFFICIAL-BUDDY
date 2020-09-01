@@ -41,7 +41,7 @@ module.exports ={
       console.log(serverQueue.songs);
       const QUEUE = new MessageEmbed();
       QUEUE.setAuthor("SONG ADDED TO QUEUE!", message.author.displayAvatarURL({dynamic: true}))//queue also playing..
-      QUEUE.SetDescription(`[${song.title}](${song.url})`)
+      QUEUE.SetDescription(`[${song.title}]`)
       QUEUE.setThumbnail(song.thumbnail)
       QUEUE.Timestamp();
       QUEUE.setColor("RED")
