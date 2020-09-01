@@ -54,7 +54,7 @@ module.exports ={
       voiceChannel: channel,
       connection: null,
       songs: [],
-      volume: 2,
+      volume: 100,
       playing: true,
     };
     message.client.queue.set(message.guild.id, queueConstruct);
@@ -75,7 +75,7 @@ module.exports ={
           play(queue.songs[0]);
         })
         client.on("error", (error) => console.error(error));
-      dispatcher.setVolumeLogarithmic(queue.volume / 5); 
+      dispatcher.setVolumeLogarithmic(queue.volume / 100); 
       const playEmbed = new MessageEmbed() 
       .setAuthor("STARTED PLAYING", message.author.displayAvatarURL({dynamic: true})) 
       .setDescription(`[${song.title}]`) 
