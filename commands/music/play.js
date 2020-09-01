@@ -45,7 +45,7 @@ module.exports ={
       QUEUE.setThumbnail(song.thumbnail)
       QUEUE.Timestamp();
       QUEUE.setColor("RED")
-      QUEUE.setFooter()
+      QUEUE.setFooter("maded by buddy")
       return song.textChannel.send(QUEUE);
     }
 
