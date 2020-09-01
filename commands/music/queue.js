@@ -1,4 +1,4 @@
-  
+  const MessageEmbed = require("discord.js")
   module.exports = {
     name: "queue",
     Description:"show playing music",
@@ -10,9 +10,8 @@ const serverQueue = message.client.queue.get(message.guild.id);
   queue.setAuthor("QUEUE SONGS!", message.author.displayAvatarURL({dynamic: true}))
   queue.setColor("GREEN")
   queue.setDescription(`${serverQueue.songs.map((song) => `**-** ${song.title}`).join("\n")}**Now playing:** ${serverQueue.songs[0].title}`)
-  queue.setFooter("REQUESTED BY ", message.author.username)
+  queue.setFooter(`REQUESTED BY  ${message.author.username}`)
   queue.setTimestamp();
   return message.channel.send(queue);
-const MessageEmbed = require("discord.js")
 }
   }
