@@ -82,6 +82,7 @@ module.exports ={
       .setThumbnail(song.thumbnail) 
       .setColor("#00FFFF")
        .setTimestamp();
+        playEmbed.setFooter("REQUESTED BY ", );
       queue.textChannel.send(playEmbed);
     }; //thumbnail works only in embed
 //make a embed.
