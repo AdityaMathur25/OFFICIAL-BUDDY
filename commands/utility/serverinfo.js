@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-const { Color } = require("../../config.json");
+const { COLOR } = require("../../config.json");
 
 module.exports = {
   name: "serverinfo",
@@ -22,7 +22,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
       .setTitle(guild.name + " Information!")
-      .setColor(Color)
+      .setColor(COLOR)
       .setThumbnail(guild.iconURL())
       .addField('Name', guild.name, true)
       .addField('ID', `${guild.id}`, true)

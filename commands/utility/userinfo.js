@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-const { Color } = require("../../config.json");
+const { COLOR } = require("../../config.json");
 
 module.exports = {
   name: "userinfo",
@@ -25,7 +25,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
       .setTitle(member.user.username + " Information!")
-      .setColor(Color)
+      .setColor(COLOR)
       .setThumbnail(member.user.displayAvatarURL())
       .addField('Full Name', member.user.tag, true)
       .addField('ID', `${member.id}`, true)
