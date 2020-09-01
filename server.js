@@ -82,8 +82,12 @@ client.on("guildMemberAdd", async member => {
   const attachment = new discord.MessageAttachment(data, "welcome-image.png");
   client.channels.cache
     .get(chx)
-    .send(`Welcome to the server, ${member.user.username}!`, attachment); //get channel and send embed
-});
+    .send(`Welcome to the server, ${member.user.username}!`, attachment); 
+  
+});//get channel and send embed
+
+
+
 
 client.on("guildMemberRemove", async member => {
   //usage of welcome event
@@ -122,6 +126,8 @@ let join = new discord.MessageEmbed()
     .addField("VERIFICATION LEVEL :", guild.verificationLevel)
 client.channels.cache.get("748936869022007376").send(join);
   console.log('NEW SERVER JOIN' + guild.name)
- 
-});  
+
+
+
+}); 
 client.login(token);
