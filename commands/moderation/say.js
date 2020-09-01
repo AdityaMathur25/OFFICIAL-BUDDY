@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-const { Color } = require("../../config.json");
+const { COLOR } = require("../../config.json");
 var pattern = new RegExp(
   "^(https?:\\/\\/)?" +
     "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
@@ -41,11 +41,10 @@ module.exports = {
     }
 
     let embed = new Discord.MessageEmbed()
-     
-    .setColor(Color)
+    .setColor(COLOR)
       .setDescription(`${Content}`)
       .setTimestamp()
-      .setFooter("CREATED BY BUDDY");
+      .setFooter("CREATED BY ");
 
     return message.channel.send(embed);
 
