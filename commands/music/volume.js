@@ -15,9 +15,9 @@ module.exports = {
     if (!serverQueue) return message.channel.send("There is nothing playing in this server.", message.channel);
     if (!args[0])return message.channel.send(`The current volume is: **${serverQueue.volume}**`);
     serverQueue.volume = args[0]; 
-    serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 5);
+    serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);
     let xd = new MessageEmbed()
-    .setDescription(`I set the volume to: **${args[0]}`)
+    .setDescription(`I set the volume to: ${args[0]}`)
     .setTitle("Server Volume Manager")
     .setColor("BLUE")
     return message.channel.send(xd);
