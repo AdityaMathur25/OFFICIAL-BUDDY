@@ -7,7 +7,7 @@ module.exports = {
   category: "info",
   run: async (client, message, args) => {
     const embed = new Discord.MessageEmbed()
-    embed.setTitle("BOT INVITE")
+    embed.setTitle("<a:blueflame:715187341928562708>", "BOT INVITE", "715187341928562708")
     embed.setDescription("[INVITE BOT](https://discord.com/oauth2/authorize?client_id=734289655310057493&scope=bot)");
    embed.setColor("BLUE");
     embed.setFooter("CREATED BY BUDDY");
