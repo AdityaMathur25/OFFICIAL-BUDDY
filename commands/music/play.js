@@ -44,7 +44,7 @@ module.exports ={
       QUEUE.setDescription(`[${song.title}]`)
       QUEUE.setThumbnail(song.thumbnail)
       QUEUE.setColor("RED")
-      QUEUE.setFooter("maded by buddy")
+      QUEUE.setFooter(`Requested By ${message.author.username}`)
       QUEUE.setTimestamp();
       message.channel.send(QUEUE);
     }
