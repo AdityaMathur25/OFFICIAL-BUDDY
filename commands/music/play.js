@@ -64,7 +64,7 @@ module.exports = {
     const play = async (song) => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        message.channel.send("Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel go to `commands/play.js` and remove the line number 61\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)", message.channel)
+        message.channel.send("Leaving the voice channel because I think there are no songs in the queue", message.channel)
         queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
