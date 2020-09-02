@@ -46,7 +46,7 @@ module.exports ={
       QUEUE.setColor("RED")
       QUEUE.setFooter("maded by buddy")
       QUEUE.setTimestamp();
-      message.Channel.send(QUEUE);
+      message.channel.send(QUEUE);
     }
 
     const queueConstruct = {
