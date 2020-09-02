@@ -1,52 +1,54 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
-const YouTube = require("simple-youtube-api");
+const yts = require("yt-search");
+const
+module.exports = {
+  info: {
+    name: "play",
+    description: "To play songs :D",
+    usage: "<song_name>",
+    aliases: ["p"],
+  },
 
-module.exports ={
- name:"play",
-  category:"music",
-  description: "play music",
-  run: async  (client, message, args) => {
-    const { channel } = message.member.voice;
-    if (!channel)
-      return message.channel.send(
-        "I'm sorry but you need to be in a voice channel to play music!"
-      );
+  run: async function (client, message, args) {
+    const channel = message.member.voice.channel;
+    if (!channel)return sendError("I'm sorry but you need to be in a voice channel to play music!", message.channel);
+
     const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT"))
-      return message.channel.send(
-        "I cannot connect to your voice channel, make sure I have the proper permissions!"
-      );
-    if (!permissions.has("SPEAK"))
-      return message.channel.send(
-        "I cannot speak in this voice channel, make sure I have the proper permissions!"
-      );
-    const youtube = new YouTube(client.config.api);
+    if (!permissions.has("CONNECT"))return sendError("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
+    if (!permissions.has("SPEAK"))return sendError("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
+
     var searchString = args.join(" ");
-    if (!searchString)
-      return message.channel.send("You didn't poivide want i want to play");
-    const serverQueue = message.client.queue.get(message.guild.id);
-    var videos = await youtube.searchVideos(searchString).catch(console.log);
-    var songInfo = await videos[0].fetch().catch(console.log);
+    if (!searchString)return sendError("You didn't poivide want i want to play", message.channel);
+
+    var serverQueue = message.client.queue.get(message.guild.id);
+
+    var searched = await yts.search(searchString)
+    if(searched.videos.length === 0)return sendError("Looks like i was unable to find the song on YouTube", message.channel)
+    var songInfo = searched.videos[0]
 
     const song = {
-      id: songInfo.video_id,
+      id: songInfo.videoId,
       title: Util.escapeMarkdown(songInfo.title),
+      views: String(songInfo.views).padStart(10, ' '),
       url: songInfo.url,
-      thumbnail: songInfo.thumbnails.high.url,
+      ago: songInfo.ago,
+      duration: songInfo.duration.toString(),
+      img: songInfo.image,
+      req: message.author
     };
 
     if (serverQueue) {
       serverQueue.songs.push(song);
-      console.log(serverQueue.songs);
-      const QUEUE = new MessageEmbed();
-      QUEUE.setAuthor("SONG ADDED TO QUEUE!", message.author.displayAvatarURL({dynamic: true}))//queue also playing..
-      QUEUE.setDescription(`[${song.title}]`)
-      QUEUE.setThumbnail(song.thumbnail)
-      QUEUE.setColor("RED")
-      QUEUE.setFooter(`Requested By ${message.author.username}`)
-      QUEUE.setTimestamp();
-      message.channel.send(QUEUE);
+      let thing = new MessageEmbed()
+      .setAuthor("Song has been added to queue", song.req.displayAvatarURL({ dynamic: true }))
+      .setThumbnail(song.img)
+      .setColor("YELLOW")
+      .addField("Name", song.title, true)
+      .addField("Duration", song.duration, true)
+      .addField("Requested by", song.req.tag, true)
+      .setFooter(`Views: ${song.views} | ${song.ago}`)
+      return message.channel.send(thing);
     }
 
     const queueConstruct = {
@@ -54,7 +56,7 @@ module.exports ={
       voiceChannel: channel,
       connection: null,
       songs: [],
-      volume: 100,
+      volume: 2,
       playing: true,
     };
     message.client.queue.set(message.guild.id, queueConstruct);
@@ -63,7 +65,8 @@ module.exports ={
     const play = async (song) => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        queue.voiceChannel.leave();
+        sendError("Leaving the voice channel because I think there are no songs in the queue", message.channel)
+        queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
       }
@@ -74,29 +77,29 @@ module.exports ={
           queue.songs.shift();
           play(queue.songs[0]);
         })
-        client.on("error", (error) => console.error(error));
-      dispatcher.setVolumeLogarithmic(queue.volume / 100); 
-      const playEmbed = new MessageEmbed() 
-      .setAuthor("STARTED PLAYING", message.author.displayAvatarURL({dynamic: true})) 
-      .setDescription(`[${song.title}]`) 
-      .setThumbnail(song.thumbnail) 
-      .setColor("#00FFFF")
-       .setTimestamp();
-        playEmbed.setFooter(`requested by ${message.author.username}`);
-      queue.textChannel.send(playEmbed);
-    }; //thumbnail works only in embed
-//make a embed.
+        .on("error", (error) => console.error(error));
+      dispatcher.setVolumeLogarithmic(queue.volume / 5);
+      let thing = new MessageEmbed()
+      .setAuthor("Started Playing Music!", song.req.displayAvatarURL({ dynamic: true }))
+      .setThumbnail(song.img)
+      .setColor("BLUE")
+      .addField("Name", song.title, true)
+      .addField("Duration", song.duration, true)
+      .addField("Requested by", song.req.tag, true)
+      .setFooter(`Views: ${song.views} | Ago: ${song.ago}`)
+      queue.textChannel.send(thing);
+    };
+
     try {
       const connection = await channel.join();
       queueConstruct.connection = connection;
+      channel.guild.voice.setSelfDeaf(true)
       play(queueConstruct.songs[0]);
     } catch (error) {
       console.error(`I could not join the voice channel: ${error}`);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send(
-        `I could not join the voice channel: ${error}`
-      );
+      return sendError(`I could not join the voice channel: ${error}`, message.channel);
     }
-}
   }
+};
