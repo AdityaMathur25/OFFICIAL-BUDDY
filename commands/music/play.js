@@ -64,7 +64,12 @@ module.exports = {
     const play = async (song) => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        message.channel.send("Leaving the voice channel because I think there are no songs in the queue", message.channel)
+        const end = new MessageEmbed();
+        end.setAuhtor(message.auhtor.username, message.auhtor.displayAvatarURL({dynamic: true}))
+        end.setDescription("MUSIC QUEUE IS ENDED !")
+        end.setColor("aqua")
+        end.setFooter(`REQUESTED BY ${message.auhtor.username}`)
+        message.channel.send(end, message.channel)
         queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
