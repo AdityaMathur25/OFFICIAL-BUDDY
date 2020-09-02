@@ -15,7 +15,7 @@ run: (client, message, args) => {
       `The current volume is: **${serverQueue.volume}**`
     );
   serverQueue.volume = args[0]; 
-  serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 5);
+  serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);
   return message.channel.send(`I set the volume to: **${args[0]}**`);
 }
 }
