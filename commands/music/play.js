@@ -1,9 +1,9 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const { message  } = require("discord.js")
-const MessageEmbed = require ("")
-const embed = new 
+const { message, RichEmbed  } = require("discord.js")
+
+const embed = new RichEmbed();
 let sendError = message.channel.send(embed)
 
 module.exports = {
