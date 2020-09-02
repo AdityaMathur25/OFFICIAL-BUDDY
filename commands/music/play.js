@@ -1,7 +1,8 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const
+
+
 module.exports = {
   info: {
     name: "play",
@@ -16,7 +17,7 @@ module.exports = {
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))return sendError("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
-    if (!permissions.has("SPEAK"))return sendError("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
+    if (!permissions.has("SPEAK"))return sendEr("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
 
     var searchString = args.join(" ");
     if (!searchString)return sendError("You didn't poivide want i want to play", message.channel);
@@ -65,7 +66,7 @@ module.exports = {
     const play = async (song) => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendError("Leaving the voice channel because I think there are no songs in the queue", message.channel)
+        sendError("Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel go to `commands/play.js` and remove the line number 61\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)", message.channel)
         queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
