@@ -1,37 +1,29 @@
-const { Util, MessageEmbed, Discord } = require("discord.js");
+const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
 const { message  } = require("discord.js")
-const embed = new MessageEmbed();
-embed.setTitle("ERROR")
-embed.setDescription("something went wrong")
-embed.setColor("RED")
-embed.setFooter("CONTACT THE BOT OWNER")
-let sendError = message.channel.send(embed)
 
 module.exports = {
-  info: {
+  
     name: "play",
     description: "To play songs :D",
     usage: "<song_name>",
     aliases: ["p"],
-  },
-
   run: async function (client, message, args) {
     const channel = message.member.voice.channel;
-    if (!channel)return sendError("I'm sorry but you need to be in a voice channel to play music!", message.channel);
+    if (!channel)return message.channel.send("I'm sorry but you need to be in a voice channel to play music!", message.channel);
 
     const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT"))return sendError("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
-    if (!permissions.has("SPEAK"))return sendError("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
+    if (!permissions.has("CONNECT"))return message.channel.send("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
+    if (!permissions.has("SPEAK"))return message.channel.send("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
 
     var searchString = args.join(" ");
-    if (!searchString)return sendError("You didn't poivide want i want to play", message.channel);
+    if (!searchString)return message.channel.send("You didn't poivide want i want to play", message.channel);
 
     var serverQueue = message.client.queue.get(message.guild.id);
 
     var searched = await yts.search(searchString)
-    if(searched.videos.length === 0)return sendError("Looks like i was unable to find the song on YouTube", message.channel)
+    if(searched.videos.length === 0)return message.channel.send("Looks like i was unable to find the song on YouTube", message.channel)
     var songInfo = searched.videos[0]
 
     const song = {
@@ -63,7 +55,7 @@ module.exports = {
       voiceChannel: channel,
       connection: null,
       songs: [],
-      volume: 2,
+      volume: 100,
       playing: true,
     };
     message.client.queue.set(message.guild.id, queueConstruct);
@@ -72,7 +64,7 @@ module.exports = {
     const play = async (song) => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendError("Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel go to `commands/play.js` and remove the line number 61\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)", message.channel)
+        message.channel.send("Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel go to `commands/play.js` and remove the line number 61\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)", message.channel)
         queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
@@ -85,7 +77,7 @@ module.exports = {
           play(queue.songs[0]);
         })
         .on("error", (error) => console.error(error));
-      dispatcher.setVolumeLogarithmic(queue.volume / 5);
+      dispatcher.setVolumeLogarithmic(queue.volume / 100);
       let thing = new MessageEmbed()
       .setAuthor("Started Playing Music!", song.req.displayAvatarURL({ dynamic: true }))
       .setThumbnail(song.img)
@@ -106,7 +98,9 @@ module.exports = {
       console.error(`I could not join the voice channel: ${error}`);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return sendError(`I could not join the voice channel: ${error}`, message.channel);
+    return message.channel.send(`I could not join the voice channel: ${error}`, message.channel);
+    
     }
   }
-};
+  }
+
