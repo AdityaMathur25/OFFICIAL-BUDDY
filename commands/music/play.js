@@ -1,9 +1,12 @@
-const { Util, MessageEmbed } = require("discord.js");
+const { Util, MessageEmbed, Discord } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const { message, RichEmbed  } = require("discord.js")
-
-const embed = new RichEmbed();
+const { message  } = require("discord.js")
+const embed = new MessageEmbed();
+embed.setTitle("ERROR")
+embed.setDescription("something went wrong")
+embed.setColor("RED")
+embed.setFooter("CONTACT THE BOT OWNER")
 let sendError = message.channel.send(embed)
 
 module.exports = {
