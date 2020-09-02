@@ -42,7 +42,7 @@ module.exports = {
     }
 
     let embed = new Discord.MessageEmbed()
-    .setAuthor(message.auhtor.displayAvatarURL({dynamic: true}), message.author.username)
+    .setAuthor(message.author.username, message.author.displayAvatarURL())
     .setColor(COLOR)
       .setDescription(`${Content}`)
       .setTimestamp()
