@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-const { Color } = require("../../config.json");
+const { COLOR } = require("../../config.json");
 const figlet = require("figlet");
 const { promisify } = require("util");
 const figletAsync = promisify(figlet);
@@ -25,7 +25,7 @@ module.exports = {
         let Result = await figletAsync(Content);
 
         let embed = new MessageEmbed()
-        .setColor(Color)
+        .setColor(COLOR)
         .setDescription("```" + Result + "```")
         .setTimestamp();
 

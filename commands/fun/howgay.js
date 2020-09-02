@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-const { Color } = require("../../config.json");
+const { COLOR } = require("../../config.json");
 
 module.exports = {
     name: "howgay",
@@ -18,7 +18,7 @@ module.exports = {
 		let Result = Math.floor(Math.random() * 101);
 
         let embed = new MessageEmbed()
-        .setColor(Color)
+        .setColor(COLOR)
         .setTitle(`HOW GAY YOU ARE !`)
         .setDescription(`${Member.username} Is ${Result}% Gay 🏳️‍🌈`)
         .setFooter(`Requested by ${message.author.username}`)
