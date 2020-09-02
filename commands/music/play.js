@@ -41,12 +41,12 @@ module.exports ={
       console.log(serverQueue.songs);
       const QUEUE = new MessageEmbed();
       QUEUE.setAuthor("SONG ADDED TO QUEUE!", message.author.displayAvatarURL({dynamic: true}))//queue also playing..
-      QUEUE.SetDescription(`[${song.title}]`)
+      QUEUE.setDescription(`[${song.title}]`)
       QUEUE.setThumbnail(song.thumbnail)
-      QUEUE.Timestamp();
       QUEUE.setColor("RED")
       QUEUE.setFooter("maded by buddy")
-      return song.textChannel.send(QUEUE);
+      QUEUE.setTimestamp();
+      song.textChannel.send(QUEUE);
     }
 
     const queueConstruct = {
