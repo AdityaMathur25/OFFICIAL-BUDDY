@@ -27,14 +27,12 @@ connect.setAuthor(message.author.username, message.author.displayAvatarURL())
 .setDescription("I CAN NOT SPEAK TO YOUR VOICE CHANNEL MAKE SURE I HAVE PROPER PERMISSION")
 .setColor("RED")
 .setTimestamp();
-connect.setFooter(`REQUESTED BY${message.auhtor.username}`)
     const speak = new MessageEmbed();
 speak.setAuthor(message.author.username, message.author.displayAvatarURL())
 speak.setTitle("ERROR ON PLAYING")
 speak.setDescription("I CAN NOT SPEAK ON VOICE CHANNEL MAKE SURE I HAVE PROPER PERMISSION")
 speak.setColor("RED")
 speak.setTimestamp();
-speak.setFooter(`REQUESTED BY${message.auhtor.username}`)
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))return message.channel.send(connect, message.channel);
@@ -47,7 +45,6 @@ nplay.setTitle("ERROR ON PLAYING")
 nplay.setDescription("YOU NOT PROVIDED WHAT I WANT TO PLAY")
 nplay.setColor("RED")
 nplay.setTimestamp();
-nplay.setFooter(`REQUESTED BY${message.auhtor.username}`)
 
     if (!searchString)return message.channel.send(nplay, message.channel);
 
@@ -58,7 +55,6 @@ fgplay.setTitle("ERROR ON PLAYING")
 fgplay.setDescription("LOOKS LIKE I WAS UNABLE TO FIND SONG ON YOUTUBE")
 fgplay.setColor("RED")
 fgplay.setTimestamp();
-fgplay.setFooter(`REQUESTED BY${message.auhtor.username}`)
 
     var searched = await yts.search(searchString)
     if(searched.videos.length === 0)return message.channel.send(fgplay, message.channel)
@@ -106,7 +102,7 @@ fgplay.setFooter(`REQUESTED BY${message.auhtor.username}`)
         end.setAuhtor(message.auhtor.username, message.auhtor.displayAvatarURL({dynamic: true}))
         end.setDescription("MUSIC QUEUE IS ENDED !")
         end.setColor("aqua")
-        end.setFooter(`REQUESTED BY ${message.auhtor.username}`)
+        end.setFooter(`REQUESTED BY ${message.author.username}`)
         message.channel.send(end, message.channel)
         queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
