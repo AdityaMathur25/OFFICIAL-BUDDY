@@ -11,7 +11,7 @@ module.exports = {
 
   run: async function (client, message, args) {
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!serverQueue) return sendError("There is nothing playing in this server.", message.channel);
+    if (!serverQueue) return message.channel.send("There is nothing playing in this server.", message.channel);
 
     let queue = new MessageEmbed()
     .setTitle("Server Songs Queue")
