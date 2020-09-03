@@ -18,9 +18,5 @@ module.exports = {
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end("Stop the music");
     message.react("✅")
-    if(client.guildChannel.voiceChannel == message.author.voiceChannel)
-        {
-            message.guild.voiceConnection.disconnect(); 
-        }
   },
 };
