@@ -14,6 +14,7 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue)return message.channel.send("There is nothing playing that I could skip for you.", message.channel);
     serverQueue.connection.dispatcher.end("Skiped the music");
-    message.react("✅")
+    message.react("750762554418135151")
+    
   },
 };
