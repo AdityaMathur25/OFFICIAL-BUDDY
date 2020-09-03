@@ -11,6 +11,7 @@ dependencies:
   figlet: 1.5.0
   fs: 0.0.2
   node-fetch: 2.6.0
+  node-superfetch: 0.1.10
   novelcovid: 3.0.0
   parse-ms: 2.1.0
   quick-db: 1.0.5
@@ -1597,6 +1598,16 @@ packages:
     dev: false
     resolution:
       integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=
+  /form-data/2.5.1:
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.27
+    dev: false
+    engines:
+      node: '>= 0.12'
+    resolution:
+      integrity: sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==
   /forwarded/0.1.2:
     dev: false
     engines:
@@ -2548,6 +2559,15 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-TwWAOZb0j7e9eGaf9esRx3ZcLaE5tQ2lvYy1pb5IAaG1a2e2Kv5Lms1Y4hpj+ciXJRofIxxlt5haeQ/2ANeE0Q==
+  /node-superfetch/0.1.10:
+    dependencies:
+      form-data: 2.5.1
+      node-fetch: 2.6.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-aM+4GmjwCSku1VLsVh/mjnxQHa3StRI8uB7eYSktstlMD6Dxvpk/tT6UFEg2NwlNPjLlwsFmexduNUahckCm2A==
   /noop-logger/0.1.1:
     dev: false
     resolution:
@@ -3773,6 +3793,7 @@ specifiers:
   figlet: ^1.5.0
   fs: ^0.0.2
   node-fetch: ^2.6.0
+  node-superfetch: ^0.1.10
   novelcovid: ^3.0.0
   parse-ms: ^2.1.0
   quick-db: ^1.0.5
