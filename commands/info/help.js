@@ -20,17 +20,19 @@ module.exports = {
         .addField("Usage", "`" + command.usage + "`" || "Not Provied")
         .setThumbnail(client.user.displayAvatarURL())
         .setColor("GREEN")
-        .setFooter(client.user.username, client.user.displayAvatarURL());
+         .setTimestamp()
+        .setFooter("MADED BY BUDDY", client.user.displayAvatarURL())
 
       return message.channel.send(embed);
     } else {
       const commands = await client.commands;
 
       let emx = new MessageEmbed()
-        .setDescription("HELP MENU ")
+        .setDescription("HELP MENU ",client.i)
         .setColor("BLUE")
-        .setFooter(client.user.username, client.user.displayAvatarURL(), )
+        .setFooter("MADED BY BUDDY", client.user.displayAvatarURL(), )
         .setThumbnail(client.user.displayAvatarURL());
+        emx.setTimestamp();
 
       let com = {};
       for (let comm of commands.array()) {

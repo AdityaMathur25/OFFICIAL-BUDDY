@@ -19,12 +19,8 @@ module.exports = {
     serverQueue.connection.dispatcher.end("Stop the music");
     message.react("750762554418135151")
     await channel.leave();
-    const rp = new MessageEmbed();
-    rp.setAuthor(message.author.displayAvatarURL(), message.author.username)
-    rp.SetDescription("MUSIC QUEUE IS ENDED")
-    rp.setColor("")
-    rp.setTimestamp();
-    rp.setFooter(`Requested By ${message.author.username}`)
-    message.channel.send()
+    
+    
+  
   },
 };
