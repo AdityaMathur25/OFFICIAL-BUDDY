@@ -6,6 +6,7 @@ module.exports = {
     "Get list of all command and even get to know every command detials",
   usage: "help <cmd>",
   category: "info",
+  aliases: ["h","hl"],
   run: async (client, message, args) => {
     if (args[0]) {
       const command = await client.commands.get(args[0]);
@@ -28,7 +29,7 @@ module.exports = {
       const commands = await client.commands;
 
       let emx = new MessageEmbed()
-        .setDescription("HELP MENU ",client.i)
+        .setDescription("HELP MENU", client.user.displayAvatarURL())
         .setColor("BLUE")
         .setFooter("MADED BY BUDDY", client.user.displayAvatarURL(), )
         .setThumbnail(client.user.displayAvatarURL());
