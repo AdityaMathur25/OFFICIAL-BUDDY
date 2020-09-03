@@ -1,24 +1,30 @@
-  const { MessageEmbed }= require("discord.js")
-  module.exports = {
+const { MessageEmbed } = require("discord.js");
+
+
+module.exports = {
+  
     name: "queue",
-    Description:"show playing music",
-    category:"music",
-run:  (client, message, args) => {
-const serverQueue = message.client.queue.get(message.guild.id);
-const NOT = new MessageEmbed();
-  NOT.setTitle(`${message.author.username}`)
-  NOT.setDescription("THERE IS NOTHING TO PLAY !")
-  NOT.setColor("#00FFFF")
-  NOT.setFooter("CREATED BY BUDDY")
-  if (!serverQueue) 
-    return message.channel.send(NOT);
-  const MUSIC = new MessageEmbed();
-  MUSIC.setAuthor("QUEUE SONGS!", message.author.displayAvatarURL({dynamic: true}))
-  MUSIC.setColor("GREEN")
-  MUSIC.setDescription(`${serverQueue.songs.map((song) => `**-** ${song.title}`).join("\n")}
-**__Now playing:__** ${serverQueue.songs[0].title}`)
-  MUSIC.setFooter(`REQUESTED BY  ${message.author.username}`)
-  MUSIC.setTimestamp();
-  return message.channel.send(MUSIC);
-}
-  }
+    description: "To show the server songs queue",
+    usage: "",
+    aliases: ["q", "list", "songlist", "song-list"],
+  
+
+  run: async function (client, message, args) {
+    const serverQueue = message.client.queue.get(message.guild.id);
+    if (!serverQueue) return sendError("There is nothing playing in this server.", message.channel);
+
+    let queue = new MessageEmbed()
+    .setTitle("Server Songs Queue")
+    .setColor("BLUE")
+    .addField("Now Playing", serverQueue.songs[0].title, true)
+    .addField("Text Channel", serverQueue.textChannel, true)
+    .addField("Voice Channel", serverQueue.voiceChannel, true)
+    .setDescription(serverQueue.songs.map((song) => {
+      if(song === serverQueue.songs[0])return
+      return `**-** ${song.title}`
+    }).join("\n"))
+    .setFooter("Currently Server Volume is "+serverQueue.volume)
+    if(serverQueue.songs.length === 1)queue.setDescription(`No songs to play next add songs by \`\`${client.config.prefix}play <song_name>\`\``)
+    message.channel.send(queue)
+  },
+};
