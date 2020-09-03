@@ -6,17 +6,31 @@ const { message  } = require("discord.js")
 module.exports = {
   
     name: "play",
-  category: "Music",
+  category: "music",
     description: "To play songs :D",
     usage: "<song_name>",
     aliases: ["p"],
   run: async function (client, message, args) {
     const channel = message.member.voice.channel;
     if (!channel)return message.channel.send("I'm sorry but you need to be in a voice channel to play music!", message.channel);
+     const connect = new MessageEmbed();
+connect.setAuthor(message.author.username, message.author.displayAvatarURL())
+.setTitle("ERROR ON PLAYING")
+.setDescription("I CAN NOT SPEAK TO YOUR VOICE CHANNEL MAKE SURE I HAVE PROPER PERMISSION")
+.setColor("RED")
+.setTimestamp();
+connect.setFooter(`REQUESTED BY${message.auhtor.username}`)
+    const speak = new MessageEmbed();
+speak.setAuthor(message.author.username, message.author.displayAvatarURL())
+speak.setTitle("ERROR ON PLAYING")
+speak.setDescription("I CAN NOT SPEAK ON VOICE CHANNEL MAKE SURE I HAVE PROPER PERMISSION")
+speak.setColor("RED")
+speak.setTimestamp();
+speak.setFooter(`REQUESTED BY${message.auhtor.username}`)
 
     const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT"))return message.channel.send("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
-    if (!permissions.has("SPEAK"))return message.channel.send("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
+    if (!permissions.has("CONNECT"))return message.channel.send(connect, message.channel);
+    if (!permissions.has("SPEAK"))return message.channel.send(speak, message.channel);
 
     var searchString = args.join(" ");
     if (!searchString)return message.channel.send("You didn't poivide want i want to play", message.channel);

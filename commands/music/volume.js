@@ -5,6 +5,7 @@ module.exports = {
     name: "volume",
     description: "To change the server song queue volume",
     usage: "[volume]",
+  category: "music",
     aliases: ["v"],
   
 
