@@ -99,7 +99,7 @@ fgplay.setTimestamp();
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
         const end = new MessageEmbed();
-        end.setAuhtor(message.auhtor.username, message.auhtor.displayAvatarURL({dynamic: true}))
+        end.setAuhtor(message.author.username, message.auhtor.displayAvatarURL({dynamic: true}))
         end.setDescription("MUSIC QUEUE IS ENDED !")
         end.setColor("aqua")
         end.setFooter(`REQUESTED BY ${message.author.username}`)
