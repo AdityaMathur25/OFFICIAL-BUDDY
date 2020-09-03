@@ -12,7 +12,15 @@ module.exports = {
     aliases: ["p"],
   run: async function (client, message, args) {
     const channel = message.member.voice.channel;
-    if (!channel)return message.channel.send("I'm sorry but you need to be in a voice channel to play music!", message.channel);
+    const vc = new MessageEmbed();
+    vc.setAuthor(message.author.username, message.author.displayAvatarURL())
+vc.setTitle("ERROR ON PLAYING")
+vc.setDescription("I AM SORRY BUT YOU HAVE TO BE IN VOICE CHANNEL TO PLAY MUSIC !")
+vc.setColor("RED")
+vc.setTimestamp();
+vc.setFooter(`REQUESTED BY${message.author.username}`)
+
+    if (!channel)return message.channel.send(vc, message.channel);
      const connect = new MessageEmbed();
 connect.setAuthor(message.author.username, message.author.displayAvatarURL())
 .setTitle("ERROR ON PLAYING")
@@ -33,12 +41,27 @@ speak.setFooter(`REQUESTED BY${message.auhtor.username}`)
     if (!permissions.has("SPEAK"))return message.channel.send(speak, message.channel);
 
     var searchString = args.join(" ");
-    if (!searchString)return message.channel.send("You didn't poivide want i want to play", message.channel);
+    const nplay = new MessageEmbed();
+nplay.setAuthor(message.author.username, message.author.displayAvatarURL())
+nplay.setTitle("ERROR ON PLAYING")
+nplay.setDescription("YOU NOT PROVIDED WHAT I WANT TO PLAY")
+nplay.setColor("RED")
+nplay.setTimestamp();
+nplay.setFooter(`REQUESTED BY${message.auhtor.username}`)
+
+    if (!searchString)return message.channel.send(nplay, message.channel);
 
     var serverQueue = message.client.queue.get(message.guild.id);
+const fgplay = new MessageEmbed();
+fgplay.setAuthor(message.author.username, message.author.displayAvatarURL())
+fgplay.setTitle("ERROR ON PLAYING")
+fgplay.setDescription("LOOKS LIKE I WAS UNABLE TO FIND SONG ON YOUTUBE")
+fgplay.setColor("RED")
+fgplay.setTimestamp();
+fgplay.setFooter(`REQUESTED BY${message.auhtor.username}`)
 
     var searched = await yts.search(searchString)
-    if(searched.videos.length === 0)return message.channel.send("Looks like i was unable to find the song on YouTube", message.channel)
+    if(searched.videos.length === 0)return message.channel.send(fgplay, message.channel)
     var songInfo = searched.videos[0]
 
     const song = {
