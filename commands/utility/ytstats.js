@@ -12,8 +12,7 @@ module.exports = {
 
     const channel = await fetch.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${name}&key=${client.config.google}&maxResults=1&type=channel`)
     .catch(() => message.channel.send("Unknown channel error."));
-
-    if (!channel.body.items[0]) return message.channel.send("No channel result. Try again.");
+if (!channel.body.items[0]) return message.channel.send("No channel result. Try again.");
 
     const data = await fetch.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet,contentDetails,statistics,brandingSettings&id=${channel.body.items[0].id.channelId}&key=${client.config.google}`)
     .catch(() => message.channel.send("Unknown channel data error."));
