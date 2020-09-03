@@ -6,6 +6,7 @@ module.exports = {
     name: "queue",
     description: "To show the server songs queue",
     usage: "",
+  category: "music",
     aliases: ["q", "list", "songlist", "song-list"],
   
 

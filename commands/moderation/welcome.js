@@ -3,7 +3,7 @@ const db = require("quick.db")
 
 module.exports = {
   name: "setwelcome",
-  category: "moderation",
+  category: "Administration",
   usage: "setwelcome <#channel>",
   description: "Set the welcome channel",
   run: (client, message, args) => {
