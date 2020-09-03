@@ -12,8 +12,7 @@ module.exports = {
       message.member.roles.cache.forEach((role) => {
         roles.push(role.name);
       });//worked ... how i get time on footer..
-      Embed.setTitle(`${message.author.displayAvatar({dynamic: true})} ${message.author.username}`)
-    
+    Embed.setTitle("AVATAR")
       Embed.setImage(message.author.displayAvatarURL({size: 2048, dynamic: true}));
       Embed.setColor(`#00FFFF`);
       Embed.setTimestamp();
