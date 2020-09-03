@@ -4,6 +4,7 @@ module.exports = {
   description: "Get your own or someone else's avatar",
   usage: "[user mention]",
   category: "info",
+  aliases: ["av", "a"],
   run: async (bot, message, args) => {
     let Embed = new MessageEmbed();
     let roles = [];
@@ -11,8 +12,8 @@ module.exports = {
       message.member.roles.cache.forEach((role) => {
         roles.push(role.name);
       });//worked ... how i get time on footer..
-      Embed.setTitle(`${message.author.username}`);
-      Embed.setAuthor(message.client.username)
+      Embed.setTitle(`${message.author.displayAvatar({dynamic: true})} ${message.author.username}`)
+    
       Embed.setImage(message.author.displayAvatarURL({size: 2048, dynamic: true}));
       Embed.setColor(`#00FFFF`);
       Embed.setTimestamp();
