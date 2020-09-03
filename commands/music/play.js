@@ -6,6 +6,7 @@ const { message  } = require("discord.js")
 module.exports = {
   
     name: "play",
+  category: "Music",
     description: "To play songs :D",
     usage: "<song_name>",
     aliases: ["p"],

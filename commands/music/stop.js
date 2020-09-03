@@ -4,7 +4,9 @@ module.exports = {
   
     name: "stop",
     description: "To stop the music and clearing the queue",
-    usage: "",
+    usage: "stop music",
+  category: 
+  
     aliases: [],
   
 
