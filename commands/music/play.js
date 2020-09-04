@@ -35,9 +35,10 @@ module.exports = {
       url: songInfo.url,
       ago: songInfo.ago,
       duration: songInfo.duration.toString(),
-      img: songInfo.thumbnails.high.url,
+      img: songInfo.image,
       req: message.author
     };
+    //can u fix restart not restarting bot xD
 
     if (serverQueue) {
       serverQueue.songs.push(song);
