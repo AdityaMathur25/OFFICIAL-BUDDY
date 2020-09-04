@@ -1,63 +1,31 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const { message  } = require("discord.js")
+const sendError = require("../util/error.js")
 
 module.exports = {
-  
+  info: {
     name: "play",
-  category: "music",
     description: "To play songs :D",
     usage: "<song_name>",
     aliases: ["p"],
+  },
+
   run: async function (client, message, args) {
     const channel = message.member.voice.channel;
-    const vc = new MessageEmbed();
-    vc.setAuthor(message.author.username, message.author.displayAvatarURL())
-vc.setTitle("ERROR ON PLAYING")
-vc.setDescription("I AM SORRY BUT YOU HAVE TO BE IN VOICE CHANNEL TO PLAY MUSIC !")
-vc.setColor("RED")
-vc.setTimestamp();
-vc.setFooter(`REQUESTED BY${message.author.username}`)
-
-    if (!channel)return message.channel.send(vc, message.channel);
-     const connect = new MessageEmbed();
-connect.setAuthor(message.author.username, message.author.displayAvatarURL())
-.setTitle("ERROR ON PLAYING")
-.setDescription("I CAN NOT SPEAK TO YOUR VOICE CHANNEL MAKE SURE I HAVE PROPER PERMISSION")
-.setColor("RED")
-.setTimestamp();
-    const speak = new MessageEmbed();
-speak.setAuthor(message.author.username, message.author.displayAvatarURL())
-speak.setTitle("ERROR ON PLAYING")
-speak.setDescription("I CAN NOT SPEAK ON VOICE CHANNEL MAKE SURE I HAVE PROPER PERMISSION")
-speak.setColor("RED")
-speak.setTimestamp();
+    if (!channel)return sendError("I'm sorry but you need to be in a voice channel to play music!", message.channel);
 
     const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT"))return message.channel.send(connect, message.channel);
-    if (!permissions.has("SPEAK"))return message.channel.send(speak, message.channel);
+    if (!permissions.has("CONNECT"))return sendError("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
+    if (!permissions.has("SPEAK"))return sendError("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
 
     var searchString = args.join(" ");
-    const nplay = new MessageEmbed();
-nplay.setAuthor(message.author.username, message.author.displayAvatarURL())
-nplay.setTitle("ERROR ON PLAYING")
-nplay.setDescription("YOU NOT PROVIDED WHAT I WANT TO PLAY")
-nplay.setColor("RED")
-nplay.setTimestamp();
-
-    if (!searchString)return message.channel.send(nplay, message.channel);
+    if (!searchString)return sendError("You didn't poivide want i want to play", message.channel);
 
     var serverQueue = message.client.queue.get(message.guild.id);
-const fgplay = new MessageEmbed();
-fgplay.setAuthor(message.author.username, message.author.displayAvatarURL())
-fgplay.setTitle("ERROR ON PLAYING")
-fgplay.setDescription("LOOKS LIKE I WAS UNABLE TO FIND SONG ON YOUTUBE")
-fgplay.setColor("RED")
-fgplay.setTimestamp();
 
     var searched = await yts.search(searchString)
-    if(searched.videos.length === 0)return message.channel.send(fgplay, message.channel)
+    if(searched.videos.length === 0)return sendError("Looks like i was unable to find the song on YouTube", message.channel)
     var songInfo = searched.videos[0]
 
     const song = {
@@ -89,7 +57,7 @@ fgplay.setTimestamp();
       voiceChannel: channel,
       connection: null,
       songs: [],
-      volume: 100,
+      volume: 2,
       playing: true,
     };
     message.client.queue.set(message.guild.id, queueConstruct);
@@ -98,12 +66,7 @@ fgplay.setTimestamp();
     const play = async (song) => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        const end = new MessageEmbed();
-        end.setAuhtor(message.author.username, message.auhtor.displayAvatarURL({dynamic: true}))
-        end.setDescription("MUSIC QUEUE IS ENDED !")
-        end.setColor("aqua")
-        end.setFooter(`REQUESTED BY ${message.author.username}`)
-        message.channel.send(end, message.channel)
+        sendError("Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel go to `commands/play.js` and remove the line number 61\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)", message.channel)
         queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
@@ -116,7 +79,7 @@ fgplay.setTimestamp();
           play(queue.songs[0]);
         })
         .on("error", (error) => console.error(error));
-      dispatcher.setVolumeLogarithmic(queue.volume / 100);
+      dispatcher.setVolumeLogarithmic(queue.volume / 5);
       let thing = new MessageEmbed()
       .setAuthor("Started Playing Music!", song.req.displayAvatarURL({ dynamic: true }))
       .setThumbnail(song.img)
@@ -137,9 +100,7 @@ fgplay.setTimestamp();
       console.error(`I could not join the voice channel: ${error}`);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-    return message.channel.send(`I could not join the voice channel: ${error}`, message.channel);
-    
+      return sendError(`I could not join the voice channel: ${error}`, message.channel);
     }
   }
-  }
-
+};
