@@ -18,8 +18,8 @@ module.exports = {
       }
 
       let embed = new MessageEmbed()
-        .setAuthor(command.name, client.user.displayAvatarURL())
-        .addField("", "Description", command.description || "Not Provided :(")
+        .setAuthor("<a:arrowslogo:751462628412358736>", command.name, client.user.displayAvatarURL())
+        .addField("<a:arrowslogo:751462628412358736>", "Description", command.description || "Not Provided :(")
         .addField("Usage", "`" + command.usage + "`" || "Not Provied")
         .setThumbnail(client.user.displayAvatarURL())
         .setColor("GREEN")
@@ -53,8 +53,8 @@ module.exports = {
         let category = key;
 
         let desc = "`" + value.join("`, `") + "`";
-
-        emx.addField(`${category.toUpperCase()}[${value.length}]`, desc);
+let emoji = "<a:arrowslogo:751462628412358736>"
+        emx.addField(`${emoji}${category.toUpperCase()}[${value.length}]`, desc);
       }
 
       return message.channel.send(emx);
