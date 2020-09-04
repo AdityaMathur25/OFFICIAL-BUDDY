@@ -2,7 +2,7 @@ const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
 const sendError = require("../../commands/utility/error.js")
-
+//can you fix restart and hide commands utility error.js 
 module.exports = {
   
     name: "play",
@@ -35,7 +35,7 @@ module.exports = {
       url: songInfo.url,
       ago: songInfo.ago,
       duration: songInfo.duration.toString(),
-      img: songInfo.image,
+      img: songInfo.thumbnails.high.url,
       req: message.author
     };
 
