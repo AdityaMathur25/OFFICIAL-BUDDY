@@ -12,7 +12,9 @@ module.exports = {
       const command = await client.commands.get(args[0]);
 
       if (!command) {
+      
         return message.channel.send("Unknown Command: " + args[0]);
+      message.react("750762554418135151")
       }
 
       let embed = new MessageEmbed()
@@ -23,8 +25,9 @@ module.exports = {
         .setColor("GREEN")
          .setTimestamp()
         .setFooter("MADED BY BUDDY", client.user.displayAvatarURL())
-
+      
       return message.channel.send(embed);
+      message.react("750762554418135151");
     } else {
       const commands = await client.commands;
 
@@ -55,6 +58,7 @@ module.exports = {
       }
 
       return message.channel.send(emx);
+      message.react("750762554418135151")
     
       
     }

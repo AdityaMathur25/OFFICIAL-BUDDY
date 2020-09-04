@@ -12,7 +12,7 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = {
   name:"error",
-  category:"utility",
+  
   
   run: async (text, channel) => {
 
