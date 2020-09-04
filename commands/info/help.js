@@ -40,10 +40,11 @@ module.exports = {
 
       let com = {};
       for (let comm of commands.array()) {
-        
+        let category = comm.category || "Unknown";
         let name = comm.name;
 
-
+        if (!com[category]) {
+          com[category] = [];
         }
         com[category].push(name);
       }
@@ -62,4 +63,4 @@ module.exports = {
       
     }
   }
-
+};
