@@ -1,15 +1,14 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const sendError = require("../util/error.js")
+const sendError = require("../../commands/utility/error.js")
 
 module.exports = {
-  info: {
+  
     name: "play",
     description: "To play songs :D",
     usage: "<song_name>",
     aliases: ["p"],
-  },
 
   run: async function (client, message, args) {
     const channel = message.member.voice.channel;
@@ -79,7 +78,7 @@ module.exports = {
           play(queue.songs[0]);
         })
         .on("error", (error) => console.error(error));
-      dispatcher.setVolumeLogarithmic(queue.volume / 5);
+      dispatcher.setVolumeLogarithmic(queue.volume / 100);
       let thing = new MessageEmbed()
       .setAuthor("Started Playing Music!", song.req.displayAvatarURL({ dynamic: true }))
       .setThumbnail(song.img)
