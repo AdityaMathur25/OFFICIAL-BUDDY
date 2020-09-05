@@ -8,7 +8,8 @@ const discord = require("discord.js");
 module.exports = {
   name: "stop",
   description: "Stop the music and take rest ;)",
-  execute(client, message, args) {
+  aliases: ["s","st"],
+  run:(client, message, args) => {
     
     
 let embed = new MessageEmbed()
