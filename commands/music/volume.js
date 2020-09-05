@@ -1,26 +1,54 @@
-const { MessageEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js");
 
+const { COLOR } = require("../../config.json");
 module.exports = {
+  name: "volume",
+  description: "Manage the volume of the song",
+  run: (client, message, args) => {
+    
+    if(!message.member.hasPermission("ADMINISTRATOR")) {
+      return message.channel.send("You are not allowed to change the volume of the music")
+    }
+    
 
-    name: "volume",
-    description: "To change the server song queue volume",
-    usage: "[volume]",
-  category: "music",
-    aliases: ["v"],
-  
+    
+    let embed = new MessageEmbed().setColor(COLOR);
 
-  run: async function (client, message, args) {
-    const channel = message.member.voice.channel;
-    if (!channel)return message.channel.send("I'm sorry but you need to be in a voice channel to play music!", message.channel);
-    const serverQueue = client.queue.get(message.guild.id);
-    if (!serverQueue) return message.channel.send("There is nothing playing in this server.", message.channel);
-    if (!args[0])return message.channel.send(`The current volume is: **${serverQueue.volume}**`);
-    serverQueue.volume = args[0]; 
-    serverQueue.connection.dispatcher.setVolume(args[0] / 100);
-    let xd = new MessageEmbed()
-    .setDescription(`I set the volume to: ${args[0]}`)
-    .setTitle("Server Volume Manager")
-    .setColor("BLUE")
-    return message.channel.send(xd);
-  },
-}
+    
+    const { channel } = message.member.voice;
+    if (!channel) {
+      //IF AUTHOR IS NOT IN VOICE CHANNEL
+      embed.setAuthor("YOU NEED TO BE IN VOICE CHANNEL :/")
+      return message.channel.send(embed);
+    }
+    
+     const serverQueue = message.client.queue.get(message.guild.id);
+
+    if (!serverQueue) {
+      embed.setAuthor("Bot is not playing anything")
+      return message.channel.send(embed);
+    }
+    
+    if(!args[0]) {
+      embed.setAuthor(`The Current Volume is ${serverQueue.volume}`)
+      return message.channel.send(embed)
+    }
+    
+    if(isNaN(args[0])) {
+      embed.setAuthor("Please Use Numerical Values Only")
+      return message.channel.send(embed)
+    }
+    
+    if(args[0] > 200) {
+      embed.setAuthor("You will die if you reach the limit of 200 :)")
+      return message.channel.send(embed)
+    }
+    
+    serverQueue.volume = args[0]
+    serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100)
+    embed.setDescription(`Seted Volume to ${args[0]}`)
+    embed.setThumbnail(client.user.displayAvatarURL())
+    message.channel.send(embed)
+    
+  }
+};
