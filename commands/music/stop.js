@@ -1,26 +1,40 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js")
+const { COLOR } = require("../../config.json");
+
+
+
+const discord = require("discord.js");
 
 module.exports = {
-  
-    name: "stop",
-    description: "To stop the music and clearing the queue",
-    usage: "stop music",
-  category: "music",
-  
-    aliases: ["s"],
+  name: "stop",
+  description: "Stop the music and take rest ;)",
+  execute(client, message, args) {
+    
+    
+let embed = new MessageEmbed()
+.setColor(COLOR);
+
+    const { channel } = message.member.voice;
+      
+    if (!channel) {
+      //IF AUTHOR IS NOT IN VOICE CHANNEL
+      embed.setAuthor("YOU NEED TO BE IN VOICE CHANNEL :/")
+      return message.channel.send(embed);
+    }
+
+    const serverQueue = message.client.queue.get(message.guild.id);
+
+    if (!serverQueue) {
+      embed.setAuthor("There is nothing playing that i could stop")
+      return message.channel.send(embed);
+    }
+
+    serverQueue.songs = [];
+    serverQueue.connection.dispatcher.end();
+  message.react("750762554418135151")
+    
+  }
+}
+    
   
 
-  run: async function (client, message, args) {
-    const channel = message.member.voice.channel
-    if (!channel)return message.channel.send("I'm sorry but you need to be in a voice channel to play music!",);
-    const serverQueue = message.client.queue.get(message.guild.id);
-    if (!serverQueue)return message.channel.send("There is nothing playing that I could stop for you.");
-    serverQueue.songs = [];
-    serverQueue.connection.dispatcher.end("Stop the music");
-    message.react("750762554418135151")
-    await channel.leave();
-    
-    
-  
-  },
-};
