@@ -4,7 +4,9 @@ const { COLOR } = require("../../config.json");
 module.exports = {
   name: "volume",
   description: "Manage the volume of the song",
+  category: "music",
   run: (client, message, args) => {
+    
     
     if(!message.member.hasPermission("ADMINISTRATOR")) {
       return message.channel.send("You are not allowed to change the volume of the music")

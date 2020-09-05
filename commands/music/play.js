@@ -12,6 +12,7 @@ const { play } = require("../../system/music.js");
 module.exports = {
   name: "play",
   description: "Play the song and feel the music",
+  category: "music",
   aliases:["p"],
  run: async  (client, message, args) => {
     let embed = new MessageEmbed()

@@ -8,6 +8,7 @@ const discord = require("discord.js");
 module.exports = {
   name: "stop",
   description: "Stop the music and take rest ;)",
+  category: "music",
   aliases: ["s","st"],
   run:(client, message, args) => {
     
