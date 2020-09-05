@@ -15,7 +15,7 @@ run: async (bot, message, args) => {
         return `${days.padStart(1, '0')} days, ${hrs.padStart(2, '0')} hours, ${min.padStart(2, '0')} minutes, ${sec.padStart(2, '0')} seconds.`
     }
   const embed = new MessageEmbed();
-  embed.setAuthor( message.author.username)
+  embed.setAuthor( message.author.displayAvatarURL(), message.author.username)
   embed.setTitle("I HAVE BEEN ONLINE FOR :")
   embed.setDescription(`${duration(bot.uptime)}`)
 embed.setColor("GREEN")
