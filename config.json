@@ -2,5 +2,6 @@
   "default_prefix": "!",
   "COLOR": "BLUE",
   "token": "NzM0Mjg5NjU1MzEwMDU3NDkz.XxPiiA.yQY5FW2VCz9KzPR_SxutvhgwYCI",
-   "YOUTUBE_API_KEY": "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg"
+   "YOUTUBE_API_KEY": "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg",
+  "QUEUE_LIMIT": "0"
 }
