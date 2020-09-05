@@ -13,7 +13,7 @@ module.exports = {
   name: "play",
   description: "Play the song and feel the music",
   aliases:["p"],
-  async execute(client, message, args) {
+ run: async  (client, message, args) => {
     let embed = new MessageEmbed()
 .setColor(COLOR);
 
@@ -125,7 +125,7 @@ module.exports = {
 
     if (!serverQueue)
       message.client.queue.set(message.guild.id, queueConstruct);
-       message.client.vote.set(message.guild.id, voteConstruct);
+       
     if (!serverQueue) {
       try {
         queueConstruct.connection = await channel.join();
