@@ -32,7 +32,7 @@ module.exports = {
       const commands = await client.commands;
 
       let emx = new MessageEmbed()
-        .setDescription("HELP MENU", client.user.displayAvatarURL())
+        .setDescription("HELP MENU")
         .setColor("BLUE")
         .setFooter("MADED BY BUDDY", client.user.displayAvatarURL(), )
         .setThumbnail(client.user.displayAvatarURL());
