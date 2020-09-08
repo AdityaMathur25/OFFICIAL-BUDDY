@@ -1,10 +1,8 @@
 
 
 module.exports = {
-  
     name: "skip",
     description: "To skip the current music",
-
     usage: "",
   category: "music",
     aliases: ["s"],
@@ -16,6 +14,6 @@ module.exports = {
     if (!serverQueue)return message.channel.send("There is nothing playing that I could skip for you.", message.channel);
     serverQueue.connection.dispatcher.end("Skiped the music");
     message.react("750762554418135151")
-    
+    message.channel.send("Skipped the current song")
   },
 };
