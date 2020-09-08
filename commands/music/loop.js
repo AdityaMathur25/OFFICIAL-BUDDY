@@ -26,7 +26,7 @@ module.exports = {
     
     //OOOOF
     serverQueue.loop = !serverQueue.loop
-    
+   
     
     embed.setDescription(`Loop is now **${serverQueue.loop ? "Enabled" : "Disabled"}**`)
     embed.setThumbnail(client.user.displayAvatarURL())
