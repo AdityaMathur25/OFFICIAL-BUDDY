@@ -7,7 +7,7 @@ module.exports = {
   category:"music",
   aliases: ["np"],
   description: "Get the name of current playing song",
-  execute (client, message, args) {
+  run: async (client, message, args) => {
     let embed = new MessageEmbed()
 .setColor(COLOR)
       
