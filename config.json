@@ -1,7 +1,8 @@
-{ 
- "YOUTUBE_API_KEY": "AIzaSyAq9owldbGDWPIILLqbS8hDmytNBG0USM4", 
- "QUEUE_LIMIT": 30, 
- "COLOR": "BLUE"
-  
-  
-  }
+{
+  "default_prefix": "!",
+  "COLOR": "#00FFFF",
+  "token": "NzM0Mjg5NjU1MzEwMDU3NDkz.XxPiiA.yQY5FW2VCz9KzPR_SxutvhgwYCI",
+   "YOUTUBE_API_KEY": "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg",
+  "QUEUE_LIMIT": "10",
+  "arcadia":""
+}

@@ -10,7 +10,7 @@ dependencies:
   ffmpeg-static: 4.2.7
   figlet: 1.5.0
   fs: 0.0.2
-  node-fetch: 2.6.0
+  node-fetch: 2.6.1
   node-superfetch: 0.1.10
   novelcovid: 3.0.0
   parse-ms: 2.1.0
@@ -18,7 +18,7 @@ dependencies:
   quick.db: 7.1.1
   simple-youtube-api: 5.2.1
   something-random-on-discord: 0.0.1
-  yt-search: 2.2.4
+  yt-search: 2.3.0
   ytdl-core: 3.2.2
   ytdl-core-discord: 1.2.1
 packages:
@@ -2536,6 +2536,12 @@ packages:
       node: 4.x || >=6.0.0
     resolution:
       integrity: sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+  /node-fetch/2.6.1:
+    dev: false
+    engines:
+      node: 4.x || >=6.0.0
+    resolution:
+      integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
   /node-fzf/0.5.3:
     dependencies:
       cli-color: 1.2.0
@@ -3746,7 +3752,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-eC7CHvQDNF+DCoCMo9UTr1YGUgg=
-  /yt-search/2.2.4:
+  /yt-search/2.3.0:
     dependencies:
       async.parallellimit: 0.5.2
       boolstring: 1.0.2
@@ -3759,7 +3765,7 @@ packages:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-iXw1QKOBuF1uTuiP1eVMkJaW+NwVCgzXCt2F8Egkmpovq1mMAR7lk7ODTy93xCEnfPi99oLNhw4ol74I5TKJlQ==
+      integrity: sha512-i4Hzl5aU7IMf4Vd2goqOqiWMp8dtWh/pqLo2R5CCQy6u6FOnRR2gzSEcr8Og8PO+2wDeXT5X/7YGOUifkGopPQ==
   /ytdl-core-discord/1.2.1:
     dependencies:
       '@types/node': 14.6.4
@@ -3816,7 +3822,7 @@ specifiers:
   ffmpeg-static: ^4.2.7
   figlet: ^1.5.0
   fs: ^0.0.2
-  node-fetch: ^2.6.0
+  node-fetch: ^2.6.1
   node-superfetch: ^0.1.10
   novelcovid: ^3.0.0
   parse-ms: ^2.1.0
@@ -3824,6 +3830,6 @@ specifiers:
   quick.db: ^7.1.1
   simple-youtube-api: ^5.2.1
   something-random-on-discord: ^0.0.1
-  yt-search: ^2.2.4
+  yt-search: ^2.3.0
   ytdl-core: ^3.2.2
   ytdl-core-discord: ^1.2.0
