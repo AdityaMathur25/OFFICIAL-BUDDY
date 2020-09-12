@@ -74,7 +74,7 @@ module.exports = {
              title: songData.videoDetails.title,
           url: songData.videoDetails.video_url,
           duration: songData.videoDetails.lengthSeconds,
-          thumbnail: songData.videoDetails.thumbnail.thumbnails[3].url
+          thumbnail: songData.videoDetails.thumbnails.high.url
         };
       } catch (error) {
         if (message.include === "copyright") {
