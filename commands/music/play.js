@@ -114,7 +114,7 @@ module.exports = {
       serverQueue.songs.push(song);
       embed.setAuthor("Added New Song To Queue", client.user.displayAvatarURL())
       embed.setDescription(`**[${song.title}](${song.url})**`)
-      embed.setThumbnail(song.thumbnail)
+      embed.setImage(song.thumbnail)
       .setFooter("Likes - " + songData.videoDetails.likes + ", Dislikes - " +  songData.videoDetails.dislikes)
       
       return serverQueue.textChannel
