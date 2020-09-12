@@ -74,7 +74,7 @@ module.exports = {
              title: songData.videoDetails.title,
           url: songData.videoDetails.video_url,
           duration: songData.videoDetails.lengthSeconds,
-          thumbnail: songData.videoDetails.thumbnails.high.url
+          thumbnail: songData.videoDetails.thumbnail.thumbnails[3].url
         };
       } catch (error) {
         if (message.include === "copyright") {
@@ -114,7 +114,7 @@ module.exports = {
       serverQueue.songs.push(song);
       embed.setAuthor("Added New Song To Queue", client.user.displayAvatarURL())
       embed.setDescription(`**[${song.title}](${song.url})**`)
-      embed.setImage(song.thumbnail)
+      embed.setThumbnail(song.thumbnail)
       .setFooter("Likes - " + songData.videoDetails.likes + ", Dislikes - " +  songData.videoDetails.dislikes)
       
       return serverQueue.textChannel
