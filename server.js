@@ -156,7 +156,8 @@ client.on("message", async message => {
   if(message.content === "!!ping")
     message.channel.send("Hey, You ping me??")
   else if(message.isMemberMentioned(client.user)) {
-    let luck = new Message();
+    let luck = new MessageEmbed();
+    luck.setAuthor(client.user.username, client.user.displayAvatarURL())
     message.channel.send()
   }}
                   )
