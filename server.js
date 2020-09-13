@@ -125,39 +125,10 @@ client.on("guildCreate", guild => {
   client.channels.cache.get("748936869022007376").send(join);
   console.log("NEW SERVER JOIN" + guild.name);
 });
-
-client.on("message", async message => {
-  if (message.content.startsWith(":") && message.content.endsWith(":")) {
-    let Emojied = message.content.slice(1, -1);
-    function Check(str) {
-      if (client.emojis.cache.find(emoji => emoji.name === str)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    if (Check(Emojied) === true) {
-      const channel = client.channels.cache.get(message.channel.id);
-      try {
-        const webhooks = await channel.fetchWebhooks();
-        const Webhook = webhooks.first();
-        
-         const emoji = client.emojis.cache.find(e => e.name == Emojied).id
-        
-        return await Webhook.send(`${client.emojis.cache.get(emoji)}`, {
-          username: message.author.username,
-          name: "Animated Emojis!",
-          avatarURL: message.author.avatarURL({format: "png"})
-        });
-      } catch (error) {
-        console.error("Error trying to send: ", error);
         console.log(message.mention.has(client.user))
         client.on("message", async message => {
-  if(message.content === "!!ping")
-    message.channel.send("Hey, You ping me??")
-          
-  else if(message.mentions.has(client.user))  {
+  if(message.content === message.mentions.has(client.user))
+    return
     const luck = new MessageEmbed();
     luck.setAuthor(client.user.username, client.user.displayAvatarURL())
     luck.SetDescription(`!HELP`, "FOR COMMANDS " )
@@ -166,14 +137,14 @@ client.on("message", async message => {
    return message.channel.send(luck)
     console.log("error")
         }
-        }
-                  
                   )
-      }
-    }
+                                  
+                  
+      
+    
   }
 }
-          );
+          
 
 
 client.login(token);
