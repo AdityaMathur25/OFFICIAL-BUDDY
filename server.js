@@ -95,7 +95,7 @@ client.on("guildMemberRemove", async member => {
   const fuck = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
-  .setAuthor(member.guild.IconURL({dynamic: true}))
+  .SetThumbnail(member.guild.IconURL())
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
     .send(fuck); //get channel and send embed

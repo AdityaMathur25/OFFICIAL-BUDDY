@@ -30,7 +30,7 @@ module.exports = {
         message.channel.bulkDelete(args[0])
         .then(Amount => {
             let embed = new Discord.MessageEmbed()
-            .setColor(Color)
+            .setColor("RANDOM")
             .setTitle(`Messages Deleted!`)
             .addField(`Moderator`, `${message.author.tag} (${message.author.id}`)
             .addField(`Channel`, `${Channel.name} (${Channel.id}`)
