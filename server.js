@@ -152,9 +152,11 @@ client.on("message", async message => {
         });
       } catch (error) {
         console.error("Error trying to send: ", error);
+        console.log()
         client.on("message", async message => {
   if(message.content === "!!ping")
     message.channel.send("Hey, You ping me??")
+          
   else if(message.mentions.has(client.user))  {
     const luck = new MessageEmbed();
     luck.setAuthor(client.user.username, client.user.displayAvatarURL())
@@ -162,6 +164,7 @@ client.on("message", async message => {
     luck.setColor("RANDOM")
     luck.setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
+    console.log()
         }
         }
                   
