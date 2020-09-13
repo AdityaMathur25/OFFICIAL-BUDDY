@@ -130,7 +130,6 @@ client.on("guildCreate", guild => {
         
         client.on("message", async message => {
   if(message.mentions.has(client.user))
-    return
     const luck = new MessageEmbed();
     luck.setAuthor(client.user.username, client.user.displayAvatarURL())
     luck.sEtDescription(`HEY, MY PREFIX IS ${default_prefix}`)
