@@ -88,15 +88,14 @@ client.on("guildMemberAdd", async member => {
 client.on("guildMemberRemove", async member => {
   //usage of welcome event
   let chx = db.get(`leavchannel_${member.guild.id}`);
-  //defining var
-  let data = await canva.welcome(member, {
-    link: "https://wallpapercave.com/wp/wp6081521.jpg"
-  });
-  //its leave .
-  const attachment = new discord.MessageAttachment(data, "leave-image.png");
+  //defining 
+  //its leave 
   client.channels.cache
     .get(chx)
-    .send(` ${member.user.username} JUST LEFT THE SERVER !`, attachment); //get channel and send embed
+  const fuck = new MessageEmbed()
+  .setTitle("SAY-GOODBYE")
+  .setDescription(`{message.member.}`)
+    .send(); //get channel and send embed
 });
 client.on("message", async message => {
   if (message.author.client) return;
