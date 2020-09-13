@@ -1,4 +1,4 @@
-const { Client, Collection, MessageAttachment, MessageEmbed } = require("discord.js");
+const { Client, Collection, MessageAttachment, MessageEmbed, message } = require("discord.js");
 const { config } = require("dotenv");
 const { default_prefix, token } = require("./config.json");
 const db = require("quick.db");
@@ -125,7 +125,7 @@ client.on("guildCreate", guild => {
   client.channels.cache.get("748936869022007376").send(join);
   console.log("NEW SERVER JOIN" + guild.name);
 });
-        console.log(message.mention.has(client.user))
+        
         client.on("message", async message => {
   if(message.content === message.mentions.has(client.user))
     return
@@ -137,14 +137,6 @@ client.on("guildCreate", guild => {
    return message.channel.send(luck)
     console.log("error")
         }
-                  )
-                                  
-                  
-      
-    
-  }
-}
-          
-
+                  );
 
 client.login(token);
