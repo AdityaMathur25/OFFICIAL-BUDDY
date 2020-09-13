@@ -1,6 +1,6 @@
 const { Client, Collection, MessageAttachment, MessageEmbed, message } = require("discord.js");
 const { config } = require("dotenv");
-const { default_prefix, token } = require("./config.json");
+const { default_prefix, token, COLOR } = require("./config.json");
 const db = require("quick.db");
 const fs = require("fs");
 const discord = require("discord.js");
@@ -95,10 +95,10 @@ client.on("guildMemberRemove", async member => {
   const fuck = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
-  .setAuthor(message.guild.guilIconURL())
+  
   .setTimestamp()
-  .setFooter(member.)
-    .send(); //get channel and send embed
+  .setFooter(member.user.username, "just left server !")
+    .send(fuck); //get channel and send embed
 });
 client.on("message", async message => {
   if (message.author.client) return;
@@ -129,16 +129,15 @@ client.on("guildCreate", guild => {
 });
         
         client.on("message", async message => {
-  if(message.content === message.mentions.has(client.user))
+  if(message.mentions.has(client.user))
     return
     const luck = new MessageEmbed();
     luck.setAuthor(client.user.username, client.user.displayAvatarURL())
-    luck.SetDescription(`!HELP`, "FOR COMMANDS " )
-    luck.setColor("RANDOM")
+    luck.sEtDescription(`HEY, MY PREFIX IS ${default_prefix}`)
+    luck.setColor(COLOR)
     luck.setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
     console.log("error")
         }
                   );
 
-client.login(token);
