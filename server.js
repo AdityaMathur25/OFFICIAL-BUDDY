@@ -1,4 +1,4 @@
-const { Client, Collection, MessageAttachment } = require("discord.js");
+const { Client, Collection, MessageAttachment, MessageEmbed } = require("discord.js");
 const { config } = require("dotenv");
 const { default_prefix, token } = require("./config.json");
 const db = require("quick.db");
@@ -152,8 +152,19 @@ client.on("message", async message => {
         });
       } catch (error) {
         console.error("Error trying to send: ", error);
+        client.on("message", message => {
+  if(message.content === "!!ping")
+    message.channel.send("Hey, You ping me??")
+  else if(message.isMemberMentioned(client.user)) {
+    let luck = new Message();
+    message.channel.send()
+  }}
+                  )
       }
     }
   }
-});
+}
+          );
+
+
 client.login(token);
