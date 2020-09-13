@@ -94,7 +94,10 @@ client.on("guildMemberRemove", async member => {
     .get(chx)
   const fuck = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
-  .setDescription(`{message.member.}`)
+  .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
+  .setAuthor(message.guild.guilIconURL())
+  .setTimestamp()
+  .setFooter(member.)
     .send(); //get channel and send embed
 });
 client.on("message", async message => {
