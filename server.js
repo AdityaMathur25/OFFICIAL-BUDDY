@@ -95,7 +95,7 @@ client.on("guildMemberRemove", async member => {
   const fuck = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
-  
+  .setAuthor(member.guild.IconURL({dynamic: true}))
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
     .send(fuck); //get channel and send embed
@@ -118,7 +118,6 @@ client.on("guildCreate", guild => {
   let join = new discord.MessageEmbed()
     .setColor("#00FFFF")
     .setTitle("New Server Joined")
-    .addField("Server ID :", guild.id)
     .addField("Server Members :", guild.memberCount)
     .addField("Server Name :", guild.name)
     .setThumbnail(guild.iconURL())
@@ -127,12 +126,26 @@ client.on("guildCreate", guild => {
   client.channels.cache.get("748936869022007376").send(join);
   console.log("NEW SERVER JOIN" + guild.name);
 });
+client.on("guildRemove", guild => {
+  let join = new discord.MessageEmbed()
+    .setColor("RED")
+    .setTitle("LEFT FROM SERVER")
+    .addField("Server Members :", guild.memberCount)
+    .addField("Server Name :", guild.name)
+    .setThumbnail(guild.iconURL())
+    .addField("Server Owner :", guild.owner)
+    .addField("VERIFICATION LEVEL :", guild.verificationLevel);
+  client.channels.cache.get("748936869022007376").send(join);
+  console.log("LEFT FROM SERVER" + guild.name);
+});
         
-        client.on("message", async message => {     
+        client.on("message", async message => {   
+      if(message.author.bot) return;
   if(message.mentions.has(client.user)) {
     const luck = new MessageEmbed();
     luck.setAuthor(client.user.username, client.user.displayAvatarURL())
-    luck.sEtDescription(`HEY, MY PREFIX IS ${default_prefix}`)
+    luck.setTitle("PREFIX HELP! ")
+    luck.setDescription(`HEY, MY PREFIX IN THIS SERVE IS **${default_prefix}**`)
     luck.setColor(COLOR)
     luck.setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
