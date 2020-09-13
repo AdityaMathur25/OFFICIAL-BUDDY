@@ -132,7 +132,7 @@ client.on("guildRemove", guild => {
     .setTitle("LEFT FROM SERVER")
     .addField("Server Members :", guild.memberCount)
     .addField("Server Name :", guild.name)
-    .setThumbnail(guild.iconURL())
+    .setThumbnail(member.guild.iconURL())
     .addField("Server Owner :", guild.owner)
     .addField("VERIFICATION LEVEL :", guild.verificationLevel);
   client.channels.cache.get("748936869022007376").send(join);
