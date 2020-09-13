@@ -152,7 +152,7 @@ client.on("message", async message => {
         });
       } catch (error) {
         console.error("Error trying to send: ", error);
-        console.log("error")
+        console.log(message.mention.has(client.user))
         client.on("message", async message => {
   if(message.content === "!!ping")
     message.channel.send("Hey, You ping me??")
