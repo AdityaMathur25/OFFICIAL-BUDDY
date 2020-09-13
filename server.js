@@ -158,7 +158,10 @@ client.on("message", async message => {
   else if(message.isMemberMentioned(client.user)) {
     let luck = new MessageEmbed();
     luck.setAuthor(client.user.username, client.user.displayAvatarURL())
-    message.channel.send()
+    luck.SetDescription(`!HELP`, "FOR COMMANDS " )
+    luck.setColor("RANDOM")
+    luck.setFooter(`REQUESTED BY ${message.author.username}`)
+    message.channel.send(luck)
   }}
                   )
       }
