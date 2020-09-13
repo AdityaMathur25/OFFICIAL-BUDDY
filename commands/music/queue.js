@@ -31,7 +31,7 @@ module.exports = {
       { split: true }
     );
   
-    embed.setThumbnail(message.client.displayAvatarURL())
+    embed.setThumbnail(client.user.displayAvatarURL())
     
     message.channel.send(embed);
   }
