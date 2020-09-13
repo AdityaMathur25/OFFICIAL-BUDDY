@@ -23,7 +23,7 @@ module.exports = {
       embed.setAuthor("There is nothing in the queue");
       return message.channel.send(embed);
     }
-
+    embed.setAuthor(message.)
     embed.setDescription(
       `${serverQueue.songs
         .map((song, index) => index + 1 + ". " + song.title)
