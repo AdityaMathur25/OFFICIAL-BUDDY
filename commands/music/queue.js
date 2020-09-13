@@ -23,14 +23,13 @@ module.exports = {
       embed.setAuthor("There is nothing in the queue");
       return message.channel.send(embed);
     }
-    embed.setAuthor(message.author.displayAvatarURL(), message.author.username)
+    embed.setAuthor(message.)
     embed.setDescription(
       `${serverQueue.songs
         .map((song, index) => index + 1 + ". " + song.title)
         .join("\n\n")}`,
       { split: true }
     );
-  
     embed.setThumbnail(client.user.displayAvatarURL())
     
     message.channel.send(embed);

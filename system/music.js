@@ -57,7 +57,7 @@ embed.setAuthor("Started Playing Song", message.author.displayAvatarURL())
     .setDescription(`**[${song.title}](${song.url})**`)
     .setThumbnail(`${song.thumbnail}`)
      .setTimestamp();
-   embed.setFooter(`Requested By ${message.author.username}`)
+   embed.setFooter(`Requested By${message.author.username}`)
     queue.textChannel
       .send(embed)
       .catch(err => message.channel.send("UNABLE TO PLAY SONG"));
