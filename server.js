@@ -152,7 +152,7 @@ client.on("message", async message => {
         });
       } catch (error) {
         console.error("Error trying to send: ", error);
-        console.log()
+        console.log("error")
         client.on("message", async message => {
   if(message.content === "!!ping")
     message.channel.send("Hey, You ping me??")
@@ -164,7 +164,7 @@ client.on("message", async message => {
     luck.setColor("RANDOM")
     luck.setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
-    console.log()
+    console.log("error")
         }
         }
                   
