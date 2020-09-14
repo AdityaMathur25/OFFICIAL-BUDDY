@@ -34,7 +34,8 @@
     "ytdl-core-discord": "^1.2.0",
     "genius-lyrics": "^4.0.0",
     "colornames": "^1.1.1",
-    "discord-giveaway": "^3.0.0"
+    "discord-giveaway": "^3.0.0",
+    "canvacord": "^4.0.1"
   },
   "engines": {
     "node": "12.x"
