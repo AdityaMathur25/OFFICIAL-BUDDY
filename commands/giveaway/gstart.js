@@ -1,55 +1,46 @@
-const { MessageEmbed } = require("discord.js");
-const ms = require("ms");
+
+const discord = require("discord.js")
+const ms = require("ms")
+
 module.exports = {
   name: "giveaway",
-  description: "Create a simple giveaway",
-  usage: "<time> <channel> <prize>",
-  category: "giveaway",
-  aliases:["gstart","gs"],
-  run: async (bot, message, args) => {
+  aliases: ["gstart","gs"],
+  usage: "<@user> <@time> <@prize>",
+  description: "Giveaway something",
+  run: async (client, message, args) => {
+
     if (!args[0]) return message.channel.send(`You did not specify your time!`);
-    if (
-      !args[0].endsWith("d") &&
-      !args[0].endsWith("h") &&
-      !args[0].endsWith("m")
-    )
-      return message.channel.send(
-        `You did not use the correct formatting for the time!`
-      );
-    if (isNaN(args[0][0])) return message.channel.send(`That is not a number!`);
-    let channel = message.mentions.channels.first();
-    if (!channel)
-      return message.channel.send(
-        `I could not find that channel in the guild!`
-      );
-    let prize = args.slice(2).join(" ");
+    if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m"))
+      return message.channel.send(`The time needs to have days (d) or hours (h) or minutes (m)`);
+    if (isNaN(args[0][0])) return message.channel.send(`It must be a number you know that?`);
+
+    let prize = args.slice(1).join(" ");
     if (!prize) return message.channel.send(`No prize specified!`);
-    message.channel.send(`*Giveaway created in ${channel}*`);
-    let Embed = new MessageEmbed()
-      .setTitle(`**${prize}**`)
-      .setDescription(
-       ` *REACT WITH 🎉 TO ENTER GIVEAWAY!*
-        HOSTED BY :- ${message.author}`
-      )
+  
+    let Embed = new discord.MessageEmbed()
+      .setTitle(`New giveaway!`)
+      .setDescription(`Host: ${message.author}\nTime: ${args[0]}\nPrize: ${prize}`)
       .setTimestamp(Date.now() + ms(args[0]))
       .setColor(`BLUE`);
-    let m = await channel.send(Embed);
+    let m = await message.channel.send(Embed);
     m.react("🎉");
     setTimeout(() => {
       if (m.reactions.cache.get("🎉").count <= 1) {
-        message.channel.send(`Reactions: ${m.reactions.cache.get("🎉").count}`);
-        return message.channel.send(
-          `Not enough people reacted for me to start draw a winner!`
-        );
+        const embed = new discord.MessageEmbed()
+        .setColor("AQUA")
+        .setDescription("No winners")
+        m.edit(embed)
+        return message.channel.send(`Couldnt generate a winner as there is no one in that giveaway!`);
       }
 
-      let winner = m.reactions.cache
-        .get("🎉")
-        .users.cache.filter((u) => !u.bot)
-        .random();
-      channel.send(
-        `The winner of the giveaway for **${prize}** is... ${winner}`
-      );
+      let winner = m.reactions.cache.get("🎉").users.cache.filter((b) => !b.bot).random();
+      
+      const embed = new discord.MessageEmbed()
+      .setColor("RANDOM")
+      .setDescription(`Winner: ${winner}`)
+      m.edit(embed)
+      
+      message.channel.send(`The winnder of the giveaway is ${winner}`);
     }, ms(args[0]));
-  },
-};
+  }
+}
