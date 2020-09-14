@@ -1,3 +1,4 @@
+
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
@@ -24,7 +25,8 @@ module.exports = {
 
       return message.channel.send(embed);
     }
-    const { MessageEmbed } = require("discord.js");
+  }
+}
 
 module.exports = {
   name: "help",
@@ -45,7 +47,7 @@ module.exports = {
         .addField("Description", command.description || "Not Provided :(")
         .addField("Usage", "`" + command.usage + "`" || "Not Provied")
         .setThumbnail(client.user.displayAvatarURL())
-        .setColor("GREEN")
+        .setColor("#00FFFF")
         .setFooter(client.user.username, client.user.displayAvatarURL());
 
       return message.channel.send(embed);
@@ -53,8 +55,8 @@ module.exports = {
       const commands = await client.commands;
 
       let emx = new MessageEmbed()
-        .setDescription("Join my server or Die :D")
-        .setColor("GREEN")
+        .setDescription("HELP MENU")
+        .setColor("#00FFFF")
         .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL());
 
@@ -73,13 +75,11 @@ module.exports = {
         let category = key;
 
         let desc = "`" + value.join("`, `") + "`";
-
-        emx.addField(`${category.toUpperCase()}[${value.length}]`, desc);
+let emoji = "<a:arrowslogo:751462628412358736>"
+        emx.addField(`${emoji}${category.toUpperCase()}[${value.length}]`, desc);
       }
 
       return message.channel.send(emx);
     }
-  }
-}
   }
 };
