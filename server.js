@@ -92,19 +92,20 @@ client.on("guildMemberRemove", async member => {
   //its leave 
   client.channels.cache
     .get(chx)
-  const fuck = new MessageEmbed()
+  .send(seen)
+  const seen = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
-    .send(fuck); //get channel and send embed
+     //get channel and send embed
 let newInvite = await message.channel.createInvite({
   maxUses: 1, // After one use it will be void
   unique: true, // That tells the bot not to use an existing invite so that this will be unique
   maxAge: 86400 // By default invites last 24 hours. If you want to change that, modify this (0 = lasts forever, time in seconds)
-  
-});
-  message.member.send(`{member.guild.name}`)
+  });
+          
+  message.member.send(`${member.guild.name} YOU LEFT SERVER, WE ARE MISSING YOU PLEASE COME BACK HERE LINK -${newInvite}`)
   });
 client.on("message", async message => {
   if (message.author.client) return;
@@ -138,7 +139,7 @@ client.on("guildRemove", guild => {
     .setTitle("LEFT FROM SERVER")
     .addField("Server Members :", guild.memberCount)
     .addField("Server Name :", guild.name)
-    .setThumbnail(member.guild.iconURL())
+    
     .addField("Server Owner :", guild.owner)
     .addField("VERIFICATION LEVEL :", guild.verificationLevel);
   client.channels.cache.get("748936869022007376").send(join);
