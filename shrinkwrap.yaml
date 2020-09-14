@@ -2,15 +2,16 @@ dependencies:
   '@discordjs/opus': 0.3.2
   ascii-table: 0.0.9
   canvas-senpai: 0.1.6
+  colornames: 1.1.1
   discord.js: 12.3.1
   dotenv: 8.2.0
-  enmap: 5.7.1
+  enmap: 5.7.3
   erela.js: 1.1.8
   express: 4.17.1
   ffmpeg-static: 4.2.7
   figlet: 1.5.0
   fs: 0.0.2
-  genius-lyrics: 3.0.0
+  genius-lyrics: 4.0.0
   node-fetch: 2.6.1
   node-superfetch: 0.1.10
   novelcovid: 3.0.0
@@ -485,20 +486,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-MY5KFYUru0y74IsgM/9asDwb3ERxWxXEu3CRCZEvE7DtT86y1bR1XgtlSliMrptjz4qbivNGMQSvUBpEFJDp1A==
-  /@types/cheerio/0.22.21:
-    dependencies:
-      '@types/node': 14.10.0
-    dev: false
-    resolution:
-      integrity: sha512-aGI3DfswwqgKPiEOTaiHV2ZPC9KEhprpgEbJnv0fZl3SGX0cGgEva1126dGrMC6AJM6v/aihlUgJn9M5DbDZ/Q==
   /@types/node/10.17.28:
     dev: false
     resolution:
       integrity: sha512-dzjES1Egb4c1a89C7lKwQh8pwjYmlOAG9dW1pBgxEk57tMrLnssOfEthz8kdkNaBd7lIqQx7APm5+mZ619IiCQ==
-  /@types/node/14.10.0:
-    dev: false
-    resolution:
-      integrity: sha512-SOIyrdADB4cq6eY1F+9iU48iIomFAPltu11LCvA9PKcyEwHadjCFzNVPotAR+oEJA0bCP4Xvvgy+vwu1ZjVh8g==
   /@types/node/14.6.4:
     dev: false
     resolution:
@@ -715,6 +706,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  /axios/0.20.0:
+    dependencies:
+      follow-redirects: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
   /balanced-match/1.0.0:
     dev: false
     resolution:
@@ -898,19 +895,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-qbqoYKP5tZWmuBsahocxIe06Jp4=
-  /cheerio/1.0.0-rc.3:
-    dependencies:
-      css-select: 1.2.0
-      dom-serializer: 0.1.1
-      entities: 1.1.2
-      htmlparser2: 3.10.1
-      lodash: 4.17.20
-      parse5: 3.0.3
-    dev: false
-    engines:
-      node: '>= 0.6'
-    resolution:
-      integrity: sha512-0td5ijfUPuubwLUu0OBoe98gZj8C/AA+RW3v67GPlGOrvxWjZmBXiBCRU+I8VEiNyJzjth40POfHiz2RB3gImA==
   /chownr/1.1.4:
     dev: false
     resolution:
@@ -956,6 +940,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
+  /colornames/1.1.1:
+    dev: false
+    resolution:
+      integrity: sha1-+IiQMGhcfE/54qVZ9Qd+t2qBb5Y=
   /combined-stream/1.0.8:
     dependencies:
       delayed-stream: 1.0.0
@@ -1265,7 +1253,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
-  /enmap/5.7.1:
+  /enmap/5.7.3:
     dependencies:
       lodash: 4.17.20
       on-change: 2.1.2
@@ -1273,7 +1261,7 @@ packages:
     peerDependencies:
       better-sqlite3: ^7.1.0
     resolution:
-      integrity: sha512-VyUimdP570p4jogC7RAWJiQbziq0lq/0hmnpqDZ3y7JCwva/TooHXE4Wu/f4fJx2w0cydpLYrqCTAI+K+p+6+w==
+      integrity: sha512-fTL0TlLa+7WL8HY6N+QqNIfAhG3fqca40Cq6OiWztyTmclBk9WG2kphrTGvq+8hJFOYEikdrOAJ2l/LkhOl2Tw==
   /entities/1.1.2:
     dev: false
     resolution:
@@ -1615,6 +1603,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-ay6YIrGizgpgq2TWEOzK1TyyTQ8=
+  /follow-redirects/1.13.0:
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
   /follow-redirects/1.5.10:
     dependencies:
       debug: 3.1.0
@@ -1706,14 +1700,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-LANAXHU4w51+s3sxcCLjJfsBi/c=
-  /genius-lyrics/3.0.0:
+  /genius-lyrics/4.0.0:
     dependencies:
-      '@types/cheerio': 0.22.21
-      axios: 0.19.2
-      cheerio: 1.0.0-rc.3
+      axios: 0.20.0
+      node-html-parser: 1.2.20
     dev: false
     resolution:
-      integrity: sha512-B2Um1u6G0rjf5R09ht31zguG7AFn7eFWBoMVxzITz533gnxtWVdIxrvRLFRQJ0em2Oonj7hTeRog0yanzUpqfQ==
+      integrity: sha512-ylAdZIg3WBodDCaHcu270MkDo4C/77ldRoJPS8QTsK+OMgRpH36xnICjvicy9WbQU2VLMQmzbEGv39p6oXYJCw==
   /get-caller-file/1.0.3:
     dev: false
     resolution:
@@ -1803,6 +1796,11 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
+  /he/1.1.1:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
   /homedir-polyfill/1.0.3:
     dependencies:
       parse-passwd: 1.0.0
@@ -2586,6 +2584,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-crN8rRfApu/GUrtKq+zJ6LueUyNAOJpFHxoT2Ru1Q+OYRa/F/H7CXvzcMrFc7D964yakYZEZ9XR3YbdSHXgyCw==
+  /node-html-parser/1.2.20:
+    dependencies:
+      he: 1.1.1
+    dev: false
+    resolution:
+      integrity: sha512-1fUpYjAducDrrBSE0etRUV1tM+wSFTudmrslMXuk35wL/L29E7e1CLQn4CNzFLnqtYpmDlWhkD6VUloyHA0dwA==
   /node-pre-gyp/0.11.0:
     dependencies:
       detect-libc: 1.0.3
@@ -2823,12 +2827,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-bVuTSkVpk7I9N/QKOC1vFmao5cY=
-  /parse5/3.0.3:
-    dependencies:
-      '@types/node': 14.10.0
-    dev: false
-    resolution:
-      integrity: sha512-rgO9Zg5LLLkfJF9E6CCmXlSE4UVceloys8JrFqCcHloC3usd/kJCyPDwH2SOlzix2j3xaP9sUX3e8+kvkuleAA==
   /parseurl/1.3.3:
     dev: false
     engines:
@@ -3852,15 +3850,16 @@ specifiers:
   '@discordjs/opus': ^0.3.2
   ascii-table: ^0.0.9
   canvas-senpai: ^0.1.6
+  colornames: ^1.1.1
   discord.js: ^12.3.1
   dotenv: ^8.2.0
-  enmap: ^5.7.1
+  enmap: ^5.7.3
   erela.js: ^1.1.8
   express: ^4.17.1
   ffmpeg-static: ^4.2.7
   figlet: ^1.5.0
   fs: ^0.0.2
-  genius-lyrics: ^3.0.0
+  genius-lyrics: ^4.0.0
   node-fetch: ^2.6.1
   node-superfetch: ^0.1.10
   novelcovid: ^3.0.0
