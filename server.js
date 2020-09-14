@@ -95,11 +95,17 @@ client.on("guildMemberRemove", async member => {
   const fuck = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
-  .SetThumbnail(member.guild.IconURL())
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
     .send(fuck); //get channel and send embed
+let newInvite = await message.channel.createInvite({
+  maxUses: 1, // After one use it will be void
+  unique: true, // That tells the bot not to use an existing invite so that this will be unique
+  maxAge: 86400 // By default invites last 24 hours. If you want to change that, modify this (0 = lasts forever, time in seconds)
+  
 });
+  message.member.send(`{member.guild.name}`)
+  });
 client.on("message", async message => {
   if (message.author.client) return;
 
