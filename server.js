@@ -90,8 +90,6 @@ client.on("guildMemberRemove", async member => {
   let chx = db.get(`leavchannel_${member.guild.id}`);
   //defining 
   //its leave 
-  
-  
   const seen = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
@@ -150,6 +148,7 @@ client.on("guildRemove", guild => {
    return message.channel.send(luck)
         } 
           }
+                  
                   );
-
+});
  client.login(token);
