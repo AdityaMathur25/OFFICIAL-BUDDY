@@ -1,56 +1,55 @@
-const ms = require('ms');
-
+const { MessageEmbed } = require("discord.js");
+const ms = require("ms");
 module.exports = {
-    name: "giveaway",
-    description: "announce a giveaway !",
-   category:"giveaway",
-  aliases:["gstart", "gs"],
-     run: async (client, message, args) => {
-        if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send('You are not allowed to start giveaways');
+  name: "giveaway",
+  description: "Create a simple giveaway",
+  usage: "<time> <channel> <prize>",
+  category: "giveaway",
+  aliases:["gstart","gs"],
+  run: async (bot, message, args) => {
+    if (!args[0]) return message.channel.send(`You did not specify your time!`);
+    if (
+      !args[0].endsWith("d") &&
+      !args[0].endsWith("h") &&
+      !args[0].endsWith("m")
+    )
+      return message.channel.send(
+        `You did not use the correct formatting for the time!`
+      );
+    if (isNaN(args[0][0])) return message.channel.send(`That is not a number!`);
+    let channel = message.mentions.channels.first();
+    if (!channel)
+      return message.channel.send(
+        `I could not find that channel in the guild!`
+      );
+    let prize = args.slice(2).join(" ");
+    if (!prize) return message.channel.send(`No prize specified!`);
+    message.channel.send(`*Giveaway created in ${channel}*`);
+    let Embed = new MessageEmbed()
+      .setTitle(`New giveaway!`)
+      .setDescription(
+        `HOSTED BY :- @${message.author.username}`
+      )
+     .addfiled("**PRIZE :-**", `**${prize}`)
+      .setTimestamp(Date.now() + ms(args[0]))
+      .setColor(`BLUE`);
+    let m = await channel.send(Embed);
+    m.react("🎉");
+    setTimeout(() => {
+      if (m.reactions.cache.get("🎉").count <= 1) {
+        message.channel.send(`Reactions: ${m.reactions.cache.get("🎉").count}`);
+        return message.channel.send(
+          `Not enough people reacted for me to start draw a winner!`
+        );
+      }
 
-        let channel = message.mentions.channels.first();
-
-        if (!channel) return message.channel.send('Please provide a channel');
-
-        let giveawayDuration = args[1];
-
-        if (!giveawayDuration || isNaN(ms(giveawayDuration))) return message.channel.send('Pleae provide a valid duration');
-
-        let giveawayWinners = args[2];
-
-        if (isNaN(giveawayWinners) || (parseInt(giveawayWinners) <= 0)) return message.channel.send('Please provide a valid number of winners!');
-
-        let giveawayPrize = args.slice(3).join(" ");
-
-        if (!giveawayPrize) return message.channel.send('Ok then, I\'ll give away nothing');
-
-        client.giveawaysManager.start(channel, {
-            time: ms(giveawayDuration),
-            prize: giveawayPrize,
-            winnerCount: giveawayWinners,
-            hostedBy: client.config.hostedBy ? message.author : null,
-
-            messages: {
-                giveaway: (client.config.everyoneMention ? "@everyone\n\n" : "") + "GIVEAWAY",
-                giveawayEned: (client.config.everyoneMention ? "@everyone\n\n" : "") + "GIVEAWAY ENDED",
-                timeRemaining: "Time remaining: **{duration}**",
-                inviteToParticipate: "React with 🎉 to enter",
-                winMessage: "Congrats {winners}, you won **{prize}**",
-                embedFooter: "Giveaway time!",
-                noWinner: "Couldn't determine a winner",
-                hostedBy: "Hosted by {user}",
-                winners: "winner(s)",
-                endedAt: "Ends at",
-                units: {
-                    seconds: "seconds",
-                    minutes: "minutes",
-                    hours: "hours",
-                    days: "days",
-                    pluralS: false
-                }
-            }
-        })
-
-        message.channel.send(`Giveaway starting in ${channel}`);
-    }
-}
+      let winner = m.reactions.cache
+        .get("🎉")
+        .users.cache.filter((u) => !u.bot)
+        .random();
+      channel.send(
+        `The winner of the giveaway for **${prize}** is... ${winner}`
+      );
+    }, ms(args[0]));
+  },
+};
