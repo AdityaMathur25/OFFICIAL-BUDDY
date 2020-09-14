@@ -26,11 +26,11 @@ module.exports = {
     if (!prize) return message.channel.send(`No prize specified!`);
     message.channel.send(`*Giveaway created in ${channel}*`);
     let Embed = new MessageEmbed()
-      .setTitle(`New giveaway!`)
+      .setTitle(`**${prize}**`)
       .setDescription(
-        `HOSTED BY :- @${message.author.username}`
+       ` *REACT WITH 🎉 TO ENTER GIVEAWAY!*
+        HOSTED BY :- ${message.author}`
       )
-     .addfiled("**PRIZE :-**", `**${prize}`)
       .setTimestamp(Date.now() + ms(args[0]))
       .setColor(`BLUE`);
     let m = await channel.send(Embed);
