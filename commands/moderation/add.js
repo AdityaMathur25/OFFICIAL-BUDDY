@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = { 
 name: "addrole", 
-category: "administrator", 
+category: "moderation", 
 usage: "addrole <@user> <@&role>", 
 description: "Give a role to a member xD", 
   aliases:["add"],
@@ -28,7 +28,7 @@ if (message.guild.me.roles.highest.position < role.position) {
 return message.channel.send("The role you are trying to give to someone is under me. Put me over the role!")
 } 
 
-await user.roles.add(role).then
+await user.roles.add(role)
 const embed = new MessageEmbed() 
 .setTitle("AddRole System") 
 .setDescription(`✅ | Succesfully added ${role} role to ${user}`) 
