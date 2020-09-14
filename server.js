@@ -90,24 +90,16 @@ client.on("guildMemberRemove", async member => {
   let chx = db.get(`leavchannel_${member.guild.id}`);
   //defining 
   //its leave 
-  client.channels.cache
-    .get(chx)
-  .send(seen)
+  
+  
   const seen = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
-     //get channel and send embed
-let newInvite = await message.channel.createInvite({
-  maxUses: 1, // After one use it will be void
-  unique: true, // That tells the bot not to use an existing invite so that this will be unique
-  maxAge: 86400 // By default invites last 24 hours. If you want to change that, modify this (0 = lasts forever, time in seconds)
-  });
-          
-  message.member.send(`${member.guild.name} YOU LEFT SERVER, WE ARE MISSING YOU PLEASE COME BACK HERE LINK -${newInvite}`)
-  });
-client.on("message", async message => {
+    client.channels.cache.get(chx).send(seen)
+  //get channel and send embed      
+  client.on("message", async message => {
   if (message.author.client) return;
 
   if (message.content.indexof(default_prefix) !== 0) return;
