@@ -27,6 +27,13 @@ client.categories = fs.readdirSync("./commands");
 
 client.on("ready", async () => {
   client.user.setActivity(db.get(`status`), { type: "WATCHING" });
+  client.user.setPresence({
+status: "dnd", 
+activity: { 
+name: `${db.get(`status`)}`, 
+type: "WATCHING" 
+} 
+})
 
   console.log("ready as badass");
 });
