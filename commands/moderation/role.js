@@ -16,7 +16,7 @@ module.exports = {
         return message.channel.send("I don't have enough permissions to do this")
         }
         if (!args[0]) {
-        return message.channel.send("`Usage: =createrole <colorname> <Name>`")
+        return message.channel.send("`PLEASE PROVIDE:- COLOR , NAME `")
         }
         if (!name) {
         return message.channel.send("You need to specify a name for your Role")
