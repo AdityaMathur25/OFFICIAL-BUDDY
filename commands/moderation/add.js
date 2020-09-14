@@ -1,42 +1,37 @@
-const { MessageEmbed } = require("discord.js") 
+const { MessageEmbed } = require('discord.js');
 
-module.exports = { 
-name: "addrole", 
-category: "moderation", 
-usage: "addrole <@user> <@&role>", 
-description: "Give a role to a member xD", 
+module.exports = {
+    name: 'add-role',
+  description:"give role to member",
+  category:"moderation",
   aliases:["add"],
-run: async(client, message, args) => { 
-if(!message.member.hasPermission("MANAGE_ROLES")) { 
-return message.channel.send("You're not allowed to use this command")
-}
-var user = message.mentions.users.first(); 
-if(!user) { 
+    run: async (client, message, args) => {
 
-return message.channel.send("Please mention someone")
-} 
-let name = message.content.split(" ").slice(2).join(" ");
-let{ cache } = message.guild.roles; 
-let role = message.mentions.roles.first(); 
+        message.delete();
 
-if(!role) { 
-return message.channel.send("Please mention a role to give")
-}
+        if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`You do not have MANAGE_ROLES permission`).then(m => m.delete({ timeout: 5000 }));
 
-// Define the role that you wanna give the users as role
-if (message.guild.me.roles.highest.position < role.position) {
-return message.channel.send("The role you are trying to give to someone is under me. Put me over the role!")
-} 
+        if (!args[0] || !args[1]) return message.channel.send("Incorrect usage, It's `<username || user id> <role name || id>").then(m => m.delete({ timeout: 5000 }))
 
-await user.roles.add(role)
-const embed = new MessageEmbed() 
-.setTitle("AddRole System") 
-.setDescription(`✅ | Succesfully added ${role} role to ${user}`) 
-.setColor("RANDOM") 
-.setFooter("Made by BUDDDY ")
-.setTimestamp() 
+        try {
 
-return message.channel.send(embed) 
-process.exit(1);
-}
-}
+             const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+             const roleName = message.guild.roles.cache.find(r => (r.name === args[1].toString()) || (r.id === args[1].toString().replace(/[^\w\s]/gi, '')));
+
+             const alreadyHasRole = member._roles.includes(roleName.id);
+
+             if (alreadyHasRole) return message.channel.send('User already has that role').then(m => m.delete({ timeout: 5000 }));
+
+             const embed = new MessageEmbed()
+                 .setTitle(`Role Name: ${roleName.name}`)
+                 .setDescription(`${message.author} has successfully given the role ${roleName} `)
+                 .setColor('RANDOM')
+                 .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
+                 .setFooter(new Date().toLocaleString())
+
+            return member.roles.add(roleName).then(() => message.channel.send(embed));
+        } catch (e) {
+            return message.channel.send('Try to give a role that exists next time...').then(m => m.delete({ timeout: 5000 })).then(() => console.log(e))
+        }
+    }
+};
