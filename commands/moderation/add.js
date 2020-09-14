@@ -27,8 +27,8 @@ module.exports = {
                  .setDescription(`${message.author} has successfully given the role ${roleName} `)
                  .setColor('RANDOM')
                  .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
-                 .setFooter(new Date().toLocaleString())
-
+                 .setFooter(`REQUESTED BY ${message.author.username}`)
+                 .setTimestamp()
             return member.roles.add(roleName).then(() => message.channel.send(embed));
         } catch (e) {
             return message.channel.send('Try to give a role that exists next time...').then(m => m.delete({ timeout: 5000 })).then(() => console.log(e))
