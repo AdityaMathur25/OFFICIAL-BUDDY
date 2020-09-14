@@ -63,6 +63,16 @@ client.on("message", async message => {
     return addexp(message);
   }
 });
+client.giveawaysManager = new GiveawaysManager(client, {
+    storage: "./giveaways.json",
+    updateCountdownEvery: 5000,
+    default: {
+        botsCanWin: false,
+        exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
+        embedColor: "#FF0000",
+        reaction: "🎉"
+    }
+});
 
 client.on("guildMemberAdd", async member => {
   //usage of welcome event
