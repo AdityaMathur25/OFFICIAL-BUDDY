@@ -5,6 +5,7 @@ const ms = require("ms")
 module.exports = {
   name: "giveaway",
   aliases: ["gstart","gs"],
+  category:"giveaway",
   usage: "<@user> <@time> <@prize>",
   description: "Giveaway something",
   run: async (client, message, args) => {
