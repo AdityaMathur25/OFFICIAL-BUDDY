@@ -145,7 +145,7 @@ client.on("guildRemove", guild => {
 });
         
         client.on("message", async message => {   
-      if(message.author.bot) return;
+      if(message.author.bot) return
   if(message.mentions.has(client.user)) {
     const luck = new MessageEmbed();
     luck.setAuthor(client.user.username, client.user.displayAvatarURL())
