@@ -19,7 +19,8 @@ module.exports = {
     const statuses = {
       online: 'Online',
       dnd: 'Do Not Disturb',
-      idle: 'offline: 'Offline/Invisible',
+      idle: 'Idle',
+      offline: 'Offline/Invisible',
     };
 
     const embed = new MessageEmbed()
