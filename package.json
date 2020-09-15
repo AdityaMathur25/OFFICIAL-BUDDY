@@ -22,16 +22,18 @@
     "figlet": "^1.5.0",
     "novelcovid": "^3.0.0",
     "parse-ms": "^2.1.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "ytdl-core": "^3.2.2",
     "simple-youtube-api": "^5.2.1",
     "erela.js": "^1.1.8",
     "@discordjs/opus": "^0.3.2",
-    "enmap": "^5.7.1",
+    "enmap": "^5.7.3",
     "ffmpeg-static": "^4.2.7",
-    "yt-search": "^2.2.4",
+    "yt-search": "^2.3.0",
     "node-superfetch": "^0.1.10",
-    "ytdl-core-discord": "^1.2.0"
+    "ytdl-core-discord": "^1.2.0",
+    "colornames": "^1.1.1",
+    "genius-lyrics": "^4.0.0"
   },
   "engines": {
     "node": "12.x"

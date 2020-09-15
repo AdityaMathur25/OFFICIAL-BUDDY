@@ -2,6 +2,7 @@ dependencies:
   '@discordjs/opus': 0.3.2
   ascii-table: 0.0.9
   canvas-senpai: 0.1.6
+  colornames: 1.1.1
   discord.js: 12.3.1
   dotenv: 8.2.0
   enmap: 5.7.3
@@ -10,6 +11,7 @@ dependencies:
   ffmpeg-static: 4.2.7
   figlet: 1.5.0
   fs: 0.0.2
+  genius-lyrics: 4.0.0
   node-fetch: 2.6.1
   node-superfetch: 0.1.10
   novelcovid: 3.0.0
@@ -704,6 +706,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  /axios/0.20.0:
+    dependencies:
+      follow-redirects: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
   /balanced-match/1.0.0:
     dev: false
     resolution:
@@ -932,6 +940,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
+  /colornames/1.1.1:
+    dev: false
+    resolution:
+      integrity: sha1-+IiQMGhcfE/54qVZ9Qd+t2qBb5Y=
   /combined-stream/1.0.8:
     dependencies:
       delayed-stream: 1.0.0
@@ -1610,6 +1622,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-ay6YIrGizgpgq2TWEOzK1TyyTQ8=
+  /follow-redirects/1.13.0:
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
   /follow-redirects/1.5.10:
     dependencies:
       debug: 3.1.0
@@ -1701,6 +1719,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-LANAXHU4w51+s3sxcCLjJfsBi/c=
+  /genius-lyrics/4.0.0:
+    dependencies:
+      axios: 0.20.0
+      node-html-parser: 1.2.20
+    dev: false
+    resolution:
+      integrity: sha512-ylAdZIg3WBodDCaHcu270MkDo4C/77ldRoJPS8QTsK+OMgRpH36xnICjvicy9WbQU2VLMQmzbEGv39p6oXYJCw==
   /get-caller-file/1.0.3:
     dev: false
     resolution:
@@ -1790,6 +1815,11 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
+  /he/1.1.1:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
   /homedir-polyfill/1.0.3:
     dependencies:
       parse-passwd: 1.0.0
@@ -2559,6 +2589,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-crN8rRfApu/GUrtKq+zJ6LueUyNAOJpFHxoT2Ru1Q+OYRa/F/H7CXvzcMrFc7D964yakYZEZ9XR3YbdSHXgyCw==
+  /node-html-parser/1.2.20:
+    dependencies:
+      he: 1.1.1
+    dev: false
+    resolution:
+      integrity: sha512-1fUpYjAducDrrBSE0etRUV1tM+wSFTudmrslMXuk35wL/L29E7e1CLQn4CNzFLnqtYpmDlWhkD6VUloyHA0dwA==
   /node-pre-gyp/0.11.0:
     dependencies:
       detect-libc: 1.0.3
@@ -3819,15 +3855,17 @@ specifiers:
   '@discordjs/opus': ^0.3.2
   ascii-table: ^0.0.9
   canvas-senpai: ^0.1.6
+  colornames: ^1.1.1
   discord.js: ^12.3.1
   dotenv: ^8.2.0
-  enmap: ^5.7.1
+  enmap: ^5.7.3
   erela.js: ^1.1.8
   express: ^4.17.1
   ffmpeg-static: ^4.2.7
   figlet: ^1.5.0
   fs: ^0.0.2
-  node-fetch: ^2.6.0
+  genius-lyrics: ^4.0.0
+  node-fetch: ^2.6.1
   node-superfetch: ^0.1.10
   novelcovid: ^3.0.0
   parse-ms: ^2.1.0
@@ -3835,6 +3873,6 @@ specifiers:
   quick.db: ^7.1.1
   simple-youtube-api: ^5.2.1
   something-random-on-discord: ^0.0.1
-  yt-search: ^2.2.4
+  yt-search: ^2.3.0
   ytdl-core: ^3.2.2
   ytdl-core-discord: ^1.2.0
