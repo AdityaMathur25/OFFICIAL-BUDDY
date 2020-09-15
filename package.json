@@ -33,7 +33,8 @@
     "node-superfetch": "^0.1.10",
     "ytdl-core-discord": "^1.2.0",
     "colornames": "^1.1.1",
-    "genius-lyrics": "^4.0.0"
+    "genius-lyrics": "^4.0.0",
+    "canvacord": "^4.0.1"
   },
   "engines": {
     "node": "12.x"
