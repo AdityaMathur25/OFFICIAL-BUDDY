@@ -143,16 +143,15 @@ client.on("guildRemove", guild => {
   client.channels.cache.get("748936869022007376").send(join);
   console.log("LEFT FROM SERVER" + guild.name);
 });
-        
-        client.on("message", async message => {   
-      if(message.author.bot) return
+     client.on("message", async message => {   
+       let prefix = await db.fetch(`prefix_${message.guild.id}`)
   if(message.mentions.has(client.user)) {
-    const luck = new MessageEmbed();
-    luck.setAuthor(client.user.username, client.user.displayAvatarURL())
-    luck.setTitle("PREFIX HELP! ")
-    luck.setDescription(`HEY, MY PREFIX IN THIS SERVE IS **${default_prefix}**`)
-    luck.setColor(COLOR)
-    luck.setFooter(`REQUESTED BY ${message.author.username}`)
+    const luck = new MessageEmbed()
+    .setAuthor(client.user.username, client.user.displayAvatarURL())
+    .setTitle("PREFIX HELP! ")
+    .setDescription(`HEY, MY PREFIX IN THIS SERVE IS **${prefix}**`)
+    .setColor(COLOR)
+    .setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
         } 
           }
