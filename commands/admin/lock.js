@@ -2,8 +2,9 @@ const Discord = module.require("discord.js");
 const ms = require("ms"); //Make sure to install ms package
 
 module.exports = {
-    name: "timedlockdown",
-  
+    name: "Timelockdown",
+  category:"Administration",
+  alaises:["lo"],
     description: "Start a timed lockdown in a channel",
     run: async(client, message, args) => {
         const time = args.join(" ");
@@ -35,7 +36,7 @@ module.exports = {
             ],);
            const embed2 = new Discord.MessageEmbed()
            .setTitle("Channel Updates")
-           .setDescription(`Locked has been lifted in ${message.channel}`)
+           .setDescription(`🔒Locked has been lifted in ${message.channel}`)
            .setColor("RANDOM");
            message.channel.send(embed2);
         }, ms(time1));
