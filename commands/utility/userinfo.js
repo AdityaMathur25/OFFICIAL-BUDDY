@@ -67,9 +67,7 @@ module.exports = {
           embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`)
         }
 
-        embed.set
-               user.user.presence.status, stat[user.user.presence.status]              
-                            )
+      
 
       }
     }
@@ -82,7 +80,7 @@ module.exports = {
 
       //CHECK IF USER HAVE NICKNAME
       if (user.nickname !== null) embed.addField("Nickname", user.nickname)
-    
+    .setDescription(`STATUS :- ${user.user.presence.status}${array.join("/n")}`)
         
         embed.addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
         .addField("Common Information", `ID: \`${user.user.id}\`\nUserTag: ${user.user.discriminator}\nBot: ${user.user.bot}\nDeleted User: ${user.deleted}`)
