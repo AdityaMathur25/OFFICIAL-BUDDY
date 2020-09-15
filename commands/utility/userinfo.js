@@ -15,13 +15,13 @@ module.exports = {
 
     const member = message.mentions.members.first() ||
       message.member;
-
-    const statuses = {
-      online: 'Online',
-      dnd: 'Do Not Disturb',
-      idle: 'Idle',
-      offline: 'Offline/Invisible',
-    };
+      let stat = {
+      online: "https://emoji.gg/assets/emoji/9166_online.png",
+      idle: "https://emoji.gg/assets/emoji/3929_idle.png",
+      dnd: "https://emoji.gg/assets/emoji/2531_dnd.png",
+      offline: "https://emoji.gg/assets/emoji/7445_status_offline.png"
+    }
+    
 
     const embed = new MessageEmbed()
       .setTitle(member.user.username + " Information!")
