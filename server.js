@@ -1,4 +1,4 @@
-const { Client, Collection, MessageAttachment, MessageEmbed, message } = require("discord.js");
+const { Client, Collection, MessageAttachment, MessageEmbed } = require("discord.js");
 const { config } = require("dotenv");
 const { default_prefix, token, COLOR } = require("./config.json");
 const db = require("quick.db");
@@ -104,7 +104,9 @@ client.on("guildMemberRemove", async member => {
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
     client.channels.cache.get(chx).send(seen)
-  //get channel and send embed      
+  //get channel and send embed  
+  
+  });
   client.on("message", async message => {
   if (message.author.client) return;
 
@@ -144,7 +146,10 @@ client.on("guildRemove", guild => {
   console.log("LEFT FROM SERVER" + guild.name);
 });
      client.on("message", async message => {   
-       let prefix = await db.fetch(`prefix_${message.guild.id}`)
+       let prefix = await db.get(`prefix_${message.guild.id}`) 
+       if(prefix === null) 
+         prefix = default_prefix; 
+       
   if(message.mentions.has(client.user)) {
     const luck = new MessageEmbed()
     .setAuthor(client.user.username, client.user.displayAvatarURL())
@@ -154,8 +159,9 @@ client.on("guildRemove", guild => {
     .setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
         } 
-          }
-                  
-                  );
-});
- client.login(token);
+)
+     }
+
+ client.login(token);  
+  
+  
