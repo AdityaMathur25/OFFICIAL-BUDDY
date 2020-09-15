@@ -1,16 +1,17 @@
 const Discord = require('discord.js');
 
 module.exports ={
-  name:"",
-  description:"kis",
-  category:"fum",
+  name:"kiss",
+  description:"kiss some one",
+  category:"fun",
   
   run: async (client, message, args) => {
 
 var list = [
   'https://imgur.com/iclUiUN.gif',
   'https://imgur.com/lYQt9rx.gif',
-  'https://imgur.com/w1TU5mR.gif'
+  'https://imgur.com/w1TU5mR.gif',
+  'https://lh4.googleusercontent.com/proxy/8cW5PUzqxk3SXjyyYbODYJoEz6ahBhXjSEGrtlK5AC5mdkWo07PlZB4qZxbj06VqOvv9zg-dHXw=w500-h281'
 ];
 
 var rand = list[Math.floor(Math.random() * list.length)];
@@ -21,8 +22,8 @@ return message.reply('remember to mention a valid user to kiss!');
 let avatar = message.author.displayAvatarURL({format: "png"});
   const embed = new Discord.MessageEmbed()
         .setTitle('Kiss')
-        .setColor('#000000')
-        .setDescription(`${message.author} kiss ${user}`)
+        .setColor('RANDOM')
+        .setDescription(`${message.author} kissed ${user}❤`)
         .setImage(rand)
         .setTimestamp()
         .setThumbnail(avatar)
