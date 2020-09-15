@@ -152,15 +152,14 @@ client.on("guildRemove", guild => {
        
   if(message.mentions.has(client.user)) {
     const luck = new MessageEmbed()
-    .setAuthor(client.user.username, client.user.displayAvatarURL())
+    .setAuthor(message.author.username, message.author.displayAvatarURL())
     .setTitle("PREFIX HELP! ")
     .setDescription(`HEY, MY PREFIX IN THIS SERVE IS **${prefix}**`)
-    .setColor(COLOR)
+    .setColor("RANDOM")
     .setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
         } 
-)
-     }
+});
 
  client.login(token);  
   
