@@ -4,7 +4,7 @@ const { COLOR } = require("../../config.json");
 
 module.exports = {
   name: "userinfo",
-  aliases: ["memberinfo", "whois"],
+  aliases: ["user", "whois"],
   category: "utility",
   description: "Show User Information!",
   usage: "Userinfo | <Mention User>",
