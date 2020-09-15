@@ -17,10 +17,10 @@ var list = [
   'https://tenor.com/view/golden-time-anime-kiss-couple-lovers-gif-6155670',
   'https://tenor.com/view/love-anime-kiss-hot-damn-gif-9838409',
   'https://tenor.com/view/anime-kiss-gif-4829336',
-  '',
-  '',
-  '',
-  ''
+  'https://tenor.com/view/kiss-anime-love-gif-9158317',
+  'https://tenor.com/view/yes-love-couple-kiss-in-love-gif-15009390',
+  'https://tenor.com/view/anime-kiss-love-mwah-gif-16687888',
+  
 ];
 
 var rand = list[Math.floor(Math.random() * list.length)];
