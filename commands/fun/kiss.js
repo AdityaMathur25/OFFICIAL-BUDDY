@@ -11,7 +11,16 @@ var list = [
   'https://imgur.com/iclUiUN.gif',
   'https://imgur.com/lYQt9rx.gif',
   'https://imgur.com/w1TU5mR.gif',
-  'https://lh4.googleusercontent.com/proxy/8cW5PUzqxk3SXjyyYbODYJoEz6ahBhXjSEGrtlK5AC5mdkWo07PlZB4qZxbj06VqOvv9zg-dHXw=w500-h281'
+  'https://tenor.com/view/golden-time-anime-kiss-gif-6155657',
+  'https://tenor.com/view/anime-kiss-making-out-kissing-gif-13658106',
+  'https://tenor.com/view/anime-kiss-love-sweet-gif-5095865',
+  'https://tenor.com/view/golden-time-anime-kiss-couple-lovers-gif-6155670',
+  'https://tenor.com/view/love-anime-kiss-hot-damn-gif-9838409',
+  'https://tenor.com/view/anime-kiss-gif-4829336',
+  '',
+  '',
+  '',
+  ''
 ];
 
 var rand = list[Math.floor(Math.random() * list.length)];
