@@ -1,9 +1,8 @@
 {
-  "default_prefix": "!",
-  "COLOR": "#00FFFF",
-  "token": "NzM0Mjg5NjU1MzEwMDU3NDkz.XxPiiA.yQY5FW2VCz9KzPR_SxutvhgwYCI",
    "YOUTUBE_API_KEY": "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg",
+  "COLOR": "#00FFFF",
   "QUEUE_LIMIT": "10",
-  "token": "",
-    "arcadia": ""
+  "default_prefix": "!",
+  "token": "NzM0Mjg5NjU1MzEwMDU3NDkz.XxPiiA.yQY5FW2VCz9KzPR_SxutvhgwYCI"
+
 }
