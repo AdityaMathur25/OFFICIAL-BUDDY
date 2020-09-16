@@ -34,7 +34,8 @@
     "ytdl-core-discord": "^1.2.0",
     "colornames": "^1.1.1",
     "genius-lyrics": "^4.0.0",
-    "canvacord": "^4.0.1"
+    "canvacord": "^4.0.1",
+    "snekfetch": "^4.0.4"
   },
   "engines": {
     "node": "12.x"

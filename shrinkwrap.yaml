@@ -20,6 +20,7 @@ dependencies:
   quick-db: 1.0.5
   quick.db: 7.1.1
   simple-youtube-api: 5.2.1
+  snekfetch: 4.0.4
   something-random-on-discord: 0.0.1
   yt-search: 2.3.0
   ytdl-core: 3.2.2
@@ -3323,6 +3324,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-vmndP9Bkh35tifn2OwY+th2imSsfYtmDqczgdOW5yEARFzvSoR8VSQFsivJnctfV5QHQUL6VrOpNdbmDRLh9Bg==
+  /snekfetch/4.0.4:
+    deprecated: use node-fetch instead
+    dev: false
+    resolution:
+      integrity: sha512-dyycG9fvwtSJqKPfMVOpXt+60qvMGe7vWLwOJDiSJaiAx+hs2EnFChG2bXCWn7ulz+zGzrHdN9/yeEb0YqEPww==
   /something-random-on-discord/0.0.1:
     dependencies:
       node-fetch: 2.6.1
@@ -3951,6 +3957,7 @@ specifiers:
   quick-db: ^1.0.5
   quick.db: ^7.1.1
   simple-youtube-api: ^5.2.1
+  snekfetch: ^4.0.4
   something-random-on-discord: ^0.0.1
   yt-search: ^2.3.0
   ytdl-core: ^3.2.2
