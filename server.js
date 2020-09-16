@@ -7,7 +7,7 @@ const discord = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-
+const Canvacord = require("canvacord");
 let random = Math.floor(Math.random() * 4);
 //for image ?
 const client = new Client({
@@ -15,6 +15,10 @@ const client = new Client({
 });
 // for not taging everyone.
 // Collections
+client.db = require("quick.db");
+client.canvas = async function create() {
+  
+}
 client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
