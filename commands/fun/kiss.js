@@ -16,7 +16,7 @@ var list = [
   'https://i.imgur.com/0WWWvat.gifv',
   'https://i.imgur.com/YOQgZqY.gifv',
   'https://i.imgur.com/709chb9.gifv',
-  'https://tenor.co',
+  'https://i.imgur.com/e4bi40y.gifv',
   'https://tenor.com/view/kiss-anime-love-gif-9158317',
   'https://tenor.com/view/yes-love-couple-kiss-in-love-gif-15009390',
   'https://tenor.com/view/anime-kiss-love-mwah-gif-16687888',
