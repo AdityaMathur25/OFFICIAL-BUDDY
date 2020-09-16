@@ -5,7 +5,7 @@ module.exports = {
   category:"fun",
   run: async (client, message, arg) => {
        var member= message.mentions.members.first();
-        var image[ "",
+        var images = ["https://tenor.com/view/toradora-punch-gif-10769541",
 "https://tenor.com/view/anime-smash-lesbian-punch-wall-gif-4790446",
 "https://tenor.com/view/anime-naruto-punch-fight-gif-12911685",
 "https://tenor.com/view/anime-punch-knockout-wasted-smack-gif-11451829",
