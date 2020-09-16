@@ -2,6 +2,7 @@ dependencies:
   '@discordjs/opus': 0.3.2
   ascii-table: 0.0.9
   canvacord: 4.0.1
+  canvas-constructor: 4.1.0
   canvas-senpai: 0.1.6
   colornames: 1.1.1
   discord.js: 12.3.1
@@ -865,6 +866,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-y66gF+drQEucK4gqkQxfKge4hyvkJEw/r0IYK5LO51TXUzikOSelKlEO0NjxUG0pARS8jQyOufAltZoRQelBQw==
+  /canvas-constructor/4.1.0:
+    dev: false
+    engines:
+      node: '>=8.6.0'
+    peerDependencies:
+      canvas: '*'
+    resolution:
+      integrity: sha512-IWZ80DeKIODMnZS1ygaalM7AYaa02KeTnMzMmLhuUK/K1p+pmetMPu6ab9DAT7HsmC9H/xHMn/oSH0K/EnEbYQ==
   /canvas-senpai/0.1.6:
     dependencies:
       canvas: 2.6.1
@@ -3939,6 +3948,7 @@ specifiers:
   '@discordjs/opus': ^0.3.2
   ascii-table: ^0.0.9
   canvacord: ^4.0.1
+  canvas-constructor: ^4.1.0
   canvas-senpai: ^0.1.6
   colornames: ^1.1.1
   discord.js: ^12.3.1

@@ -35,7 +35,8 @@
     "colornames": "^1.1.1",
     "genius-lyrics": "^4.0.0",
     "canvacord": "^4.0.1",
-    "snekfetch": "^4.0.4"
+    "snekfetch": "^4.0.4",
+    "canvas-constructor": "^4.1.0"
   },
   "engines": {
     "node": "12.x"
