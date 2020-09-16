@@ -1,4 +1,4 @@
-const Canvacord = require("canvacord");
+const Canvacord = require("canvas");
 const canvacord = new Canvacord();
 const { MessageAttachment } = require("discord.js"); 
 
@@ -12,3 +12,4 @@ module.exports.run = async (client, message, args) => {
   module.exports.help = { 
     name: "trigger"
   };
+//aaa varu nai hale mai try kairu tu 😁
