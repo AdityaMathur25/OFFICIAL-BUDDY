@@ -17,7 +17,7 @@ run: async (client, message, args) => {
   let exp = db.get(`xp_${user.id}`) || 0;
   let neededXP = Math.floor(Math.pow(level / 0.1, 2));
 
-  let every = client.get
+  let every = client.db
     .all()
     .filter(i => i.ID.startsWith("xp_"))
     .sort((a, b) => b.data - a.data);
