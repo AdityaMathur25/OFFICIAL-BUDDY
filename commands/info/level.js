@@ -14,16 +14,16 @@ run: async (client, message, args) => {
 
   let level = client.db.get(`level_${user.id}`) || 0;
   level = level.toString();
-  let exp = client.db.get(`xp_${user.id}`) || 0;
-  let neededXP = Math.floor(Math.pow(level / 0.2, 2));
+  let exp = client.db.get(`xp_${user.id}`) || 10;
+  let neededXP = Math.floor(Math.pow(level / 1.2, 2));
 
   let every = client.db
     .all()
     .filter(i => i.ID.startsWith("xp_"))
     .sort((a, b) => b.data - a.data);
-  let rank = every.map(x => x.ID).indexOf(`xp_${user.id}`) + 2;
+  let rank = every.map(x => x.ID).indexOf(`xp_${user.id}`) + 1;
   rank = rank.toString();
-  let img = await client.canvas.rank({
+  let img =  await client.canvas.rank({
     username: user.username,
     discrim: user.discriminator,
     currentXP: exp.toString(),
