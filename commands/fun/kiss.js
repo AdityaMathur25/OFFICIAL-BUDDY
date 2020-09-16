@@ -11,15 +11,15 @@ var list = [
   'https://imgur.com/iclUiUN.gif',
   'https://imgur.com/lYQt9rx.gif',
   'https://imgur.com/w1TU5mR.gif',
-  'https://i.imgur.com/i1PIph3.gif',
-  'https://i.imgur.com/WVSwvm6.gif',
-  'https://i.imgur.com/0WWWvat.gifv',
-  'https://i.imgur.com/YOQgZqY.gifv',
-  'https://i.imgur.com/709chb9.gifv',
-  'https://tenor.co',
-  'https://tenor.com/view/kiss-anime-love-gif-9158317',
-  'https://tenor.com/view/yes-love-couple-kiss-in-love-gif-15009390',
-  'https://tenor.com/view/anime-kiss-love-mwah-gif-16687888',
+  'https://imgur.com/i1PIph3.gif',
+  'https://imgur.com/WVSwvm6.gif',
+  'https://imgur.com/0WWWvat.gif',
+  'https://imgur.com/YOQgZqY.gif',
+  'https://imgur.com/709chb9.gif',
+  'https://imgur.com/Xtxo8nV.gif',
+  'https://imgur.com/zGFB0wJ.gif',
+  'https://imgur.com/QETjUCT.gif',
+  
   
 ];
 
