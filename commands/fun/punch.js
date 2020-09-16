@@ -5,17 +5,14 @@ module.exports = {
   category:"fun",
   run: async (client, message, arg) => {
        var member= message.mentions.members.first();
-        var images = ["https://tenor.com/view/toradora-punch-gif-10769541",
-"https://tenor.com/view/anime-smash-lesbian-punch-wall-gif-4790446",
-"https://tenor.com/view/anime-naruto-punch-fight-gif-12911685",
-"https://tenor.com/view/anime-punch-knockout-wasted-smack-gif-11451829",
-"https://tenor.com/view/die-anime-punch-kill-angry-gif-8932977",
-"https://tenor.com/view/rin243109-blue-exorcist-anime-punch-gif-13785833",
-"https://tenor.com/view/shy-punch-anime-aki-adagaki-gif-12003970",
-"https://tenor.com/view/naruto-sasuke-punch-snicker-anime-gif-7380310",
-"https://tenor.com/view/stay-down-punch-naruto-gif-5211928",
-"https://tenor.com/view/fight-anime-punch-gif-16681456",
-"https://tenor.com/view/azumanga-daioh-azumanga-anime-punch-uppercut-gif-17075114" ];
+        var images = [
+          'https://imgur.com/e4bi40y.gif',
+          'https://imgur.com/FCXJydZ.gif',
+          'https://imgur.com/jznCcr2.gif',
+          'https://imgur.com/hlqNBXp.gif',
+          'https://imgur.com/AmQvKOV.gif',
+        
+        ];
         var image = Math.floor(Math.random() * images.length);
         if(!member) return message.channel.send("you need to mention someone")
         let HugEmbed = new Discord.MessageEmbed()
