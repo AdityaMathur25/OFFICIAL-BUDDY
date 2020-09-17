@@ -22,15 +22,7 @@ module.exports = {
     
     const {level, remxp, levelxp} = getInfo(xp);
     if(xp === 0) return message.channel.send(`**${user.tag}** is out of the xp`)
-    
-    let embed = new discord.MessageEmbed()
-    .setAuthor(user.username, message.guild.iconURL())
-    .setColor("#ff2050")
-    .setThumbnail(user.avatarURL())
-    .setDescription(`**LEVEL** - ${level}
-**XP** - ${remxp}/${levelxp}`)
-      
-    let data =  canva.rankcard(
+    (
      {
        link: "https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg",
        name: message.author.username,
