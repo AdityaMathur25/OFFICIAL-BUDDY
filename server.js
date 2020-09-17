@@ -72,7 +72,44 @@ client.on("message", async message => {
     return addexp(message);
   }
 });
+const Canvacord = require('canvacord')
 
+function xp(message) {
+    if (message.content.startsWith(PREFIX)) return
+    var user = message.mentions.users.first() || message.author
+    var level = db.get(`guild_${message.guild.id}_level_${user.id}`)
+    let xp = db.get('guild_${message.guild.id}_xp_${user.id}') || 0
+    var xpNeeded = level * 500 + 500
+    let every = db
+    .all()
+    .filter(i => i.ID.startsWith(`guild_${message.guild.id}_xptotal_`))
+    .sort((a,b) => b.data - a.data)
+    var rank = every.map(x => x.ID).indexOf(`guild_${message.guild.id}_xptotal_${user.id}`) + 1
+    rank = rank.toString()
+    var imagine = await.canvas.rank({
+        username: user.username,
+        discrim: user.discriminator,
+        status: user.presence.status,
+        currentXP: xp.toString(),
+        neededXP: xpNeeded.toString(),
+        rank,
+        level,
+        avatarURL: user.displayAvatarURL({format: "png"}),
+        color: "white"
+    })
+    return message.channel.send(new Discord.MessageAttachment(image, "rank".png))
+    const randomNumber = Math.floor(Math.random() + 10) + 15
+    db.add(`guild_${message.guild.id}_xp_${message.author.id}`, randomNumber)
+    db.add(`guild_${message.guild.id}_xptotal_${message.guild.id}`, randomNumber)
+    var level = db.get('guild_${message.guild.id}_level_${message.author.id}') || 1
+    var xp = db.get(`guild_${message.guild.id}_xp_${message.author.id}')
+    var xpNeeded = level * 500
+    if (xpNeeded < xp) {
+        var newLevel = db.get('guild_${message.guild.id}_level_${message.author.id}`, 2)
+        db.subtract(`guild_${message.guild.id}`, xpNeeded)
+        message.channel.send(`${message.author}, GG, You have leveled up to level ${newLevel}`)
+
+    }
 
 client.on("guildMemberAdd", async member => {
   //usage of welcome event

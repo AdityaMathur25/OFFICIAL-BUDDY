@@ -15,8 +15,7 @@ run: async (bot, message, args) => {
 
 	ctx.strokeStyle = '#74037b';
 	ctx.strokeRect(0, 0, canvas.width, canvas.height);
-ctx.strokestyle = '#FFFFFF',
-  ctx.strokesRect(0,0, canvas.width, canvas.height)
+
 	ctx.font = '30px Helvetica';
 	ctx.fillStyle = 'rgb(255, 255, 255)';
 	ctx.fillText(`NAME: ${message.author.username}`, 240, 100, );
