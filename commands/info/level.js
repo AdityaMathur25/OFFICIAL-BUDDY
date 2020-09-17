@@ -1,17 +1,21 @@
 const { MessageAttachment } = require("discord.js");
 
-module.exports= {
-run = async (client, message, args) => {
+module.exports = {
+  name:"Level",
+  description:"Show the level/rank",
+  category:"info",
+  aliases:["rank"],
+run: async (client, message, args) => {
   let user =
     message.mentions.users.first() ||
     client.users.cache.get(args[0]) ||
     match(args.join(" ").toLowerCase(), message.guild) ||
     message.author;
 
-  let level = client.db.get(`level_${user.id}`) || 0;
+  let level = client.db.get(`level_${user.id}`) || 1;
   level = level.toString();
-  let exp = client.db.get(`xp_${user.id}`) || 0;
-  let neededXP = Math.floor(Math.pow(level / 0.1, 2));
+  let exp = client.db.get(`xp_${user.id}`) || 1;
+  let neededXP = Math.floor(Math.pow(level / 1.2, 2));
 
   let every = client.db
     .all()
@@ -31,7 +35,6 @@ run = async (client, message, args) => {
   });
   return message.channel.send(new MessageAttachment(img, "rank.png"));
 
-
 function match(msg, i) {
   if (!msg) return undefined;
   if (!i) return undefined;
@@ -47,10 +50,5 @@ function match(msg, i) {
   if (!user) return undefined;
   return user.user;
 }
-
-module.exports.help = {
-  name: "rank"
 }
 }
-
-};
