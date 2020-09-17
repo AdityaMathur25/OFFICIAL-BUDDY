@@ -72,7 +72,9 @@ client.on("message", async message => {
     return addexp(message);
   }
 });
-const Canvacord = require('canvacord')
+client.on('message', async message =>  {
+    if (message.author.bot) return
+})
 
 function xp(message) {
     if (message.content.startsWith(PREFIX)) return
@@ -86,7 +88,7 @@ function xp(message) {
     .sort((a,b) => b.data - a.data)
     var rank = every.map(x => x.ID).indexOf(`guild_${message.guild.id}_xptotal_${user.id}`) + 1
     rank = rank.toString()
-    var imagine = await.canvas.rank({
+    var imagine = await canvas.rank({
         username: user.username,
         discrim: user.discriminator,
         status: user.presence.status,
@@ -96,7 +98,11 @@ function xp(message) {
         level,
         avatarURL: user.displayAvatarURL({format: "png"}),
         color: "white"
-    })
+    }
+                                           )
+    }
+
+                                        
     return message.channel.send(new Discord.MessageAttachment(image, "rank".png))
     const randomNumber = Math.floor(Math.random() + 10) + 15
     db.add(`guild_${message.guild.id}_xp_${message.author.id}`, randomNumber)
