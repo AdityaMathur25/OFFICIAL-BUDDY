@@ -15,7 +15,7 @@ run: async (client, message, args) => {
   let level = client.db.get(`level_${user.id}`) || 1;
   level = level.toString();
   let exp = client.db.get(`xp_${user.id}`) || 1;
-  let neededXP = Math.floor(Math.pow(level / 1.2, 2));
+  let neededXP = Math.floor(Math.pow(level / 2, 2));
 
   let every = client.db
     .all()
