@@ -88,7 +88,8 @@ function xp(message) {
     .sort((a,b) => b.data - a.data)
     var rank = every.map(x => x.ID).indexOf(`guild_${message.guild.id}_xptotal_${user.id}`) + 1
     rank = rank.toString()
-    var imagine = await canvas.rank({
+
+    var imagine = await.canvas.rank({
         username: user.username,
         discrim: user.discriminator,
         status: user.presence.status,
@@ -99,11 +100,8 @@ function xp(message) {
         avatarURL: user.displayAvatarURL({format: "png"}),
         color: "white"
     }
-                                           )
-    }
-
-                                        
-    return message.channel.send(new Discord.MessageAttachment(image, "rank".png))
+    })                                                      
+  return message.channel.send(new Discord.MessageAttachment(image, "rank".png))
     const randomNumber = Math.floor(Math.random() + 10) + 15
     db.add(`guild_${message.guild.id}_xp_${message.author.id}`, randomNumber)
     db.add(`guild_${message.guild.id}_xptotal_${message.guild.id}`, randomNumber)
