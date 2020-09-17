@@ -15,6 +15,8 @@ const client = new Client({
 });
 // for not taging everyone.
 // Collections
+client.db = require("quick.db");
+client.canvas = require("canvacord")
 client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
