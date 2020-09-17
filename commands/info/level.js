@@ -1,11 +1,7 @@
 const { MessageAttachment } = require("discord.js");
-const db = require("quick.db")
-module.exports = {
-  name:"level",
-  description:"know your level",
-  category:"info",
-  aliases:["lv"],
-run: async (client, message, args) => {
+
+module.exports= {
+run = async (client, message, args) => {
   let user =
     message.mentions.users.first() ||
     client.users.cache.get(args[0]) ||
@@ -14,8 +10,8 @@ run: async (client, message, args) => {
 
   let level = client.db.get(`level_${user.id}`) || 0;
   level = level.toString();
-  let exp = client.db.get(`xp_${user.id}`) || 10;
-  let neededXP = Math.floor(Math.pow(level / 1.2, 2));
+  let exp = client.db.get(`xp_${user.id}`) || 0;
+  let neededXP = Math.floor(Math.pow(level / 0.1, 2));
 
   let every = client.db
     .all()
@@ -23,17 +19,19 @@ run: async (client, message, args) => {
     .sort((a, b) => b.data - a.data);
   let rank = every.map(x => x.ID).indexOf(`xp_${user.id}`) + 1;
   rank = rank.toString();
-  let img =  await client.canvas.rank({
+  let img = await client.canvas.rank({
     username: user.username,
     discrim: user.discriminator,
     currentXP: exp.toString(),
     neededXP: neededXP.toString(),
     rank,
     level,
-    avatarURL: user.displayAvatarURL({ Dynamic: true, format: "png" }),
+    avatarURL: user.displayAvatarURL({ format: "png" }),
     background: "https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-1.2.1&w=1000&q=80"
   });
-  
+  return message.channel.send(new MessageAttachment(img, "rank.png"));
+
+
 function match(msg, i) {
   if (!msg) return undefined;
   if (!i) return undefined;
@@ -49,5 +47,10 @@ function match(msg, i) {
   if (!user) return undefined;
   return user.user;
 }
+
+module.exports.help = {
+  name: "rank"
 }
 }
+
+};
