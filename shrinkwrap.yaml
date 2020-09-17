@@ -2,6 +2,7 @@ dependencies:
   '@discordjs/opus': 0.3.2
   ascii-table: 0.0.9
   canvacord: 4.0.1
+  canvas: 2.6.1
   canvas-constructor: 4.1.0
   canvas-senpai: 0.1.6
   colornames: 1.1.1
@@ -3948,6 +3949,7 @@ specifiers:
   '@discordjs/opus': ^0.3.2
   ascii-table: ^0.0.9
   canvacord: ^4.0.1
+  canvas: ^2.6.1
   canvas-constructor: ^4.1.0
   canvas-senpai: ^0.1.6
   colornames: ^1.1.1

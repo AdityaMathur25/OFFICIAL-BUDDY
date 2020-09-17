@@ -33,20 +33,7 @@ run: async (client, message, args) => {
     avatarURL: user.displayAvatarURL({ Dynamic: true, format: "png" }),
     background: "https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-1.2.1&w=1000&q=80"
   });
-  let data = await canva.rankcard(
-     {
-       link: "https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg",
-       name: message.author.username,
-       discriminator: message.author.discriminator,
-       level:,
-       rank:,
-       currentXP: 679,
-       fullXP: 1000,
-       avatar: message.author.displayAvatarURL({ format: "png"})
-     
-     })
-  return message.channel.send(new MessageAttachment)
-
+  
 function match(msg, i) {
   if (!msg) return undefined;
   if (!i) return undefined;

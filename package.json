@@ -36,7 +36,8 @@
     "genius-lyrics": "^4.0.0",
     "canvacord": "^4.0.1",
     "snekfetch": "^4.0.4",
-    "canvas-constructor": "^4.1.0"
+    "canvas-constructor": "^4.1.0",
+    "canvas": "^2.6.1"
   },
   "engines": {
     "node": "12.x"

@@ -1,0 +1,44 @@
+
+  const Discord = require('discord.js')
+  const Canvas = require('canvas');
+
+module.exports = {
+  name:"canvas",
+  category:"",
+run: async (bot, message, args) => {
+  
+  const canvas = Canvas.createCanvas(700, 250);
+  const ctx = canvas.getContext('2d'); 	
+
+  const background = await Canvas.loadImage('https://cdn.discordapp.com/attachments/716901715449872434/755648330247307304/melody-sheep-hubble.jpg'); 	
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+	ctx.strokeStyle = '#74037b';
+	ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+	ctx.font = '20px Arial';
+	ctx.fillStyle = 'rgb(255, 255, 255)';
+	ctx.fillText('teste', 250, 250);
+
+
+  ctx.strokeStyle = '#74037b'; 
+  ctx.strokeRect(0, 0, canvas.width, canvas.height);
+	ctx.beginPath();	
+	ctx.arc(125, 125, 80, 0, Math.PI * 2, true);
+	ctx.closePath();	
+	ctx.clip();
+	
+	const avatar = await Canvas.loadImage(message.author.displayAvatarURL({ format: 'png' }));
+	ctx.drawImage(avatar, 25, 25, 200, 200);
+
+  const imagem = new Discord.MessageAttachment(canvas.toBuffer(), 'foto.png');
+
+let embed = new Discord.MessageEmbed()
+.setColor('#8b6eff')
+.attachFiles([imagem]).setImage('attachment://foto.png');
+
+message.channel.send(embed)
+  
+}
+}
+  
