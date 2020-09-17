@@ -12,10 +12,10 @@ run: async (client, message, args) => {
     match(args.join(" ").toLowerCase(), message.guild) ||
     message.author;
 
-  let level = client.db.get(`level_${user.id}`) || 1;
+  let level = client.db.get(`level_${user.id}`) || 0;
   level = level.toString();
   let exp = client.db.get(`xp_${user.id}`) || 1;
-  let neededXP = Math.floor(Math.pow(level / 2, 2));
+  let neededXP = Math.floor(Math.pow(level / 2,2));
 
   let every = client.db
     .all()
