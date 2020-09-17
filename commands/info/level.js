@@ -1,6 +1,5 @@
 const { MessageAttachment } = require("discord.js");
 const db = require("quick.db")
-const discord = require("discord.js")
 module.exports = {
   name:"level",
   description:"know your level",
@@ -13,36 +12,42 @@ run: async (client, message, args) => {
     match(args.join(" ").toLowerCase(), message.guild) ||
     message.author;
 
-  var level = db.get(`guild_${message.guild.id}_level_${user.id}`)
-    let xp = db.get('guild_${message.guild.id}_xp_${user.id}') || 0
-    var xpNeeded = level * 500 + 500
-    let every = db
-    .all()
-    .filter(i => i.ID.startsWith(`guild_${message.guild.id}_xptotal_`))
-    .sort((a,b) => b.data - a.data)
-    var rank = every.map(x => x.ID).indexOf(`guild_${message.guild.id}_xptotal_${user.id}`) + 1
-    rank = rank.toString()
-      let imagine = await client.canvas.rank({
-        username: user.username,
-        discrim: user.discriminator,
-        status: user.presence.status,
-        currentXP: xp.toString(),
-        neededXP: xpNeeded.toString(),
-        rank,
-        level,
-        avatarURL: user.displayAvatarURL({format: "png"}),
-        color: "white"
-    })
-    
-     const randomNumber = Math.floor(Math.random() + 10) + 15
-    db.add(`guild_${message.guild.id}_xp_${message.author.id}`, randomNumber)
-    db.add(`guild_${message.guild.id}_xptotal_${message.guild.id}`, randomNumber)
-    var level = db.get('guild_${message.guild.id}_level_${message.author.id}') || 1
-    var XP = db.get(`guild_${message.guild.id}_xp_${message.author.id}')
-    var XPNeeded = level * 500
-    if (XPNeeded < xp) {
-        var newLevel = db.get('guild_${message
-  
-}
-}
+  let level = client.db.get(`level_${user.id}`) || 0;
+  level = level.toString();
+  let exp = client.db.get(`xp_${user.id}`) || 10;
+  let neededXP = Math.floor(Math.pow(level / 1.2, 2));
 
+  let every = client.db
+    .all()
+    .filter(i => i.ID.startsWith("xp_"))
+    .sort((a, b) => b.data - a.data);
+  let rank = every.map(x => x.ID).indexOf(`xp_${user.id}`) + 1;
+  rank = rank.toString();
+  let img =  await client.canvas.rank({
+    username: user.username,
+    discrim: user.discriminator,
+    currentXP: exp.toString(),
+    neededXP: neededXP.toString(),
+    rank,
+    level,
+    avatarURL: user.displayAvatarURL({ Dynamic: true, format: "png" }),
+    background: "https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-1.2.1&w=1000&q=80"
+  });
+  
+function match(msg, i) {
+  if (!msg) return undefined;
+  if (!i) return undefined;
+  let user = i.members.cache.find(
+    m =>
+      m.user.username.toLowerCase().startsWith(msg) ||
+      m.user.username.toLowerCase() === msg ||
+      m.user.username.toLowerCase().includes(msg) ||
+      m.displayName.toLowerCase().startsWith(msg) ||
+      m.displayName.toLowerCase() === msg ||
+      m.displayName.toLowerCase().includes(msg)
+  );
+  if (!user) return undefined;
+  return user.user;
+}
+}
+}
