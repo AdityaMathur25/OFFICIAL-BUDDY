@@ -24,7 +24,9 @@ var user = message.mentions.users.first() || message.author;
     if(xp === 0) return message.channel.send(`**${user.tag}** is out of the xp`)
 const finallevel = level
 var loadingMsg = await message.channel.send('Loading image...');
-
+var rank = level;
+    rank = rank.toString();
+var finalRank = `#${rank}`;
     let image = await Canvacord.rank({
   username: user.username,
   discrim: user.discriminator,
@@ -32,7 +34,7 @@ var loadingMsg = await message.channel.send('Loading image...');
   currentXP: remxp.toString(),
   neededXP: levelxp.toString(),
   level: finallevel,
-   rank:,
+   rank: finalRank,
   avatarURL: user.displayAvatarURL({ format: "png" }),
   color: 'white',
   background: 'https://i.imgur.com/qUlHTcn.jpg'
