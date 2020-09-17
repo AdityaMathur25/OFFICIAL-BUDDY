@@ -1,6 +1,6 @@
 const db = require('quick.db')
-const canvas = require("canvacord")
-const discord = require('discord.js')
+const canva = require("canvas-senpai")
+const  { discord, MessageAttachment } = require('discord.js')
 const { getInfo } = require("../../handlers/xp.js")
 module.exports = {
   name: "level",
@@ -29,22 +29,24 @@ module.exports = {
     .setThumbnail(user.avatarURL())
     .setDescription(`**LEVEL** - ${level}
 **XP** - ${remxp}/${levelxp}`)
-    
- message.channel.send(embed)   
-    let img = client.canvas.rank({
-    username: user.username,
-    discrim: user.discriminator,
-    currentXP: remxp.toString(),
-    neededXP: levelxp.toString(),
-    rank,
-    level,
-    avatarURL: user.displayAvatarURL({ format: "png" }),
-    background: "https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-1.2.1&w=1000&q=80"
-  });
-  return message.channel.send(new MessageAttachment(img, "rank.png"));
+      
+    let data =  canva.rankcard(
+     {
+       link: "https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg",
+       name: message.author.username,
+       discriminator: message.author.discriminator,
+       level: 10,
+       rank: 6,
+       currentXP: 679,
+       fullXP: 1000,
+       avatar: message.author.displayAvatarURL({ format: "png"})
+     
+     })
+    const attachment = new discord.MessageAttachment(
+     data,
+      "welcome-image.png"
+    );
+  return message.channel.send(attachment);
 }}
     
-    
-    
-  }
-}
+
