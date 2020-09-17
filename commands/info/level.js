@@ -37,7 +37,7 @@ var finalRank = `#${rank}`;
    rank: finalRank,
   avatarURL: user.displayAvatarURL({ format: "png" }),
   color: 'white',
-  background: 'https://i.imgur.com/qUlHTcn.jpg'
+  background: 'https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg'
 });
 
 message.channel.send(new discord.MessageAttachment(image, "rank.png"));
