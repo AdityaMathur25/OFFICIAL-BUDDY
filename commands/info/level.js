@@ -23,16 +23,18 @@ run: async (client, message, args) => {
     .sort((a, b) => b.data - a.data);
   let rank = every.map(x => x.ID).indexOf(`xp_${user.id}`) + 1;
   rank = rank.toString();
-  let img =  await client.canvas.rank({
-    username: user.username,
-    discrim: user.discriminator,
-    currentXP: exp.toString(),
-    neededXP: neededXP.toString(),
-    rank,
-    level,
-    avatarURL: user.displayAvatarURL({ Dynamic: true, format: "png" }),
-    background: "https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-1.2.1&w=1000&q=80"
-  });
+      let imagine = await client.canvas.rank({
+        username: user.username,
+        discrim: user.discriminator,
+        status: user.presence.status,
+        currentXP: exp.toString(),
+        neededXP: neededXP.toString(),
+        rank,
+        level,
+        avatarURL: user.displayAvatarURL({format: "png"}),
+        color: "white"
+    })
+    return message.channel.send(new Discord.MessageAttachment(image, "rank".png))
   
 function match(msg, i) {
   if (!msg) return undefined;
