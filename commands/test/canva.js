@@ -10,14 +10,14 @@ run: async (bot, message, args) => {
   const canvas = Canvas.createCanvas(700, 250);
   const ctx = canvas.getContext('2d'); 	
 
-  const background = await Canvas.loadImage('https://cdn.discordapp.com/attachments/716901715449872434/755648330247307304/melody-sheep-hubble.jpg'); 	
+  const background = await Canvas.loadImage(''); 	
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 	ctx.strokeStyle = '#74037b';
 	ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
 	ctx.font = '30px Helvetica';
-	ctx.fillStyle = 'rgb(255, 255, 255)';
+	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.fillText(`NAME: ${message.author.username}`, 240, 100, );
 
 
