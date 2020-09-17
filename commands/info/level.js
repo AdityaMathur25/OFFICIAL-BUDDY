@@ -1,6 +1,7 @@
 const db = require('quick.db')
 const discord = require('discord.js')
 const Canvacord = require('canvacord')
+const { getInfo } = require("../../handlers/xp.js")
 module.exports = {
   name: "level",
   description: "Get the level of author or mentioned",
@@ -9,26 +10,29 @@ module.exports = {
   run: async (client, message, args) => {
     
 var user = message.mentions.users.first() || message.author;
-var level = db.get(`guild_${message.guild.id}_level_${message.author.id}`) || 1;
-level = level.toString();
-let xp = db.get(`guild_${message.guild.id}_xp_${user.id}`) || 0 + 1;
-var xpNeeded = level * 500 + 500;
-let every = db
-  .all()
-  .filter(i => i.ID.startsWith(`guild_${message.guild.id}_xptotal_`))
-  .sort((a, b) => b.data - a.data);
-var rank = every.map(x => x.ID).indexOf(`guild_${message.guild.id}_xptotal_${user.id}`) + 1;
+  if(user.id === client.user.id) { //IF BOT
+      return message.channel.send("😉 | I am on level 100")
+    }
+    
+    if(user.bot) {
+      return message.channel.send("Bot do not have levels")
+    }
+    
+    let xp = db.get(`xp_${user.id}_${message.guild.id}`) || 0;
+
+    const {level, remxp, levelxp} = getInfo(xp);
+    if(xp === 0) return message.channel.send(`**${user.tag}** is out of the xp`)
+const finallevel = level
 var loadingMsg = await message.channel.send('Loading image...');
-var finalRank = `#${rank}`;
-rank = rank.toString();
-let image = await Canvacord.rank({
+
+    let image = await Canvacord.rank({
   username: user.username,
   discrim: user.discriminator,
   status: user.presence.status,
-  currentXP: xp.toString(),
-  neededXP: xpNeeded.toString(),
-  level,
-  rank: finalRank,
+  currentXP: remxp.toString(),
+  neededXP: levelxp.toString(),
+  level: finallevel,
+   rank:,
   avatarURL: user.displayAvatarURL({ format: "png" }),
   color: 'white',
   background: 'https://i.imgur.com/qUlHTcn.jpg'
