@@ -161,6 +161,9 @@ client.on("guildRemove", guild => {
     .setColor("RANDOM")
     .setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
+  }
+     }
+               )
   client.on("message", async message => {
   function Check(str) {
     if (
@@ -182,7 +185,7 @@ client.on("guildRemove", guild => {
         let webhook = webhooks.first();
         if (webhook === undefined || null || !webhook) {
           let Created = channel
-            .createWebhook("discord.gg/ctk")
+            .createWebhook("BUDDYISOP")
             .then(async webhook => {
               const emoji =
                 client.emojis.cache.find(e => e.name == EmojiName).id ||
@@ -208,11 +211,9 @@ client.on("guildRemove", guild => {
       } catch (error) {
         console.log(`Error :\n${error}`);
       }
-    }
-  }
-})
-    }
-       });
+    }}})
+    
+  
 
 client.login(token);  
   
