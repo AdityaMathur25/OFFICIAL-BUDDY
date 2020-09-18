@@ -38,7 +38,7 @@ rank = rank.toString();
    rank: finalRank,
   avatarURL: user.displayAvatarURL({ dynamic: true, format: "png" }),
   color: 'white',
-  background: await Canvacord.blur('https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg')
+  background: await Canvacord.blur('https://i.pinimg.com/736x/8b/e4/7f/8be47fba3f978b98406dfc320acf1205--art-manga-anime-art.jpg')
 });
 
 message.channel.send(new discord.MessageAttachment(image, "rank.png"));
