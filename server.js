@@ -87,7 +87,7 @@ client.on("guildMemberAdd", async member => {
     "https://wallpapercave.com/wp/wp5700007.jpg",
     "https://wallpapercave.com/wp/wp5243211.jpg"
   ];
-  let random = Math.floor(Math.random() * 4); //no i dont want 4 image 1 omly
+  let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
   let data = await canva.welcome(member, { link: `${images[random]}` });
   const attachment = new discord.MessageAttachment(data, "welcome-image.png");
   client.channels.cache
@@ -97,15 +97,16 @@ client.on("guildMemberAdd", async member => {
 
 client.on("guildMemberRemove", async member => {
   //usage of welcome event
-  let chx = db.get(`leavchannel_${member.guild.id}`);
+  let cpx = db.get(`leavchannel_${member.guild.id}`);
   //defining 
   //its leave 
   const seen = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
+  .setColor("RANDOM")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
-    client.channels.cache.get(chx).send(seen)
+    client.channels.cache.get(cpx).send(seen)
   //get channel and send embed  
   
   });
