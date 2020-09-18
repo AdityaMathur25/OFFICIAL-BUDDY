@@ -7,6 +7,7 @@ module.exports = {
   description: "Get the level of author or mentioned",
   usage: "level <user>",
   category: "info",
+  aliases:["rank"],
   run: async (client, message, args) => {
     
 var user = message.mentions.users.first() || message.author;
@@ -35,9 +36,9 @@ var finalRank = `#${rank}`;
   neededXP: levelxp.toString(),
   level: finallevel,
    rank: finalRank,
-  avatarURL: user.displayAvatarURL({ format: "png" }),
-  color: 'white',
-  background: 'https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg'
+  avatarURL: user.displayAvatarURL({ dynamic: true, format: "png" }),
+  color: 'Aqua',
+  background: await Canvacord.blur('https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg')
 });
 
 message.channel.send(new discord.MessageAttachment(image, "rank.png"));
