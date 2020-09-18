@@ -161,8 +161,7 @@ client.on("guildRemove", guild => {
     .setColor("RANDOM")
     .setFooter(`REQUESTED BY ${message.author.username}`)
    return message.channel.send(luck)
-        
-              client.on("message", async message => {
+  client.on("message", async message => {
   function Check(str) {
     if (
       client.emojis.cache.find(emoji => emoji.name === str) ||
@@ -173,13 +172,9 @@ client.on("guildRemove", guild => {
       return false;
     }
   }
-                
-                        
-    
-               
-
   if (message.content.startsWith(":") && message.content.endsWith(":")) {
     let EmojiName = message.content.slice(1, -1);
+
     if (Check(EmojiName) === true) {
       const channel = client.channels.cache.get(message.channel.id);
       try {
@@ -188,6 +183,37 @@ client.on("guildRemove", guild => {
         if (webhook === undefined || null || !webhook) {
           let Created = channel
             .createWebhook("discord.gg/ctk")
-            .then(async lient.login(token);  
+            .then(async webhook => {
+              const emoji =
+                client.emojis.cache.find(e => e.name == EmojiName).id ||
+                message.guild.emojis.cache.find(e => e.name === EmojiName).id;
+
+              await webhook.send(`${client.emojis.cache.get(emoji)}`, {
+                username: message.author.username,
+                avatarURL: message.author.avatarURL({ dynamic: true })
+              });
+              message.delete();
+            });
+        }
+
+        const emoji =
+          client.emojis.cache.find(e => e.name == EmojiName).id ||
+          message.guild.emojis.cache.find(e => e.name === EmojiName).id;
+
+        await webhook.send(`${client.emojis.cache.get(emoji)}`, {
+          username: message.author.username,
+          avatarURL: message.author.avatarURL({ dynamic: true })
+        });
+        message.delete();
+      } catch (error) {
+        console.log(`Error :\n${error}`);
+      }
+    }
+  }
+})
+    }
+       });
+
+client.login(token);  
   
   
