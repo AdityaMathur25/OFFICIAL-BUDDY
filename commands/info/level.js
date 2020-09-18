@@ -25,7 +25,7 @@ var user = message.mentions.users.first() || message.author;
     if(xp === 0) return message.channel.send(`**${user.tag}** is out of the xp`)
 const finallevel = level
 var loadingMsg = await message.channel.send('Loading image...');
-    var rank = every.map(x => x.ID).indexOf(`guild_${message.guild.id}_xptotal_${user.id}`) + 1;
+    var rank = level / 2
 rank = rank.toString();
     let finalRank = rank
     let image = await Canvacord.rank({
