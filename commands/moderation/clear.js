@@ -13,33 +13,33 @@ module.exports = {
 
         //Start
 
-        if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You Don't Have Permission To Use This Command!")
+        //THIS IS THE CODE FOR THE COMMAND ONLY
+ 
+    const messageArray = message.content.split(' ');
+	
 
-        if (!args[0]) return message.channel.send(`Please Give Me Amounts Of Messages!`);
+    if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send('Lack of Perms!');
+    
+    let deleteAmount;
 
-        if (isNaN(args[0])) return message.channel.send(`Please Give Me Number Value!`);
+    if (isNaN(args[0]) || parseInt(args[0]) <= 0) { return message.reply('Please put a number only!') }
 
-        if (args[0] > 100) return message.channel.send(`I Can Only Delete 100 Messages Because Of Discord Limit!`);
+    if (parseInt(args[0]) > 100) {
+        return message.reply('You can only delete 100 messages at a time!')
+    } else {
+        deleteAmount = parseInt(args[0]);
+    }
 
-        if (args[0] < 4) return message.channel.send(`You Can Delete ${args[0]} By Your Self Its Not Too Many Messages!`)
-
-        let Channel = message.channel;
-
-        let Reason = args.slice(1).join(" ");
-
-        message.channel.bulkDelete(args[0])
-        .then(Amount => {
+    message.channel.bulkDelete(deleteAmount + 1, true);
             let embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setTitle(`Messages Deleted!`)
             .addField(`Moderator`, `${message.author.tag} (${message.author.id}`)
-            .addField(`Channel`, `${Channel.name} (${Channel.id}`)
-            .addField(`Deleted Messages`, `${Amount.size}`)
-            .addField(`Reason`, `${Reason || "No Reason Provided!"}`)
+        .addField(`Deleted Messages`, `${deleteAmount}`)
             .setFooter(`Requested by ${message.author.username}`)
             .setTimestamp();
-        message.channel.send(embed).then(msg => msg.delete({ timeout: 1000 }))
-        });
+      message.reply(embed)
+        
 
         //End
 
