@@ -99,20 +99,20 @@ client.on("guildMemberAdd", async member => {
 
 client.on("guildMemberRemove", async member => {
   //usage of welcome event
-  let lul = db.get(`leavaannel_${member.guild.id}`);
+  let lul =  await db.fetch(`leechannel_${member.guild.id}`);
   //defining 
-  //its leave 
+//lol i already do but u seted leavechannel😫 all done
+  //make ur browser to desktop cuz .. //its leave 
   const nobiya = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setColor("RANDOM")
-  .setDescription(`@$member.user.uSAY-GOODBYE MEET YOU SOON!`)
+  .setDescription(`member.user.username} SAY-GOODBYE MEET YOU SOON!`)
   .setTimestamp()
-  .setFooter(` ${member.user.username} j**st leftft the server !! **`) 
-  const channel = client.channels.cache.get(lul) 
-  return channel.send(nobiya)
- 
-   // i setde db //get channel and send embed  
-//
+  .setFooter(`${member.user.username} jjt left the server !`) 
+  const channel = ient.channels.cache.get(lul)l)
+  return channel.send(nobiya);
+   // i setde db hmmmm... i understand kk //get channel and send embed  
+//WAIT
   //error at leave od send :/ see log  log of send is un define  
   });
   client.on("message", async message => {
