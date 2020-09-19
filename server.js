@@ -92,7 +92,12 @@ client.on("guildMemberAdd", async member => {
   const attachment = new discord.MessageAttachment(data, "welcome-image.png");
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
-    msg = `WELCOME TO THE SERVER ${member.user}`
+    msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
+    const maria = new MessageEmbed()
+    .setTitle(`${member.user} WELCOME TO ${member.guild.name}`)
+    .setDescription(msg)
+    .setColor("RANDOM")
+    .setThumbnail(attachment)
   client.channels.cache
     .get(chx)
     .send(`${msg}`, attachment);
