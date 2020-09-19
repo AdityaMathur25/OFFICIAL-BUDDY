@@ -105,12 +105,15 @@ client.on("guildMemberRemove", async member => {
   const nobiya = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setColor("RANDOM")
-  .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
+  .setDescription(`@$member.user.uSAY-GOODBYE MEET YOU SOON!`)
   .setTimestamp()
-  .setFooter(member.user.username, "just left server !")
-    client.channels.cache.get(lul).send(nobiya)
-  //get channel and send embed  
-  
+  .setFooter(` ${member.user.username} j**st leftft the server !! **`) 
+  const channel = client.channels.cache.get(lul) 
+  return channel.send(nobiya)
+ 
+   // i setde db //get channel and send embed  
+//
+  //error at leave od send :/ see log  log of send is un define  
   });
   client.on("message", async message => {
   if (message.author.client) return;
