@@ -6,7 +6,7 @@ module.exports = {
   category: "Administration",
   usage: "setwelcomemessage <@message>",
   description: "Set the welcome message",
-  alaises:["msg"],
+  aliases:["msg"],
   run: (client, message, args) => {
     
     let Content = args.join(" ");//mentioned channel

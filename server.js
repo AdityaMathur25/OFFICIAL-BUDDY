@@ -94,7 +94,10 @@ client.on("guildMemberAdd", async member => {
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
     client.channels.cache
     .get(chx)
-  .send(`${msg}`, attachment)
+  .send(`${msg}`)
+  let dumb = await db.fetch(`welchannel_${member.guild.id}`)
+  let gg = client.channels.cache.get(dumb)
+  return gg.send( attachment )
 }); //get channel and send embed
 
 client.on("guildMemberRemove", async member => {
