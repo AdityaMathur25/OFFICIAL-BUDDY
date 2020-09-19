@@ -9,16 +9,16 @@ module.exports = {
   alaises:["msg"],
   run: (client, message, args) => {
     
-    let channel = message.content.first() //mentioned channel
+    let Content = args.join(" ");//mentioned channel
     
-    if(!channel) { //if channel is not mentioned
+    if(!Content) { //if channel is not mentioned
       return message.channel.send("Please provide message")
     }
     
     //Now we gonna use quick.db
     
-    db.set(`welmsg_${message.guild.id}`, message.content) //set id in var
+    db.set(`welmsg_${message.guild.id}`, Content) //set id in var
     
-    message.channel.send(`Welcome Channel is seted as ${channel}`) //send success message
+    message.channel.send(`message seted as ${Content}`) //send success message
   }
 }
