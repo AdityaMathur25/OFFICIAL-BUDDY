@@ -152,7 +152,7 @@ client.on("guildDelete", guild => {
        let prefix = await db.get(`prefix_${message.guild.id}`) 
        if(prefix === null) 
          prefix = default_prefix; 
-       
+     if(message.mentions.has("@everyone")) return;  
   if(message.mentions.has(client.user)) {
     const luck = new MessageEmbed()
     .setAuthor(message.author.username, message.author.displayAvatarURL())
