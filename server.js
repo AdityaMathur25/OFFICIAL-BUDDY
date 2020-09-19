@@ -92,20 +92,14 @@ client.on("guildMemberAdd", async member => {
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
-    const buddy = new MessageEmbed()
-    .setTitle(`${member.user.username} WELCOME TO ${member.guild.name}`)
-    .setDescription(msg)
-    .setColor("RANDOM")
-    .addField("MEMBERCOUNT:", member.guild.memberCount)
-    .setFooter("NEW USER JOINED")
     client.channels.cache
     .get(chx)
-  .send(attachment, buddy)
+  .send(attachment, msg)
 }); //get channel and send embed
 
 client.on("guildMemberRemove", async member => {
   //usage of welcome event
-  let lul = db.get(`leavchannel_${member.guild.id}`);
+  let lul = db.get(`leavaannel_${member.guild.id}`);
   //defining 
   //its leave 
   const nobiya = new MessageEmbed()

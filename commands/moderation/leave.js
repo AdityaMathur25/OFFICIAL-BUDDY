@@ -16,7 +16,7 @@ module.exports = {
     
     //Now we gonna use quick.db
     
-    db.set(`leavchannel_${message.guild.id}`, channel.id) //set id in var
+    db.set(`leachannel_${message.guild.id}`, channel.id) //set id in var
     
     message.channel.send(`leave Channel is seted as ${channel}`) //send success message
   }
