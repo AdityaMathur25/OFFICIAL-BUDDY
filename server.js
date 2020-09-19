@@ -95,6 +95,7 @@ client.on("guildMemberAdd", async member => {
     client.channels.cache
     .get(chx)
   .send(`${msg}`)
+  
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
   return gg.send( attachment )
