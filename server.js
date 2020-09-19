@@ -75,8 +75,7 @@ client.on("message", async message => {
 
 
 client.on("guildMemberAdd", async member => {
-  //usage of welcome event
-  let chx = db.get(`welchannel_${member.guild.id}`);
+   let chx = db.get(`welchannel_${member.guild.id}`);
   //defining var
   if (!chx) return;
   //u not define at random for image ?
@@ -97,12 +96,11 @@ client.on("guildMemberAdd", async member => {
     .setTitle(`${member.user} WELCOME TO ${member.guild.name}`)
     .setDescription(msg)
     .setColor("RANDOM")
-    .setImage(attachment)
-  .addField("MEMBERCOUNT:", member.guild.memberCount)
+    .addField("MEMBERCOUNT:", member.guild.memberCount)
     .setFooter("NEW USER JOINED")
     client.channels.cache
     .get(chx)
-  .send(maria)
+  .send(attachment, maria)
 }); //get channel and send embed
 
 client.on("guildMemberRemove", async member => {
