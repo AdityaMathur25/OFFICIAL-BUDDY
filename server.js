@@ -105,16 +105,16 @@ client.on("guildMemberAdd", async member => {
 
 client.on("guildMemberRemove", async member => {
   //usage of welcome event
-  let cpx = db.get(`leavchannel_${member.guild.id}`);
+  let lul = db.get(`leavchannel_${member.guild.id}`);
   //defining 
   //its leave 
-  const seen = new MessageEmbed()
+  const nobiya = new MessageEmbed()
   .setTitle("SAY-GOODBYE")
   .setColor("RANDOM")
   .setDescription(`@${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
   .setTimestamp()
   .setFooter(member.user.username, "just left server !")
-    client.channels.cache.get(cpx).send(seen)
+    client.channels.cache.get(lul).send(nobiya)
   //get channel and send embed  
   
   });
