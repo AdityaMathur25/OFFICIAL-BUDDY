@@ -97,10 +97,12 @@ client.on("guildMemberAdd", async member => {
     .setTitle(`${member.user} WELCOME TO ${member.guild.name}`)
     .setDescription(msg)
     .setColor("RANDOM")
-    .setThumbnail(attachment)
-  client.channels.cache
+    .setImage(attachment)
+  .addField("MEMBERCOUNT:", member.guild.memberCount)
+    .setFooter("NEW USER JOINED")
+    client.channels.cache
     .get(chx)
-    .send(`${msg}`, attachment);
+  .send(maria)
 }); //get channel and send embed
 
 client.on("guildMemberRemove", async member => {
