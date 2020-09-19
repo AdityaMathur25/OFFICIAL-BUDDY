@@ -88,12 +88,12 @@ client.on("guildMemberAdd", async member => {
   ];
   let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
   let data = await canva.welcome(member, { link: `${images[random]}` });
-  const attachment = new discord.MessageAttachment(data, "welcome-image.png");
+  const attachment = new MessageAttachment(data, "welcome-image.png");
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
     const buddy = new MessageEmbed()
-    .setTitle(`${member.user} WELCOME TO ${member.guild.name}`)
+    .setTitle(`${member.user.username} WELCOME TO ${member.guild.name}`)
     .setDescription(msg)
     .setColor("RANDOM")
     .addField("MEMBERCOUNT:", member.guild.memberCount)
