@@ -136,7 +136,7 @@ client.on("guildCreate", guild => {
   client.channels.cache.get("748936869022007376").send(join);
   console.log("NEW SERVER JOIN" + guild.name);
 });
-client.on("guildRemove", guild => {
+client.on("guildDelete", guild => {
   let join = new discord.MessageEmbed()
     .setColor("RED")
     .setTitle("LEFT FROM SERVER")
@@ -215,6 +215,6 @@ client.on("guildRemove", guild => {
     
   
 
-client.login(token);  
+client.login(process.env.token);  
   
   
