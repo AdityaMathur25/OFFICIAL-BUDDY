@@ -95,7 +95,6 @@ client.on("guildMemberAdd", async member => {
     const buddy = new MessageEmbed()
     .setTitle(`${member.user} WELCOME TO ${member.guild.name}`)
     .setDescription(msg)
-    .setImage(attachment)
     .setColor("RANDOM")
     .addField("MEMBERCOUNT:", member.guild.memberCount)
     .setFooter("NEW USER JOINED")
