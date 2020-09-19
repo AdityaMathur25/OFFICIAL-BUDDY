@@ -95,6 +95,7 @@ client.on("guildMemberAdd", async member => {
     const maria = new MessageEmbed()
     .setTitle(`${member.user} WELCOME TO ${member.guild.name}`)
     .setDescription(msg)
+    .setImage(data)
     .setColor("RANDOM")
     .addField("MEMBERCOUNT:", member.guild.memberCount)
     .setFooter("NEW USER JOINED")
