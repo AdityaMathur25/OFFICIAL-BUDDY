@@ -90,10 +90,12 @@ client.on("guildMemberAdd", async member => {
   let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
   let data = await canva.welcome(member, { link: `${images[random]}` });
   const attachment = new discord.MessageAttachment(data, "welcome-image.png");
-  let msg = db.get(`msg_${member.guild.id}`)
+  let msg = db.get(`welmsg_${member.guild.id}`)
+  if(msg === null)
+    msg = `WELCOME TO THE SERVER ${member.user}`
   client.channels.cache
     .get(chx)
-    .send(`Welcome to the server, ${member.user.username}!`, attachment);
+    .send(`${msg}`, attachment);
 }); //get channel and send embed
 
 client.on("guildMemberRemove", async member => {
