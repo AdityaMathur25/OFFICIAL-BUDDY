@@ -7,7 +7,7 @@ const discord = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-
+const { badwords } = require("./data.json") 
 let random = Math.floor(Math.random() * 4);
 //for image ?
 const client = new Client({
@@ -20,6 +20,10 @@ client.canvas = require("canvacord")
 client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
+
+ if(!message.member.hasPermission("ADMINISTRATOR")) {
+   
+ }
 
 // Run the command loader
 ["command"].forEach(handler => {
