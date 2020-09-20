@@ -95,7 +95,7 @@ client.on("guildMemberAdd", async member => {
     let newmsg = msg.replace("{user}", member.user)
     client.channels.cache
     .get(chx)
-  .send(`${msg}`, newmsg)
+  .send(`${newmsg}`)
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
