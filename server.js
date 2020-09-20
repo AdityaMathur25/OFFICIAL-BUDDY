@@ -92,7 +92,7 @@ client.on("guildMemberAdd", async member => {
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
-    let newmsg = msg.replace("{user}", member.user)
+    let newmsg = msg.replace("{user}", member.user, "{server}", member.guild.name, "{members}", member.guild.memberCount)
     client.channels.cache
     .get(chx)
   .send(`${newmsg}`)
