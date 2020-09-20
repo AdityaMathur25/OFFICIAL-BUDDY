@@ -90,6 +90,7 @@ client.on("guildMemberAdd", async member => {
   let data = await canva.welcome(member, { link: `${images[random]}` });
   const attachment = new discord.MessageAttachment(data, "welcome-image.png");
   let msg = db.get(`welmsg_${member.guild.id}`)
+let newmsg = msg.replace("{user}", member.user.username)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
     client.channels.cache
