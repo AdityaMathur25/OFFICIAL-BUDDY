@@ -92,10 +92,12 @@ client.on("guildMemberAdd", async member => {
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
-    let newmsg = msg.replace("{user}", member.user, "{server}", member.guild.name, "{members}", member.guild.memberCount)
+    let newmsg = msg.replace("{user}", member.user);
+    let hg = newmsg.replace("{server}", member.guild.name);
+    let ffg = hg.replace("{members}", member.guild.memberCount);
     client.channels.cache
     .get(chx)
-  .send(`${newmsg}`)
+  .send(`${ffg}`)
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)

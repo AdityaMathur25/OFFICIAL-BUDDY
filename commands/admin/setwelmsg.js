@@ -5,7 +5,7 @@ module.exports = {
   name: "setwelmessage",
   category: "Administration",
   usage: "setwelcomemessage <@message>",
-  description: "Set the welcome message",
+  description: "Set the welcome message, use {user} to ping new user , {server} to show server name , {members} to show member count",
   aliases:["msg"],
   run: (client, message, args) => {
     
