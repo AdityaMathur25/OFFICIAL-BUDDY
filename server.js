@@ -95,7 +95,7 @@ let newmsg = msg.replace("{user}", member.user.username)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
     client.channels.cache
     .get(chx)
-  .send(`${msg}`)
+  .send(`${msg}`, newmsg)
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
