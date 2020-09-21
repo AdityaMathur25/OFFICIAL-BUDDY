@@ -12,6 +12,13 @@ module.exports = {
   run: async (client, message, args) => {
 
     //Start
+    function duration(ms) {
+        const sec = Math.floor((ms / 1000) % 60).toString()
+        const min = Math.floor((ms / (1000 * 60)) % 60).toString()
+        const hrs = Math.floor((ms / (1000 * 60 * 60)) % 60).toString()
+        const days = Math.floor((ms / (1000 * 60 * 60 * 24)) % 60).toString()
+        return `${days.padStart(1, '0')} days, ${hrs.padStart(2, '0')} hours, ${min.padStart(2, '0')} minutes, ${sec.padStart(2, '0')} seconds.`
+    }
 
     
 
@@ -34,6 +41,8 @@ module.exports = {
     .addField('SERVERS:', client.guilds.cache.size, true)
     .addField('MEMBERS:', client.users.cache.size,true)
     .addField('CHANNELS:', client.channels.cache.size, true)
+    .addField('PLAYING MUSIC', `${client.voice.connections.size} Server !`, true )
+    .addField('UPTIME:',`${duration(client.uptime)}`, true)
     .addField('LIBRARY:', 'V12', true)
     .addField('CREATED ON:','VPS/WINDOWS 10X', true)
     .setDescription(`**AUTHOR:**
