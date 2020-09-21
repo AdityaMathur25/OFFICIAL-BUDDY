@@ -32,8 +32,8 @@ module.exports = {
       .addField('Status', statuses[client.presence.status], true)
     .addField('CREATED ON:','VPS/WINDOWS 10X', true)
     .setDescription(`**BOT OWNERS:**
-@${toxic.username}
-@${yash.username}`)
+<@480285300484997122>
+<@539385330923601930>`)
        
       .setFooter(`Requested by ${message.author.username}`)
       .setTimestamp();
