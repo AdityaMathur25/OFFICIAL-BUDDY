@@ -1,6 +1,6 @@
 
 const { MessageEmbed } = require("discord.js");
-
+const db = require("quick.db")
 module.exports = {
   name: "help",
   description:
@@ -78,6 +78,17 @@ module.exports = {
 let emoji = "<a:arrowslogo:751462628412358736>"
         emx.addField(`${emoji}${category.toUpperCase()}[${value.length}]`, desc);
       }
+      let database = db.get(`cmd_${message.guild.id}`)
+
+      if(database && database.length) {
+        let array =[]
+        database.forEach(m => {
+          array.push("`" + m.name + "`")
+        })
+
+        emx.addField("Custom Commands", array.join(", "))
+      }
+
 
       return message.channel.send(emx);
     }
