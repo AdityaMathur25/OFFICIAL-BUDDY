@@ -8,7 +8,7 @@ module.exports = {
   description: "MAKE YOUR SERVER PROTECTED FORM RAIDERS",
   aliases:["setr"],
   run: (client, message, args) => {
-    
+    let role = message.mentions.members.first()
     let channel = args.join(" ");//mentioned channel
     
     if(!channel) { //if channel is not mentioned
