@@ -1,6 +1,7 @@
 
 const { MessageEmbed } = require("discord.js");
 const db = require("quick.db")
+const default_prefix = require("../../config.json")
 module.exports = {
   name: "help",
   description:
@@ -43,8 +44,8 @@ module.exports = {
       }
 
       let embed = new MessageEmbed()
-      .setTitle("IF WANT TO KNOW SPECIFIC COMMAND INFO TYPE >", ``)
-        .setAuthor(command.name, client.user.displayAvatarURL())
+    
+     embed.setAuthor(command.name, client.user.displayAvatarURL())
         .addField("Description", command.description || "Not Provided :(")
         .addField("Usage", "`" + command.usage + "`" || "Not Provied")
         .setThumbnail(client.user.displayAvatarURL())
@@ -54,9 +55,13 @@ module.exports = {
       return message.channel.send(embed);
     } else {
       const commands = await client.commands;
-
+let prefix = await db.get(`prefix_${message.guild.id}`) 
+       if(prefix === null) 
+         prefix = default_prefix; 
+    
       let emx = new MessageEmbed()
-        .setDescription("HELP MENU")
+         .setDescription("HELP MENU")
+      .setTitle("IF YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name`)
         .setColor("#00FFFF")
         .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL());
