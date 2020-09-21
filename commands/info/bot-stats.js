@@ -22,16 +22,16 @@ module.exports = {
       offline: 'Offline/Invisible',
     };
      const toxic = client.users.cache.get("480285300484997122");
- const yash = client.user.cache.get("539385330923601930");
+ const yash = client.users.cache.get("539385330923601930");
 
     const embed = new MessageEmbed()
       .setTitle(client.user.username, client.user.displayAvatarURL({dynamic: true}))
       .setColor(COLOR)
       .addField('BOT Name', client.user.tag, true)
-      .addField('ID', `${client.id}`, true)
+      .addField('ID', `${client.user.id}`, true)
       .addField('Status', statuses[client.presence.status], true)
-    .addField('BOT OWNERS:', toxic.username, true)
-    .addField(`${yash.username}`, true)
+    .addField('BOT OWNERS:', toxic.user, true)
+    .addField(`${yash.user}`)
       .setFooter(`Requested by ${message.author.username}`)
       .setTimestamp();
 

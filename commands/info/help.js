@@ -59,8 +59,8 @@ let prefix = await db.get(`prefix_${message.guild.id}`)
          prefix = default_prefix; 
     
       let emx = new MessageEmbed()
-         .setDTitle"HELP MENU")
-      .setTDescription"`F YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name`)
+         .setTitle("HELP MENU")
+      .setDescription(`IF YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name`)
         .setColor("#00FFFF")
         .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL());
