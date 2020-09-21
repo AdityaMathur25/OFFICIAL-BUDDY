@@ -31,13 +31,15 @@ module.exports = {
       .addField('OWNER ID:', "480285300484997122 & 539385330923601930" , true)
       .addField('BOT ID:', `${client.user.id}`, true)
       .addField('STATUS:', statuses[client.presence.status], true)
-    .addField('BOT COUNT:',client.users.,)
+    .addField('SERVERS:', client.guilds.cache.size, true)
+    .addField('MEMBERS:', client.users.cache.size,true)
+    .addField('CHANNELS:', client.channels.cache.size, true)
     .addField('LIBRARY:', 'V12', true)
     .addField('CREATED ON:','VPS/WINDOWS 10X', true)
     .setDescription(`**AUTHOR:**
 UDIT & YASH
-**BOT OWNERS:**
 
+**BOT OWNERS:**
 <@480285300484997122>
 <@539385330923601930>`)
        
