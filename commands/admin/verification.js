@@ -1,3 +1,4 @@
+const db = require("quick.db")
 const discord = require("discord.js")
 module.exports = {
   name: "verify",
@@ -7,8 +8,9 @@ module.exports = {
   run: async (client, message, args) => {
     let code = randomInteger(100000, 1000000)
     message.delete({timeout: 2000})
-    let channel = message.guild.channels.cache.find(ch => ch.name === "verify")
-    if(!channel) return message.channel.send("Couldnt find channel called verify")
+    let channel =  db.set(`vchannel_${message.guild.id}`, channel.id)
+    if (channel = null)
+    return message.channel.send("PLEASE PROVIDE A VERIFICATION CHANNEL")
     //Searching for a channel called "verify" and if it doesnt find it it will stop everything
     
     let embed = new discord.MessageEmbed()
