@@ -1,4 +1,3 @@
-
 const { MessageEmbed } = require("discord.js");
 const db = require("quick.db")
 const default_prefix = require("../../config.json")
@@ -60,8 +59,8 @@ let prefix = await db.get(`prefix_${message.guild.id}`)
          prefix = default_prefix; 
     
       let emx = new MessageEmbed()
-         .setDescription("HELP MENU")
-      .setTitle("IF YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name`)
+         .setDTitle"HELP MENU")
+      .setTDescription"`F YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name`)
         .setColor("#00FFFF")
         .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL());
