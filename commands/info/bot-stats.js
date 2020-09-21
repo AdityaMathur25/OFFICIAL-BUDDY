@@ -30,10 +30,10 @@ module.exports = {
       .addField('BOT NAME', client.user.tag, true)
       .addField('ID', `${client.user.id}`, true)
       .addField('Status', statuses[client.presence.status], true)
-    .addField('CREATED ON:','VPS/ ')
+    .addField('CREATED ON:','VPS/WINDOWS 10X', true)
     .setDescription(`**BOT OWNERS:**
-${toxic.username}
-${yash.username}`)
+@${toxic.username}
+@${yash.username}`)
        
       .setFooter(`Requested by ${message.author.username}`)
       .setTimestamp();
