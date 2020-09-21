@@ -25,13 +25,19 @@ module.exports = {
  const yash = client.users.cache.get("539385330923601930");
 
     const embed = new MessageEmbed()
-      .setTitle(client.user.username, client.user.displayAvatarURL({dynamic: true}))
+      .setTitle(client.user.username)
+                .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
       .setColor(COLOR)
-      .addField('BOT NAME', client.user.tag, true)
-      .addField('ID', `${client.user.id}`, true)
-      .addField('Status', statuses[client.presence.status], true)
+      .addField('OWNER ID:', "480285300484997122 & 539385330923601930" , true)
+      .addField('BOT ID:', `${client.user.id}`, true)
+      .addField('STATUS:', statuses[client.presence.status], true)
+    .addField('BOT COUNT:',client.users.,)
+    .addField('LIBRARY:', 'V12', true)
     .addField('CREATED ON:','VPS/WINDOWS 10X', true)
-    .setDescription(`**BOT OWNERS:**
+    .setDescription(`**AUTHOR:**
+UDIT & YASH
+**BOT OWNERS:**
+
 <@480285300484997122>
 <@539385330923601930>`)
        
