@@ -8,6 +8,7 @@ module.exports = {
     "Get list of all command and even get to know every command detials",
   usage: "help <cmd>",
   category: "info",
+  aliases:["h"],
   run: async (client, message, args) => {
     if (args[0]) {
       const command = await client.commands.get(args[0]);
@@ -60,8 +61,8 @@ let prefix = await db.get(`prefix_${message.guild.id}`)
          prefix = default_prefix; 
     
       let emx = new MessageEmbed()
-         .setDescription("HELP MENU")
-      .setTitle("IF YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name`)
+         .setTitle("HELP MENU")
+      .setDescription(`IF YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE > ${prefix}help cmd>name`)
         .setColor("#00FFFF")
         .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL());
