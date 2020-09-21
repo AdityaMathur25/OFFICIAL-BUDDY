@@ -80,8 +80,8 @@ let prefix = await db.get(`prefix_${message.guild.id}`)
         let category = key;
 
         let desc = "`" + value.join("`, `") + "`";
-let emoji = "<a:arrowslogo:751462628412358736>"
-        emx.addField(`${emoji}${category.toUpperCase()}[${value.length}]`, desc);
+let emojis = "<a:verified_but_black:747856829849141439>"
+        emx.addField(`${emojis}${category.toUpperCase()}[${value.length}]`, desc);
       }
       let database = db.get(`cmd_${message.guild.id}`)
 
