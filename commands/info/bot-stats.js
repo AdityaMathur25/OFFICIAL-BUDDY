@@ -7,14 +7,13 @@ module.exports = {
   aliases: ["stat", "bot"],
   category: "info",
   description: "Show bot Information!",
-  usage: "binfo | <Mention User>",
+  usage: "botinfo",
   accessableby: "everyone",
   run: async (client, message, args) => {
 
     //Start
 
-    const member = message.mentions.members.first() ||
-      message.member;
+    
 
     const statuses = {
       online: 'Online',
@@ -22,19 +21,17 @@ module.exports = {
       idle: 'Idle',
       offline: 'Offline/Invisible',
     };
+     const toxic = client.users.cache.get("480285300484997122");
+ const yash = client.user.cache.get("539385330923601930");
 
     const embed = new MessageEmbed()
-      .setTitle(member.user.username + " Information!")
+      .setTitle(client.user.username, client.user.displayAvatarURL({dynamic: true}))
       .setColor(COLOR)
-      .setThumbnail(member.user.displayAvatarURL())
-      .addField('Full Name', member.user.tag, true)
-      .addField('ID', `${member.id}`, true)
-      .addField('Status', statuses[member.presence.status], true)
-      .addField(`Highest Role`, `${member.roles.highest || "No Role!"}`, true)
-      .addField(`Roles Count`, message.guild.members.cache.get(member.user.id).roles.cache.size || "No Roles!", true)
-      .addField(`Avatar Url`, `[Link](${member.user.displayAvatarURL()})`, true)
-      .addField('Joined Server At', member.joinedAt.toDateString())
-      .addField('Joined Discord At', member.user.createdAt.toDateString())
+      .addField('BOT Name', client.user.tag, true)
+      .addField('ID', `${client.id}`, true)
+      .addField('Status', statuses[client.presence.status], true)
+    .addField('BOT OWNERS:', toxic.username, true)
+    .addField(`${yash.username}`, true)
       .setFooter(`Requested by ${message.author.username}`)
       .setTimestamp();
 
