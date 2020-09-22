@@ -1,5 +1,5 @@
 const db = require('quick.db')
-const { discord, member } = require('discord.js')
+const { discord, MessageAttachment } = require('discord.js')
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
 const { getInfo } = require("../../handlers/xp.js")
@@ -25,11 +25,8 @@ var user = message.mentions.users.first() || message.author;
     const {level, remxp, levelxp, every} = getInfo(xp);
     if(xp === 0) return message.channel.send(`**${user.tag}** is out of the xp`)
 const finallevel = level
-var loadingMsg = await message.channel.send('Loading Rankcard..');
-    let Every = await db.all()
-    every = every.filter(i => i
-   ranking = ranking.tosring();
-
+var loadingMsg = await message.channel.send('Loading Rankcard..')
+var ranking = level/ 10
     let finalRank = ranking
     let data = await canva.rankcard(
       {
@@ -42,7 +39,7 @@ var loadingMsg = await message.channel.send('Loading Rankcard..');
        fullXP: levelxp,
        avatar: message.author.displayAvatarURL({ format: "png"})
     })
-    const attachment = new discord.MessageAttachment(
+    const attachment = new MessageAttachment(
      data,
       "welcome-image.png"
     );
