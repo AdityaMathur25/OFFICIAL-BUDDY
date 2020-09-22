@@ -8,8 +8,8 @@ module.exports = {
   run: async (client, message, args) => {
     let code = randomInteger(100000, 1000000)
     message.delete({timeout: 2000})
-    let channel =  db.set(`vchannel_${message.guild.id}`, channel.id)
-    if (channel = null)
+    let channel =  db.get(`vchannel_${message.guild.id}`)
+    if (channel === null)
     return message.channel.send("PLEASE PROVIDE A VERIFICATION CHANNEL")
     //Searching for a channel called "verify" and if it doesnt find it it will stop everything
     
@@ -33,8 +33,9 @@ module.exports = {
       //I forgot something
       dmChannel.channel.awaitMessages(filter, options).then(collected => {
       if(collected.content = code){
-        let role = message.guild.roles.cache.find(rl => rl.name === "User")
-        if(!role) return message.author.send("Couldnt find role called User")
+        let role = db.get(`Rchannel_${message.guild.id}`)
+        if (role === null)
+         return message.author.send("PLEASE PROVIDE ROLE TO SET")
         
         let user = message.member
         user.roles.add(role)

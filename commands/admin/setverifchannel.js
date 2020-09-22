@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const db = require("quick.db")
 
 module.exports = {
-  name: "setverificantionchannel",
+  name: "verificationch",
   category: "Administration",
   usage: "setverificationchannel <@channel>",
   description: "MAKE YOUR SERVER PROTECTED FORM RAIDERS",
@@ -10,7 +10,6 @@ module.exports = {
   run: (client, message, args) => {
     
     let channel = args.join(" ");//mentioned channel
-    
     if(!channel) { //if channel is not mentioned
       return message.channel.send("Please provide channel")
     }
@@ -18,7 +17,7 @@ module.exports = {
     //Now we gonna use quick.db
     
     db.set(`vchannel_${message.guild.id}`, channel.id) //set id in var
-    
-    message.channel.send(`message seted as ${channel}`) //send success message
+    return
+    message.channel.send(`verification channel seted as ${channel}`) //send success message
   }
 }

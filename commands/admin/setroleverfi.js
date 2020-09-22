@@ -8,7 +8,7 @@ module.exports = {
   description: "MAKE YOUR SERVER PROTECTED FORM RAIDERS",
   aliases:["setr"],
   run: (client, message, args) => {
-    let role = message.mentions.members.first()
+    let role = message.mentions.roles.first()
     let channel = args.join(" ");//mentioned channel
     
     if(!channel) { //if channel is not mentioned
@@ -17,8 +17,8 @@ module.exports = {
     
     //Now we gonna use quick.db
     
-    db.set(`vchannel_${message.guild.id}`, channel.name) //set id in var
+    db.set(`Rchannel_${message.guild.id}`, role.name) //set id in var
     
-    message.channel.send(`message seted as ${channel}`) //send success message
+    message.channel.send(`Role seted as ${role}`) //send success message
   }
 }
