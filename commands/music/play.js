@@ -40,17 +40,12 @@ module.exports = {
     const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
     const urlcheck = videoPattern.test(args[0]);
-
-    if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-      embed.setAuthor("I am Unable To Play Playlist for now")
-      return message.channel.send(embed);
-    }
+ 
 
     const serverQueue = message.client.queue.get(message.guild.id);
 
     const queueConstruct = {
-      textChannel: message.channel,
-      channel,
+      textChannel: message.channel.send
       connection: null,
       songs: [],
       loop: false,
