@@ -7,6 +7,7 @@ dependencies:
   canvas-constructor: 4.1.0
   canvas-senpai: 0.1.6
   colornames: 1.1.1
+  discord-anti-spam: 2.4.1
   discord.js: 12.3.1
   dotenv: 8.2.0
   enmap: 5.7.3
@@ -1202,6 +1203,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
+  /discord-anti-spam/2.4.1:
+    dev: false
+    resolution:
+      integrity: sha512-LuWYmeVYnsIDkLqQH811vod7jWnnYI03o0DAiV+7sY7tAKQjpqC9hYkP8f5PaODA9Jl4zoMNXDAVA4aAwmeuaA==
   /discord.js/12.3.1:
     dependencies:
       '@discordjs/collection': 0.1.6
@@ -3950,6 +3955,7 @@ specifiers:
   canvas-constructor: ^4.1.0
   canvas-senpai: ^0.1.6
   colornames: ^1.1.1
+  discord-anti-spam: ^2.4.1
   discord.js: ^12.3.1
   dotenv: ^8.2.0
   enmap: ^5.7.3

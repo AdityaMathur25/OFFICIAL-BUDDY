@@ -244,10 +244,7 @@ client.on("message", async message => {
   //START
   if(!message.member.hasPermission("ADMINISTRATOR")) {
     
-    if(is_url(message.content) === true) {
-      message.delete()
-      return message.channel.send("You can not send link here :/")
-    }
+  
     let confirm = false;
     //NOW WE WILL USE FOR LOOP
     var i;
@@ -271,29 +268,30 @@ client.on("message", async message => {
     
     
   }})
- // This runs the filter on any message b
-antispam(client, {
-        limitUntilWarn: 3,
-        limitUntilMuted: 5,
-        interval: 2000,
-        warningMessage: "STOP SPAMING OR I WILL PUNISH YOU !",
-        muteMessage: "HAS BEEN MUTED",
-        banMessage: "HAS BEEN BANNED",
-        kickMessage: "HAS BEEN KICKED",
-        maxDuplicatesWarning: 7,
-        maxDuplicatesMute: 10,
-        ignoredRoles: ["SERVER BOSS"],
-        ignoredMembers: [],
-        ignoreBots: true,
-        ignoredChannels: ["chat"],
-       ignorePermissions: ["ADMINISTRATOR"],
-        mutedRole:"Muted",
-        timeMuted: 1000*600,
-        logChannel: "#log",
-})
-client.on('message', msg => {
-  client.emit('checkMessage', msg); // This runs the filter on any message bot receives in any guilds.
+ // This runs the filter on any mes
+
+const AntiSpam = require('discord-anti-spam');
+const antiSpam = new AntiSpam({
+    warnThreshold: 3, // Amount of messages sent in a row that will cause a warning.
+    kickThreshold: 7, // Amount of messages sent in a row that will cause a ban.
+    banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
+    maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
+    warnMessage: '{@user}, Please stop spamming.', // Message that will be sent in chat upon warning a user.
+    kickMessage: '**{user_tag}** has been kicked for spamming.', // Message that will be sent in chat upon kicking a user.
+    banMessage: '**{user_tag}** has been banned for spamming.', // Message that will be sent in chat upon banning a user.
+    maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
+    maxDuplicatesKick: 10, // Amount of duplicate messages that trigger a warning.
+    maxDuplicatesBan: 12, // Amount of duplicate messages that trigger a warning.
+    exemptPermissions: [ 'ADMINISTRATOR'], // Bypass users with any of these permissions.
+    ignoreBots: true, // Ignore bot messages.
+    verbose: true, // Extended Logs from module.
+    ignoredUsers: [], // Array of User IDs that get ignored.
+    // And many more options... See the documentation.
 });
+ 
+ 
+client.on('message', (message) => antiSpam.message(message)); 
+
 client.on("message", async message => { 
   if(message.author.bot) return; 
   //start
