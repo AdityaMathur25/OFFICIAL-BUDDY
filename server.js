@@ -294,22 +294,21 @@ antispam(client, {
 client.on('message', msg => {
   client.emit('checkMessage', msg); // This runs the filter on any message bot receives in any guilds.
 });
-client.on('message', async message => { 
-    if(message.channel.name == 'global' && !message.author.bot){
-      client.guilds.cache.forEach(guild=>{
-        if(guild == message.guild) return;
-        let channel = guild.channels.cache.find(ch=>ch.name === 'global');
-        if(!channel) return;
-        let embed = new MessageEmbed()
-        .setAuthor(message.author.tag +" ", message.author.displayAvatarURL())
-        .setColor("#00c1ff")
-        .setDescription(message.content)
-        .setFooter(message.guild.name, (message.guild.iconURL({ dynamic: true })))
-        .setTimestamp()
-        channel.send(embed)
-      })
-    }
-   })
+client.on("message", async message => { 
+  if(message.author.bot) return; 
+  //start
+
+  const globalMsg = new MessageEmbed()
+  .setTitle(`${message.author.tag}`) 
+  .setDescription(message.content) 
+  .setColor("RANDOM") 
+  .setThumbnail(message.author.avatarURL({format: 'png', dynamic: true}))
+  .setFooter(`From: ${message.guild.name}`) 
+  .setTimestamp() 
+  if(message.channel.name!== "global")return;
+  return await Promise.all(client.channels.cache.filter(c => c.name === 'global').map(c => c.send(globalMsg)))
+message.delete();
+});
 
 client.login(process.env.token);  
   
