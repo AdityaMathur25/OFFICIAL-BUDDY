@@ -1,6 +1,7 @@
 const db = require('quick.db')
 const discord = require('discord.js')
-const Canva = require('canvas-senpai')
+const { CanvasSenpai } = require("canvas-senpai")
+const canva = new CanvasSenpai();
 const { getInfo } = require("../../handlers/xp.js")
 module.exports = {
   name: "level",
@@ -24,11 +25,12 @@ var user = message.mentions.users.first() || message.author;
     const {level, remxp, levelxp, every} = getInfo(xp);
     if(xp === 0) return message.channel.send(`**${user.tag}** is out of the xp`)
 const finallevel = level
-var loadingMsg = await message.channel.send('Loading image...');
+var loadingMsg = await message.channel.send('Loading Rankcard..');
     var rank = level / 2
 rank = rank.toString();
     let finalRank = rank
-    let image = await Canva.rankcard({
+    let data = await canva.rankcard(
+      {
        link: "https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg",
        name: user.username,
        discriminator: user.discriminator,
@@ -37,10 +39,12 @@ rank = rank.toString();
        currentXP: remxp,
        fullXP: levelxp,
        avatar: message.author.displayAvatarURL({ format: "png"})
- 
-
-
-message.channel.send(new discord.MessageAttachment(image, "rank.png"));
+    })
+    const attachment = new discord.MessageAttachment(
+     data,
+      "welcome-image.png"
+    );
+message.channel.send(attachment);
 return loadingMsg.delete();
 
 // XP Function
