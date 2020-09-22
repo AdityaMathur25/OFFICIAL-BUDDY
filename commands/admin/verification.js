@@ -13,10 +13,7 @@ module.exports = {
     return message.channel.send("PLEASE PROVIDE A VERIFICATION CHANNEL")
     //Searching for a channel called "verify" and if it doesnt find it it will stop everything
     
-    let embed = new discord.MessageEmbed()
-    .setColor("RED")
-    .setDescription("This command can only be ran in a channel called verify")
-    if(message.channel !== channel) return message.channel.send(embed)
+
     //If theyre in the wrong channel it will tell them where they have to run it
     
     message.channel.send("Check your DMs").then(m => m.delete({timeout: 3000}))
