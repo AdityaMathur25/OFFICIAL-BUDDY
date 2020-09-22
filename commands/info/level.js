@@ -1,6 +1,6 @@
 const db = require('quick.db')
 const discord = require('discord.js')
-const Canvacord = require('canvacord')
+const Canva = require('canvas-senpai')
 const { getInfo } = require("../../handlers/xp.js")
 module.exports = {
   name: "level",
@@ -28,18 +28,17 @@ var loadingMsg = await message.channel.send('Loading image...');
     var rank = level / 2
 rank = rank.toString();
     let finalRank = rank
-    let image = await Canvacord.rank({
-  username: user.username,
-  discrim: user.discriminator,
-  status: user.presence.status,
-  currentXP: remxp.toString(),
-  neededXP: levelxp.toString(),
-  level: finallevel,
-   rank: finalRank,
-  avatarURL: user.displayAvatarURL({ dynamic: true, format: "png" }),
-  color: 'white',
-  background: await Canvacord.blur('https://i.pinimg.com/736x/8b/e4/7f/8be47fba3f978b98406dfc320acf1205--art-manga-anime-art.jpg')
-});
+    let image = await Canva.rankcard({
+       link: "https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg",
+       name: user.username,
+       discriminator: user.discriminator,
+       level: finallevel,
+       rank: finalRank,
+       currentXP: remxp,
+       fullXP: levelxp,
+       avatar: message.author.displayAvatarURL({ format: "png"})
+ 
+
 
 message.channel.send(new discord.MessageAttachment(image, "rank.png"));
 return loadingMsg.delete();
