@@ -37,7 +37,7 @@ var ranking = level/ 10
        rank: finalRank,
        currentXP: remxp,
        fullXP: levelxp,
-       avatar: message.author.displayAvatarURL({ format: "png"})
+       avatar: user.displayAvatarURL({ format: "png"})
     })
     const attachment = new MessageAttachment(
      data,
