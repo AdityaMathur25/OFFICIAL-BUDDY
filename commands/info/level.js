@@ -1,5 +1,5 @@
 const db = require('quick.db')
-const discord = require('discord.js')
+const { discord, member } = require('discord.js')
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
 const { getInfo } = require("../../handlers/xp.js")
@@ -26,9 +26,11 @@ var user = message.mentions.users.first() || message.author;
     if(xp === 0) return message.channel.send(`**${user.tag}** is out of the xp`)
 const finallevel = level
 var loadingMsg = await message.channel.send('Loading Rankcard..');
-    var rank = level / 2
-rank = rank.toString();
-    let finalRank = rank
+    let Every = await db.all()
+    every = every.filter(i => i
+   ranking = ranking.tosring();
+
+    let finalRank = ranking
     let data = await canva.rankcard(
       {
        link: "https://i.pinimg.com/originals/76/0e/d7/760ed7f52c90870503762ac92db92adc.jpg",
