@@ -1,5 +1,6 @@
 dependencies:
   '@discordjs/opus': 0.3.2
+  antispam-guard: 2.2.8
   ascii-table: 0.0.9
   canvacord: 4.0.1
   canvas: 2.6.1
@@ -553,6 +554,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-qCJQ3bABXponyoLoLqYDu/pF768=
+  /antispam-guard/2.2.8:
+    dependencies:
+      discord.js: 12.3.1
+    dev: false
+    resolution:
+      integrity: sha512-UhwHdUgq6l7Xsx7yGXbNm2zkd+HayXMN5eUyUqgCWn4oY2gHeTCD/yzLaI0GhmoO2Dg1YWm3phLuTBm/4PTptw==
   /any-base/1.1.0:
     dev: false
     resolution:
@@ -3947,6 +3954,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@discordjs/opus': ^0.3.2
+  antispam-guard: ^2.2.6
   ascii-table: ^0.0.9
   canvacord: ^4.0.1
   canvas: ^2.6.1

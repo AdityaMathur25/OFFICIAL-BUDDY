@@ -18,7 +18,7 @@
     "ascii-table": "^0.0.9",
     "something-random-on-discord": "^0.0.1",
     "dotenv": "^8.2.0",
-    "quick.db": "^7.1.1",
+    "quick.db": "^7.1.2",
     "figlet": "^1.5.0",
     "novelcovid": "^3.0.0",
     "parse-ms": "^2.1.0",
@@ -29,15 +29,16 @@
     "@discordjs/opus": "^0.3.2",
     "enmap": "^5.7.3",
     "ffmpeg-static": "^4.2.7",
-    "yt-search": "^2.3.0",
+    "yt-search": "^2.3.1",
     "node-superfetch": "^0.1.10",
-    "ytdl-core-discord": "^1.2.0",
+    "ytdl-core-discord": "^1.2.1",
     "colornames": "^1.1.1",
     "genius-lyrics": "^4.0.0",
     "canvacord": "^4.0.1",
     "snekfetch": "^4.0.4",
     "canvas-constructor": "^4.1.0",
-    "canvas": "^2.6.1"
+    "canvas": "^2.6.1",
+    "antispam-guard": "^2.2.6"
   },
   "engines": {
     "node": "12.x"
