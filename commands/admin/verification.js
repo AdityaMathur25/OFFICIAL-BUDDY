@@ -30,9 +30,8 @@ module.exports = {
       //I forgot something
       dmChannel.channel.awaitMessages(filter, options).then(collected => {
       if(collected.content = code){
-        let role = db.get(`Rchannel_${message.guild.id}`)
-        if (role === null)
-         return message.author.send("PLEASE PROVIDE ROLE TO SET")
+        let role = message.guild.roles.cache.find(rl => rl.name === "MEMBERS")
+        if(!role) return message.author.send("Couldnt find role called MEMBERS")
         
         let user = message.member
         user.roles.add(role)
