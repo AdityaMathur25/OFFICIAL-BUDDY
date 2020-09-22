@@ -34,6 +34,7 @@ let embed = new MessageEmbed()
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end();
   message.react("750762554418135151")
+  channel.leave();
     
   }
 }
