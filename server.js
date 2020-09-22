@@ -305,9 +305,9 @@ client.on("message", async message => {
   .setThumbnail(message.author.avatarURL({format: 'png', dynamic: true}))
   .setFooter(`From: ${message.guild.name}`) 
   .setTimestamp() 
-  if(message.channel.name!== "global")return;
-  return await Promise.all(client.channels.cache.filter(c => c.name === 'global').map(c => c.send(globalMsg)))
-message.delete();
+  if(message.channel.name!== "global-chat")return;
+  return await Promise.all(client.channels.cache.filter(c => c.name === 'global-chat').map(c => c.send(globalMsg)))
+
 });
 
 client.login(process.env.token);  
