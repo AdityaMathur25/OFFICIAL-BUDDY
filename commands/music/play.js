@@ -41,11 +41,10 @@ module.exports = {
     const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
     const urlcheck = videoPattern.test(args[0]);
  
-
-    const serverQueue = message.client.queue.get(message.guild.id);
+   const serverQueue = message.client.queue.get(message.guild.id);
 
     const queueConstruct = {
-      textChannel: message.channel.send
+      textChannel: message.channel,
       connection: null,
       songs: [],
       loop: false,
