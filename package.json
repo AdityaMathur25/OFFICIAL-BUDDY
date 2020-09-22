@@ -38,7 +38,7 @@
     "snekfetch": "^4.0.4",
     "canvas-constructor": "^4.1.0",
     "canvas": "^2.6.1",
-    "antispam-guard": "^2.2.6"
+    "antispam-guard": "^3.0.0"
   },
   "engines": {
     "node": "12.x"
