@@ -15,9 +15,9 @@ category: "economy",
 const embed = new Discord.MessageEmbed();
       embed.setTitle("CHECK YOUR BALANCE")
      embed.setColor("	#00FFFF")
-      embed.setDescription(`${user} YOU HAVE TOTAL ${bal} 💲BALANCE!`)
+      embed.setDescription(`${user} YOU HAVE TOTAL ${bal}$ MONEY!`)
       embed.setTimestamp();
-      embed.setFooter("MADED BY BUDDY!")
+      embed.setFooter("ECONOMY SYSTEM!")
         message.channel.send(embed)
     }
 }
