@@ -10,8 +10,8 @@ run: async (client, message, args, config) => {
 
 
     let user = message.mentions.members.first()
-    let targetuser = await db.fetch(`money_${user.id}`) // fetch mentioned users balance
-    let author = await db.fetch(`money_${message.author.id}`) // fetch authors balance
+    let targetuser = await db.fetch(`money_${message.guild.id}_${user.id}`) // fetch mentioned users balance
+    let author = await db.fetch(`money_${message.guild.id}_${message.author.id}`) // fetch authors balance
 
 
     if (!user) {
@@ -29,8 +29,8 @@ run: async (client, message, args, config) => {
     let random = Math.floor(Math.random() * 200) + 1; // random number 200-1, you can change 200 to whatever you'd like
 
 
-    let embed = new Discord.RichEmbed()
-    .setDescription(`${message.author} you robbed ${user} and got away with ${random}!`)
+    let embed = new Discord.MessageEmbed()
+    .setDescription(`${message.author} you robbed ${user} and got away with ${random}💲!`)
     .setColor("GREEN")
     .setTimestamp()
     message.channel.send(embed)
