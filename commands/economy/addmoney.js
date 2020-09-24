@@ -1,7 +1,8 @@
 const discord = require("discord.js")
 const db = require("quick.db")
 module.exports = {
-  name: "addmoney",
+  name: "addmoney", 
+  category: "economy",
   aliases: ["am", "addcoins"],
   description: "Owner only command - Add more money to a user",
   run: async (client, message, args) => {
