@@ -1,37 +1,51 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    name: 'add-role',
-  description:"give role to member",
-  category:"moderation",
-  aliases:["add"],
-    run: async (client, message, args) => {
+  name: "addrole",
+  aliases: [],
+  category: "Administration",
+  usage: "addrole <mention> <role name (don't mention the role)>",
+  description: "Adds a role to the mentioned member."
+  run: async (client, message, args) => {
 
-        message.delete();
+    const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+    if (!member)
+      return message.channel.send('Please mention a user or provide a valid user ID');
+    if (member.roles.highest.position >= message.member.roles.highest.position)
+      return message.channel.send('You cannot add a role to someone with an equal or higher role');
 
-        if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`You do not have MANAGE_ROLES permission`).then(m => m.delete({ timeout: 5000 }));
+    const role = message.guild.roles.cache.find(val => val.name === args[1])
+    
+    let reason = args.slice(2).join(' ');
+    if (!reason) reason = '`None`';
+    if (reason.length > 1024) reason = reason.slice(0, 1021) + '...';
 
-        if (!args[0] || !args[1]) return message.channel.send("Incorrect usage, It's `<username || user id> <role name || id>").then(m => m.delete({ timeout: 5000 }))
+    if (!role)
+      return message.channel.send('Please mention a role or provide a valid role ID');
+    else if (member.roles.cache.has(role.id))
+      return message.channel.send('User already has the provided role');
+    else {
+      try {
 
-        try {
+        await member.roles.add(role);
+        const embed = new MessageEmbed()
+          .setTitle('Add Role')
+          .setDescription(`${role} was successfully added to ${member}.`)
+          .addField('Moderator', message.member, true)
+          .addField('Member', member, true)
+          .addField('Role', role, true)
+          .addField('Reason', reason)
+          .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
+          .setTimestamp()
+          .setColor(message.guild.me.displayHexColor);
+        message.channel.send(embed);
 
-             const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-             const roleName = message.guild.roles.cache.find(r => (r.name === args[1].toString()) || (r.id === args[1].toString().replace(/[^\w\s]/gi, '')));
 
-             const alreadyHasRole = member._roles.includes(roleName.id);
-
-             if (alreadyHasRole) return message.channel.send('User already has that role').then(m => m.delete({ timeout: 5000 }));
-
-             const embed = new MessageEmbed()
-                 .setTitle(`Role Name: ${roleName.name}`)
-                 .setDescription(`${message.author} has successfully given the role ${roleName} `)
-                 .setColor('RANDOM')
-                 .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
-                 .setFooter(`REQUESTED BY ${message.author.username}`)
-                 .setTimestamp()
-            return member.roles.add(roleName).then(() => message.channel.send(embed));
-        } catch (e) {
-            return message.channel.send('Try to give a role that exists next time...').then(m => m.delete({ timeout: 5000 })).then(() => console.log(e))
-        }
-    }
+      } catch (err) {
+        return message.channel.send('Please check the role hierarchy');
+      }
+    }  
+  }
 };
+
+Addrole command 
