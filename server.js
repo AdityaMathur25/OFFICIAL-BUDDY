@@ -307,6 +307,19 @@ client.on("message", async message => {
   return await Promise.all(client.channels.cache.filter(c => c.name === 'global-chat').map(c => c.send(globalMsg)))
 
 });
+if(message.content === prefix+'test'){
+    if(!message.guild) return;
+    if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return;
+    var colors = ['#8585ff','#fff681','#a073fd','#fd73b9'];
+    for(let i = 0; i<= colors.length;i++){
+    var role = message.guild.roles.find(role => role.name === "rolename");
+    setInterval(() => {
+        role.edit({
+            color: colors[i]
+        })
+    }, 5000);
+  }
+}
 
 client.login(process.env.ass);  
   
