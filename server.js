@@ -259,7 +259,7 @@ client.on("message", async message => {
       message.delete();
       let gp = new MessageEmbed()
       .setTitle("**ANTI-BADWORD**")
-      .setDescription(`${message.user} YOU ARE NOT ALLOWED TO SEND BAD WORDS HERE!`)
+      .setDescription(` YOU ARE NOT ALLOWED TO SEND BAD WORDS HERE!`)
       .setFooter("IF U DON'T STOP GOT PUNISHED")
       .setColor("GREEN")
       .setTimestamp();

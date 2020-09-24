@@ -10,8 +10,8 @@ let process = args.join(" ");
 if(!process) {
 return message.channel.send("Please give a code to evaluate!");
   }
-let ids = ['480285300484997122']
-if(!ids.includes(message.author.id)) return ...
+let ids = ['480285300484997122', '539385330923601930']
+if(!ids.includes(message.author.id)) {
   return message.channel.send("You do not have permissions to use this command")
   }
 let e;
