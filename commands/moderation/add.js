@@ -2,10 +2,10 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "addrole",
-  aliases: [],
   category: "Administration",
   usage: "addrole <mention> <role name (don't mention the role)>",
-  description: "Adds a role to the mentioned member."
+  description: "Adds a role to the mentioned member.",
+  aliases: ["add"],
   run: async (client, message, args) => {
 
     const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
@@ -48,4 +48,3 @@ module.exports = {
   }
 };
 
-Addrole command 
