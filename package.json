@@ -39,7 +39,8 @@
     "canvas-constructor": "^4.1.0",
     "canvas": "^2.6.1",
     "antispam-guard": "^3.0.0",
-    "discord-anti-spam": "^2.4.1"
+    "discord-anti-spam": "^2.4.1",
+    "better-discord-antispam": "^2.0.0"
   },
   "engines": {
     "node": "12.x"

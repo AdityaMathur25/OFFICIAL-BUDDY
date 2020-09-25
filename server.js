@@ -3,12 +3,12 @@ const { config } = require("dotenv");
 const { default_prefix, token, COLOR } = require("./config.json");
 const db = require("quick.db");
 const fs = require("fs");
-const discord = require("discord.js");
+const { discord, message }= require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
 const { badwords } = require("./data.json");
-const antispam = require('antispam-guard'); 
+const antispam = require("better-discord-antispam");
 let random = Math.floor(Math.random() * 4);
 //for image ?
 const client = new Client({
@@ -278,15 +278,15 @@ antispam(client, {
     muteMessage: "the spamming kid was muted, no problem :3!", //Mute Message
     maxDuplicatesWarning: 5, //5 messages of the same until warn
     maxDuplicatesMute: 7, //7 messages of the same until mute
-    ignoredRoles: ["Role1", "Role2"], //imune roles
+    ignoredRoles: ["Admin", "Moderator"], //imune roles
     mutedRole: "Muted", //muted role name
     timeMuted: 1000 * 600, //Time for him to be muted (This is 10mins)
-    logChannel: db.fetch(`logchannel`) //Name of the log channel
+    logChannel: //Name of the log channel
   });
+client.on("message", msg => {
+  client.emit("checkMessage", msg);
 });
  
- 
-client.on('message', (message) => antiSpam.message(message)); 
 
 client.on("message", async message => { 
   if(message.author.bot) return; 

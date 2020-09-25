@@ -2,6 +2,7 @@ dependencies:
   '@discordjs/opus': 0.3.2
   antispam-guard: 3.0.0
   ascii-table: 0.0.9
+  better-discord-antispam: 2.0.0
   canvacord: 4.0.1
   canvas: 2.6.1
   canvas-constructor: 4.1.0
@@ -732,6 +733,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-mLQ4i2QO1ytvGWFWmcngKO//JXAQueZvwEKtjgQFM4jIK0kU+ytMfplL8j+n5mspOfjHwoAg+9yhb7BwAHm36g==
+  /better-discord-antispam/2.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-dWhcteJ9QyHvi/35JVwxXGkdhaXtfhKpqic5SGrgja8Z52Zxe3RuRT9d/VUi3setDApBapmzrKyOYv60KjEcjQ==
   /better-sqlite3/6.0.1:
     dependencies:
       bindings: 1.5.0
@@ -3950,6 +3955,7 @@ specifiers:
   '@discordjs/opus': ^0.3.2
   antispam-guard: ^3.0.0
   ascii-table: ^0.0.9
+  better-discord-antispam: ^2.0.0
   canvacord: ^4.0.1
   canvas: ^2.6.1
   canvas-constructor: ^4.1.0
