@@ -270,23 +270,19 @@ client.on("message", async message => {
   }})
  // This runs the filter on any mes
 
-const AntiSpam = require('discord-anti-spam');
-const antiSpam = new AntiSpam({
-    warnThreshold: 3, // Amount of messages sent in a row that will cause a warning.
-    kickThreshold: 7, // Amount of messages sent in a row that will cause a ban.
-    banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
-    maxInterval: 1000, // Amount of time (in milliseconds) in which messages are considered spam.
-    warnMessage: '{@user}, Please stop spamming.', // Message that will be sent in chat upon warning a user.
-    kickMessage: '**{user_tag}** has been kicked for spamming.', // Message that will be sent in chat upon kicking a user.
-    banMessage: '**{user_tag}** has been banned for spamming.', // Message that will be sent in chat upon banning a user.
-    maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
-    maxDuplicatesKick: 10, // Amount of duplicate messages that trigger a warning.
-    maxDuplicatesBan: 12, // Amount of duplicate messages that trigger a warning.
-    exemptPermissions: [ 'ADMINISTRATOR'], // Bypass users with any of these permissions.
-    ignoreBots: true, // Ignore bot messages.
-    verbose: true, // Extended Logs from module.
-    ignoredUsers: [], // Array of User IDs that get ignored.
-    // And many more options... See the documentation.
+antispam(client, {
+    limitUntilWarn: 3, //Gets warned at 3 messages
+    limitUntilMuted: 5, //Gets muted at 5 messages
+    interval: 3000, // if he sends 3 messages in 3 seconds it will count as spam
+    warningMessage: "Stop now or you will get muted kiddo!", //Warn message
+    muteMessage: "the spamming kid was muted, no problem :3!", //Mute Message
+    maxDuplicatesWarning: 5, //5 messages of the same until warn
+    maxDuplicatesMute: 7, //7 messages of the same until mute
+    ignoredRoles: ["Role1", "Role2"], //imune roles
+    mutedRole: "Muted", //muted role name
+    timeMuted: 1000 * 600, //Time for him to be muted (This is 10mins)
+    logChannel: db.fetch(`logchannel`) //Name of the log channel
+  });
 });
  
  
