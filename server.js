@@ -269,16 +269,17 @@ client.on("message", async message => {
     
   }})
  // This runs the filter on any mes
-let channela = db.get(`logchannel_${message.guild.id}`)
+let channela = "buddy-log"
+let owner = ["SERVER GUARDIAN ","┕🔥┫「SERVER BOSS」┣🔥┛ ","Admin"," moderator","headmod"]
 antispam(client, {
     limitUntilWarn: 3, //Gets warned at 3 messages
     limitUntilMuted: 5, //Gets muted at 5 messages
     interval: 3000, // if he sends 3 messages in 3 seconds it will count as spam
-    warningMessage: `${message.user}, stop spamming or u will be punished`, //Warn message
+    warningMessage: " stop spamming or u will be punished", //Warn message
     muteMessage: "the spamming kid was muted, no problem :3!", //Mute Message
     maxDuplicatesWarning: 5, //5 messages of the same until warn
     maxDuplicatesMute: 7, //7 messages of the same until mute
-    ignoredRoles: ["Admin", "Moderator"], //imune roles
+    ignoredRoles: [owner], //imune roles
     mutedRole: "Muted", //muted role name
     timeMuted: 1000 * 600, //Time for him to be muted (This is 10mins)
     logChannel: channela, //Name of the log channel
