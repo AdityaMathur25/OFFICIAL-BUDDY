@@ -304,8 +304,26 @@ client.on("message", async message => {
   return await Promise.all(client.channels.cache.filter(c => c.name === 'global-chat').map(c => c.send(globalMsg)))
 
 });
+client.on("messageDelete", async msg => {
+  let logs = await msg.guild.fetchAuditLogs({type: 72});
+  let entry = logs.entries.first();
 
+  client.on("messageDelete", async msg => {
+  let logs = await msg.guild.fetchAuditLogs({type: 72});
+  let entry = logs.entries.first();
 
+  let jjj = new MessageEmbed()
+    .setTitle("**DELETED MESSAGE**")
+    .setColor("#fc3c3c")
+    .addField("Author", msg.author.tag, true)
+    .addField("Channel", msg.channel, true)
+    .addField("Executor", entry.executor)
+    .addField("Reason", entry.reason || "Unspecified")
+    .setFooter(`Message ID: ${msg.id} | Author ID: ${msg.author.id}`)
+let fgs = db.get(`logchannel_${message.guild.id}`)
+message.fgs.send(jjj)
+    })})
+  
 client.login(process.env.ass);  
   
   
