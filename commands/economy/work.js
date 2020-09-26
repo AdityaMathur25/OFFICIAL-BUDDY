@@ -1,48 +1,40 @@
-const db = require('quick.db');
-const ms = require('parse-ms');
+const db = require('quick.db')
 const Discord = require('discord.js')
+const ms = require("parse-ms");
+
 module.exports = {
-    name: "work",
-    description: "Work for your money",
-    category: "economy",
-    async run (client, message, args) {
+  name: "work",
+  category: "economy",
+  description: "work to earn money",
+  aliases : ["wr"],
+run = async (bot, message, args) => {
     
-    if (args[0] == 'prostitute') {
+    let user = message.author;
+    let author = await db.fetch(`work_${message.guild.id}_${user.id}`)
 
-        let amount = Math.floor(Math.random() * 500) + 1; // 1-500 random number. whatever you'd like
+    let timeout = 600000;
+    
+    if (author !== null && timeout - (Date.now() - author) > 0) {
+        let time = ms(timeout - (Date.now() - author));
+    
+        let timeEmbed = new Discord.RichEmbed()
+        .setColor("#FFFFFF")
+        .setDescription(`:cross:  You have already worked recentlynnTry again in ${time.minutes}m ${time.seconds}s `);
+        message.channel.send(timeEmbed)
+      } else {
 
-        let embed = new Discord.MessageEmbed()
-        .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL) 
-        .setDescription(`${message.author}, you worked as a prostitute & got payed ${amount}$ for having sex! :D`)
-        .setColor("RANDOM")
+        let replies = ['Programmer','Builder','Waiter','Busboy','Chief','Mechanic']
+
+        let result = Math.floor((Math.random() * replies.length));
+        let amount = Math.floor(Math.random() * 80) + 1;
+        let embed1 = new Discord.RichEmbed()
+        .setColor("#FFFFFF")
+        .setDescription(`:check: You worked as a ${replies[result]} and earned ${amount} coins`);
+        message.channel.send(embed1)
         
-    
-        message.channel.send(embed)
-        db.add(`money_${message.author.id}`, amount)
-    } else if(args[0] == 'constructor') {
-        let amount = Math.floor(Math.random() * 500) + 1; // 1-500 random number. whatever you'd like
-
-        let embed = new Discord.MessageEmbed()
-        .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL) 
-        .setDescription(`${message.author}, you worked as a constructor & got payed ${amount}$ for rebuilding the empire state building.`)
-        .setColor("RANDOM")
-        
-    
-        message.channel.send(embed)
-        db.add(`money_${message.author.id}`, amount)
-    } else if(args[0] == 'programmer') {
-        let amount = Math.floor(Math.random() * 500) + 1; // 1-500 random number. change to whatever you'd like
-
-        let embed = new Discord.MessageEmbed()
-        .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL) 
-        .setDescription(`${message.author}, you worked as a programmer for epicgames, you fixed their game & earned ${amount}$!`)
-        .setColor("RANDOM")
-        
-    
-        message.channel.send(embed)
-        db.add(`money_${message.guild.id}_${message.author.id}`, amount)
-    }
-
-    }
+        db.add(`money_${message.guild.id}_${user.id}`, amount)
+        db.set(`work_${message.guild.id}_${user.id}`, Date.now())
+    };
 }
+
 

@@ -5,7 +5,7 @@ module.exports= {
   name:"wasted",
   description:"kill some one",
   category:"fun",
-  aliases:["ws"],
+  aliases: ["ws"],
 run: async (client, message, args) => {
 async function create() {
     let img = await canvacord.wasted("./image.png");

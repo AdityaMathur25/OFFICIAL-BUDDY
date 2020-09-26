@@ -5,7 +5,7 @@ module.exports= {
   name:"triggered",
   description:"trigger some one",
   category:"fun",
-  aliases:["tg"],
+  aliases: ["tg"],
 run: async (client, message, args) => {
 async function create() {
     let img = await canvacord.trigger("./image.png");
