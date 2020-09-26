@@ -242,7 +242,7 @@ function is_url(str) {
 client.on("message", async message => {
   if (message.author.bot) return;  
   //START
-  if(!message.member.hasPermission("ADMINISTRATOR")) {
+  if(!message.member.hasPermission("ADMINISTRATION_PERMISSION")) {
     
   
     let confirm = false;
@@ -269,8 +269,9 @@ client.on("message", async message => {
     let gh = new MessageEmbed()
     .setTitle(message.user.tag)
     .setColor("RANDOM")
-    
-    
+    .addField("MESSAGE:", message.content, true)
+    .addfield("channel:", message.channel.name, true)
+    client.cache.get(js).send(gh)
   }})
  // This runs the filter on any mes
 let channela = "buddy-log"
