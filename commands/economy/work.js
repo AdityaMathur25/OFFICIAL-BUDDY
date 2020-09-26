@@ -21,7 +21,8 @@ run: async (bot, message, args) => {
         .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
         .setTitle(message.author.username)
         .setColor("RED")
-        .setDescription(`❌  You have already worked recentl Try again in ${time.minutes}m ${time.seconds}s `)
+        .setDescription(`❌  You have already worked 
+🔮Try again in ${time.minutes}m ${time.seconds}s `)
         .setTimestamp()
       message.channel.send(timeEmbed)
       } else {
@@ -32,7 +33,9 @@ run: async (bot, message, args) => {
         let amount = Math.floor(Math.random() * 80) + 1;
         let embed1 = new Discord.MessageEmbed()
         .setColor("RANDOM")
-        .setDescription(`✔️ You worked as a ${replies[result]} and earned ${amount} coins`);
+        .setTitle(message.author.username)
+        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
+        .setDescription(`☑️ You worked as a ${replies[result]} and earned ${amount} coins`);
         message.channel.send(embed1)
         
         db.add(`money_${message.guild.id}_${user.id}`, amount)
