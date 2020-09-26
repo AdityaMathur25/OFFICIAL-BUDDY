@@ -5,6 +5,7 @@ const ms = require("parse-ms");
 module.exports= {
   name: "deposit",
   category: "economy",
+  description: "deposit your money to bank",
   alaises: ["dp"],
   run: async (bot, message, args) => {
   if(!message.content.startsWith('e!'))return;  
