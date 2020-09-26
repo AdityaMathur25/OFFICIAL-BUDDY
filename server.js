@@ -242,7 +242,7 @@ function is_url(str) {
 client.on("message", async message => {
   if (message.author.bot) return;  
   //START
-  if(!message.member.hasPermission("ADMINISTRATION_PERMISSION")) {
+  if(!message.member.hasPermission("ADMINISTRATOR")) {
     
   
     let confirm = false;
@@ -267,10 +267,10 @@ client.on("message", async message => {
     }    
     let js = await db.fetch(`logchannel_${message.guild.id}`)
     let gh = new MessageEmbed()
-    .setTitle(message.user.tag)
+    .setTitle(message.author.username)
     .setColor("RANDOM")
     .addField("MESSAGE:", message.content, true)
-    .addfield("channel:", message.channel.name, true)
+    .addfield("channel:", message.channel, true)
     client.cache.get(js).send(gh)
   }})
  // This runs the filter on any mes
