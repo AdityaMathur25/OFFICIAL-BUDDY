@@ -309,7 +309,14 @@ client.on("message", async message => {
   return await Promise.all(client.channels.cache.filter(c => c.name === 'global-chat').map(c => c.send(globalMsg)))
 
 });
-  
+client.on("messageDelete", async message => {
+  const looog = db.fetch(`logchannel_${message.guild.id}`)
+  if(!looog) return;
+  let ap = new MessageEmbed()
+  .setAuthor(message.author.username)
+  .setTitle("")
+  .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
+  .addField()
 client.login(process.env.ass);  
   
   
