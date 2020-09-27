@@ -8,7 +8,7 @@ const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
 const { badwords } = require("./data.json");
-const antispam = require("antispam-guard");
+const AntiSpam = require('discord-anti-spam');
 let random = Math.floor(Math.random() * 4);
 //for image ?
 const client = new Client({
@@ -265,13 +265,7 @@ client.on("message", async message => {
       .setTimestamp();
       return message.channel.send(gp)
     }    
-    let js = await db.fetch(`logchannel_${message.guild.id}`)
-    let gh = new MessageEmbed()
-    .setTitle(message.author.username)
-    .setColor("RANDOM")
-    .addField("MESSAGE:", message, true)
-    .addfield("channel:", message.channel, true)
-    client.channels.cache.get(js).send(gh)
+    
   }})
 
 let hh = "buddy-log"
@@ -288,13 +282,7 @@ let hh = "buddy-log"
         maxDuplicatesMute: 10, // The limit where member X get muted after sending too many messages(10+).
         ignoredRoles: ["Admin"], // The members with this role(or roles) will be ignored if they have it. Suggest to not add this to any random guys. Also it's case sensitive.
         ignoredMembers: ["𝙭𝘿 乛BUDDYgfx🔥#0824"],// These members are directly affected and they do not require to have the role above. Good for undercover pranks.
-        ignoreBots: true, //These bots are directly affected and they do not require to have the role above
-        ignoredChannels: ["general_chat"], //These channels are directly affected
-        ignorePermissions: ["ADMINISTRATOR"], //Who have admin perms are directly affected
-        mutedRole: "Muted", // Here you put the name of the role that should not let people write/speak or anything else in your server. If there is no role set, by default, the module will attempt to create the role for you & set it correctly for every channel in your server. It will be named "muted".
-        timeMuted: 9000 * 600, // This is how much time member X will be muted. if not set, default would be 90 min.
-        logChannel: hh // This is the channel where every report about spamming goes to. If it's not set up, it will attempt to create the channel.
-      });
+        ignoreBots: true,  });
       
   // Rest of your code
  
