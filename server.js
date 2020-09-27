@@ -310,17 +310,18 @@ client.on("message", async message => {
 
 });
 client.on("messageDelete", async message => {
-  const looog = db.fetch(`logchannel_${message.guild.id}`)
+  const looog = db.get(`logchannel_${message.guild.id}`)
   if(!looog) return;
   let ap = new MessageEmbed()
   .setAuthor(message.author.username)
   .setTitle("MESSAGE DELETED !")
   .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
-  .addField("❯ MESSAGE :", message, true)
+  .setDescription(`❯ MESSAGE : ${message}`)
   .addField("❯ CHANNEL :", message.channel, true)
   .setColor("RANDOM")
   .setFooter("LOG MESSAGES")
-  client.cache.get(looog).send(ap)
+const dd = client.channel.get(looog)
+dd.send(ap)
 })
 client.login(process.env.ass);  
   
