@@ -289,7 +289,7 @@ let hh = "buddy-log"
 });
   client.on('message', (message) => antiSpam.message(message))
   //start
-
+client.on("message", async => 
   const globalMsg = new MessageEmbed()
   .setTitle(`${message.author.tag}`) 
   .setDescription(message.content) 
@@ -297,7 +297,7 @@ let hh = "buddy-log"
   .setThumbnail(message.author.avatarURL({format: 'png', dynamic: true}))
   .setFooter(`From: ${message.guild.name}`) 
   .setTimestamp() 
-  if(message.channel.name!== "global-chat")return;
+  if(megeage.channel.name!== "global-chat")return;
   return await Promise.all(client.channels.cache.filter(c => c.name === 'global-chat').map(c => c.send(globalMsg)))
 
 });
