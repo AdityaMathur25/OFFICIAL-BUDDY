@@ -323,6 +323,7 @@ client.on("messageDelete", async message => {
 client.channels.cache.get(looog)
 .send(ap)
 })
+
 client.login(process.env.ass);  
   
   
