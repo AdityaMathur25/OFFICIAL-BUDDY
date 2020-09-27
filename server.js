@@ -269,9 +269,9 @@ client.on("message", async message => {
     let gh = new MessageEmbed()
     .setTitle(message.author.username)
     .setColor("RANDOM")
-    .addField("MESSAGE:", message.content, true)
+    .addField("MESSAGE:", message, true)
     .addfield("channel:", message.channel, true)
-    client.cache.get(js).send(gh)
+    client.channels.cache.get(js).send(gh)
   }})
  // This runs the filter on any mes
 let channela = "buddy-log"
