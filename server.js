@@ -320,8 +320,8 @@ client.on("messageDelete", async message => {
   .addField("❯ CHANNEL :", message.channel, true)
   .setColor("RANDOM")
   .setFooter("LOG MESSAGES")
-const dd = client.channel.get(looog)
-dd.send(ap)
+client.cache.get(looog)
+.send(ap)
 })
 client.login(process.env.ass);  
   
