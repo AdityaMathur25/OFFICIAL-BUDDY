@@ -314,9 +314,14 @@ client.on("messageDelete", async message => {
   if(!looog) return;
   let ap = new MessageEmbed()
   .setAuthor(message.author.username)
-  .setTitle("")
+  .setTitle("MESSAGE DELETED !")
   .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
-  .addField()
+  .addField("❯ MESSAGE :", message, true)
+  .addField("❯ CHANNEL :", message.channel, true)
+  .setColor("RANDOM")
+  .setFooter("LOG MESSAGES")
+  client.cache.get(looog).send(ap)
+})
 client.login(process.env.ass);  
   
   
