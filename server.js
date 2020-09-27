@@ -271,11 +271,11 @@ client.on("message", async message => {
 let hh = "buddy-log"
  // This runs the filter on any mes
    const antiSpam = new AntiSpam({
-    warnThreshold: 3, // Amount of messages sent in a row that will cause a warning.
-    kickThreshold: 7, // Amount of messages sent in a row that will cause a ban.
+    warnThreshold: 2, // Amount of messages sent in a row that will cause a warning.
+    kickThreshold: 5, // Amount of messages sent in a row that will cause a ban.
     banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
     maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
-    warnMessage: '{@user}, Please stop spamming.', // Message that will be sent in chat upon warning a user.
+    warnMessage: '{@user}, Please stop spamming, IF U DONT STOP YOU GOT PUNISHED', // Message that will be sent in chat upon warning a user.
     kickMessage: '**{user_tag}** has been kicked for spamming.', // Message that will be sent in chat upon kicking a user.
     banMessage: '**{user_tag}** has been banned for spamming.', // Message that will be sent in chat upon banning a user.
     maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
@@ -289,7 +289,8 @@ let hh = "buddy-log"
 });
   client.on('message', (message) => antiSpam.message(message))
   //start
-client.on("message", async => 
+client.on("message", async message => {
+  if(!message.author.bot) return;
   const globalMsg = new MessageEmbed()
   .setTitle(`${message.author.tag}`) 
   .setDescription(message.content) 
@@ -297,7 +298,7 @@ client.on("message", async =>
   .setThumbnail(message.author.avatarURL({format: 'png', dynamic: true}))
   .setFooter(`From: ${message.guild.name}`) 
   .setTimestamp() 
-  if(megeage.channel.name!== "global-chat")return;
+  if(message.channel.name!== "global-chat")return;
   return await Promise.all(client.channels.cache.filter(c => c.name === 'global-chat').map(c => c.send(globalMsg)))
 
 });
