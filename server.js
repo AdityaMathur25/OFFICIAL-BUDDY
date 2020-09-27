@@ -270,32 +270,24 @@ client.on("message", async message => {
 
 let hh = "buddy-log"
  // This runs the filter on any mes
-   antispam(client, {
-        limitUntilWarn: 3, // The amount of messages allowed to send within the interval(time) before getting a warn.
-        limitUntilMuted: 5, // The amount of messages allowed to send within the interval(time) before getting a muted.
-        interval: 2000, // The interval(time) where the messages are sent. Practically if member X sent 5+ messages within 2 seconds, he get muted. (1000 milliseconds = 1 second, 2000 milliseconds = 2 seconds etc etc)
-        warningMessage: "IF DONT STOP , YOU WILL BE PUNISHED", // Message you get when you are warned!
-        muteMessage: "was muted",// Message sent after member X was punished(muted).
-       kickMessage: "was kicked", //Message sent after member X was kicked from guild!
-       banMessage: "was banned", //Message sent after member X was banned from the guild!
-        maxDuplicatesWarning: 7,// When people are spamming the same message, this will trigger when member X sent over 7+ messages.
-        maxDuplicatesMute: 10, // The limit where member X get muted after sending too many messages(10+).
-        ignoredRoles: ["Admin"], // The members with this role(or roles) will be ignored if they have it. Suggest to not add this to any random guys. Also it's case sensitive.
-        ignoredMembers: ["𝙭𝘿 乛BUDDYgfx🔥#0824"],// These members are directly affected and they do not require to have the role above. Good for undercover pranks.
-        ignoreBots: true,  });
-      
-  // Rest of your code
- 
-client.on('message', msg => {
-  client.emit('checkMessage', msg); // This runs the filter on any message bot receives in any guilds.
-  
-  // Rest of your code
-})
-
- 
-
-client.on("message", async message => { 
-  if(message.author.bot) return; 
+   const antiSpam = new AntiSpam({
+    warnThreshold: 3, // Amount of messages sent in a row that will cause a warning.
+    kickThreshold: 7, // Amount of messages sent in a row that will cause a ban.
+    banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
+    maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
+    warnMessage: '{@user}, Please stop spamming.', // Message that will be sent in chat upon warning a user.
+    kickMessage: '**{user_tag}** has been kicked for spamming.', // Message that will be sent in chat upon kicking a user.
+    banMessage: '**{user_tag}** has been banned for spamming.', // Message that will be sent in chat upon banning a user.
+    maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
+    maxDuplicatesKick: 10, // Amount of duplicate messages that trigger a warning.
+    maxDuplicatesBan: 12, // Amount of duplicate messages that trigger a warning.
+    exemptPermissions: [ 'ADMINISTRATOR'], // Bypass users with any of these permissions.
+    ignoreBots: true, // Ignore bot messages.
+    verbose: true, // Extended Logs from module.
+    ignoredUsers: [], // Array of User IDs that get ignored.
+    // And many more options... See the documentation.
+});
+  client.on('message', (message) => antiSpam.message(message))
   //start
 
   const globalMsg = new MessageEmbed()
