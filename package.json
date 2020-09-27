@@ -31,7 +31,7 @@
     "ffmpeg-static": "^4.2.7",
     "yt-search": "^2.3.1",
     "node-superfetch": "^0.1.10",
-    "ytdl-core-discord": "^1.2.1",
+    "ytdl-core-discord": "^1.2.2",
     "colornames": "^1.1.1",
     "genius-lyrics": "^4.0.0",
     "canvacord": "^4.0.1",
@@ -40,7 +40,8 @@
     "canvas": "^2.6.1",
     "antispam-guard": "^3.0.0",
     "discord-anti-spam": "^2.4.1",
-    "better-discord-antispam": "^2.0.0"
+    "better-discord-antispam": "^2.0.0",
+    "got": "^11.7.0"
   },
   "engines": {
     "node": "12.x"
