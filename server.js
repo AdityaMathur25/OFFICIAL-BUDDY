@@ -65,9 +65,15 @@ client.on("message", async message => {
   const cmd = args.shift().toLowerCase();
 
   if (cmd.length === 0) return;
+let cmdx = db.get(`cmd_${message.guild.id}`)
 
+if(cmdx) {
+  let cmdy = cmdx.find(x => x.name === cmd)
+  if(cmdy) message.channel.send(cmdy.responce)
+}
   // Get the command
   let command = client.commands.get(cmd);
+  
   // If none is found, try to find it y alias
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   // If a command is finally found
