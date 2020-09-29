@@ -290,7 +290,7 @@ let hh = "buddy-log"
     exemptPermissions: [ 'ADMINISTRATOR'], // Bypass users with any of these permissions.
     ignoreBots: true, // Ignore bot messages.
     verbose: true, // Extended Logs from module.
-    ignoredUsers: [], // Array of User IDs that get ignored.
+    ignoredUsers: ["𝙭𝘿 乛BUDDYgfx🔥#0824"], // Array of User IDs that get ignored.
     // And many more options... See the documentation.
 });
   client.on('message', (message) => antiSpam.message(message))
