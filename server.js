@@ -98,7 +98,7 @@ client.on("guildMemberAdd", async member => {
   ];
   let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
   let data = await canva.welcome(member, { link: `${images[random]}` });
-  const attachment = new discord.MessageAttachment(data, "welcome-image.png");
+  const attachment = new MessageAttachment(data, "welcome-image.png");
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
@@ -277,11 +277,11 @@ client.on("message", async message => {
 let hh = "buddy-log"
  // This runs the filter on any mes
    const antiSpam = new AntiSpam({
-    warnThreshold: 2, // Amount of messages sent in a row that will cause a warning.
+    warnThreshold: 3, // Amount of messages sent in a row that will cause a warning.
     kickThreshold: 5, // Amount of messages sent in a row that will cause a ban.
     banThreshold: 7, // Amount of messages sent in a row that will cause a ban.
-    maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
-    warnMessage: '{@user}, Please stop spamming, IF U DONT STOP YOU GOT PUNISHED', // Message that will be sent in chat upon warning a user.
+    maxInterval: 2500, // Amount of time (in milliseconds) in which messages are considered spam.
+    warnMessage: '{@user}, PLEASE STOP SPAMMING, IF U DONT STOP YOU GOT PUNISHED', // Message that will be sent in chat upon warning a user.
     kickMessage: '**{user_tag}** has been kicked for spamming.', // Message that will be sent in chat upon kicking a user.
     banMessage: '**{user_tag}** has been banned for spamming.', // Message that will be sent in chat upon banning a user.
     maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.

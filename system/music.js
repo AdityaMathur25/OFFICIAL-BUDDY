@@ -61,6 +61,6 @@ embed.setAuthor("Started Playing Song", message.author.displayAvatarURL())
     queue.textChannel
       .send(embed)
       .catch(err => message.channel.send("UNABLE TO PLAY SONG"));
-    dispatcher.voice.setSelfDeaf(true)
+    
   }
 };
