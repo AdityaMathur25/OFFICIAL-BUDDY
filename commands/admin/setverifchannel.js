@@ -36,8 +36,8 @@ module.exports = {
   const add = m.createReactionCollector(rolefilter, {timer: 6000})  
    add.on('collect', g => {
      var role= user.guild.roles.cache.find(role => role.name === `${r}`);
-let p =  user.roles.add(role)
-message.user.send()
+  user.roles.add(role)
+message.user.send(`added role ${role}`)
    }) 
     }
 }
