@@ -6,7 +6,7 @@ module.exports = {
   category: "Administration",
   usage: "verification <#channel>",
   description: "Set the verification channel",
-  run: (client, message, args) => {
+  run: async (client, message, args) => {
     
     let channel = message.mentions.channels.first() //mentioned channel
     
@@ -19,21 +19,22 @@ module.exports = {
     db.set(`Vchannel_${message.guild.id}`, channel.id) //set id in var
     
     message.channel.send(`verification Channel is seted as ${channel}`)
+    
     let gb =  db.fetch(`Vchannel_${message.guild.id}`)//send success message
-    let r = db.fetch()
-  const gg = new MessageEmbed()
+    let r = db.fetch(`Vrchannel_${message.guild.id}`)
+  const gg = new Discord.MessageEmbed()
   .setTitle('SERVER VERIFICATION')
   .setDescription('IF U WANT ACCESS TO FULL SERVER REACT ✅')
   .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
   .setColor('RED')
   .setTimestamp()
   .setFooter(message.guild.name)
-  let bd = message.client.channels.cache.get(gb).send(gg)
-  bd.react('✅')
+  let m = await message.client.channels.cache.get(gb).send(gg)
+  m.react(`✅`)
   const rolefilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-  const add = bd.createReactionCollector(rolefilter, {timer: 6000})  
+  const add = m.createReactionCollector(rolefilter, {timer: 6000})  
    add.on('collect', g => {
-     .roles.add()
+     message.user.roles.add(r)
    }) 
     }
 }
