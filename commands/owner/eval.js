@@ -28,4 +28,4 @@ let embed = new Discord.MessageEmbed()
 .addField("Type Of",`\`\`\`${typeof(e)}\`\`\``)
 message.channel.send(embed)
   }
- }
+}
