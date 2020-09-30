@@ -31,10 +31,13 @@ module.exports = {
   .setFooter(message.guild.name)
   let m = await message.client.channels.cache.get(gb).send(gg)
   m.react(`✅`)
+   const user = message.author 
   const rolefilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
   const add = m.createReactionCollector(rolefilter, {timer: 6000})  
    add.on('collect', g => {
-     message.user.roles.add(r)
+     var role= user.guild.roles.cache.find(role => role.name === `${r}`);
+let p =  user.roles.add(role)
+message.user.send()
    }) 
     }
 }
