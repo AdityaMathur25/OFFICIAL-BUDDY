@@ -294,21 +294,8 @@ let hh = "buddy-log"
     // And many more options... See the documentation.
 });
   client.on('message', (message) => antiSpam.message(message))
-  //start
-client.on("message", async message => {
-  if(!message.author.bot) return;
-  const globalMsg = new MessageEmbed()
-  .setTitle(`${message.author.tag}`) 
-  .setDescription(message.content) 
-  .setColor("RANDOM") 
-  .setThumbnail(message.author.avatarURL({format: 'png', dynamic: true}))
-  .setFooter(`From: ${message.guild.name}`) 
-  .setTimestamp() 
-  if(message.channel.name!== "global-chat")return;
-  return await Promise.all(client.channels.cache.filter(c => c.name === 'global-chat').map(c => c.send(globalMsg)))
-
-});
-client.on("messageDelete", async message => {
+  //sta
+client.on('messageDelete', async message=> {
   if(message.author.bot) return;
   const looog = db.get(`logchannel_${message.guild.id}`)
   if(!looog) return;
