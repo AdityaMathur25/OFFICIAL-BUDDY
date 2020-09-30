@@ -20,12 +20,20 @@ module.exports = {
     
     message.channel.send(`verification Channel is seted as ${channel}`)
     let gb =  db.fetch(`Vchannel_${message.guild.id}`)//send success message
+    let r = db.fetch()
   const gg = new MessageEmbed()
   .setTitle('SERVER VERIFICATION')
   .setDescription('IF U WANT ACCESS TO FULL SERVER REACT ✅')
   .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
   .setColor('RED')
   .setTimestamp()
-  .set
+  .setFooter(message.guild.name)
+  let bd = message.client.channels.cache.get(gb).send(gg)
+  bd.react('✅')
+  const rolefilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+  const add = bd.createReactionCollector(rolefilter, {timer: 6000})  
+   add.on('collect', g => {
+     .roles.add()
+   }) 
     }
 }
