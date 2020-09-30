@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const db = require("quick.db")
-
+const MessageEmbed = require('discord.js')
 module.exports = {
   name: "setverificationc",
   category: "Administration",
@@ -18,6 +18,14 @@ module.exports = {
     
     db.set(`Vchannel_${message.guild.id}`, channel.id) //set id in var
     
-    message.channel.send(`verification Channel is seted as ${channel}`) //send success message
-  }
+    message.channel.send(`verification Channel is seted as ${channel}`)
+    let gb =  db.fetch(`Vchannel_${message.guild.id}`)//send success message
+  const gg = new MessageEmbed()
+  .setTitle('SERVER VERIFICATION')
+  .setDescription('IF U WANT ACCESS TO FULL SERVER REACT ✅')
+  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
+  .setColor('RED')
+  .setTimestamp()
+  .set
+    }
 }
