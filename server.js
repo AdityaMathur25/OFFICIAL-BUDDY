@@ -10,7 +10,7 @@ const { addexp } = require("./handlers/xp.js");
 const { badwords } = require("./data.json");
 const AntiSpam = require('discord-anti-spam');
 let random = Math.floor(Math.random() * 4);
-const Logc = db.get(`logchannel_${message.guild.id}`)
+
 //for image ?
 const client = new Client({
   disableEveryone: true
