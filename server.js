@@ -312,6 +312,16 @@ client.on('messageDelete', async message=> {
 client.channels.cache.get(looog)
 .send(ap)
 })
+client.on('createChannel', async message =>{
+  const int = db.get(`logchannel_${message.guild.id}`)
+  if(!int) return;
+  let me = new MessageEmbed()
+  .setTitle('CREATED CHANNEL')
+  .setAuthor(message.guild.name)
+  .setThumbnail(message.guild.Icon({dynamic: true}))
+  .addField("❯ CHANNEL :", channel.name
+}
+         )
 
 client.login(process.env.ass);  
   
