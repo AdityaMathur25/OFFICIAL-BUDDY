@@ -14,8 +14,8 @@ module.exports = {
     if (member.roles.highest.position >= message.member.roles.highest.position)
       return message.channel.send('You cannot add a role to someone with an equal or higher role');
 
-    const role = message.guild.roles.cache.find(val => val.name === args[1])
-    
+    const role = message.mentions.roles.first(); 
+
     let reason = args.slice(2).join(' ');
     if (!reason) reason = '`None`';
     if (reason.length > 1024) reason = reason.slice(0, 1021) + '...';
