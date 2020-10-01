@@ -10,6 +10,7 @@ const { addexp } = require("./handlers/xp.js");
 const { badwords } = require("./data.json");
 const AntiSpam = require('discord-anti-spam');
 let random = Math.floor(Math.random() * 4);
+const Logc = db.get(`logchannel_${message.guild.id}`)
 //for image ?
 const client = new Client({
   disableEveryone: true
@@ -313,11 +314,12 @@ client.channels.cache.get(looog)
 .send(ap)
 })
 client.on('channelCreate', async (channel) =>{
-  const int = db.get(`logchannel_${message.guild.id}`)
+  const int = Logc
   if(!int) return;
   let me = new MessageEmbed()
   .setTitle('CREATED CHANNEL')
-  .setAuthor(message.guild.name)
+  .setAuthor(message.client.username)
+  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
   .addField("❯ CHANNEL :", channel.name, true)
   .addField("❯ CHANNEL TYPE:", channel.type, true)
   .setColor('AQUA')
