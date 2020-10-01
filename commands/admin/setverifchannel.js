@@ -9,7 +9,9 @@ module.exports = {
   run: async (client, message, args) => {
     
     let channel = message.mentions.channels.first() //mentioned channel
-    
+    if (!message.member.hasPermission("MANAGE_MESSAGES")){
+      return message.channel.send("YOU DON'T HAVE PERMISSION TO USE THIS COMMAND!")
+    }
     if(!channel) { //if channel is not mentioned
       return message.channel.send("Please Mention the channel first")
     }
