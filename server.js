@@ -314,7 +314,7 @@ client.channels.cache.get(looog)
 .send(ap)
 })
 client.on('channelCreate', async (channel) =>{
-  const int = Logc
+  const int = db.get(`logchannel_${message.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
   .setTitle('CREATED CHANNEL')
