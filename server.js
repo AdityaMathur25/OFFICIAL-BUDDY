@@ -302,7 +302,7 @@ client.on('messageDelete', async message=> {
   const looog = db.get(`logchannel_${message.guild.id}`)
   if(!looog) return;
   let ap = new MessageEmbed()
-  .setAuthor(message.author.username)
+  .setAuthor(message.member.username)
   .setTitle("MESSAGE DELETED !")
   .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
   .setDescription(`❯ MESSAGE : ${message}`)
@@ -312,14 +312,17 @@ client.on('messageDelete', async message=> {
 client.channels.cache.get(looog)
 .send(ap)
 })
-client.on('createChannel', async message =>{
+client.on('channelCreate', async (channel) =>{
   const int = db.get(`logchannel_${message.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
   .setTitle('CREATED CHANNEL')
   .setAuthor(message.guild.name)
-  .setThumbnail(message.guild.Icon({dynamic: true}))
-  .addField("❯ CHANNEL :", channel.name
+  .addField("❯ CHANNEL :", channel.name, true)
+  .addField("❯ CHANNEL TYPE:", channel.type, true)
+  .setColor('AQUA')
+  .setFooter("LOG MESSAGES !")
+  client.cache.get(int).send(me)
 }
          )
 
