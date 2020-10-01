@@ -314,7 +314,7 @@ client.channels.cache.get(looog)
 .send(ap)
 })
 client.on('channelCreate', async (channel) =>{
-  const int = db.get(`logchannel_${message.guild.id}`)
+  const int = db.get(`logchannel_${channel.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
   .setTitle('CREATED CHANNEL')
@@ -324,7 +324,7 @@ client.on('channelCreate', async (channel) =>{
   .addField("❯ CHANNEL TYPE:", channel.type, true)
   .setColor('AQUA')
   .setFooter("LOG MESSAGES !")
-  client.cache.get(int).send(me)
+  client.channels.cache.get(int).send(me)
 }
          )
 
