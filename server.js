@@ -30,14 +30,15 @@ client.categories = fs.readdirSync("./commands");
   //some error here
   require(`./handlers/${handler}`)(client);
 });
+
 let xx = `${db.get(`status`)}`
-let 
+
 client.on("ready", async () => {
   client.user.setActivity(db.get(`status`), { type: "WATCHING" });
   client.user.setPresence({
 status: "idle", 
 activity: { 
-name: `${db.get(`status`)}`, 
+name: `${xx}`, 
 type: "WATCHING" 
 } 
 })
