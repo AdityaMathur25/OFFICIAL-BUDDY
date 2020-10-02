@@ -372,15 +372,27 @@ client.on('roleCreate', async role =>{
   if(!int) return;
   let me = new MessageEmbed()
   .setTitle('CREATED ROLE !')
-  .setAuthor(message.client.username)
-  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
-  .addField("❯ ROLE NAME : :", role, true)
+  .setAuthor(client.user.username)
+  .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+  .addField("❯ ROLE NAME :", role, true)
   .setColor('RANDOM')
   .setFooter("LOG MESSAGES !")
   client.channels.cache.get(int).send(me)
 }
          )
-
+client.on('roleDelete', async role =>{
+  const int = db.get(`logchannel_${role.guild.id}`)
+  if(!int) return;
+  let me = new MessageEmbed()
+  .setTitle('DELETED ROLE !')
+  .setAuthor(client.user.username)
+  .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+  .addField("❯ Role Name :", role, true)
+  .setColor('AQUA')
+  .setFooter("LOG MESSAGES !")
+  client.channels.cache.get(int).send(me)
+}
+         )
 
 
 client.login(process.env.ass);  
