@@ -342,12 +342,12 @@ client.on('channelDelete', async channel =>{
 }
          )
 client.on('messageUpdate', async (oldMessage,newMessage) =>{
-  const int = db.get(`logchannel_${message.guild.id}`)
+  const int = db.get(`logchannel_${oldMessage.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
   .setTitle('MESSAGE EDITED !')
-  .setAuthor(message.author.username)
-  .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
+  .setAuthor(oldMessage.author.username)
+  .setThumbnail(oldMessage.author.displayAvatarURL({dynamic: true}))
   .addField("❯ Old message :", oldMessage, true)
   .addField("❯ NEW message :", newMessage, true)
   .setColor('RANDOM')
