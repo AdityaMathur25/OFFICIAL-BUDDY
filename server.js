@@ -313,13 +313,13 @@ client.on('messageDelete', async message=> {
 client.channels.cache.get(looog)
 .send(ap)
 })
-client.on('channelCreate', async (channel) =>{
+client.on('channelCreate', async channel =>{
   const int = db.get(`logchannel_${channel.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
   .setTitle('CREATED CHANNEL')
-  .setAuthor(message.client.username)
-  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
+  .setAuthor(client.user.username)
+  .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
   .addField("❯ CHANNEL :", channel.name, true)
   .addField("❯ CHANNEL TYPE:", channel.type, true)
   .setColor('AQUA')
