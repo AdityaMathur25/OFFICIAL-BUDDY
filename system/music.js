@@ -50,9 +50,9 @@ let embed = new MessageEmbed()
       .on("error", console.error);
   
     dispatcher.setVolumeLogarithmic(queue.volume / 100); //VOLUME
-embed.setAuthor("Started Playing Song", message.client.user.displayAvatarURL())
+embed.setAuthor("Started Playing Song", message.author.displayAvatarURL({dynamic: true}))
     .setDescription(`**[${song.title}](${song.url})**`)
-    
+    .setFooter(`REQUESTED BY {message.author.tag}`)
     queue.textChannel
       .send(embed)
       .catch(err => message.channel.send("UNABLE TO PLAY SONG"));

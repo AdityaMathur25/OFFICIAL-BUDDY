@@ -357,7 +357,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) =>{
   const innn = db.get(`logchannel_${oldMember.guild.id}`)
   if(!innn) return;
   let me = new MessageEmbed()
-  .setTitle('CREATED CHANNEL')
+  .setTitle('MEMBER UPDATE')
   .setAuthor(oldMember.user.username)
   .setThumbnail(oldMember.user.displayAvatarURL({dynamic: true}))
   .addField("❯ BEFORE MEMBER :", oldMember.user.username, true)
@@ -367,6 +367,21 @@ client.on('guildMemberUpdate', async (oldMember, newMember) =>{
   client.channels.cache.get(innn).send(me)
 }
          )
+client.on('channelCreate', async rome =>{
+  const int = db.get(`logchannel_${channel.guild.id}`)
+  if(!int) return;
+  let me = new MessageEmbed()
+  .setTitle('CREATED CHANNEL')
+  .setAuthor(message.client.username)
+  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
+  .addField("❯ CHANNEL :", channel.name, true)
+  .addField("❯ CHANNEL TYPE:", channel.type, true)
+  .setColor('AQUA')
+  .setFooter("LOG MESSAGES !")
+  client.channels.cache.get(int).send(me)
+}
+         )
+
 
 
 client.login(process.env.ass);  

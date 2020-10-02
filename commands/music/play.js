@@ -112,7 +112,7 @@ module.exports = {
       
     
       serverQueue.songs.push(song);
-      embed.setAuthor("Added New Song To Queue", client.user.displayAvatarURL())
+      embed.setAuthor("Added New Song To Queue", message.author.displayAvatarURL({dynamic: true}))
       embed.setDescription(`**[${song.title}](${song.url})**`)
       embed.setThumbnail(song.thumbnail)
       .setFooter("Likes - " + songData.videoDetails.likes + ", Dislikes - " +  songData.videoDetails.dislikes)
