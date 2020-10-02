@@ -129,8 +129,7 @@ client.on("guildMemberRemove", async member => {
   .setDescription(`${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
   .setTimestamp()
   .setFooter(`${member.user.username} just left the server !`) 
-  const channel = client.channels.cache.get(lul)
-  return channel.send(nobiya);
+  client.channels.cache.get(lul).send(nobiya);
    // i setde db hmmmm... i understand kk //get channel and send embed  
 //WAIT
   //error at leave od send :/ see log  log of send is un define  
@@ -167,8 +166,7 @@ client.on("guildDelete", guild => {
     .setTitle("LEFT FROM SERVER")
     .addField("Server Members :", guild.memberCount)
     .addField("Server Name :", guild.name)
-    
-    .addField("Server Owner :", guild.owner)
+.addField("Server Owner :", guild.owner)
     .addField("VERIFICATION LEVEL :", guild.verificationLevel);
   client.channels.cache.get("748936869022007376").send(join);
   console.log("LEFT FROM SERVER" + guild.name);
