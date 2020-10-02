@@ -367,16 +367,15 @@ client.on('guildMemberUpdate', async (oldMember, newMember) =>{
   client.channels.cache.get(innn).send(me)
 }
          )
-client.on('channelCreate', async rome =>{
-  const int = db.get(`logchannel_${channel.guild.id}`)
+client.on('roleCreate', async role =>{
+  const int = db.get(`logchannel_${role.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
-  .setTitle('CREATED CHANNEL')
+  .setTitle('CREATED ROLE !')
   .setAuthor(message.client.username)
   .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
-  .addField("❯ CHANNEL :", channel.name, true)
-  .addField("❯ CHANNEL TYPE:", channel.type, true)
-  .setColor('AQUA')
+  .addField("❯ ROLE NAME : :", role, true)
+  .setColor('RANDOM')
   .setFooter("LOG MESSAGES !")
   client.channels.cache.get(int).send(me)
 }
