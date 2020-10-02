@@ -331,9 +331,9 @@ client.on('channelDelete', async channel =>{
   const int = db.get(`logchannel_${channel.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
-  .setTitle('CHANNEL')
-  .setAuthor(message.client.username)
-  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
+  .setTitle('CHANNEL DELETED!')
+  .setAuthor(client.user.username)
+  .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
   .addField("❯ CHANNEL :", channel.name, true)
   .addField("❯ CHANNEL TYPE:", channel.type, true)
   .setColor('AQUA')
