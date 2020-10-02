@@ -341,16 +341,16 @@ client.on('channelDelete', async channel =>{
   client.channels.cache.get(int).send(me)
 }
          )
-client.on('messageUpdate', async (chan) =>{
-  const int = db.get(`logchannel_${channel.guild.id}`)
+client.on('messageUpdate', async (oldMessage,newMessage) =>{
+  const int = db.get(`logchannel_${message.guild.id}`)
   if(!int) return;
   let me = new MessageEmbed()
-  .setTitle('CREATED CHANNEL')
-  .setAuthor(message.client.username)
-  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
-  .addField("❯ CHANNEL :", channel.name, true)
-  .addField("❯ CHANNEL TYPE:", channel.type, true)
-  .setColor('AQUA')
+  .setTitle('MESSAGE EDITED !')
+  .setAuthor(message.author.username)
+  .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
+  .addField("❯ Old message :", oldMessage, true)
+  .addField("❯ NEW message :", newMessage, true)
+  .setColor('RANDOM')
   .setFooter("LOG MESSAGES !")
   client.channels.cache.get(int).send(me)
 }
