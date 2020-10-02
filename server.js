@@ -364,7 +364,6 @@ client.on('guildMemberUpdate', async (oldMember, newMember) =>{
   .setThumbnail(oldMember.user.displayAvatarURL({dynamic: true}))
   .addField("❯ BEFORE MEMBER :", oldMember.user.username, true)
   .addField("❯ AFTER MEMBER:", newMember, true)
-  .addField("ROLE UPDATES ", newMember, )
   .setColor('AQUA')
   .setFooter("LOG MESSAGES !")
   client.channels.cache.get(innn).send(me)
