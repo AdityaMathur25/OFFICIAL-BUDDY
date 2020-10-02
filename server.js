@@ -348,25 +348,26 @@ client.on('messageUpdate', async (oldMessage,newMessage) =>{
   .setTitle('MESSAGE EDITED !')
   .setAuthor(oldMessage.author.username)
   .setThumbnail(oldMessage.author.displayAvatarURL({dynamic: true}))
-  .addField("❯ Old message :", oldMessage, true)
-  .addField("❯ NEW message :", newMessage, true)
+  .addField("❯ Old Message :", oldMessage, true)
+  .addField("❯ NEW Message :", newMessage, true)
   .setColor('RANDOM')
   .setFooter("LOG MESSAGES !")
   client.channels.cache.get(int).send(me)
 }
          )
 client.on('guildMemberUpdate', async (oldMember, newMember) =>{
-  const int = db.get(`logchannel_${channel.guild.id}`)
-  if(!int) return;
+  const innn = db.get(`logchannel_${oldMember.guild.id}`)
+  if(!innn) return;
   let me = new MessageEmbed()
   .setTitle('CREATED CHANNEL')
-  .setAuthor(message.client.username)
-  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
-  .addField("❯ CHANNEL :", channel.name, true)
-  .addField("❯ CHANNEL TYPE:", channel.type, true)
+  .setAuthor(oldMember.user.username)
+  .setThumbnail(oldMember.user.displayAvatarURL({dynamic: true}))
+  .addField("❯ BEFORE MEMBER :", oldMember.user.username, true)
+  .addField("❯ AFTER MEMBER:", newMember, true)
+  .addField("ROLE UPDATES ", newMember, )
   .setColor('AQUA')
   .setFooter("LOG MESSAGES !")
-  client.channels.cache.get(int).send(me)
+  client.channels.cache.get(innn).send(me)
 }
          )
 
