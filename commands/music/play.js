@@ -1,20 +1,18 @@
-const { MessageEmbed, client } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 
 const ms = require("ms")
 
 
 const { Util } = require("discord.js");
-const { YOUTUBE_API_KEY, QUEUE_LIMIT, COLOR } = require("../../config.json");
+const { YOUTUBE_API_KEY, QUEUE_LIMIT, COLOR } = require("../config.json");
 const ytdl = require("ytdl-core");
 const YoutubeAPI = require("simple-youtube-api");
 const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
-const { play } = require("../../system/music.js");
+const { play } = require("../system/music.js");
 module.exports = {
   name: "play",
   description: "Play the song and feel the music",
-  category: "music",
-  aliases:["p"],
- run: async  (client, message, args) => {
+  async execute(client, message, args) {
     let embed = new MessageEmbed()
 .setColor(COLOR);
 
@@ -40,11 +38,17 @@ module.exports = {
     const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
     const urlcheck = videoPattern.test(args[0]);
- 
-   const serverQueue = message.client.queue.get(message.guild.id);
+
+    if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
+      embed.setAuthor("I am Unable To Play Playlist for now")
+      return message.channel.send(embed);
+    }
+
+    const serverQueue = message.client.queue.get(message.guild.id);
 
     const queueConstruct = {
       textChannel: message.channel,
+      channel,
       connection: null,
       songs: [],
       loop: false,
@@ -120,7 +124,7 @@ module.exports = {
 
     if (!serverQueue)
       message.client.queue.set(message.guild.id, queueConstruct);
-       
+       message.client.vote.set(message.guild.id, voteConstruct);
     if (!serverQueue) {
       try {
         queueConstruct.connection = await channel.join();
