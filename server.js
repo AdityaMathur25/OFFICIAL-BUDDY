@@ -327,6 +327,20 @@ client.on('channelCreate', async channel =>{
   client.channels.cache.get(int).send(me)
 }
          )
+client.on('channelDelete', async channel =>{
+  const int = db.get(`logchannel_${channel.guild.id}`)
+  if(!int) return;
+  let me = new MessageEmbed()
+  .setTitle('CHANNEL')
+  .setAuthor(message.client.username)
+  .setThumbnail(message.client.user.displayAvatarURL({dynamic: true}))
+  .addField("❯ CHANNEL :", channel.name, true)
+  .addField("❯ CHANNEL TYPE:", channel.type, true)
+  .setColor('AQUA')
+  .setFooter("LOG MESSAGES !")
+  client.channels.cache.get(int).send(me)
+}
+         )
 
 client.login(process.env.ass);  
   
