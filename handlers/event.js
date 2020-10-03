@@ -20,30 +20,11 @@ module.exports = (client) => {
               continue;
             } 
           pull.event = pull.event|| file.replace(".js", "")
-                table.addRow(file, `  -> missing a help.name, or help.name is not a string.`);
+          client.on(pull.event, pull.run.bind(null, client))
+                table.addRow(file, `✔️`);
                 continue;
-            } catch(err){
-    
-    
-            // If there's an aliases key, read the aliases.
-            
-        } 
-    });
-    // Log the table
-    console.log(table.toString());
-}
-
-
-/**
- * This is the basic command layout
- * module.exports = {
- *  name: "Command name",
- *  aliases: ["array", "of", "aliases"]
- *  category: "Category name",
- *  description: "Command description"
- *  usage: "[args input]",
- *  run: (client, message, args) => {
- *      The code in here to execute
- *  }
- * }
- */
+            }
+      catch(err){
+              console.log("something went wrong")
+              table.addRow(`✖️ CALL CTK OR DIE`)
+            }})}
