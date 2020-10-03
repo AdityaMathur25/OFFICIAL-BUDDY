@@ -4,7 +4,7 @@ const { ownerID, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
 
-module.exports.run = async (client, message, arg) => {
+module.exports.run = async (client, message, args) => {
   if (message.author.bot) return;
   if (!message.guild) return;
 
@@ -34,13 +34,7 @@ module.exports.run = async (client, message, arg) => {
   if (!message.content.startsWith(prefix)) return;
 
   if (!message.member)
-    message.member = await message.guild.members.fetch(message);
-
-  const args = message.content
-    .slice(prefix.length)
-    .trim()
-    .split(/ +/g);
-  const cmd = args.shift().toLowerCase();
+    message.member = await message.guild.members.fetch(message)
 
   if (cmd.length === 0) return;
 

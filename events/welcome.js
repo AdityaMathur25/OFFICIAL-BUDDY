@@ -4,7 +4,7 @@ const canva = new CanvasSenpai();
 const { discord, MessageAttachment } = require("discord.js")
 
 
-module.exports.run = async (client, member) => {
+module.exports.run = async (client, member, guildMemberAdd) => {
   
    let chx = db.get(`welchannel_${member.guild.id}`);
   //defining var
