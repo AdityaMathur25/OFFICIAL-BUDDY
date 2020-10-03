@@ -93,8 +93,13 @@ if(cmdx) {
       if(neededperms.length) return message.channel.send(`I NEED \`${neededperms.join("`, `")} permission to execute command `)
     }  else if(command.authorPermission && typeof command.authorPermission === "array"){
       let neededperms = [];
+      command.userPermission.forEach(u => {
+       if(!message.member.hasPermission(u)) neededperms.push(u) 
+      })
+      if(neededperms.length) return message.channel.send(`YOU NEED \`${neededperms.join("`, `")} permission to use command`)
+                                     }
       
-    }
+    
     
     
     
