@@ -87,10 +87,15 @@ if(cmdx) {
     
     if(command.botPermission && typeof command.botPermission === "array" ){
       let neededperms = [];
-      command.botPermission
-      
+      command.botPermission.forEach(p => {
+        if(message.guild.me.hasPermission(p)) neededperms.push(p)
+       })
+      if(neededperms.length) return message.channel.send(`I NEED \`${neededperms.join("`, `")} permission to execute command `)
+    }  else if(command.authorPermission && typeof command.authorPermission === "array"){
+      let neededperms = [];
       
     }
+    
     
     
     
