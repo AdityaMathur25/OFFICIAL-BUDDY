@@ -1,6 +1,6 @@
 const { Client, Collection, MessageAttachment, MessageEmbed } = require("discord.js");
 const { config } = require("dotenv");
-const { default_prefix, token, COLOR } = require("./config.json");
+const { default_prefix, token, COLOR, ownerid } = require("./config.json");
 const db = require("quick.db");
 const fs = require("fs");
 const { discord, message }= require("discord.js");
@@ -98,6 +98,10 @@ if(cmdx) {
       })
       if(neededperms.length) return message.channel.send(`YOU NEED \`${neededperms.join("`, `")} permission to use command`)
                                      }
+    if(command.ownerOnly){
+    if(message.author.id !== ownerid) return message.channel.send("This command is only for owner :)")  
+      
+    }
       
     
     
