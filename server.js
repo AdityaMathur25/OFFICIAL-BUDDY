@@ -27,7 +27,7 @@ client.categories = fs.readdirSync("./commands");
     
 
 // Run the command loader
-["command"].forEach(handler => {
+["command", "events"].forEach(handler => {
   //some error here
   require(`./handlers/${handler}`)(client);
 });

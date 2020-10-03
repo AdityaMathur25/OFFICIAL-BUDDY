@@ -16,7 +16,7 @@ module.exports = (client) => {
     try {
     let pull = require(`../events/${file}`);
 
-    if (pull.event && typeof pull.event !== "string") {
+    if (pull.event) {
       table.addRow(file, `❌ -> Property event should be string.`);
       continue;
     }
