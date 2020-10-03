@@ -92,7 +92,10 @@ if(cmdx) {
     let time = ucooldown[command.name] || 0
     console.log(ucooldown)
     console.log(cooldown)
-    
+    if(time && (time > Date.now())) {
+      message.channel.send(`YOU CAN USE THIS COMMAND IN ${Math.ceil((time-Date.now()/1000))} second(s)`)
+    }
+    cooldown[message.author.id][command.name] = Date.now() + command.cooldown;
     return addexp(message);
   }
 });
