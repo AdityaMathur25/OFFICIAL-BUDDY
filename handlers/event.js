@@ -11,8 +11,9 @@ module.exports = (client) => {
         // Filter so we only have .js command files
         const commands = readdirSync(`./events/`).filter(file => file.endsWith(".js"));
     
-  for (let files of commands ){
-         try { 
+        for(let files of commands ) {
+       
+          try { 
          let pull = require(`../events/${file}`);
     if (pull.event && typeof pull.event !== "string")
                 table.addRow(file, '❌ plse join ctk server :)');
