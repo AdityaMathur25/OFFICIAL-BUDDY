@@ -81,7 +81,7 @@ if(cmdx) {
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   // If a command is finally found
   if (command) {
-    command.run(client, message, args);
+  
     if(!command) return;
     let ucooldown = cooldown[message.author.id]
     if(!ucooldown) {
@@ -93,10 +93,13 @@ if(cmdx) {
     console.log(ucooldown)
     console.log(cooldown)
     if(time && (time > Date.now())) {
-      message.channel.send(`YOU CAN USE THIS COMMAND IN ${Math.ceil((time-Date.now()/1000))} second(s)`)
+    return message.channel.send(`YOU CAN USE THIS COMMAND IN ${Math.ceil((time-Date.now()/1000))} second(s)`)
+    
     }
     cooldown[message.author.id][command.name] = Date.now() + command.cooldown;
+    command.run(client, message, args);
     return addexp(message);
+    //----------end ---------
   }
 });
 

@@ -5,6 +5,7 @@ module.exports = {
   category: "moderation",
   description: "Ban anyone with one shot whithout knowing anyone xD",
   usage: "ban <@user> <reason>",
+  cooldown: 5000,
   run: async (client, message, args) => {
     
     if(!message.member.hasPermission("BAN_MEMBERS")) {
