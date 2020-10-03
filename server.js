@@ -10,7 +10,7 @@ const { addexp } = require("./handlers/xp.js");
 const { badwords } = require("./data.json");
 const AntiSpam = require('discord-anti-spam');
 let random = Math.floor(Math.random() * 4);
-
+let cooldown = {}
 //for image ?
 const client = new Client({
   disableEveryone: true
@@ -82,6 +82,17 @@ if(cmdx) {
   // If a command is finally found
   if (command) {
     command.run(client, message, args);
+    if(!command) return;
+    let ucooldown = cooldown[message.author.id]
+    if(!ucooldown) {
+      cooldown[message.author.id] = {}
+      ucooldown = cooldown[message.author.id]
+    }
+    //----------Cooldown system ---------
+    let time = ucooldown[command.name] || 0
+    console.log(ucooldown)
+    console.log(cooldown)
+    
     return addexp(message);
   }
 });
