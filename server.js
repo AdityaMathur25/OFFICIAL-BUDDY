@@ -83,6 +83,18 @@ if(cmdx) {
   if (command) {
   
     if(!command) return;
+    //----------perms ----
+    
+    if(command.botPermission && typeof command.botPermission === "array" ){
+      let neededperms = [];
+      command.botPermission
+      
+      
+    }
+    
+    
+    
+    //----end ---
     let ucooldown = cooldown[message.author.id]
     if(!ucooldown) {
       cooldown[message.author.id] = {}
@@ -93,7 +105,7 @@ if(cmdx) {
     console.log(ucooldown)
     console.log(cooldown)
     if(time && (time > Date.now())) {
-    return message.channel.send(`YOU CAN USE THIS COMMAND IN ${Math.ceil((time-Date.now()/1000))} second(s)`)
+    return message.channel.send(`YOU CAN USE THIS COMMAND IN ${Math.ceil((time-Date.now())/1000)} second(s)`)
     
     }
     cooldown[message.author.id][command.name] = Date.now() + command.cooldown;
