@@ -27,4 +27,6 @@ module.exports = (client) => {
       catch(err){
               console.log("something went wrong")
               table.addRow(`✖️ CALL CTK OR DIE`)
-      }})}
+      }})
+                    console.log(table.tostring())
+                                    }
