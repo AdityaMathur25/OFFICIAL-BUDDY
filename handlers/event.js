@@ -19,18 +19,20 @@ module.exports = (client) => {
                 table.addRow(file, '❌ plse join ctk server :)');
               continue;
             } 
-                table.addRow(file, `❌  -> missing a help.name, or help.name is not a string.`);
+          pull.event = pull.event|| file.replace(".js", "")
+                table.addRow(file, `  -> missing a help.name, or help.name is not a string.`);
                 continue;
-            }
+            } catch(err){
     
     
             // If there's an aliases key, read the aliases.
             
-        }
+        } 
     });
     // Log the table
     console.log(table.toString());
 }
+
 
 /**
  * This is the basic command layout
