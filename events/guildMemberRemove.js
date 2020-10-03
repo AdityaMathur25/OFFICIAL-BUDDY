@@ -6,6 +6,7 @@ const { discord, MessageEmbed } = require("discord.js")
 
 module.exports.run = async (client, member) => {
   let lul =  await db.fetch(`leechannel_${member.guild.id}`);
+  if (lul === null) return;
   //defining 
 //lol i already do but u seted leavechannel😫 all done
   //make ur browser to desktop cuz .. //its leave 
