@@ -1,3 +1,3 @@
-module.exports =(client) =>{
+module.exports.run = (client) => {
   console.log("testing")
 }
