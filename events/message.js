@@ -4,7 +4,7 @@ const { ownerID, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, arg) => {
   if (message.author.bot) return;
   if (!message.guild) return;
 

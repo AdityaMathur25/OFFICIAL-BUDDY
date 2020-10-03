@@ -1,7 +1,7 @@
 const db = require("quick.db")
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
-const discord, Message = require("discord.js")
+const { discord, MessageEmbed } = require("discord.js")
 
 
 module.exports.run = async (client, member, message, args) => {
@@ -61,5 +61,30 @@ client.on('messageUpdate', async (oldMessage,newMessage) =>{
   .setColor('RANDOM')
   .setFooter("LOG MESSAGES !")
   client.channels.cache.get(int).send(me)
+})
+  client.on('roleCreate', async role =>{
+  const int = db.get(`logchannel_${role.guild.id}`)
+  if(!int) return;
+  let me = new MessageEmbed()
+  .setTitle('CREATED ROLE !')
+  .setAuthor(client.user.username)
+  .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+  .addField("❯ ROLE NAME :", role, true)
+  .setColor('RANDOM')
+  .setFooter("LOG MESSAGES !")
+  client.channels.cache.get(int).send(me)
 }
-         )}
+         )
+client.on('roleDelete', async role =>{
+  const int = db.get(`logchannel_${role.guild.id}`)
+  if(!int) return;
+  let me = new MessageEmbed()
+  .setTitle('DELETED ROLE !')
+  .setAuthor(client.user.username)
+  .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+  .addField("❯ Role Name :", role, true)
+  .setColor('AQUA')
+  .setFooter("LOG MESSAGES !")
+  client.channels.cache.get(int).send(me)
+}
+      )}
