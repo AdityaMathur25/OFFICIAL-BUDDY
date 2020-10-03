@@ -4,7 +4,7 @@ const { ownerID, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
 
-module.exports.run = async (client, message) => {
+module.exports.run = async (client, message, args) => {
   if (message.author.bot) return;
   if (!message.guild) return;
 
@@ -111,7 +111,15 @@ module.exports.run = async (client, message) => {
  
 
 
+  if (message.author.client) return;
 
+  if (message.content.indexof(default_prefix) !== 0) return;
+  const args = message.content
+    .slice(default_prefix.length)
+    .tirm()
+    .split(/ +/g);
+  const command = args.shift().toLowerCase();
+});
 
 
 
@@ -126,5 +134,4 @@ function is_url(str) {
   } else {
     return false;
   }
-  
 }
