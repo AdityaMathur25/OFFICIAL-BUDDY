@@ -46,54 +46,6 @@ type: "WATCHING"
 
   console.log("ready as badass");
 
-
-client.on("guildMemberAdd", async member => {
-   let chx = db.get(`welchannel_${member.guild.id}`);
-  //defining var
-  if (!chx) return;
-  //u not define at random for image ?
-  var images = [
-    "https://wallpapercave.com/wp/wp6081521.jpg",
-    "https://wallpapercave.com/wp/wp5128415.jpg",
-    "https://wallpapercave.com/wp/wp5128398.jpg",
-    "https://wallpapercave.com/wp/wp5700007.jpg",
-    "https://wallpapercave.com/wp/wp5243211.jpg"
-  ];
-  let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
-  let data = await canva.welcome(member, { link: `${images[random]}` });
-  const attachment = new MessageAttachment(data, "welcome-image.png");
-  let msg = db.get(`welmsg_${member.guild.id}`)
-  if(msg === null)
-    msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
-    let newmsg = msg.replace("{user}", member.user);
-    let hg = newmsg.replace("{server}", member.guild.name);
-    let ffg = hg.replace("{members}", member.guild.memberCount);
-    client.channels.cache
-    .get(chx)
-  .send(`${ffg}`)
-  
-  let dumb = await db.fetch(`welchannel_${member.guild.id}`)
-  let gg = client.channels.cache.get(dumb)
-  return gg.send( attachment )
-}); //get channel and send embed
-
-client.on("guildMemberRemove", async member => {
-  //usage of welcome event
-  let lul =  await db.fetch(`leechannel_${member.guild.id}`);
-  //defining 
-//lol i already do but u seted leavechannel😫 all done
-  //make ur browser to desktop cuz .. //its leave 
-  const nobiya = new MessageEmbed()
-  .setTitle("SAY-GOODBYE")
-  .setColor("RANDOM")
-  .setDescription(`${member.user.username} SAY-GOODBYE MEET YOU SOON!`)
-  .setTimestamp()
-  .setFooter(`${member.user.username} just left the server !`) 
-  client.channels.cache.get(lul).send(nobiya);
-   // i setde db hmmmm... i understand kk //get channel and send embed  
-//WAIT
-  //error at leave od send :/ see log  log of send is un define  
-  });
   client.on("message", async message => {
   if (message.author.client) return;
 
@@ -357,4 +309,4 @@ client.on('roleDelete', async role =>{
 
 client.login(process.env.ass);  
   
-  
+})
