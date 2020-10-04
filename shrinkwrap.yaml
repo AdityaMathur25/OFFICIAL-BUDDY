@@ -29,6 +29,7 @@ dependencies:
   simple-youtube-api: 5.2.1
   snekfetch: 4.0.4
   something-random-on-discord: 0.0.1
+  twemoji-parser: 13.0.0
   yt-search: 2.3.1
   ytdl-core: 3.2.2
   ytdl-core-discord: 1.2.3
@@ -3838,6 +3839,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ND4LZXF4X92/PFrzSgGkq6KPPg8swy/U0yRw1k/+izWRVmq1HYi3khPwV3XIB6FRudgVICAaBhJfW8e8G3HC7Q==
+  /twemoji-parser/13.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-zMaGdskpH8yKjT2RSE/HwE340R4Fm+fbie4AaqjDa4H/l07YUmAvxkSfNl6awVWNRRQ0zdzLQ8SAJZuY5MgstQ==
   /twemoji/12.1.6:
     dependencies:
       fs-extra: 8.1.0
@@ -4175,6 +4180,7 @@ specifiers:
   simple-youtube-api: ^5.2.1
   snekfetch: ^4.0.4
   something-random-on-discord: ^0.0.1
+  twemoji-parser: ^13.0.0
   yt-search: ^2.3.1
   ytdl-core: ^3.2.2
   ytdl-core-discord: ^1.2.2

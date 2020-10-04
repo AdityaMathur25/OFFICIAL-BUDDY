@@ -42,7 +42,8 @@
     "discord-anti-spam": "^2.4.1",
     "better-discord-antispam": "^2.0.0",
     "got": "^11.7.0",
-    "common-tags": "^1.8.0"
+    "common-tags": "^1.8.0",
+    "twemoji-parser": "^13.0.0"
   },
   "engines": {
     "node": "12.x"
