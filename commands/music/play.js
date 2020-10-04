@@ -1,148 +1,106 @@
-const { MessageEmbed } = require("discord.js")
-
-const ms = require("ms")
-
-
-const { Util } = require("discord.js");
-const { YOUTUBE_API_KEY, QUEUE_LIMIT, COLOR } = require("../../config.json");
+const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
-const YoutubeAPI = require("simple-youtube-api");
-const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
-const { play } = require("../../system/music.js");
+const yts = require("yt-search");
+let dbd = new MessageEmbed()
+.setColor("aqua")
+
 module.exports = {
-  name: "play",
-  description: "Play the song and feel the music",
-  category: "music",
-  aliases: ["p"],
- run: async (client, message, args) => {
-    let embed = new MessageEmbed()
-.setColor(COLOR);
+  
+    name: "play",
+    description: "To play songs :D",
+    usage: "<song_name>",
+    aliases: ["p"],
+  run: async (client, message, args) => {
+    use if(<message>.author.bot) return; in every event
+    const channel = message.member.voice.channel;
+    if (!channel) dbd.setDescription("I'm sorry but you need to be in a voice channel to play music!", message.channel);
+return message.channel.send(dbd)
+    const permissions = channel.permissionsFor(message.client.user);
+    if (!permissions.has("CONNECT"))dbd.setDescription("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel); return message.channel.send(dbd)
+    if (!permissions.has("SPEAK"))dbd.setDescription("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel); return message.channel.send(dbd)
 
+    var searchString = args.join(" ");
+    if (!searchString)return message.channel.send("You didn't poivide want i want to play", message.channel);
 
-    //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE
-    if (!args.length) {
-      //IF AUTHOR DIDENT GIVE URL OR NAME
-      embed.setAuthor("WRONG SYNTAX : Type `play <URL> or text`")
-      return message.channel.send(embed);
+    var serverQueue = message.client.queue.get(message.guild.id);
+
+    var searched = await yts.search(searchString)
+    if(searched.videos.length === 0)return message.channel.send("Looks like i was unable to find the song on YouTube", message.channel)
+    var songInfo = searched.videos[0]
+
+    const song = {
+      id: songInfo.videoId,
+      title: Util.escapeMarkdown(songInfo.title),
+      views: String(songInfo.views).padStart(10, ' '),
+      url: songInfo.url,
+      ago: songInfo.ago,
+      duration: songInfo.duration.toString(),
+      img: songInfo.image,
+      req: message.author
+    };
+
+    if (serverQueue) {
+      serverQueue.songs.push(song);
+      let thing = new MessageEmbed()
+      .setAuthor("Song has been added to queue", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
+      .setThumbnail(song.img)
+      .setColor("YELLOW")
+      .addField("Name", song.title, true)
+      .addField("Duration", song.duration, true)
+      .addField("Requested by", song.req.tag, true)
+      .setFooter(`Views: ${song.views} | ${song.ago}`)
+      return message.channel.send(thing);
     }
-
-    const { channel } = message.member.voice;
-        
-    if (!channel) {
-      //IF AUTHOR IS NOT IN VOICE CHANNEL
-      embed.setAuthor("YOU NEED TO BE IN VOICE CHANNEL :/")
-      return message.channel.send(embed);
-    }
-
-    //WE WILL ADD PERMS ERROR LATER :(
-
-    const targetsong = args.join(" ");
-    const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
-    const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
-    const urlcheck = videoPattern.test(args[0]);
-
-    if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-      embed.setAuthor("I am Unable To Play Playlist for now")
-      return message.channel.send(embed);
-    }
-
-    const serverQueue = message.client.queue.get(message.guild.id);
 
     const queueConstruct = {
       textChannel: message.channel,
-      channel,
+      voiceChannel: channel,
       connection: null,
       songs: [],
-      loop: false,
-      volume: 100,
-      playing: true
+      volume: 2,
+      playing: true,
     };
-    
-    const voteConstruct = {
-      vote: 0,
-      voters: []
-    }
+    message.client.queue.set(message.guild.id, queueConstruct);
+    queueConstruct.songs.push(song);
 
-    let songData = null;
-    let song = null;
-
-    if (urlcheck) {
-      try {
-        songData = await ytdl.getInfo(args[0]);
-      
-        song = {
-             title: songData.videoDetails.title,
-          url: songData.videoDetails.video_url,
-          duration: songData.videoDetails.lengthSeconds,
-          thumbnail: songData.videoDetails.thumbnail.thumbnails[3].url
-        };
-      } catch (error) {
-        if (message.include === "copyright") {
-          return message
-            .reply("THERE IS COPYRIGHT CONTENT IN VIDEO -_-")
-            .catch(console.error);
-        } else {
-          console.error(error);
-        }
-      }
-    } else {
-          
-      try {
-        const result = await youtube.searchVideos(targetsong, 1);
-        songData = await ytdl.getInfo(result[0].url);
-      
-        song = {
-          title: songData.videoDetails.title,
-          url: songData.videoDetails.video_url,
-          duration: songData.videoDetails.lengthSeconds,
-          thumbnail: songData.videoDetails.thumbnail.thumbnails[3].url,
-        };
-      } catch (error) {
-        console.log(error)
-        if(error.errors[0].domain === "usageLimits") {
-          return message.channel.send("Your YT API limit is over and it will be restored under 24 hours")
-        }
-      }
-    }
-
-    if (serverQueue) {
-        if(serverQueue.songs.length > Math.floor(QUEUE_LIMIT - 1) && QUEUE_LIMIT !== 0) {
-      return message.channel.send(`You can not add songs more than ${QUEUE_LIMIT} in queue`)
-    }
-      
-    
-      serverQueue.songs.push(song);
-      embed.setAuthor("Added New Song To Queue", message.author.displayAvatarURL({dynamic: true}))
-      embed.setDescription(`**[${song.title}](${song.url})**`)
-      embed.setThumbnail(song.thumbnail)
-      .setFooter("Likes - " + songData.videoDetails.likes + ", Dislikes - " +  songData.videoDetails.dislikes)
-      
-      return serverQueue.textChannel
-        .send(embed)
-        .catch(console.error);
-    } else {
-      queueConstruct.songs.push(song);
-    }
-
-    if (!serverQueue)
-      message.client.queue.set(message.guild.id, queueConstruct);
-    if (!serverQueue) {
-      try {
-        queueConstruct.connection = await channel.join();
-        play(queueConstruct.songs[0], message);
-      } catch (error) {
-        console.error(`Could not join voice channel: ${error}`);
+    const play = async (song) => {
+      const queue = message.client.queue.get(message.guild.id);
+      if (!song) {
+        message.channel.send("Leaving the voice channel because I think there are no songs in the queue)", message.channel)
+        queue.voiceChannel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
-        await channel.leave();
-        return message.channel
-          .send({
-            embed: {
-              description: `😭 | Could not join the channel: ${error}`,
-              color: "#ff2050"
-            }
-          })
-          .catch(console.error);
+        return;
       }
+
+      const dispatcher = queue.connection
+        .play(ytdl(song.url))
+        .on("finish", () => {
+          queue.songs.shift();
+          play(queue.songs[0]);
+        })
+        .on("error", (error) => console.error(error));
+      dispatcher.setVolumeLogarithmic(queue.volume / 5);
+      let thing = new MessageEmbed()
+      .setAuthor("Started Playing Music!", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
+      .setThumbnail(song.img)
+      .setColor("BLUE")
+      .addField("Name", song.title, true)
+      .addField("Duration", song.duration, true)
+      .addField("Requested by", song.req.tag, true)
+      .setFooter(`Views: ${song.views} | ${song.ago}`)
+      queue.textChannel.send(thing);
+    };
+
+    try {
+      const connection = await channel.join();
+      queueConstruct.connection = connection;
+      channel.guild.voice.setSelfDeaf(true)
+      play(queueConstruct.songs[0]);
+    } catch (error) {
+      console.error(`I could not join the voice channel: ${error}`);
+      message.client.queue.delete(message.guild.id);
+      await channel.leave();
+      return message.channel.send(`I could not join the voice channel: ${error}`, message.channel);
     }
   }
 };
