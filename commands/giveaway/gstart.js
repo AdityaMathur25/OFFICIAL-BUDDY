@@ -1,47 +1,73 @@
-
-const discord = require("discord.js")
-const ms = require("ms")
+const ms = require('ms');
 
 module.exports = {
-  name: "giveaway",
-  aliases: ["gstart","gs"],
-  category:"giveaway",
-  usage: "<@user> <@time> <@prize>",
-  description: "Giveaway something",
-  run: async (client, message, args) => {
+  name: "gstart",
+  category: "giveaway",
+  aliases: ["gs"],
+run: async (client, message, args) => {
 
-    if (!args[0]) return message.channel.send(`You did not specify your time!`);
-    if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m"))
-      return message.channel.send(`The time needs to have days (d) or hours (h) or minutes (m)`);
-    if (isNaN(args[0][0])) return message.channel.send(`It must be a number you know that?`);
+    // If the member doesn't have enough permissions
+    if(!message.member.hasPermission('MANAGE_MESSAGES') && !message.member.roles.cache.some((r) => r.name === "Giveaways")){
+        return message.channel.send(':x: You need to have the manage messages permissions to start giveaways.');
+    }
 
-    let prize = args.slice(1).join(" ");
-    if (!prize) return message.channel.send(`No prize specified!`);
-  
-    let Embed = new discord.MessageEmbed()
-      .setTitle(`New giveaway!`)
-      .setDescription(`Host: ${message.author}\nTime: ${args[0]}\nPrize: ${prize}`)
-      .setTimestamp(Date.now() + ms(args[0]))
-      .setColor(`BLUE`);
-    let m = await message.channel.send(Embed);
-    m.react("🎉");
-    setTimeout(() => {
-      if (m.reactions.cache.get("🎉").count <= 1) {
-        const embed = new discord.MessageEmbed()
-        .setColor("AQUA")
-        .setDescription("No winners")
-        m.edit(embed)
-        return message.channel.send(`Couldnt generate a winner as there is no one in that giveaway!`);
-      }
+    // Giveaway channel
+    let giveawayChannel = message.mentions.channels.first();
+    // If no channel is mentionned
+    if(!giveawayChannel){
+        return message.channel.send('Mention channel');
+    }
 
-      let winner = m.reactions.cache.get("🎉").users.cache.filter((b) => !b.bot).random();
-      
-      const embed = new discord.MessageEmbed()
-      .setColor("RANDOM")
-      .setDescription(`Winner: ${winner}`)
-      m.edit(embed)
-      
-      message.channel.send(`The winnder of the giveaway is ${winner}`);
-    }, ms(args[0]));
-  }
+    // Giveaway duration
+    let giveawayDuration = args[1];
+    // If the duration isn't valid
+    if(!giveawayDuration || isNaN(ms(giveawayDuration))){
+        return message.channel.send('mention duration');
+    }
+
+    // Number of winners
+    let giveawayNumberWinners = args[2];
+    // If the specified number of winners is not a number
+    if(isNaN(giveawayNumberWinners) || (parseInt(giveawayNumberWinners) <= 0)){
+        return message.channel.send('mention no. of winners');
+    }
+
+    // Giveaway prize
+    let giveawayPrize = args.slice(3).join(' ');
+    // If no prize is specified
+    if(!giveawayPrize){
+        return message.channel.send('mention prize');
+    }
+
+    // Start the giveaway
+    client.giveawaysManager.start(giveawayChannel, {
+        // The giveaway duration
+        time: ms(giveawayDuration),
+        // The giveaway prize
+        prize: giveawayPrize,
+        // The giveaway winner count
+        winnerCount: giveawayNumberWinners,
+        // Who hosts this giveaway
+        hostedBy: client.config.hostedBy ? message.author : null,
+        // Messages
+        messages: {
+            giveaway: (client.config.everyoneMention ? "@everyone\n\n" : "")+"Giveaway",
+            giveawayEnded: (client.config.everyoneMention ? "@everyone\n\n" : "")+"Ended",
+            timeRemaining: "Time remaining: **{duration}**!",
+            inviteToParticipate: "React to participate!",
+            winMessage: "Congratulations, {winners}! You won **{prize}**!",
+            embedFooter: "Giveaways",
+            noWinner: "Giveaway cancelled",
+            hostedBy: "Hosted by: {user}",
+            winners: "winner(s)",
+            endedAt: "Ended at",
+            units: {
+                seconds: "seconds",
+                minutes: "minutes",
+                hours: "hours",
+                days: "days",
+                pluralS: false // Not needed, because units end with a S so it will automatically removed if the unit value is lower than 2
+            }
+        }
+    })}
 }
