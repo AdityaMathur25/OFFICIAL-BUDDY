@@ -55,7 +55,7 @@ module.exports = {
       voiceChannel: channel,
       connection: null,
       songs: [],
-      volume: 2,
+      volume: 100,
       playing: true,
     };
     message.client.queue.set(message.guild.id, queueConstruct);
@@ -77,7 +77,7 @@ module.exports = {
           play(queue.songs[0]);
         })
         .on("error", (error) => console.error(error));
-      dispatcher.setVolumeLogarithmic(queue.volume / 5);
+      dispatcher.setVolumeLogarithmic(queue.volume/ 20);
       let thing = new MessageEmbed()
       .setAuthor("Started Playing Music!", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
       .setThumbnail(song.img)
