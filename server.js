@@ -39,36 +39,13 @@ console.log("ready as badass");
 let xx = `${db.get(`status`)}`
 
 client.on("ready", async () => {
-  client.user.setActivity(db.get(`status`), { type: "WATCHING" });let xx = `${db.get(`status`)}`
-
-client.on("ready", async () => {
-  client.user.setActivity(db.get(`status`), { type: "WATCHING" });
-  client.user.setPresence({
+client.user.setPresence({
 status: "idle", 
 activity: { 
 name: `${xx}`, 
 type: "WATCHING" 
 } 
-})let xx = `${db.get(`status`)}`
-
-client.on("ready", async () => {
-  client.user.setActivity(db.get(`status`), { type: "WATCHING" });
-  client.user.setPresence({
-status: "idle", 
-activity: { 
-name: `${xx}`, 
-type: "WATCHING" 
-} 
-  }let xx = `${db.get(`status`)}`
-
-client.on("ready",
-  client.user.setPresence({
-status: "idle", 
-activity: { 
-name: `${xx}`, 
-type: "WATCHING" 
-} 
-})
+})})
 
 
 //Stupid kid!
