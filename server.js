@@ -27,6 +27,7 @@ client.canvas = require("canvacord");
 client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
+client.queue = new Map();
 
 // Run the command loader
 ["command", "events"].forEach(handler => {
@@ -242,7 +243,7 @@ client.on("channelDelete", async channel => {
 client.on("messageUpdate", async (oldMessage, newMessage) => {
   const int = db.get(`logchannel_${oldMessage.guild.id}`);
   if (!int) return;
-  if (oldMessage.content === null || newMessage.content === null) return;
+  if (oldMessage.content === null || newMessage.content === null || oldMessage.content === newMessage.content) return;
   let me = new MessageEmbed()
     .setTitle("MESSAGE EDITED !")
     .setAuthor(oldMessage.author.username)
