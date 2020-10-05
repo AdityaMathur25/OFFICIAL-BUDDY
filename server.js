@@ -223,7 +223,8 @@ client.on("messageDelete", async message => {
     .addField("❯ CHANNEL :", message.channel, true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES");
-  client.channels.cache.get(looog).send(ap);
+  let channel = await client.channels.cache.get(looog)
+  channel.send(ap)
 });
 client.on("channelCreate", async channel => {
   const int = db.get(`logchannel_${channel.guild.id}`);
