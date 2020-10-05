@@ -253,7 +253,7 @@ client.on("channelDelete", async channel => {
   client.channels.cache.get(int2).send(me);
 });
 client.on("messageUpdate", async (oldMessage, newMessage) => {
-  const int3 = db.get(`logchannel_${oldMessage.guild.id}`);
+  const int3 = db.get(`logchannel_${newMessage.guild.id}`);
   if (!int3) return;
   if (oldMessage.content === null || newMessage.content === null || oldMessage.content === newMessage.content) return;
   let me = new MessageEmbed()

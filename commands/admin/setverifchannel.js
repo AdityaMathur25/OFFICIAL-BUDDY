@@ -23,7 +23,7 @@ module.exports = {
     message.channel.send(`verification Channel is seted as ${channel}`)
     
     let gb =  db.fetch(`Vchannel_${message.guild.id}`)//send success message
-    let r = db.fetch(`Vrchannel_${message.guild.id}`)
+    let r = db.get(`Vrchannel_${message.guild.id}`)
   const gg = new Discord.MessageEmbed()
   .setTitle('SERVER VERIFICATION')
   .setDescription('IF U WANT ACCESS TO FULL SERVER REACT ✅')
@@ -36,10 +36,11 @@ module.exports = {
    const filter = (reaction, user) => {
     return reaction.emoji.name === '✅' && user.id === message.author.id;
 };
-let role = message.guild.roles.cache.get(r);
-message.awaitReactions(filter)
-    .then(collected => collected.message.member.roles.add(role))
+let role = message.guild.roles.cache.get(r)
+.awaitReactions(filter)
+    .then(collected => collected.message.member.role.add(role) +
+         console.log("Reacted !"))
     .catch(collected => {
-        console.log(`Time Ended.`);
+        console.log(`Reacted`);
   
 })}}
