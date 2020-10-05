@@ -6,6 +6,7 @@ name: "imdb",
   description: "Get the information about series and movie",
   category: "info",
   usage: "imdb <name>",
+  cooldown: 5000,
   run: async (client, message, args, color) => {
     
     if(!args.length) {
