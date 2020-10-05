@@ -6,7 +6,7 @@ module.exports = {
   category: "Administration",
   usage: "verification <#channel>",
   description: "Set the verification channel",
-  run: async (client, message, args) => {
+  run: async (client, message, member, args) => {
     
     let channel = message.mentions.channels.first() //mentioned channel
     if (!message.member.hasPermission("MANAGE_MESSAGES")){
@@ -37,8 +37,8 @@ module.exports = {
   const rolefilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
   const add = m.createReactionCollector(rolefilter, {timer: 6000})  
    add.on('collect', g => {
-     var role= user.guild.roles.cache.find(role => role.name === `${r}`);
-  user.roles.add(role)
+     var role = user.guild.roles.cache.find(role => role.name === `${r}`);
+  member.roles.add(role)
 message.user.send(`added role ${role}`)
    }) 
     }
