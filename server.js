@@ -213,7 +213,7 @@ client.on("message", message => antiSpam.message(message));
 //sta
 client.on("messageDelete", async message => {
   if (message.author.bot) return;
-  const looog = db.fetch(`logchannel_${message.guild.id}`);
+  const looog = db.get(`logchannel_${message.guild.id}`);
   if (!looog) return;
   let ap = new MessageEmbed()
     .setAuthor(message.member.username)
@@ -223,8 +223,7 @@ client.on("messageDelete", async message => {
     .addField("❯ CHANNEL :", message.channel, true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES");
-  let channel = await client.channels.cache.get(looog)
-  channel.send(ap)
+  client.channels.cache.get(looog).send(ap);
 });
 client.on("channelCreate", async channel => {
   const int = db.get(`logchannel_${channel.guild.id}`);
@@ -253,7 +252,7 @@ client.on("channelDelete", async channel => {
   client.channels.cache.get(int2).send(me);
 });
 client.on("messageUpdate", async (oldMessage, newMessage) => {
-  const int3 = db.get(`logchannel_${newMessage.guild.id}`);
+  const int3 = db.get(`logchannel_${oldMessage.guild.id}`);
   if (!int3) return;
   if (oldMessage.content === null || newMessage.content === null || oldMessage.content === newMessage.content) return;
   let me = new MessageEmbed()
