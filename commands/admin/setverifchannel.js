@@ -34,11 +34,11 @@ module.exports = {
   let m = await message.client.channels.cache.get(gb).send(gg)
   m.react(`✅`)
    const filter = (reaction, user) => {
-    return reaction.emoji.name === '✅' //&& user.id === message.author.id;
+    return reaction.emoji.name === '✅' && user.id === message.author.id;
 };
 let role = message.guild.roles.cache.get(r);
 message.awaitReactions(filter)
-    .then(collected => collected.member.role.add(role))
+    .then(collected => collected.message.member.roles.add(role))
     .catch(collected => {
         console.log(`Time Ended.`);
   

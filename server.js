@@ -213,7 +213,7 @@ client.on("message", message => antiSpam.message(message));
 //sta
 client.on("messageDelete", async message => {
   if (message.author.bot) return;
-  const looog = db.get(`logchannel_${message.guild.id}`);
+  const looog = db.fetch(`logchannel_${message.guild.id}`);
   if (!looog) return;
   let ap = new MessageEmbed()
     .setAuthor(message.member.username)
