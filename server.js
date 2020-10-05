@@ -239,8 +239,8 @@ client.on("channelCreate", async channel => {
   client.channels.cache.get(int).send(me);
 });
 client.on("channelDelete", async channel => {
-  const int = db.get(`logchannel_${channel.guild.id}`);
-  if (!int) return;
+  const int2 = db.get(`logchannel_${channel.guild.id}`);
+  if (!int2) return;
   let me = new MessageEmbed()
     .setTitle("CHANNEL DELETED!")
     .setAuthor(client.user.username)
@@ -249,11 +249,11 @@ client.on("channelDelete", async channel => {
     .addField("❯ CHANNEL TYPE:", channel.type, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  client.channels.cache.get(int).send(me);
+  client.channels.cache.get(int2).send(me);
 });
 client.on("messageUpdate", async (oldMessage, newMessage) => {
-  const int = db.get(`logchannel_${oldMessage.guild.id}`);
-  if (!int) return;
+  const int3 = db.get(`logchannel_${oldMessage.guild.id}`);
+  if (!int3) return;
   if (oldMessage.content === null || newMessage.content === null || oldMessage.content === newMessage.content) return;
   let me = new MessageEmbed()
     .setTitle("MESSAGE EDITED !")
@@ -263,7 +263,7 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     .addField("❯ NEW Message :", newMessage.content || "No Content!", true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES !");
-  return client.channels.cache.get(int).send(me);
+  return client.channels.cache.get(int3).send(me);
 });
 
 client.login(process.env.ass);

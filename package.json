@@ -43,7 +43,8 @@
     "better-discord-antispam": "^2.0.0",
     "got": "^11.7.0",
     "common-tags": "^1.8.0",
-    "twemoji-parser": "^13.0.0"
+    "twemoji-parser": "^13.0.0",
+    "imdb-api": "^4.2.0"
   },
   "engines": {
     "node": "12.x"

@@ -20,6 +20,7 @@ dependencies:
   fs: 0.0.2
   genius-lyrics: 4.0.0
   got: 11.7.0
+  imdb-api: 4.2.0
   node-fetch: 2.6.1
   node-superfetch: 0.1.10
   novelcovid: 3.0.0
@@ -1191,6 +1192,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-+fDXmFqrsZfuCr3dwSxm0pyK5RTiIBFBJiWTG6HaZQc9FhoqT4o9KQFEfGllic0S2gEpzHYMirzqJ5qSh+mOrQ==
+  /data-uri-to-buffer/3.0.1:
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -1647,6 +1654,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
+  /fetch-blob/2.1.1:
+    dev: false
+    engines:
+      node: ^10.17.0 || >=12.3.0
+    peerDependencies:
+      domexception: ^2.0.1
+    resolution:
+      integrity: sha512-Uf+gxPCe1hTOFXwkxYyckn8iUSk6CFXGy5VENZKifovUTZC9eUODWSBhOBS7zICGrAetKzdwLMr85KhIcePMAQ==
   /ffmpeg-static/4.2.7:
     dependencies:
       '@derhuerst/http-basic': 8.2.0
@@ -2099,6 +2114,15 @@ packages:
       node: '>=0.9.0'
     resolution:
       integrity: sha1-/IQJlmRGC5DKhi2TALa/u7+/gFY=
+  /imdb-api/4.2.0:
+    dependencies:
+      ky: 0.23.0
+      ky-universal: /ky-universal/0.8.2/ky@0.23.0
+    dev: false
+    engines:
+      node: '>=6.0'
+    resolution:
+      integrity: sha512-QoNF2E+8hAPR76pGwwy9dikSnDw4EDkA4lP3dzhkMSiQzx/lkczFZjQBbKcLRrtxdBCN6cSozLpCj7PnQp98pw==
   /inflight/1.0.6:
     dependencies:
       once: 1.4.0
@@ -2416,6 +2440,26 @@ packages:
       graceful-fs: 4.2.4
     resolution:
       integrity: sha1-QIhDO0azsbolnXh4XY6W9zugJDk=
+  /ky-universal/0.8.2/ky@0.23.0:
+    dependencies:
+      abort-controller: 3.0.0
+      ky: 0.23.0
+      node-fetch: 3.0.0-beta.9
+    dev: false
+    engines:
+      node: '>=10.17'
+    id: registry.npmjs.org/ky-universal/0.8.2
+    peerDependencies:
+      ky: '>=0.17.0'
+      web-streams-polyfill: '>=2.0.0'
+    resolution:
+      integrity: sha512-xe0JaOH9QeYxdyGLnzUOVGK4Z6FGvDVzcXFTdrYA1f33MZdEa45sUDaMBy98xQMcsd2XIBrTXRrRYnegcSdgVQ==
+  /ky/0.23.0:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-+t2CbQsLmpN3HeYPBxN+VbZqBOd86njF3cvnueC77pJKVHRjiMI0Ac+pfkB8e17Bw1dGHbMk9hrHst9Bw7ndgw==
   /lazy-cache/0.2.7:
     dev: false
     engines:
@@ -2819,6 +2863,15 @@ packages:
       node: 4.x || >=6.0.0
     resolution:
       integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+  /node-fetch/3.0.0-beta.9:
+    dependencies:
+      data-uri-to-buffer: 3.0.1
+      fetch-blob: 2.1.1
+    dev: false
+    engines:
+      node: ^10.17 || >=12.3
+    resolution:
+      integrity: sha512-RdbZCEynH2tH46+tj0ua9caUHVWrd/RHnRfvly2EVdqGmI3ndS1Vn/xjm5KuGejDt2RNDQsVRLPNd2QPwcewVg==
   /node-fzf/0.5.3:
     dependencies:
       cli-color: 1.2.0
@@ -4171,6 +4224,7 @@ specifiers:
   fs: ^0.0.2
   genius-lyrics: ^4.0.0
   got: ^11.7.0
+  imdb-api: ^4.2.0
   node-fetch: ^2.6.1
   node-superfetch: ^0.1.10
   novelcovid: ^3.0.0
