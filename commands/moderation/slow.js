@@ -4,6 +4,7 @@ module.exports = {
     name: "slowmode",
     description: "Lets you set slowmode on the channel.",
     args: true,
+  category: "moderation",
     usage: "<time>",
   cooldown: 5000,
     run: (client, message, args) => {
