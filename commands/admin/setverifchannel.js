@@ -33,13 +33,14 @@ module.exports = {
   .setFooter(message.guild.name)
   let m = await message.client.channels.cache.get(gb).send(gg)
   m.react(`✅`)
-   const user = message.author 
-  const rolefilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-  const add = m.createReactionCollector(rolefilter, {timer: 6000})  
-   add.on('collect', g => {
-     var role = user.guild.roles.cache.find(role => role.name === `${r}`);
-  member.roles.add(role)
-message.user.send(`added role ${role}`)
-   }) 
-    }
-}
+   const filter = (reaction, user) => {
+    return reaction.emoji.name === '✅' && user.id === message.author.id;
+};
+let role = message.guild.roles.cache.find(role => role.id === `${r}`);
+message.awaitReactions(filter, { max: 4, time: 60000, errors: ['time'] })
+    .then(collected => message.member.role.add(role))
+    .catch(collected => {
+        console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
+  
+  
+})}}
