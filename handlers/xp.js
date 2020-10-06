@@ -1,3 +1,4 @@
+//wtf ur doing are u
 const db = require("quick.db")
 
 class Util {
