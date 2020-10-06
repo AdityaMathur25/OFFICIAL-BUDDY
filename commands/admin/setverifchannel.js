@@ -36,11 +36,6 @@ module.exports = {
    const filter = (reaction, user) => {
     return reaction.emoji.name === '✅' && user.id === message.author.id;
 };
-let role = message.guild.roles.cache.find(role => role.id === `${r}`);
-message.awaitReactions(filter, { max: 4, time: 60000, errors: ['time'] })
-    .then(collected => message.member.role.add(role))
-    .catch(collected => {
-        console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
-  
-  
-})}}
+let role = message.guild.roles.cache.find(role => role.name === `${r}`);
+    const Filter = (reaction, user) => reaction.emoji.name === '✅' && user = message.author.id;
+    const add = m.create.Reaction.Collector(
