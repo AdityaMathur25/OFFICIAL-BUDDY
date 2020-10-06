@@ -32,10 +32,8 @@ module.exports = {
   .setTimestamp()
   .setFooter(message.guild.name)
   let m = await message.client.channels.cache.get(gb).send(gg)
-  m.react(`✅`)
-   const filter = (reaction, user) => {
-    return reaction.emoji.name === '✅' && user.id === message.author.id;
-};
+  m.react(`✅`) 
+    
 let role = message.guild.roles.cache.find(role => role.name === `${r}`);
     const Filter = (reaction, user) => reaction.emoji.name === '✅' && user = message.author.id;
-    const add = m.create.Reaction.Collector(
+    const add = m.createReactionCollector(filtet, {timer: 6000})
