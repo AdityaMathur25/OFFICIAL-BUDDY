@@ -114,7 +114,7 @@ module.exports.run = async (client, message) => {
   //-----------------------------------------------------------------------------------------------------------------
 
   if (command) command.run(client, message, args);
-};
+
 
 //-------------------------------------------- F U N C T I O N ------------------------------------------
 function is_url(str) {
@@ -124,4 +124,55 @@ function is_url(str) {
   } else {
     return false;
   }
+}
+
+function Check(str) {
+    if (
+      client.emojis.cache.find(emoji => emoji.name === str) ||
+      message.guild.emojis.cache.find(emoji => emoji.name === str)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  
+  if (message.content.startsWith(":") && message.content.endsWith(":")) {
+    let EmojiName = message.content.slice(1, -1);
+
+    if (Check(EmojiName) === true) {
+      const channel = client.channels.cache.get(message.channel.id);
+      try {
+        let webhooks =  channel.fetchWebhooks();
+        let webhook = webhooks.first();
+        if (webhook === undefined || null || !webhook) {
+          let Created = channel
+            .createWebhook("BUDDYISOP")
+            .then(async webhook => {
+              const emoji =
+                client.emojis.cache.find(e => e.name == EmojiName).id ||
+                message.guild.emojis.cache.find(e => e.name === EmojiName).id;
+
+              await webhook.send(`${client.emojis.cache.get(emoji)}`, {
+                username: message.author.username,
+                avatarURL: message.author.avatarURL({ dynamic: true })
+              });
+              message.delete();
+            });
+        }
+
+        const emoji =
+          client.emojis.cache.find(e => e.name == EmojiName).id ||
+          message.guild.emojis.cache.find(e => e.name === EmojiName).id;
+
+       webhook.send(`${client.emojis.cache.get(emoji)}`, {
+          username: message.author.username,
+          avatarURL: message.author.avatarURL({ dynamic: true })
+        });
+        message.delete();
+      } catch (error) {
+        console.log(`Error :\n${error}`);
+      }
+    }
+  }
+}
 }
