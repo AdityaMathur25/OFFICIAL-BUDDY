@@ -37,8 +37,8 @@ module.exports = {
     return reaction.emoji.name === '✅' && user.id === message.author.id;
 };
 let role = message.guild.roles.cache.find(role => role.name === `${r}`);
-    const add = m.createReactionCollector(filter)
-    add.on('collect', g => {
+    const adds = m.createReactionCollector(filter)
+    adds.on('collect', g => {
       member.roles.add(role)
       
     })}}
