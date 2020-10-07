@@ -10,6 +10,7 @@ dependencies:
   colornames: 1.1.1
   common-tags: 1.8.0
   discord-anti-spam: 2.4.1
+  discord-player: 2.3.1
   discord.js: 12.3.1
   dotenv: 8.2.0
   enmap: 5.7.3
@@ -1169,6 +1170,12 @@ packages:
       node: '>= 0.10.0'
     resolution:
       integrity: sha1-483TtN8xaN10494/u8t7KX/pCPQ=
+  /cross-fetch/3.0.6:
+    dependencies:
+      node-fetch: 2.6.1
+    dev: false
+    resolution:
+      integrity: sha512-KBPUbqgFjzWlVcURG+Svp9TlhA5uliYtiNx/0r8nv0pdypeQCRJ9IaSIc3q/x3q8t3F75cHuwxVql1HFGHCNJQ==
   /css-select/1.2.0:
     dependencies:
       boolbase: 1.0.0
@@ -1308,6 +1315,24 @@ packages:
     dev: false
     resolution:
       integrity: sha512-LuWYmeVYnsIDkLqQH811vod7jWnnYI03o0DAiV+7sY7tAKQjpqC9hYkP8f5PaODA9Jl4zoMNXDAVA4aAwmeuaA==
+  /discord-player/2.3.1:
+    dependencies:
+      discord-ytdl-core: 4.0.9
+      merge-options: 2.0.0
+      node-fetch: 2.6.1
+      spotify-url-info: 1.4.0
+      ytpl: 0.2.4
+      ytsr: 0.1.21
+    dev: false
+    resolution:
+      integrity: sha512-KasLYXRUrwaURcoMO8pzeu60oGsgnXsEcNXmoNbj1HxgL0F7uSdCCEo4O6kdZ71+h7ljCcgROnxh0OZIgFdEjg==
+  /discord-ytdl-core/4.0.9:
+    dependencies:
+      prism-media: 1.2.2
+      ytdl-core: 3.3.0
+    dev: false
+    resolution:
+      integrity: sha512-yXD83OvQvU5fRGO2awQRABHMVVcwMI866D05ivf0vbWlIXvyrU1flk3Neofb7WdlmR2KZyKLoMCE8SC7w3L8Kw==
   /discord.js/12.3.1:
     dependencies:
       '@discordjs/collection': 0.1.6
@@ -2008,6 +2033,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
+  /himalaya/1.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-LLase1dHCRMel68/HZTFft0N0wti0epHr3nNY7ynpLbyZpmrKMQ8YIpiOV77TM97cNpC8Wb2n6f66IRggwdWPw==
   /homedir-polyfill/1.0.3:
     dependencies:
       parse-passwd: 1.0.0
@@ -2274,6 +2303,12 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha1-lVOxIbD6wohp2p7UWeIMdUN4hGE=
+  /is-plain-obj/2.1.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
   /is-promise/2.2.2:
     dev: false
     resolution:
@@ -2650,6 +2685,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
+  /merge-options/2.0.0:
+    dependencies:
+      is-plain-obj: 2.1.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-S7xYIeWHl2ZUKF7SDeBhGg6rfv5bKxVBdk95s/I7wVF8d+hjLSztJ/B271cnUiF6CAFduEQ5Zn3HYwAjT16DlQ==
   /methods/1.1.2:
     dev: false
     engines:
@@ -3634,6 +3677,22 @@ packages:
     dev: false
     resolution:
       integrity: sha512-J+FWzZoynJEXGphVIS+XEh3kFSjZX/1i9gFBaWQcB+/tmpe2qUsSBABpcxqxnAxFdiUFEgAX1bjYGQvIZmoz9Q==
+  /spotify-uri/2.1.0:
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-+QjB/9zRsbGB+2oOPK6K4jidLEWbsY43mov84vEj66dNj0aqqz6ul6VbxfUDlklOqgL4kVLFC/Yhr01PcXlJbQ==
+  /spotify-url-info/1.4.0:
+    dependencies:
+      cross-fetch: 3.0.6
+      himalaya: 1.1.0
+      spotify-uri: 2.1.0
+    dev: false
+    engines:
+      node: '>=8.0.0'
+    resolution:
+      integrity: sha512-UV5wde5e8d7u6z0sMCMTUE6wqHqro3fUyjjcAffSALJVSifz2xc7FnIHz4ggfN/Faox4SxVQFd8NMmIh+lLFIw==
   /static-eval/2.0.2:
     dependencies:
       escodegen: 1.14.3
@@ -4195,6 +4254,22 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-jesZn1BCKanWEtVymezoJTMUF0B0Z6OQuf8M61zy0QUoNQprR2SYwzwI6dTOZHURz7wk1ffPgbYLu6BZq0vUsQ==
+  /ytpl/0.2.4:
+    dependencies:
+      html-entities: 1.3.1
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-ExjaGdNucs9mjWZ+6BT4c/LV0B2NmLv0gcLoX9DnY2Qfq1fWAEYZQ1PE3E820BVlPcX5mF39guNXeFk/APT9ew==
+  /ytsr/0.1.21:
+    dependencies:
+      html-entities: 1.3.1
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-JbHqd/0LdzqfxblyAx1Nh+/YOhkGmXnf/w6djqPYeCRlyRgH2um3yyfZ+lJVIvCn431fEOfPvX6byg2wJM8YJA==
   /zip-stream/1.2.0:
     dependencies:
       archiver-utils: 1.3.0
@@ -4221,6 +4296,7 @@ specifiers:
   colornames: ^1.1.1
   common-tags: ^1.8.0
   discord-anti-spam: ^2.4.1
+  discord-player: ^2.3.1
   discord.js: ^12.3.1
   dotenv: ^8.2.0
   enmap: ^5.7.3
