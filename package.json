@@ -46,7 +46,8 @@
     "twemoji-parser": "^13.0.0",
     "imdb-api": "^4.2.0",
     "random-thing-for-discord": "^3.0.1",
-    "discord-player": "^2.3.1"
+    "discord-player": "^2.3.1",
+    "srod-v2": "^0.0.1"
   },
   "engines": {
     "node": "12.x"
