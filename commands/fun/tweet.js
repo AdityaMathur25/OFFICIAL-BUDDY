@@ -9,8 +9,8 @@ module.exports = {
    let user = message.mentions.users.first() || message.author ;
     if (!user)
       return message.channel.send("MENTION USER PLEASE")
-   let mm = message.content
-   if (!mm)
+   let mm = args.slice(1).join(" ")
+   if (mm === null)
    return message.channel.send("Provide tweet message ")
      
    let TweetEmbed = await Random.Tweet( user.name, mm, "RANDOM");
