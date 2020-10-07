@@ -1,4 +1,4 @@
-const { Random } = require("something-random-on-discord")
+const { Random } = require("random-thing-for-discord")
 const random = new Random();
  const got = require("got")
 module.exports = {
@@ -8,13 +8,9 @@ module.exports = {
 run: async (client, message, args) => {
 
 if (message.author.bot)  {
-got("https://nekos.life/api/v2/img/neko").then(r => {
-let nekos = JSON.parse(r.body).url
+  let nekos = await Random.getNeko();
 message.channel.send(nekos)
-})
-}
+}}
 
 // This code is for Index.js code
 }
-}
- 

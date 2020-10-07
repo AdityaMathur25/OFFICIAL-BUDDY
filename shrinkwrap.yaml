@@ -27,6 +27,7 @@ dependencies:
   parse-ms: 2.1.0
   quick-db: 1.0.5
   quick.db: 7.1.2
+  random-thing-for-discord: 3.0.1
   simple-youtube-api: 5.2.1
   snekfetch: 4.0.4
   something-random-on-discord: 0.0.1
@@ -3323,6 +3324,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ItAgjP6CHlC8XN4AAc+K24jDxRmAkkIe5TQp6xyXF5QCCgFlpaknpA3OyLTQ4Dw0c7yq28bcD6SVc7ML/1T/DQ==
+  /random-thing-for-discord/3.0.1:
+    dependencies:
+      node-fetch: 2.6.1
+    dev: false
+    resolution:
+      integrity: sha512-Q7LOaFbAQJL+zQPVWxdr3kvrRkMCxZJlEVgj94MFQitRK8P3Fwz8kNWAAf9veNU00ZXk6DHjqMAz4rddLWKdqw==
   /range-parser/1.2.1:
     dev: false
     engines:
@@ -4231,6 +4238,7 @@ specifiers:
   parse-ms: ^2.1.0
   quick-db: ^1.0.5
   quick.db: ^7.1.2
+  random-thing-for-discord: ^3.0.1
   simple-youtube-api: ^5.2.1
   snekfetch: ^4.0.4
   something-random-on-discord: ^0.0.1
