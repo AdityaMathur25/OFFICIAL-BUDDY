@@ -3,11 +3,14 @@ const ytdlDiscord = require("ytdl-core-discord");
 const { MessageEmbed } = require("discord.js")
 const { QUEUE_LIMIT, COLOR } = require("../config.json");
 const prism = require("prism-media");
+  
 
-module.exports = {
+module.exports, args = {
   async play(song, message) {
     const queue = message.client.queue.get(message.guild.id);
-let embed = new MessageEmbed()
+let embed = new M
+    let input = song.url
+sageEmbed()
 .setColor(COLOR);
 
     if (!song) {
@@ -16,14 +19,20 @@ let embed = new MessageEmbed()
       embed.setAuthor("MUSIC QUEUE IS ENDED NOW :/")
       return queue.textChannel
         .send(embed)
-        .catch(console.error);
-    }
+      const transcoder = new prism.FFmpeg({
+    args: args,
+  })
+     
+      
+     .try({
 
-    try {
-      var stream = await ytdlDiscord(song.url, {
-        highWaterMark: 1 << 25
-      });
-    } catch (error) {
+const stream = input.pipe(transcoder).on("error", (error) => {
+
+console.log("errorplaying")
+
+  })
+    })}
+     catch (error) {
       if (queue) {
         queue.songs.shift();
         module.exports.play(queue.songs[0], message);
@@ -35,10 +44,10 @@ let embed = new MessageEmbed()
         console.error(error);
       }
     }
-    let put = nsk
+    
 
     const dispatcher = queue.connection
-      .play(stream, { type: "opus" })
+      .play(stream,)
       .on("finish", () => {
         if (queue.loop) {
           let lastsong = queue.songs.shift();
