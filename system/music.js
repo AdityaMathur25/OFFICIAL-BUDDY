@@ -3,12 +3,19 @@ const ytdlDiscord = require("ytdl-core-discord");
 const { MessageEmbed } = require("discord.js")
 const { QUEUE_LIMIT, COLOR } = require("../config.json");
 const prism = require("prism-media");
-
+const { streamConfig } = require("../../config.js")
+                                 
 module.exports = {
-  async play(song, message) {
+  async play(song, message, args) {
     const queue = message.client.queue.get(message.guild.id);
 let embed = new MessageEmbed()
 .setColor(COLOR);
+    const transcoder = new prism.FFmpeg({
+
+    args: args,
+
+  });
+    streamConfig.options.seek = seek;
 
     if (!song) {
       queue.channel.leave();
@@ -18,11 +25,41 @@ let embed = new MessageEmbed()
         .send(embed)
         .catch(console.error);
     }
+    const ffmpegArgs = [
+
+    "-analyzeduration",
+
+    "0",
+
+    "-loglevel",
+
+    "0",
+
+    "-f",
+
+    "s16le",
+
+    "-ar",
+
+    "48000",
+
+    "-ac",
+
+    "2",
+
+  ];
+
+  const isStream = input instanceof ReadableStream;
+
+  let d = isStream ? ffmpegArgs.slice() : ["-i", input, ...ffmpegArgs];
+
+  args.unshift("-ss", String(seek));
 
     try {
-      var stream = await ytdlDiscord(song.url, {
-        highWaterMark: 1 << 25
-      });
+      var input = song.url
+      var stream = input.pipe(transcoder).on("error", (error) => {
+    console.log(error);
+        })
     } catch (error) {
       if (queue) {
         queue.songs.shift();
@@ -35,7 +72,7 @@ let embed = new MessageEmbed()
         console.error(error);
       }
     }
-    let put = nsk
+     
 
     const dispatcher = queue.connection
       .play(stream, { type: "opus" })
