@@ -2,6 +2,7 @@
 const ytdlDiscord = require("ytdl-core-discord");
 const { MessageEmbed } = require("discord.js")
 const { QUEUE_LIMIT, COLOR } = require("../config.json");
+const prism = require("prism-media");
 
 module.exports = {
   async play(song, message) {
@@ -34,6 +35,7 @@ let embed = new MessageEmbed()
         console.error(error);
       }
     }
+    let put = nsk
 
     const dispatcher = queue.connection
       .play(stream, { type: "opus" })

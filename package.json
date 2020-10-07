@@ -29,12 +29,12 @@
     "@discordjs/opus": "^0.3.2",
     "enmap": "^5.7.3",
     "ffmpeg-static": "^4.2.7",
-    "yt-search": "^2.3.1",
+    "yt-search": "^2.3.2",
     "node-superfetch": "^0.1.10",
     "ytdl-core-discord": "^1.2.2",
     "colornames": "^1.1.1",
     "genius-lyrics": "^4.0.0",
-    "canvacord": "^4.0.1",
+    "canvacord": "^5.0.5",
     "snekfetch": "^4.0.4",
     "canvas-constructor": "^4.1.0",
     "canvas": "^2.6.1",
@@ -48,7 +48,8 @@
     "random-thing-for-discord": "^3.0.1",
     "discord-player": "^2.3.1",
     "srod-v2": "^0.0.1",
-    "ffmpeg": "^0.0.4"
+    "ffmpeg": "^0.0.4",
+    "prism-media": "^1.2.2"
   },
   "engines": {
     "node": "12.x"
