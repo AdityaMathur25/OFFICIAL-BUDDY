@@ -6,14 +6,14 @@ module.exports = {
   usage: "<@mention> <message>",
   aliases: ["tw"],
   run: async (client, message, args) => {
-   let user = message.mentions.users.first() || message.author ;
+   let user = message.mentions.members.first() || message.author ;
     if (!user)
       return message.channel.send("MENTION USER PLEASE")
    let mm = args.slice(1).join(" ")
    if (mm === null)
    return message.channel.send("Provide tweet message ")
      
-   let TweetEmbed = await Random.Tweet( user.name, mm, "RANDOM");
+   let TweetEmbed = await Random.Tweet( user, mm, "RANDOM");
 message.channel.send(TweetEmbed)
     
     
