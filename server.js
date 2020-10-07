@@ -220,9 +220,5 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     .setFooter("LOG MESSAGES !");
   return client.channels.cache.get(int3).send(me);
 });
-client.on('messageReactionRemove', (reaction, user) => {
-if(reaction.emoji.name === ":white_check_mark:") return;
-  message.channel.send("Verification success")
-  
-  })
-client.login(process.env.ass);
+client.login(process.env.ass)
+                       
