@@ -31,7 +31,14 @@ module.exports.run = async (client, member) => {
   .send(`${ffg}`)
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
+  let image = db.get(`enable_${member.guild.id}`)
+ 
   let gg = client.channels.cache.get(dumb)
+  if (image === true)
   return gg.send( attachment )
+  else {
+    if (image === null) 
+      return;
+    }
 }; 
   

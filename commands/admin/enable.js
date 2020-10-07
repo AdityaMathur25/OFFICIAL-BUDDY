@@ -6,7 +6,7 @@ module.exports = {
 
   name: "setwimg",
 
-  category: "Administration",
+  category: "⚙️ SETTINGS",
 
   usage: "setwelcomeimage <@enable>",
 
