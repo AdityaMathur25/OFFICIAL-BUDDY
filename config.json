@@ -1,0 +1,37 @@
+module.exports.streamConfig = {
+
+  ytdlOptions: {
+
+    filter: "audio",
+
+    highWaterMark: 1 << 15,
+
+    volume: false,
+
+    requestOptions: {
+
+      maxRedirects: 4
+
+    }
+
+  },
+
+  options: {
+
+    seek: null,
+
+    bitrate: 1024,
+
+    volume: 1,
+
+    type: "converted",
+
+  }}
+
+{
+   "YOUTUBE_API_KEY": "AIzaSyBib80rRfQdeL9JYKJEWtHqEIXrgnKIDPg",
+  "COLOR": "#00FFFF",
+  "QUEUE_LIMIT": "10",
+  "default_prefix": "!",
+  "ownerID": "480285300484997122"
+}
