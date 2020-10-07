@@ -47,7 +47,8 @@
     "imdb-api": "^4.2.0",
     "random-thing-for-discord": "^3.0.1",
     "discord-player": "^2.3.1",
-    "srod-v2": "^0.0.1"
+    "srod-v2": "^0.0.1",
+    "ffmpeg": "^0.0.4"
   },
   "engines": {
     "node": "12.x"
