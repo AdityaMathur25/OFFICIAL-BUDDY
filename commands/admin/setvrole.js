@@ -16,7 +16,7 @@ module.exports = {
     
     //Now we gonna use quick.db
     
-    db.set(`Vrchannel_${message.guild.id}`, role.name) //set id in var
+    db.set(`Vrchannel_${message.guild.id}`, role.id) //set id in var
     
     message.channel.send(`verification role is seted as ${role}`) //send success message
   }
