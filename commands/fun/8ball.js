@@ -1,86 +1,86 @@
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const { Color } = require("../../config.json");
 
+module.exports = {
+    name: "8ball",
+    aliases: null,
+    category: "fun",
+    description: "8ball!",
+    usage: "8ball <Question>",
+    accessableby: "everyone",
+    run: async (client, message, args) => {
 
+      //Start
 
+      if (!args[0]) return message.channel.send(`Please Give Me Question!`);
 
+      if (!message.content.endsWith("?")) return message.channel.send(`Please Give A Valid Question & Add ? At The End!`);
 
-
-
-      
-      
-      
-        "100% right"
-        "Answer is uncertain.",
+      let Answers = [
+        `It is certain.`,
+        `It is decidedly so.`,
+        `Without a doubt.`,
+        "Yes - definitely.",
+        "You may rely on it.",
         "As I see it, yes.",
-        "As you wish.",
+        "Most likely.",
+        "Outlook good.",
+        "Yes.",
+        "Signs point to yes.",
+        "Reply hazy, try again.",
         "Ask again later.",
-        "Better ask yourself.",
         "Better not tell you now.",
         "Cannot predict now.",
         "Concentrate and ask again.",
         "Don't count on it.",
-        "Eat less, move more.",
-        "Fire.",
-        "Gold.",
-        "Indeed.",
-        "Just do it.",
-        "Mabye no.",
-        "Maybe no.",
-        "Maybe yes.",
-        "Maybe",
-        "Most likely.",
         "My reply is no.",
         "My sources say no.",
-        "Never.",
-        "Outlook good.",
         "Outlook not so good.",
-        "Reply hazy, try again.",
-        "Signs point to yes.",
-        "Sorry, but this is really stupid question.",
-        "That is sure as hell.",
-        "Try to be usefull.",
-        "Try to be usefull.",
-        "Very bad idea.",
         "Very doubtful.",
+        "Maybe",
+        "That is sure as hell.",
+        "Fire.",
+        "Indeed.",
+        "Try to be usefull.",
         "Watch the birds.",
+        "Gold.",
+        "Answer is uncertain.",
+        "You are the master of your life",
+        "Maybe no.",
+        "We can not be never sure.",
+        "As you wish.",
+        "Eat less, move more.",
+        "Better ask yourself.",
+        "Just do it.",
+        "Sorry, but this is really stupid question.",
+        "Try to be usefull.",
         "Water.",
         "We can not be never sure.",
-        "We can not be never sure.",
-        "Yes - definitely.",
-        "Yes.",
         "You already know the Answer.",
-        "You are the master of your life",
+        "Very bad idea.",
+        "Never.",
+        "Maybe yes.",
+        "Mabye no.",
         "You know what my answer is...",
-        "You may rely on it.",
-        "lmao no",
         "lmao yes",
+        "lmao no",
         "your question is not a question",
-        `It is certain.`,
-        `It is decidedly so.`,
-        `Without a doubt.`,
+        "100% right"
+      ];
+      
+      let result = Answers[Math.floor(Math.random() * Answers.length)];
+      
+      const embed = new MessageEmbed()
       .setColor(Color)
+      .setTitle(`Answer Is`)
       .setDescription(result)
       .setFooter(`Requested by ${message.author.username}`)
       .setTimestamp();
-      .setTitle(`Answer Is`)
-      //End
-      //Start
-      ];
-      const embed = new MessageEmbed()
-      if (!args[0]) return message.channel.send(`Please Give Me Question!`);
-      if (!message.content.endsWith("?")) return message.channel.send(`Please Give A Valid Question & Add ? At The End!`);
-      let Answers = [
-      let result = Answers[Math.floor(Math.random() * Answers.length)];
+      
       message.channel.send(embed)
-    accessableby: "everyone",
-    aliases: null,
-    category: "fun",
-    description: "8ball!",
-    name: "8ball",
-    run: async (client, message, args) => {
-    usage: "8ball <Question>",
+
+      //End
+
   }
-const Discord = require("discord.js");
-const { Color } = require("../../config.json");
-const { MessageEmbed } = require("discord.js");
-module.exports = {
 };
