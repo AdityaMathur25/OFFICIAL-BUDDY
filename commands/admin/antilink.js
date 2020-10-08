@@ -18,11 +18,11 @@ module.exports = {
 
     
 
-    let Content = args.join.includes("enable");//mentioned channel
+    let dontent = message.content.includes("enable");//mentioned channel
 
     
 
-    if(!Content) { //if channel is not mentioned
+    if(!dontent) { //if channel is not mentioned
 
       return message.channel.send("Please say enable to enable anti link")
 
@@ -34,11 +34,11 @@ module.exports = {
 
     
 
-    db.set(`antili_${message.guild.id}`, Content) //set id in var
+    db.set(`antili_${message.guild.id}`, dontent) //set id in var
 
     
 
-    message.channel.send(`message seted as ${Content}`) //send success message
+    message.channel.send(`Anti-links  are now ${dontent}`) //send success message
 
   }
 

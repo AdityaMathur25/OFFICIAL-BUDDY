@@ -10,13 +10,16 @@ module.exports.run = async (client, message) => {
   if (!message.guild) return;
 
   addexp(message);
-  let antilink = db.get("")
+  let antilink = db.get(`antilin_${message.guild.id}`)
 
   if (!message.member.hasPermission("ADMINISTRATOR")) {
     message.content.split(" ").forEach(m => {
       if (is_url(m)) {
         message.delete().catch(err => {});
+        if (antilink === true)
         return message.channel.send("You are not allowed to send links ");
+        if (antilink === false)
+          return;
       } else if (badwords.find(x => x.toLowerCase() === m.toLowerCase())) {
         message.delete().catch(err => {});
         const bad = new MessageEmbed()
