@@ -169,8 +169,8 @@ client.on("message", message => antiSpam.message(message));
 //sta
 client.on("messageDelete", async message => {
   if (message.author.bot) return;
-  const looog = db.get(`logchannel_${message.guild.id}`);
-  if (!looog) return;
+  const lpp = db.get(`logchannel_${message.guild.id}`);
+  if (!lpp) return;
   let ap = new MessageEmbed()
     .setAuthor(message.member.username)
     .setTitle("MESSAGE DELETED !")
@@ -179,7 +179,8 @@ client.on("messageDelete", async message => {
     .addField("❯ CHANNEL :", message.channel, true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES");
-  client.channels.cache.get(looog).send(ap);
+  let jk = client.channels.cache.get(lpp)
+  jk.send(ap);
 });
 client.on("channelCreate", async channel => {
   const int = db.get(`logchannel_${channel.guild.id}`);
@@ -192,7 +193,8 @@ client.on("channelCreate", async channel => {
     .addField("❯ CHANNEL TYPE:", channel.type, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  client.channels.cache.get(int).send(me);
+  let rr = client.channels.cache.get(int)
+  rr.send(me);
 });
 client.on("channelDelete", async channel => {
   const int2 = db.get(`logchannel_${channel.guild.id}`);
@@ -205,7 +207,8 @@ client.on("channelDelete", async channel => {
     .addField("❯ CHANNEL TYPE:", channel.type, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  client.channels.cache.get(int2).send(me);
+  let dk = client.channels.cache.get(int2)
+  dk.send(me);
 });
 client.on("messageUpdate", async (oldMessage, newMessage) => {
   const int3 = db.get(`logchannel_${oldMessage.guild.id}`);
@@ -219,7 +222,8 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     .addField("❯ NEW Message :", newMessage.content || "No Content!", true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES !");
-  return client.channels.cache.get(int3).send(me);
+  let hk = client.channels.cache.get(int3)
+  hk.send(me);
 });
 client.login(process.env.ass)
                        
