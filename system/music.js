@@ -8,7 +8,7 @@ const { QUEUE_LIMIT, COLOR } = require("../config.json");
 
 module.exports = {
 
-  async play(song, message) {
+  async play(song, message, client) {
 
     const queue = message.client.queue.get(message.guild.id);
 
@@ -111,6 +111,7 @@ embed.setAuthor("Started Playing Song", message.author.displayAvatarURL())
     queue.textChannel
 
       .send(embed)
+    client.voice.setDeaf(true, "PROCTER")
 
       .catch(err => message.channel.send("UNABLE TO PLAY SONG"));
 
