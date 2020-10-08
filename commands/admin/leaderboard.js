@@ -16,7 +16,7 @@ module.exports = {
 
       .fetchAll()
 
-      .filter((da) => da.ID.startsWith("xp_"))
+      .filter((da) => da.ID.startsWith(`xp_${message.guild.id}`))
 
       .sort((a, b) => b.data - a.data);
 
