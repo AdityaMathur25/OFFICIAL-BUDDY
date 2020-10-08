@@ -18,7 +18,7 @@ module.exports.run = async (client, message) => {
         message.delete().catch(err => {});
         if (antilink === true)
         return message.channel.send("You are not allowed to send links ");
-        if (antilink === false)
+        if (antilink === null)
           return;
       } else if (badwords.find(x => x.toLowerCase() === m.toLowerCase())) {
         message.delete().catch(err => {});

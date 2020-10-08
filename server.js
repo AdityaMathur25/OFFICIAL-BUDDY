@@ -162,7 +162,8 @@ client.on("roleDelete", async role => {
     .addField("❯ Role Name :", role, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  client.channels.cache.get(int).send(me);
+ let ff = await client.channels.cache.get(int)
+  ff.send(me);
 });
 client.on("message", message => antiSpam.message(message));
 //sta
