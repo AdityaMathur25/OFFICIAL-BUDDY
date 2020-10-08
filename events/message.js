@@ -10,6 +10,7 @@ module.exports.run = async (client, message) => {
   if (!message.guild) return;
 
   addexp(message);
+  let antilink = db.get("")
 
   if (!message.member.hasPermission("ADMINISTRATOR")) {
     message.content.split(" ").forEach(m => {
@@ -22,6 +23,9 @@ module.exports.run = async (client, message) => {
         .setTitle("ANTI- BADWORD")
         .setauthor(message.author.displayAvatarURL() + message.author.username)
         .setDescription("You can't send badwords here")
+        .setFooter("Server Protected by" + client.user.username)
+         .setThumbnail(message.guild.icon()) 
+        
         return message.channel.send(
           "You are not allowed to use (**" + m + "**) word here"
         );

@@ -6,13 +6,13 @@ module.exports = {
 
   name: "setwimg",
 
-  category: "⚙️ SETTINGS",
+  category: "settings",
 
   usage: "setwelcomeimage <@enable>",
 
-  description: "Set the welcome message, use {user} to ping new user , {server} to show server name , {members} to show member count",
+  description: "say enable to enable welcome image",
 
-  aliases:["msg"],
+  aliases:["en"],
 
   run: (client, message, args) => {
 
