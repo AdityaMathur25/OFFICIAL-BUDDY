@@ -21,7 +21,9 @@ module.exports = {
     let Content = message.content.includes("enable")//mentioned channel
 
     //NOO
+
 //U DO VERIFY 
+
          if(!Content) { //if channel is not mentioned
 
       return message.channel.send("Please say enable to enable welcome image")
