@@ -34,11 +34,8 @@ module.exports.run = async (client, member) => {
   let image = db.get(`enable_${member.guild.id}`)
  
   let gg = client.channels.cache.get(dumb)
-  if (image === true)
+ 
   return gg.send( attachment )
-  else {
-    if (image === null) 
-      return;
-    }
+  
 }; 
   
