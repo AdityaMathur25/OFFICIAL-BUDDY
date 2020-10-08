@@ -1,4 +1,5 @@
 const db = require("quick.db");
+const { discord, MessageEmbed } = require("discord.js")
 const { addexp } = require("../handlers/xp.js");
 const { ownerID, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json");
@@ -14,9 +15,13 @@ module.exports.run = async (client, message) => {
     message.content.split(" ").forEach(m => {
       if (is_url(m)) {
         message.delete().catch(err => {});
-        return message.channel.send("You are not allowed to send links :/");
+        return message.channel.send("You are not allowed to send links ");
       } else if (badwords.find(x => x.toLowerCase() === m.toLowerCase())) {
         message.delete().catch(err => {});
+        const bad = new MessageEmbed()
+        .setTitle("ANTI- BADWORD")
+        .setauthor(message.author.displayAvatarURL() + message.author.username)
+        .setDescription("You can't send badwords here")
         return message.channel.send(
           "You are not allowed to use (**" + m + "**) word here"
         );
@@ -86,7 +91,7 @@ module.exports.run = async (client, message) => {
 
   if (command.ownerOnly) {
     if (message.author.id !== ownerID)
-      return message.channel.send("This command can only be use by owner :C");
+      return message.channel.send("This command can only be use by owner :)");
   }
 
   //------------------------------------------------------COOLDOWN SYSTEM---------------------------------------------
