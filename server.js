@@ -201,7 +201,7 @@ client.on("channelDelete", async channel => {
   if (!int2) return;
   let me = new MessageEmbed()
     .setTitle("CHANNEL DELETED!")
-    .setAuthor(client.user.username)
+    .setAuthor(client.author.username)
     .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
     .addField("❯ CHANNEL :", channel.name, true)
     .addField("❯ CHANNEL TYPE:", channel.type, true)
