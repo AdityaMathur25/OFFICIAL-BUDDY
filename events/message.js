@@ -1,7 +1,7 @@
 const db = require("quick.db");
 const { discord, MessageEmbed } = require("discord.js")
 const { addexp } = require("../handlers/xp.js");
-const { ownerID, default_prefix } = require("../config.json");
+const { ownerID2, ownerID, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json");
 let cooldown = {};
 
@@ -93,13 +93,12 @@ module.exports.run = async (client, message) => {
         )} permission(s) to execute the command!`
       );
   }
-
   // ---------------------------------------------O W N E R ----------------------------------------------------------
-
-  if (command.ownerOnly) {
     if (message.author.id !== ownerID)
       return message.channel.send("This command can only be use by owner :)");
-  }
+ 
+  
+
 
   //------------------------------------------------------COOLDOWN SYSTEM---------------------------------------------
 
@@ -138,53 +137,4 @@ function is_url(str) {
   }
 }
 
-function Check(str) {
-    if (
-      client.emojis.cache.find(emoji => emoji.name === str) ||
-      message.guild.emojis.cache.find(emoji => emoji.name === str)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  
-  if (message.content.startsWith(":") && message.content.endsWith(":")) {
-    let EmojiName = message.content.slice(1, -1);
-
-    if (Check(EmojiName) === true) {
-      const channel = client.channels.cache.get(message.channel.id);
-      try {
-        let webhooks =  channel.fetchWebhooks();
-        let webhook = webhooks.first();
-        if (webhook === undefined || null || !webhook) {
-          let Created = channel
-            .createWebhook("BUDDYISOP")
-            .then(async webhook => {
-              const emoji =
-                client.emojis.cache.find(e => e.name == EmojiName).id ||
-                message.guild.emojis.cache.find(e => e.name === EmojiName).id;
-
-              await webhook.send(`${client.emojis.cache.get(emoji)}`, {
-                username: message.author.username,
-                avatarURL: message.author.avatarURL({ dynamic: true })
-              });
-              message.delete();
-            });
-        }
-
-        const emoji =
-          client.emojis.cache.find(e => e.name == EmojiName).id ||
-          message.guild.emojis.cache.find(e => e.name === EmojiName).id;
-
-       webhook.send(`${client.emojis.cache.get(emoji)}`, {
-          username: message.author.username,
-          avatarURL: message.author.avatarURL({ dynamic: true })
-        });
-        message.delete();
-      } catch (error) {
-        console.log(`Error :\n${error}`);
-      }
-    }
-  }
-}
 }
