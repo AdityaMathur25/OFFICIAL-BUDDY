@@ -1,6 +1,6 @@
 const db = require("quick.db")
 const { addexp } = require("../handlers/xp.js");
-const ownerID = ["576893842058641412",""]
+let ownerID = ["576893842058641412"]
    const { default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
