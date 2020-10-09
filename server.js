@@ -57,7 +57,7 @@ type: "WATCHING"
 //define message lol
 //ok im stupid u do it thank you ! mam
 client.on("guildCreate", guild => {
-  let join = new discord.MessageEmbed()
+  let join = new MessageEmbed()
     .setColor("#00FFFF")
     .setTitle("New Server Joined")
     .addField("Server Members :", guild.memberCount)
@@ -69,14 +69,14 @@ client.on("guildCreate", guild => {
   console.log("NEW SERVER JOIN" + guild.name);
 });
 client.on("guildDelete", guild => {
-  let join = new discord.MessageEmbed()
+  let join1 = new discord.MessageEmbed()
     .setColor("RED")
     .setTitle("LEFT FROM SERVER")
     .addField("Server Members :", guild.memberCount)
     .addField("Server Name :", guild.name)
     .addField("Server Owner :", guild.owner)
     .addField("VERIFICATION LEVEL :", guild.verificationLevel);
-  client.channels.cache.get("748936869022007376").send(join);
+  client.channels.cache.get("748936869022007376").send(join1);
   console.log("LEFT FROM SERVER" + guild.name);
 });
 client.on("message", async message => {
