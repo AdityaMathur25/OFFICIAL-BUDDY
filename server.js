@@ -28,11 +28,6 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
 client.queue = new Map();
-const { Player } = require("discord-player");
-const player = new Player(client);
-// To easily access the player
-client.player = player;
-
 
 // Run the command loader
 ["command", "events"].forEach(handler => {
