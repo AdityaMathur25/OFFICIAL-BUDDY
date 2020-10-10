@@ -113,28 +113,6 @@ client.on("message", async message => {
     }
   }
 });
-
-let hh = "buddy-log";
-// This runs the filter on any mes
-const antiSpam = new AntiSpam({
-  warnThreshold: 5, // Amount of messages sent in a row that will cause a warning.
-  kickThreshold: 8, // Amount of messages sent in a row that will cause a ban.
-  banThreshold: 10, // Amount of messages sent in a row that will cause a ban.
-  maxInterval: 3500, // Amount of time (in milliseconds) in which messages are considered spam.
-  warnMessage: "{@user}, PLEASE STOP SPAMMING, IF U DONT STOP YOU GOT PUNISHED", // Message that will be sent in chat upon warning a user.
-  kickMessage: "**{user_tag}** has been kicked for spamming.", // Message that will be sent in chat upon kicking a user.
-  banMessage: "**{user_tag}** has been banned for spamming.", // Message that will be sent in chat upon banning a user.
-  maxDuplicatesWarning: 7, // Amount of duplicate messages that trigger a warning.
-  maxDuplicatesKick: 10, // Amount of duplicate messages that trigger a warning.
-  maxDuplicatesBan: 12, // Amount of duplicate messages that trigger a warning.
-  exemptPermissions: ["ADMINISTRATOR"], // Bypass users with any of these permissions.
-  ignoreBots: true, // Ignore bot messages.
-  verbose: true, // Extended Logs from module.
-  ignoredUsers: ["𝙭𝘿 乛BUDDYgfx🔥#0824"] // Array of User IDs that get ignored.
-  // And many more options... See the documentation.
-});
-client.on("message", message => antiSpam.message(message));
-//sta
 client.on("roleCreate", async role => {
   const int = db.get(`logchannel_${role.guild.id}`);
   if (!int) return;
@@ -160,7 +138,6 @@ client.on("roleDelete", async role => {
  let ff = await client.channels.cache.get(int)
   ff.send(me);
 });
-client.on("message", message => antiSpam.message(message));
 //sta
 client.on("messageDelete", async message => {
   if (message.author.bot) return;
