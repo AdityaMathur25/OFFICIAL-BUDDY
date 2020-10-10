@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 const database = require("quickmongo")
-const db = new database("mongodb://localhost/cluster0");
+const db = new database("mongodb+srv://Buddy:123@cluster0.qqght.gcp.mongodb.net/test", "cluster0");
 
 module.exports = {
 
