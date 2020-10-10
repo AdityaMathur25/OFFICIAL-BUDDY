@@ -34,7 +34,7 @@ module.exports.run = async (client, message) => {
   if (!message.content.startsWith(prefix)) return;
 
   if (!message.member)
-    message.member = await message.guild.members.fetch(message);
+    message.member =  message.guild.members.fetch(message);
 
   const args = message.content
     .slice(prefix.length)

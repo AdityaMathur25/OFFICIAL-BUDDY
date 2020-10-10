@@ -11,7 +11,7 @@ module.exports = {
     let mm = args.slice(1).join(" ");
     if (mm === null) return message.channel.send("Provide tweet message ");
 
-    let TweetEmbed =  await Random.Tweet(args[0], mm, "BLUE");
+    let TweetEmbed =  await Random.Tweet(user.user.username, mm, "BLUE");
     console.log(TweetEmbed)
     message.channel.send(TweetEmbed);//else work or not idk lets try
   }}
