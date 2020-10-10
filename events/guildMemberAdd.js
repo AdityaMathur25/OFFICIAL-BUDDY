@@ -31,10 +31,8 @@ module.exports.run = async (client, member) => {
   .send(`${ffg}`)
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
-  let image = db.get(`enable_${member.guild.id}`)
  
   let gg = client.channels.cache.get(dumb)
- 
   return gg.send( attachment )
   
 }; 
