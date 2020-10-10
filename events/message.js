@@ -16,9 +16,6 @@ module.exports.run = async (client, message) => {
 
     message.content.split(" ").forEach(m => {
       if (is_url(m)) {
-        message.delete().catch(err => {})
-        return message.channel.send("You are not allowed to send links :/")
-      } else if (badwords.find(x => x.toLowerCase() === m.toLowerCase())) {
 
         message.delete().catch(err => {})
         return message.channel.send("You are not allowed to use (**" + m + "**) word here")
