@@ -2,6 +2,7 @@ dependencies:
   '@discordjs/opus': 0.3.2
   antispam-guard: 3.6.0
   ascii-table: 0.0.9
+  axios: 0.20.0
   better-discord-antispam: 2.0.0
   canvacord: 5.0.5
   canvas: 2.6.1
@@ -5134,6 +5135,7 @@ specifiers:
   '@discordjs/opus': ^0.3.2
   antispam-guard: ^3.6.0
   ascii-table: ^0.0.9
+  axios: ^0.20.0
   better-discord-antispam: ^2.0.0
   canvacord: ^5.0.5
   canvas: ^2.6.1
