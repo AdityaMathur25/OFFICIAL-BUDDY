@@ -86,7 +86,7 @@ module.exports.run = async (client, message) => {
 
   if (command.ownerOnly) {
     let dickheads = ["480285300484997122", "576893842058641412"];
-    if (!dickheads.includes(message.author.id)) return message.channel.send("This command can only be use by owner :C")
+    if (!dickheads.includes(message.author.id)) return message.channel.send("This command can only be use by owner :)")
   }
 
   //------------------------------------------------------COOLDOWN SYSTEM---------------------------------------------
