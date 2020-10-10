@@ -4,7 +4,7 @@ const canva = new CanvasSenpai();
 const { discord, MessageAttachment } = require("discord.js")
 
 
-module.exports.run = async (client, member) => {
+module.exports.run = async (client, member,) => {
   
    let chx = db.get(`welchannel_${member.guild.id}`);
   //defining var
@@ -31,7 +31,7 @@ module.exports.run = async (client, member) => {
   .send(`${ffg}`)
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
- 
+  db.get(`image_${message.guild.id}`)
   let gg = client.channels.cache.get(dumb)
   return gg.send( attachment )
   
