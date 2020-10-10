@@ -26,7 +26,7 @@ module.exports = {
 
          if(!Content) { //if channel is not mentioned
 
-      return message.channel.send("Please say enable to enable welcome image")
+      return message.channel.send("say enable")
 
     }
 
@@ -36,7 +36,7 @@ module.exports = {
 
     
 
-    db.set(`enable_${message.guild.id}`, Content) //set id in var
+    db.set(`enable_${message.guild.id}`, Content.true) //set id in var
 
     
 
