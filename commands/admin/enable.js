@@ -36,7 +36,7 @@ module.exports = {
 
     
 
-    db.set(`enable_${message.guild.id}`, Content.true) //set id in var
+    db.set(`enable_${message.guild.id}`, {Content: true}) //set id in var
 
     
 
