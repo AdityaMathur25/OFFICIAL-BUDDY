@@ -15,6 +15,7 @@ dependencies:
   genius-lyrics: 4.0.0
   google-play-scraper: 8.0.2
   imdb-api: 4.2.0
+  mongoose: 5.10.9
   node-fetch: 2.6.1
   node-superfetch: 0.1.10
   novelcovid: 3.0.0
@@ -2928,6 +2929,12 @@ packages:
       saslprep: 1.0.3
     resolution:
       integrity: sha512-sSZOb04w3HcnrrXC82NEh/YGCmBuRgR+C1hZgmmv4L6dBz4BkRse6Y8/q/neXer9i95fKUBbFi4KgeceXmbsOA==
+  /mongoose-legacy-pluralize/1.0.2:
+    dev: false
+    peerDependencies:
+      mongoose: '*'
+    resolution:
+      integrity: sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
   /mongoose-legacy-pluralize/1.0.2/mongoose@5.10.9:
     dependencies:
       mongoose: /mongoose/5.10.9/mongoose@5.10.9
@@ -2937,6 +2944,24 @@ packages:
       mongoose: '*'
     resolution:
       integrity: sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
+  /mongoose/5.10.9:
+    dependencies:
+      bson: 1.1.5
+      kareem: 2.3.1
+      mongodb: 3.6.2
+      mongoose-legacy-pluralize: 1.0.2
+      mpath: 0.7.0
+      mquery: 3.2.2
+      ms: 2.1.2
+      regexp-clone: 1.0.0
+      safe-buffer: 5.2.1
+      sift: 7.0.1
+      sliced: 1.0.1
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha512-7dkr1d6Uyk87hELzoc6B7Zo7kkPTx8rKummk51Y0je2V2Ttsw0KFPwTp1G8JIbBta7Wpw8j15PJi0d33Ode2nw==
   /mongoose/5.10.9/mongoose@5.10.9:
     dependencies:
       bson: 1.1.5
@@ -4622,6 +4647,7 @@ specifiers:
   genius-lyrics: ^4.0.0
   google-play-scraper: ^8.0.2
   imdb-api: ^4.2.0
+  mongoose: ^5.10.9
   node-fetch: ^2.6.1
   node-superfetch: ^0.1.10
   novelcovid: ^3.0.0
