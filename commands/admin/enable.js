@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 const mongoose = require('mongoose');
-const db = mongoose.connect("mongodb+srv://Buddy:123@cluster0.qqght.gcp.mongodb.net/test");
+const db = mongoose.connect("mongodb+srv://Buddy:1234@cluster0.qqght.gcp.mongodb.net/test");
 
 module.exports = {
 
