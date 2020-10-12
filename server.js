@@ -180,10 +180,7 @@ client.on("channelDelete", async channel => {
     .setFooter("LOG MESSAGES !");
   let dk = await client.channels.cache.get(int2)
   
-let data = await db.get(`logchannel_${message.guild.id}`);
-console.log(typeof data)
-  client.channels.cache.get(data).send("not working")
-  dk.send(me);
+ dk.send(me);
 });
 client.on("messageUpdate", async (oldMessage, newMessage) => {
   })
