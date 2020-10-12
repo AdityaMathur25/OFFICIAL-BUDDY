@@ -21,7 +21,7 @@ module.exports = {
     }
     
     message.channel.send(`Logchannel has been set to ${channel}`)
-    db.set(`logchannel_${message.guild.id}`, channel.id)
+    await db.set(`logchannel_${message.guild.id}`, channel.id)
     await channel.send("This is now my logchannel")
   }
 }
