@@ -201,5 +201,10 @@ client.on("messageUpdate", async (message, oldMessage, newMessage) => {
   let ik = await client.channels.cache.get(int)
   ik.send(me);
 })
+client.on("messageReactionAdd", async (messageReaction, user) =>{
+  let hifi = await db.get(`Vrchannel_${message.guild.id}`)
+  let ck = db.get(`Vchannel_${message.guild.id}`)
+  user = message.
+})
 client.login(process.env.ass)
                        

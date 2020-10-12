@@ -1,5 +1,7 @@
 const Discord = require("discord.js")
-const db = require("quick.db")
+const   mongoose  = require('quickmongo');
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
+
 const MessageEmbed = require('discord.js')
 module.exports = {
   name: "setverificationc",
@@ -18,12 +20,12 @@ module.exports = {
     
     //Now we gonna use quick.db
     
-    db.set(`Vchannel_${message.guild.id}`, channel.id) //set id in var
+    await db.set(`Vchannel_${message.guild.id}`, channel.id) //set id in var
     
     message.channel.send(`verification Channel is seted as ${channel}`)
     
-    let gb =  db.fetch(`Vchannel_${message.guild.id}`)//send success message
-    let r = db.get(`Vrchannel_${message.guild.id}`)
+    let gb = await db.fetch(`Vchannel_${message.guild.id}`)//send success message
+    let r =  await db.get(`Vrchannel_${message.guild.id}`)
   const gg = new Discord.MessageEmbed()
   .setTitle('SERVER VERIFICATION')
   .setDescription('IF U WANT ACCESS TO FULL SERVER REACT ✅')
