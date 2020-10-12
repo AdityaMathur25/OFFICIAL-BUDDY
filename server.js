@@ -105,7 +105,7 @@ client.on("message", async message => {
       let gp = new MessageEmbed()
         .setTitle("**ANTI-BADWORD**")
         .setDescription(` YOU ARE NOT ALLOWED TO SEND BAD WORDS HERE!`)
-        .setFooter("IF U DON'T STOP GOT PUNISHED")
+        .setFooter("STOP USING BAD WORDS")
         .setColor("GREEN")
         .setTimestamp();
       return message.channel.send(gp);
@@ -122,8 +122,7 @@ client.on("roleCreate", async role => {
     .addField("❯ ROLE NAME :", role, true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES !");
-  let rol = await client.channels.cache.get(int)
-  rol.send(me);
+  return client.channels.cache.get(int).send(me);
 });
 client.on("roleDelete", async role => {
   const int = db.get(`logchannel_${role.guild.id}`);
@@ -135,14 +134,14 @@ client.on("roleDelete", async role => {
     .addField("❯ Role Name :", role, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
- let ff = await client.channels.cache.get(int)
-  ff.send(me);
+ return client.channels.cache.get(int).send(me);
+
 });
 //sta
 client.on("messageDelete", async message => {
   if (message.author.bot) return;
   const lpp = db.get(`logchannel_${message.guild.id}`);
-  if (!lpp) return;
+  
   let ap = new MessageEmbed()
     .setAuthor(message.member.username)
     .setTitle("MESSAGE DELETED !")
@@ -151,8 +150,8 @@ client.on("messageDelete", async message => {
     .addField("❯ CHANNEL :", message.channel, true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES");
-  let jk = await client.channels.cache.get(lpp)
-  jk.send(ap);
+ return client.channels.cache.get(lpp).send(ap);
+
 });
 client.on("channelCreate", async channel => {
   const int = db.get(`logchannel_${channel.guild.id}`);
@@ -165,11 +164,11 @@ client.on("channelCreate", async channel => {
     .addField("❯ CHANNEL TYPE:", channel.type, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  let rr = await client.channels.cache.get(int)
-  rr.send(me);
+  return client.channels.cache.get(int).send(me);
 });
 client.on("channelDelete", async channel => {
   const int2 = await db.get(`logchannel_${channel.guild.id}`);
+  
   console.log("int2")
   let me = new MessageEmbed()
     .setTitle("CHANNEL DELETED!")
@@ -181,7 +180,25 @@ client.on("channelDelete", async channel => {
     .setFooter("LOG MESSAGES !");
   client.channels.cache.get(int2).send(me);
 });
-client.on("messageUpdate", async (oldMessage, newMessage) => {
-  })
+client.on("messageUpdate", async (message, oldMessage, newMessage) => {
+  const int = db.get(`logchannel_${message.guild.id}`);
+  let me = new MessageEmbed()
+
+    .setTitle("MESSAGE EDIT !")
+
+    .setAuthor(message.author.username)
+
+    .setThumbnail(message.author.isplayAvatarURL({ dynamic: true }))
+
+    .addField("❯ BEFORE EDIT :", oldMessage, true)
+
+    .addField("❯ AFTER EDIT", newMessage, true)
+
+    .setColor("AQUA")
+
+    .setFooter("LOG MESSAGES !");
+
+  client.channels.cache.get(int).send(me);
+})
 client.login(process.env.ass)
                        
