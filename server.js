@@ -6,7 +6,6 @@ const {
 } = require("discord.js");
 const { config } = require("dotenv");
 const { default_prefix, token, COLOR, ownerid } = require("./config.json");
-const db = require("quick.db");
 const fs = require("fs");
 const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
@@ -21,7 +20,8 @@ const client = new Client({
 });
 // for not taging everyone.
 // Collections
-client.db = require("quick.db");
+const   mongoose  = require('quickmongo');
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test")
 client.canvas = require("canvacord");
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -41,7 +41,7 @@ client.on("ready", async () => {
 client.user.setPresence({
 status: "idle", 
 activity: { 
-name: `${xx}`, 
+name: await `${xx}`, 
 type: "WATCHING" 
 } 
 })})
