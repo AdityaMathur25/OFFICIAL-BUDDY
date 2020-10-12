@@ -11,6 +11,8 @@ const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
+const   mongoose  = require('quickmongo');
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test")
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -20,8 +22,6 @@ const client = new Client({
 });
 // for not taging everyone.
 // Collections
-const   mongoose  = require('quickmongo');
-const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test")
 client.canvas = require("canvacord");
 client.commands = new Collection();
 client.aliases = new Collection();
