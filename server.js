@@ -35,14 +35,14 @@ client.queue = new Map();
 });
 
 console.log("ready as badass");
-let xx = `${db.get(`status`)}`
 
 client.on("ready", async () => {
+  let sta = await db.get(`status`)
 client.user.setPresence({
 status: "idle", 
 activity: { 
-name: await `${xx}`, 
-type: "WATCHING" 
+name: sta, 
+type: "PLAYING" 
 } 
 })})
 
