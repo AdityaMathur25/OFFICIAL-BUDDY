@@ -188,17 +188,18 @@ client.on("messageUpdate", async (message, oldMessage, newMessage) => {
 
     .setAuthor(message.author.username)
 
-    .setThumbnail(message.author.isplayAvatarURL({ dynamic: true }))
+    .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
 
-    .addField("❯ BEFORE EDIT :", oldMessage, true)
+    .addField("❯ BEFORE EDIT :", oldMessage|| newMessage , true)
 
-    .addField("❯ AFTER EDIT", newMessage, true)
+    .addField("❯ AFTER EDIT", newMessage|| oldMessage, true)
 
     .setColor("AQUA")
 
     .setFooter("LOG MESSAGES !");
 
-  client.channels.cache.get(int).send(me);
+  let ik = await client.channels.cache.get(int)
+  ik.send(me);
 })
 client.login(process.env.ass)
                        
