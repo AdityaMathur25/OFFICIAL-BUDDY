@@ -169,8 +169,7 @@ client.on("channelCreate", async channel => {
   rr.send(me);
 });
 client.on("channelDelete", async channel => {
-  const int2 = db.get(`logchannel_${channel.guild.id}`);
-  if (!int2) return;
+  const int2 = await db.get(`logchannel_${channel.guild.id}`);
   let me = new MessageEmbed()
     .setTitle("CHANNEL DELETED!")
     .setAuthor(client.author.username)
