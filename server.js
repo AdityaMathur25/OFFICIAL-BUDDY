@@ -170,17 +170,16 @@ client.on("channelCreate", async channel => {
 });
 client.on("channelDelete", async channel => {
   const int2 = await db.get(`logchannel_${channel.guild.id}`);
+  console.log("int2")
   let me = new MessageEmbed()
     .setTitle("CHANNEL DELETED!")
-    .setAuthor(client.author.username)
+    .setAuthor(client.user.username)
     .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
     .addField("❯ CHANNEL :", channel.name, true)
     .addField("❯ CHANNEL TYPE:", channel.type, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  let dk = await client.channels.cache.get(int2)
-  
- dk.send(me);
+  client.channels.cache.get(int2).send(me);
 });
 client.on("messageUpdate", async (oldMessage, newMessage) => {
   })
