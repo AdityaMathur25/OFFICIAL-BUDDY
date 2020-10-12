@@ -1,7 +1,8 @@
-const db = require("quick.db")
+const   mongoose  = require('quickmongo');
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
 const MessageEmbed = require("discord.js")
 module.exports.run = async(client, message, oldMessage, newMessage) => {
-  const int3 = db.get(`logchannel_${oldMessage.guild.id}`);
+  const int3 = db.get(`logchannel_${message.guild.id}`);
 
   if (!int3) return;
 
@@ -23,7 +24,7 @@ module.exports.run = async(client, message, oldMessage, newMessage) => {
 
     .setFooter("LOG MESSAGES !");
 
-  let hk = client.channels.cache.get(int3)
+  let hk = await client.channels.cache.get(int3)
 
   hk.send(me);
 }

@@ -122,7 +122,8 @@ client.on("roleCreate", async role => {
     .addField("❯ ROLE NAME :", role, true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES !");
-  client.channels.cache.get(int).send(me);
+  let rol = await client.channels.cache.get(int)
+  rol.send(me);
 });
 client.on("roleDelete", async role => {
   const int = db.get(`logchannel_${role.guild.id}`);
@@ -150,7 +151,7 @@ client.on("messageDelete", async message => {
     .addField("❯ CHANNEL :", message.channel, true)
     .setColor("RANDOM")
     .setFooter("LOG MESSAGES");
-  let jk = client.channels.cache.get(lpp)
+  let jk = await client.channels.cache.get(lpp)
   jk.send(ap);
 });
 client.on("channelCreate", async channel => {
@@ -164,7 +165,7 @@ client.on("channelCreate", async channel => {
     .addField("❯ CHANNEL TYPE:", channel.type, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  let rr = client.channels.cache.get(int)
+  let rr = await client.channels.cache.get(int)
   rr.send(me);
 });
 client.on("channelDelete", async channel => {
@@ -178,7 +179,7 @@ client.on("channelDelete", async channel => {
     .addField("❯ CHANNEL TYPE:", channel.type, true)
     .setColor("AQUA")
     .setFooter("LOG MESSAGES !");
-  let dk = client.channels.cache.get(int2)
+  let dk = await client.channels.cache.get(int2)
   dk.send(me);
 });
 client.on("messageUpdate", async (oldMessage, newMessage) => {
