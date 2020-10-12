@@ -22,6 +22,7 @@ module.exports = {
     
     message.channel.send(`Logchannel has been set to ${channel}`)
     await db.set(`logchannel_${message.guild.id}`, channel.id)
+    console.log("channelset")
     await channel.send("This is now my logchannel")
   }
 }
