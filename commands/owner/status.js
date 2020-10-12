@@ -19,7 +19,7 @@ module.exports = {
     }
     
  db.set(`status`, args.join(" "))
-   await message.channel.send("Updated the bot status")
+   await message.channel.send("`"+ "Status changed "+ "`")
     process.exit(1);
     
   }

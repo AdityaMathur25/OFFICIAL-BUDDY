@@ -1,5 +1,7 @@
 const discord = require("discord.js")
-const db = require("quick.db")
+const   mongoose  = require('quickmongo');
+
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
 module.exports = {
   name: "setlogchannel",
   category: "moderation",
@@ -20,6 +22,6 @@ module.exports = {
     
     message.channel.send(`Logchannel has been set to ${channel}`)
     db.set(`logchannel_${message.guild.id}`, channel.id)
-    channel.send("This is now my logchannel")
+    await channel.send("This is now my logchannel")
   }
 }
