@@ -100,6 +100,7 @@ client.on("message", async message => {
     }
   }
 });
+
 const { oks } = require("./link.json");
 client.on("message", async message => {
   if (message.author.bot) return;
@@ -115,9 +116,7 @@ client.on("message", async message => {
 
     if (confirm) {
       message.delete();
-      let w = db2.get(`warnings_${message.guild.id}_${message.author.id}`)
-      if (w === 3)
-       returnmessage.channel.send(message
+     
       let gp = new MessageEmbed()
         .setTitle("**ANTI-LINK**")
         .setDescription(` YOU ARE NOT ALLOWED TO SEND link HERE!`)

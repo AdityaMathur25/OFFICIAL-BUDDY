@@ -37,7 +37,7 @@ module.exports = {
     }
     
     let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
-    
+    //what u r doing 
     if(warnings === 3) {
       return message.channel.send(`${message.mentions.users.first().username} already reached his/her limit with 3 warnings`)
     }
