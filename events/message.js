@@ -1,5 +1,6 @@
 const db = require('quick.db')
 const { addexp } = require("../handlers/xp.js");
+const MessageEmbed = require('discord.js')
 const { ownerID, ownerID2, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
@@ -111,7 +112,7 @@ module.exports.run = async (client, message) => {
 
 
 
-}
+ 
 
 
 //-------------------------------------------- F U N C T I O N ------------------------------------------
@@ -122,5 +123,27 @@ function is_url(str) {
   } else {
     return false;
   }
-  
+   let prefix = db.get(`prefix_${message.guild.id}`);
+
+  if (prefix === null) prefix = default_prefix;
+
+  if (message.mentions.has("@everyone")) return;
+
+  if (message.mentions.has(client.user)) {
+
+    const luck = new MessageEmbed()
+
+      .setAuthor(message.author.username, message.author.displayAvatarURL())
+
+      .setTitle("PREFIX HELP! ")
+
+      .setDescription(`HEY, MY PREFIX IN THIS SERVER IS **${prefix}**`)
+
+      .setColor("RANDOM")
+
+      .setFooter(`REQUESTED BY ${message.author.username}`);
+
+    return message.channel.send(luck);
+  }
 }
+  }

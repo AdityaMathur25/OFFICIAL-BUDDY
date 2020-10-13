@@ -73,20 +73,6 @@ client.on("guildDelete", guild => {
   client.channels.cache.get("748936869022007376").send(join1);
   console.log("LEFT FROM SERVER" + guild.name);
 });
-client.on("message", async message => {
-  let prefix = await db.get(`prefix_${message.guild.id}`);
-  if (prefix === null) prefix = default_prefix;
-  if (message.mentions.has("@everyone")) return;
-  if (message.mentions.has(client.user)) {
-    const luck = new MessageEmbed()
-      .setAuthor(message.author.username, message.author.displayAvatarURL())
-      .setTitle("PREFIX HELP! ")
-      .setDescription(`HEY, MY PREFIX IN THIS SERVER IS **${prefix}**`)
-      .setColor("RANDOM")
-      .setFooter(`REQUESTED BY ${message.author.username}`);
-    return message.channel.send(luck);
-  }
-});
  
 client.on("message", async message => {
   if (message.author.bot) return;
@@ -201,5 +187,36 @@ client.on("messageUpdate", async (message, oldMessage, newMessage) => {
   let ik = await client.channels.cache.get(int)
   ik.send(me);
 })
+client.on("message", (message) => {
+
+  if (message.content.includes("https://")) {
+
+    console.log("deleted " + message.content + " from " + message.author)
+
+    message.delete(1);
+
+    message.channel.send("No links here, " + message.author)
+
+  }
+
+  if (message.content.includes("http://")) {
+
+    console.log("deleted " + message.content + " from " + message.author)
+
+    message.delete(1);
+
+    message.channel.send("No links here, " + message.author)
+
+  }
+
+  if (message.content.includes("www.")) {
+
+    console.log("deleted " + message.content + " from " + message.author)
+
+    message.delete(1);
+
+    message.channel.send("No links here, " + message.author)
+
+  }})
 client.login(process.env.ass)
                        
