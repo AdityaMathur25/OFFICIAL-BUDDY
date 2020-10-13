@@ -1,4 +1,6 @@
-const db = require("quick.db")
+const   mongoose  = require('quickmongo');
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
+
 const { default_prefix } = require("../../config.json")
 
 module.exports = {
@@ -25,11 +27,11 @@ module.exports = {
     }
     
     if(args.join("") === default_prefix) {
-      db.delete(`prefix_${message.guild.id}`)
+     await db.delete(`prefix_${message.guild.id}`)
      return await message.channel.send("Reseted Prefix ✅")
     }
     
-    db.set(`prefix_${message.guild.id}`, args[0])
+   await db.set(`prefix_${message.guild.id}`, args[0])
   await message.channel.send(`Seted Bot Prefix to ${args[0]}`)
     
   }

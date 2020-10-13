@@ -1,4 +1,5 @@
-const db = require("quick.db")
+const   mongoose  = require('quickmongo');
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
 const { addexp } = require("../handlers/xp.js");
 const { ownerID, ownerID2, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
@@ -23,7 +24,7 @@ module.exports.run = async (client, message) => {
 
   }
 
-  let prefix = db.get(`prefix_${message.guild.id}`);
+  let prefix = await db.get(`prefix_${message.guild.id}`);
   if (prefix === null) prefix = default_prefix;
 
   if (!message.content.startsWith(prefix)) return;

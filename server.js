@@ -201,11 +201,5 @@ client.on("messageUpdate", async (message, oldMessage, newMessage) => {
   let ik = await client.channels.cache.get(int)
   ik.send(me);
 })
-client.on("messageReactionAdd", async (messageReaction, user) =>{
-  let hifi = await db.get(`Vrchannel_${message.guild.id}`)
-  let ck = await db.get(`Vchannel_${message.guild.id}`)
-  let roleh = message.guild.roles.cache.get(hifi); 
-messageReaction.member.roles.add(roleh)
-})
 client.login(process.env.ass)
                        
