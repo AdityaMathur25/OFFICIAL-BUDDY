@@ -15,6 +15,7 @@ const mongoose = require("quickmongo");
 const db = new mongoose.Database(
   "mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test"
 );
+const db2 = require('quick.db')
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -48,7 +49,6 @@ client.on("ready", async () => {
     }
   });
 });
-
 //Stupid kid!
 //define message lol
 //ok im stupid u do it thank you ! mam
@@ -100,7 +100,7 @@ client.on("message", async message => {
     }
   }
 });
-const { oks } = require("./data.json");
+const { oks } = require("./link.json");
 client.on("message", async message => {
   if (message.author.bot) return;
   //START
@@ -115,9 +115,12 @@ client.on("message", async message => {
 
     if (confirm) {
       message.delete();
+      let w = db2.get(`warnings_${message.guild.id}_${message.author.id}`)
+      if (w === 3)
+       returnmessage.channel.send(message
       let gp = new MessageEmbed()
         .setTitle("**ANTI-LINK**")
-        .setDescription(` YOU ARE NOT ALLOWED TO SEND BAD WORDS HERE!`)
+        .setDescription(` YOU ARE NOT ALLOWED TO SEND link HERE!`)
         .setFooter("STOP USING LINKS")
         .setColor("GREEN")
         .setTimestamp();
@@ -125,5 +128,6 @@ client.on("message", async message => {
     }
   }
 });
+
 
 client.login(process.env.ass);
