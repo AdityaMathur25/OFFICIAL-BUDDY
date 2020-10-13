@@ -120,11 +120,13 @@ client.on("message", async message => {
     }
 
     if (message.content.includes("www.")) {
-      console.log("deleted " + message.content + " from " + message.author);
 
-      message.delete(1);
-//mere phele se ek anti-link system
-      message.channel.send("No links here, " + message.author);
+      console.log("deleted " + message.content + " from " + message.author.tag);
+
+   
+
+      message.channel.send("No links here, " + ` ${message.author}` );
+
     }
   })
 client.login(process.env.ass);
