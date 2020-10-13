@@ -79,7 +79,7 @@ client.on("guildDelete", guild => {
 client.on("message", async message => {
   if (message.author.bot) return;
   //START
-  if (!message.member.hasPermission("ADMINISTRATOR")) {
+  if (!message.member.hasPermission("MANAGE_MESSAGES")) {
     let confirm = false;
     //NOW WE WILL USE FOR LOOP
     var i;
@@ -100,33 +100,30 @@ client.on("message", async message => {
     }
   }
 });
-
+const { oks } = require("./data.json");
 client.on("message", async message => {
-
-    if (message.content.includes("https://")) {
-      console.log("deleted " + message.content + " from " + message.author);
-
-      message.delete(2000);
-
-      message.channel.send("No links here, " + message.author);
+  if (message.author.bot) return;
+  //START
+  if (!message.member.hasPermission("ADMINISTRATOR")) {
+    let confirm = false;
+    //NOW WE WILL USE FOR LOOP
+    var i;
+    for (i = 0; i < oks.length; i++) {
+      if (message.content.toLowerCase().includes(oks[i].toLowerCase()))
+        confirm = true;
     }
 
-    if (message.content.includes("http://")) {
-      console.log("deleted " + message.content + " from " + message.author);
-
-      message.delete(1);
-
-      message.channel.send("No links here, " + message.author);
+    if (confirm) {
+      message.delete();
+      let gp = new MessageEmbed()
+        .setTitle("**ANTI-LINK**")
+        .setDescription(` YOU ARE NOT ALLOWED TO SEND BAD WORDS HERE!`)
+        .setFooter("STOP USING LINKS")
+        .setColor("GREEN")
+        .setTimestamp();
+      return message.channel.send(gp);
     }
+  }
+});
 
-    if (message.content.includes("www.")) {
-
-      console.log("deleted " + message.content + " from " + message.author.tag);
-
-   
-
-      message.channel.send("No links here, " + ` ${message.author}` );
-
-    }
-  })
 client.login(process.env.ass);
