@@ -11,8 +11,10 @@ const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-const   mongoose  = require('quickmongo');
-const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test")
+const mongoose = require("quickmongo");
+const db = new mongoose.Database(
+  "mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test"
+);
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -37,15 +39,15 @@ client.queue = new Map();
 console.log("ready as badass");
 
 client.on("ready", async () => {
-  let sta = await db.get(`status`)
-client.user.setPresence({
-status: "idle", 
-activity: { 
-name: sta, 
-type: "PLAYING" 
-} 
-})})
-
+  let sta = await db.get(`status`);
+  client.user.setPresence({
+    status: "idle",
+    activity: {
+      name: sta,
+      type: "PLAYING"
+    }
+  });
+});
 
 //Stupid kid!
 //define message lol
@@ -73,7 +75,7 @@ client.on("guildDelete", guild => {
   client.channels.cache.get("748936869022007376").send(join1);
   console.log("LEFT FROM SERVER" + guild.name);
 });
- 
+
 client.on("message", async message => {
   if (message.author.bot) return;
   //START
@@ -98,125 +100,31 @@ client.on("message", async message => {
     }
   }
 });
-client.on("roleCreate", async role => {
-  const int = db.get(`logchannel_${role.guild.id}`);
-  if (!int) return;
-  let me = new MessageEmbed()
-    .setTitle("CREATED ROLE !")
-    .setAuthor(client.user.username)
-    .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
-    .addField("❯ ROLE NAME :", role, true)
-    .setColor("RANDOM")
-    .setFooter("LOG MESSAGES !");
-  return client.channels.cache.get(int).send(me);
-});
-client.on("roleDelete", async role => {
-  const int = db.get(`logchannel_${role.guild.id}`);
-  if (!int) return;
-  let me = new MessageEmbed()
-    .setTitle("DELETED ROLE !")
-    .setAuthor(client.user.username)
-    .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
-    .addField("❯ Role Name :", role, true)
-    .setColor("AQUA")
-    .setFooter("LOG MESSAGES !");
- return client.channels.cache.get(int).send(me);
 
-});
-//sta
-client.on("messageDelete", async message => {
-  if (message.author.bot) return;
-  const lpp = db.get(`logchannel_${message.guild.id}`);
-  
-  let ap = new MessageEmbed()
-    .setAuthor(message.member.username)
-    .setTitle("MESSAGE DELETED !")
-    .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-    .setDescription(`❯ MESSAGE : ${message}`)
-    .addField("❯ CHANNEL :", message.channel, true)
-    .setColor("RANDOM")
-    .setFooter("LOG MESSAGES");
- return client.channels.cache.get(lpp).send(ap);
+client.on("message", async message => {
 
-});
-client.on("channelCreate", async channel => {
-  const int = db.get(`logchannel_${channel.guild.id}`);
-  if (!int) return;
-  let me = new MessageEmbed()
-    .setTitle("CREATED CHANNEL")
-    .setAuthor(client.user.username)
-    .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
-    .addField("❯ CHANNEL :", channel.name, true)
-    .addField("❯ CHANNEL TYPE:", channel.type, true)
-    .setColor("AQUA")
-    .setFooter("LOG MESSAGES !");
-  return client.channels.cache.get(int).send(me);
-});
-client.on("channelDelete", async channel => {
-  const int2 = await db.get(`logchannel_${channel.guild.id}`);
-  
-  console.log("int2")
-  let me = new MessageEmbed()
-    .setTitle("CHANNEL DELETED!")
-    .setAuthor(client.user.username)
-    .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
-    .addField("❯ CHANNEL :", channel.name, true)
-    .addField("❯ CHANNEL TYPE:", channel.type, true)
-    .setColor("AQUA")
-    .setFooter("LOG MESSAGES !");
-  client.channels.cache.get(int2).send(me);
-});
-client.on("messageUpdate", async (message, oldMessage, newMessage) => {
-  const int = db.get(`logchannel_${message.guild.id}`);
-  let me = new MessageEmbed()
+    if (message.content.includes("https://")) {
+      console.log("deleted " + message.content + " from " + message.author);
 
-    .setTitle("MESSAGE EDIT !")
+      message.delete(2000);
 
-    .setAuthor(message.author.username)
+      message.channel.send("No links here, " + message.author);
+    }
 
-    .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+    if (message.content.includes("http://")) {
+      console.log("deleted " + message.content + " from " + message.author);
 
-    .addField("❯ BEFORE EDIT :", oldMessage|| newMessage , true)
+      message.delete(1);
 
-    .addField("❯ AFTER EDIT", newMessage|| oldMessage, true)
+      message.channel.send("No links here, " + message.author);
+    }
 
-    .setColor("AQUA")
+    if (message.content.includes("www.")) {
+      console.log("deleted " + message.content + " from " + message.author);
 
-    .setFooter("LOG MESSAGES !");
-
-  let ik = await client.channels.cache.get(int)
-  ik.send(me);
-})
-client.on("message", (message) => {
-
-  if (message.content.includes("https://")) {
-
-    console.log("deleted " + message.content + " from " + message.author)
-
-    message.delete(1);
-
-    message.channel.send("No links here, " + message.author)
-
-  }
-
-  if (message.content.includes("http://")) {
-
-    console.log("deleted " + message.content + " from " + message.author)
-
-    message.delete(1);
-
-    message.channel.send("No links here, " + message.author)
-
-  }
-
-  if (message.content.includes("www.")) {
-
-    console.log("deleted " + message.content + " from " + message.author)
-
-    message.delete(1);
-
-    message.channel.send("No links here, " + message.author)
-
-  }})
-client.login(process.env.ass)
-                       
+      message.delete(1);
+//mere phele se ek anti-link system
+      message.channel.send("No links here, " + message.author);
+    }
+  })
+client.login(process.env.ass);
