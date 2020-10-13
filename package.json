@@ -24,7 +24,7 @@
     "node-fetch": "^2.6.1",
     "ytdl-core": "^3.2.2",
     "simple-youtube-api": "^5.2.1",
-    "yt-search": "^2.3.2",
+    "yt-search": "^2.3.3",
     "node-superfetch": "^0.1.10",
     "ytdl-core-discord": "^1.2.2",
     "colornames": "^1.1.1",
@@ -36,11 +36,14 @@
     "twemoji-parser": "^13.0.0",
     "imdb-api": "^4.2.0",
     "discord-player": "^2.3.1",
-    "srod-v2": "^0.0.1",
+    "srod-v2": "^0.0.2",
     "figlet": "^1.5.0",
     "google-play-scraper": "^8.0.2",
     "quickmongo": "^2.0.4",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.9",
+    "@discordjs/opus": "^0.3.2",
+    "node-opus": "^0.3.3",
+    "opusscript": "^0.0.7"
   },
   "engines": {
     "node": "12.x"
