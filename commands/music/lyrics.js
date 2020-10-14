@@ -17,7 +17,7 @@ module.exports = {
     
     const msg = await message.channel.send(embed)
      try {
-          const songs = await G.tracks.search(args.join(" "));
+          const songs = await Genius.tracks.search(args.join(" "));
           const lyrics = await songs[0].lyrics();
           
            if (lyrics.length > 4095) {
