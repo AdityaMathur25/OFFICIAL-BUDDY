@@ -11,8 +11,11 @@ const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-
-const db = require("quick.db");
+const mongoose = require("quickmongo");
+const db = new mongoose.Database(
+  "mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test"
+);
+const db2 = require('quick.db')
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -36,19 +39,19 @@ client.queue = new Map();
 
 console.log("ready as badass");
 
-client.on('ready', () => {
-console.log(` user.authorhas started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} servers.`);
-    client.user.setStatus('dnd')
-    client.user.setPresence({
-        game: {
-            name: 'Use f!help',
-            type: "Playing",
-            url: "https://discordapp.com/"
-        }
-    });
+client.on("ready", async () => {
+  let sta = await db.get(`status`);
+  client.user.setPresence({
+    status: "idle",
+    activity: {
+      name: sta,
+      type: "PLAYING"
+    }
+  });
 });
-
-
+//Stupid kid!
+//define message lol
+//ok im stupid u do it thank you ! mam
 client.on("guildCreate", guild => {
   let join = new MessageEmbed()
     .setColor("#00FFFF")
