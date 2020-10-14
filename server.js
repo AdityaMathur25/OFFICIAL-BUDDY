@@ -11,10 +11,9 @@ const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-const mongoose = require("quickmongo");
-const db = new mongoose.Database(
-  "mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test"
-);
+const data = require ('quickmongo')
+const db = new data.Database('mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority')
+const mongoose = require('mongoose');
 const db2 = require('quick.db')
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
@@ -23,6 +22,8 @@ let cooldown = {};
 const client = new Client({
   disableEveryone: true
 });
+
+
 // for not taging everyone.
 // Collections
 client.canvas = require("canvacord");
@@ -30,6 +31,7 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
 client.queue = new Map();
+client.mongoose = require('./lib/mongo.js');
 
 // Run the command loader
 ["command", "events"].forEach(handler => {
@@ -127,6 +129,6 @@ client.on("message", async message => {
     }
   }
 });
-
+client.mongoose.init();
 
 client.login(process.env.ass);

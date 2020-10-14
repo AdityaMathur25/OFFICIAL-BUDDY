@@ -140,5 +140,5 @@ function is_url(str) {
      }
 }
                  
-                 )}
+                 
   
