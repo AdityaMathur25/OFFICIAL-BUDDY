@@ -97,6 +97,31 @@ client.on("message", async message => {
     }
   }
 });
+client.on("message", async message => {
+
+  let prefix = await db2.get(`prefix_${message.guild.id}`);
+
+  if (prefix === null) prefix = default_prefix;
+
+  if (message.mentions.has("@everyone")) return;
+
+  if (message.mentions.has(client.user)) {
+
+    const luck = new MessageEmbed()
+
+      .setAuthor(message.author.username, message.author.displayAvatarURL())
+
+      .setTitle("PREFIX HELP! ")
+
+      .setDescription(`HEY, MY PREFIX IN THIS SERVER IS **${prefix}**`)
+
+      .setColor("RANDOM")
+
+      .setFooter(`REQUESTED BY ${message.author.username}`);
+
+    return message.channel.send(luck);
+
+  }
 
 const { oks } = require("./link.json");
 client.on("message", async message => {
