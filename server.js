@@ -6,15 +6,13 @@ const {
 } = require("discord.js");
 const { config } = require("dotenv");
 const { token, COLOR, ownerid } = require("./config.json");
-const prefix = ""
 const fs = require("fs");
 const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-
 const db = require("quick.db");
-
+//fs se file fetch kar na hai
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -31,7 +29,7 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
 client.queue = new Map();
-client.mongoose = require('./lib/mongo.js');
+
 
 // Run the command loader
 ["command", "events"].forEach(handler => {
