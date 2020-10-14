@@ -11,8 +11,12 @@ const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
+const   mongoose  = require('quickmongo');
 
-const db = require("quick.db");
+const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
+
+
+const db2 = require("quick.db");
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -34,19 +38,21 @@ client.queue = new Map();
   require(`./handlers/${handler}`)(client);
 });
 
-console.log("ready as badass");
-
-client.on('ready', () => {
-console.log(` ${user.author.tag}has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} servers.`);
-    client.user.setStatus('dnd')
-    client.user.setPresence({
+console.log("ready as badass")
+let xx = db.get(`status`)
+client.on('ready', async => 
+            client.user.setPresence({
         game: {
-            name: 'Use f!help',
+
+            name:  xx,
+
             type: "Playing",
+
             url: "https://discordapp.com/"
+
         }
-    });
-});
+
+  }))
 
 
 client.on("guildCreate", guild => {
