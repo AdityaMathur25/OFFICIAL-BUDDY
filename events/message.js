@@ -11,7 +11,20 @@ module.exports.run = async (client, message) => {
 
   addexp(message);
 
-  let prefix =  db.get(`prefix_${message.guild.id}`)
+  if (!message.member.hasPermission("ADMINISTRATOR")) {
+
+
+
+    message.content.split(" ").forEach(m => {
+      if (is_url(m)) {
+
+
+      }
+    })
+
+  }
+
+  let prefix =  db.get(`prefix_${message.guild.id}`);
   if (prefix === null) prefix = default_prefix;
 
   if (!message.content.startsWith(prefix)) return;
@@ -112,6 +125,4 @@ function is_url(str) {
   }
      }
 }
-                 
-                 
   
