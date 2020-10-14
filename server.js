@@ -33,12 +33,13 @@ client.queue = new Map();
   //some error here
   require(`./handlers/${handler}`)(client);
 });
-
+ 
 console.log("ready as badass");
 
 client.on("ready", async () => {
   let sta =  await db.fetch(`status`)
-  client.user.setPresence({
+ 
+    client.user.setPresence({
     status: "idle",
     activity: {
       name: sta,
