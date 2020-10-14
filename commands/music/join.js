@@ -13,6 +13,6 @@ module.exports = {
 
   run: (client, message, args) => {
 
-    music.join(message, "join voice channel") // bot join the voice channel and play song 
+    music.join("joined vc ") // bot join the voice channel and play song 
 
 }}
