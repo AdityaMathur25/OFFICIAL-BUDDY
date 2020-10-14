@@ -5,14 +5,17 @@ const {
   MessageEmbed
 } = require("discord.js");
 const { config } = require("dotenv");
-const { token, COLOR, ownerid } = require("./config.json");
+const { default_prefix, token, COLOR, ownerid } = require("./config.json");
 const fs = require("fs");
 const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-const db = require("quick.db");
-//fs se file fetch kar na hai
+const mongoose = require("quickmongo");
+const db = new mongoose.Database(
+  "mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test"
+);
+const db2 = require('quick.db')
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -20,8 +23,6 @@ let cooldown = {};
 const client = new Client({
   disableEveryone: true
 });
-
-
 // for not taging everyone.
 // Collections
 client.canvas = require("canvacord");
@@ -29,7 +30,6 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
 client.queue = new Map();
-
 
 // Run the command loader
 ["command", "events"].forEach(handler => {
@@ -41,7 +41,7 @@ console.log("ready as badass");
 
 client.on("ready", async () => {
   let sta = await db.get(`status`);
-  client.user.setActivity({
+  client.user.setPresence({
     status: "idle",
     activity: {
       name: sta,
@@ -127,6 +127,6 @@ client.on("message", async message => {
     }
   }
 });
-client.mongoose.init();
+
 
 client.login(process.env.ass);

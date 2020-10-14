@@ -1,47 +1,36 @@
-const { MessageEmbed } = require('discord.js');
-const mongoose = require('mongoose');
-const Guild = require('../../lib/mongoose.js');
+const db = require('quick.db')
+const { default_prefix } = require("../../config.json")
 
 module.exports = {
-    name: 'prefix',
-    category: 'moderation',
-    description: 'Sets the prefix for this server.',
-    usage: `prefix <newPrefix>`,
-    run: async (client, message, args) => {
-        message.delete();
-
-        if (!message.member.hasPermission('MANAGE_GUILD')) {
-            return message.channel.send('You do not have permission to use this command!').then(m => m.delete({timeout: 10000}));
-        };
-
-        const settings = await Guild.findOne({
-            guildID: message.guild.id
-        }, (err, guild) => {
-            if (err) console.error(err)
-            if (!guild) {
-                const newGuild = new Guild({
-                    _id: mongoose.Types.ObjectId(),
-                    guildID: message.guild.id,
-                    guildName: message.guild.name,
-                    prefix: process.env.PREFIX
-                })
-
-                newGuild.save()
-                .then(result => console.log(result))
-                .catch(err => console.error(err));
-
-                return message.channel.send('This server was not in our database! We have added it, please retype this command.').then(m => m.delete({timeout: 10000}));
-            }
-        });
-
-        if (args.length < 1) {
-            return message.channel.send(`You must specify a prefix to set for this server! Your current server prefix is \`${settings.prefix}\``).then(m => m.delete({timeout: 10000}));
-        };
-
-        await settings.updateOne({
-            prefix: args[0]
-        });
-
-        return message.channel.send(`Your server prefix has been updated to \`${args[0]}\``);
+  name: "prefix",
+  category: "moderation",
+  usage: "prefix <new-prefix>",
+  description: "Change the guild prefix",
+  run: async (client, message, args) => {
+    //PERMISSION
+    if(!message.member.hasPermission("ADMINISTRATOR")) {
+      return message.channel.send("You are not allowed or do not have permission to change prefix")
     }
+    
+    if(!args[0]) {
+      return message.channel.send("Please give the prefix that you want to set")
+    } 
+    
+    if(args[1]) {
+      return message.channel.send("You can not set prefix a double argument")
+    }
+    
+    if(args[0].length > 3) {
+      return message.channel.send("You can not send prefix more than 3 characters")
+    }
+    
+    if(args.join("") === default_prefix) {
+      db.delete(`prefix_${message.guild.id}`)
+     return await message.channel.send("Reseted Prefix ✅")
+    }
+    
+    db.set(`prefix_${message.guild.id}`, args[0])
+  await message.channel.send(`Seted Bot Prefix to ${args[0]}`)
+    
+  }
 }

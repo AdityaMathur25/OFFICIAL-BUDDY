@@ -1,15 +1,10 @@
 const db = require('quick.db')
-const mongoose = require('mongoose');
-
-const Guild = require('../lib/mongoose.js');
-
-
 const { addexp } = require("../handlers/xp.js");
 const MessageEmbed = require('discord.js')
 const { ownerID, ownerID2, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
-const Config = require('../lib/mongoose.js');
+const Config = require('../lib/mongodb');
 
 module.exports.run = async (client, message) => {
   if (message.author.bot) return;
@@ -19,26 +14,16 @@ module.exports.run = async (client, message) => {
 
  
 
-  const settings = await Guild.findOne({
+  
+  Config.findOne({
+
         guildID: message.guild.id
+
     }, (err, guild) => {
-        if (err) console.error(err)
-        if (!guild) {
-            const newGuild = new Guild({
-                _id: mongoose.Types.ObjectId(),
-                guildID: message.guild.id,
-                guildName: message.guild.name,
-                prefix: process.env.PREFIX
-            })
 
-            newGuild.save()
-            .then(result => console.log(result))
-            .catch(err => console.error(err));
+        if (err) console.error(err);
 
-            return message.channel.send('This server was not in our database! We have now added and you should be able to use bot commands.').then(m => m.delete({timeout: 10000}));
-        }
-    });
-  let prefix =  setting.prefix
+  let prefix =  guild.prefix
   if (prefix === null) prefix = default_prefix;
 
   if (!message.content.startsWith(prefix)) return;
@@ -140,5 +125,5 @@ function is_url(str) {
      }
 }
                  
-                 
+                 )}
   
