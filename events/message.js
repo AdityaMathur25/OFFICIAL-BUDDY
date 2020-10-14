@@ -4,6 +4,7 @@ const MessageEmbed = require('discord.js')
 const { ownerID, ownerID2, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
+const Config = require('../lib/mongodb');
 
 module.exports.run = async (client, message) => {
   if (message.author.bot) return;
@@ -11,20 +12,18 @@ module.exports.run = async (client, message) => {
 
   addexp(message);
 
-  if (!message.member.hasPermission("ADMINISTRATOR")) {
+ 
 
+  
+  Config.findOne({
 
+        guildID: message.guild.id
 
-    message.content.split(" ").forEach(m => {
-      if (is_url(m)) {
+    }, (err, guild) => {
 
+        if (err) console.error(err);
 
-      }
-    })
-
-  }
-
-  let prefix =  db.get(`prefix_${message.guild.id}`);
+  let prefix =  guild.prefix
   if (prefix === null) prefix = default_prefix;
 
   if (!message.content.startsWith(prefix)) return;
@@ -125,4 +124,6 @@ function is_url(str) {
   }
      }
 }
+                 
+                 )}
   
