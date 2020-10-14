@@ -1,6 +1,5 @@
 
-const   mongoose  = require('quickmongo');
-const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
+const db = require('wio.db')
 const discord = require("discord.js")
 
 module.exports = {
@@ -18,7 +17,7 @@ module.exports = {
       return message.channel.send("Please give status message")
     }
     
- db.set(`status`, args.join(" "))
+ await db.set(`status`, args.join(" "))
    await message.channel.send("`"+ "Status changed "+ "`")
     process.exit(1);
     
