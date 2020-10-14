@@ -121,7 +121,7 @@ client.on("message", async message => {
 
     return message.channel.send(luck);
 
-  }
+  }})
 
 const { oks } = require("./link.json");
 client.on("message", async message => {
