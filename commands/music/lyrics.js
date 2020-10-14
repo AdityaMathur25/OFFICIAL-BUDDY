@@ -4,10 +4,9 @@ const { COLOR } = require("../../config.json");
 
 module.exports = {
   name: "lyrics",
+  category: "music",
   description: "Get lyrics of song :v",
-  aliases: ["ly"],
-  category:"music",
-  run: async  (client, message, args) => {
+ run: async  (client, message, args) => {
     let embed = new MessageEmbed()
     .setDescription("Looking For Lyrics ...")
     .setColor("YELLOW")
