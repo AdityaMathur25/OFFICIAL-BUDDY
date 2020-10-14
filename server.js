@@ -37,7 +37,7 @@ client.queue = new Map();
 console.log("ready as badass");
 
 client.on('ready', () => {
-console.log(`thefibot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} servers.`);
+console.log(` user.authorhas started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} servers.`);
     client.user.setStatus('dnd')
     client.user.setPresence({
         game: {
