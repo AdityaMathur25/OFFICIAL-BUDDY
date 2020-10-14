@@ -5,16 +5,16 @@ const {
   MessageEmbed
 } = require("discord.js");
 const { config } = require("dotenv");
-const { default_prefix, token, COLOR, ownerid } = require("./config.json");
+const { token, COLOR, ownerid } = require("./config.json");
+const prefix = ""
 const fs = require("fs");
 const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
-const data = require ('quickmongo')
-const db = new data.Database('mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority')
-const mongoose = require('mongoose');
-const db2 = require('quick.db')
+
+const db = require("quick.db");
+
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
 let cooldown = {};
@@ -43,7 +43,7 @@ console.log("ready as badass");
 
 client.on("ready", async () => {
   let sta = await db.get(`status`);
-  client.user.setPresence({
+  client.user.setActivity({
     status: "idle",
     activity: {
       name: sta,
