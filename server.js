@@ -40,16 +40,14 @@ client.queue = new Map();
 
 console.log("ready as badass")
 let xx = db.get(`status`)
-client.on('ready', async => 
+client.on('ready', () => 
             client.user.setPresence({
-        game: {
-
+        activity: {
             name:  xx,
-
+            status: "idle",
             type: "Playing",
 
-            url: "https://discordapp.com/"
-
+           
         }
 
   }))
