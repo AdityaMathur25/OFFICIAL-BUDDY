@@ -38,7 +38,7 @@ module.exports.run = async (client, message) => {
             return message.channel.send('This server was not in our database! We have now added and you should be able to use bot commands.').then(m => m.delete({timeout: 10000}));
         }
     });
-  let prefix =  .prefix
+  let prefix =  setting.prefix
   if (prefix === null) prefix = default_prefix;
 
   if (!message.content.startsWith(prefix)) return;
