@@ -19,7 +19,7 @@ module.exports = {
      try {
           const songs = await Genius.songs.search(args.join(" "));
           const lyrics = await songs[0].lyrics();
-          
+          const image = await songs.image
            if (lyrics.length > 4095) {
              msg.delete()
         return message.channel.send('Lyrics are too long to be returned as embed');
@@ -27,15 +27,19 @@ module.exports = {
       if (lyrics.length < 2048) {
         const lyricsEmbed = new MessageEmbed()
           .setColor(COLOR)
+        .setThumbnail(image)
           .setDescription(lyrics.trim());
+        
         return msg.edit(lyricsEmbed);
       } else {
         // lyrics.length > 2048
         const firstLyricsEmbed = new MessageEmbed()
           .setColor(COLOR)
+        .setThumbnail(image)
           .setDescription(lyrics.slice(0, 2048));
         const secondLyricsEmbed = new MessageEmbed()
           .setColor(COLOR)
+        .setThumbnail(image)
           .setDescription(lyrics.slice(2048, lyrics.length));
         msg.edit(firstLyricsEmbed);
         message.channel.send(secondLyricsEmbed);
