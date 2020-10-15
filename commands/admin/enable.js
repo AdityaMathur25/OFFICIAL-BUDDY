@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 
-onst   mon require("quick.db")45@cluster0.qqght.gcp.mongodb.net/test");
-
+const  db = require("quick.db")
 module.exports = {
 
   name: "setwimg",
