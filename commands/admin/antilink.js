@@ -22,7 +22,7 @@ module.exports = {
 
     
 
-   if(dontt.length > 5 ) {
+   if(dontt > 5 ) {
      return message.channel.send(" please mention channels ")
      
      }
@@ -42,7 +42,7 @@ module.exports = {
  db.push(`anti_${message.guild.id}`, dontt.id) //set id in var
 
 
-    if(dontt.length < 5) return
+    if(dontt < 5) return
 
     message.channel.send(`Anti-links  are now ${dontt}`) //send success message
 
