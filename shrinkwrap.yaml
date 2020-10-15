@@ -24,6 +24,7 @@ dependencies:
   novelcovid: 3.0.0
   opusscript: 0.0.7
   parse-ms: 2.1.0
+  project-uptimer: 1.2.0
   quick-db: 1.0.5
   quick.db: 7.1.2
   quickmongo: 2.0.4
@@ -3672,6 +3673,15 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
+  /project-uptimer/1.2.0:
+    dependencies:
+      express: 4.17.1
+      node-fetch: 2.6.1
+    dev: false
+    engines:
+      node: 12.x
+    resolution:
+      integrity: sha512-gm1XT00q0hMsyC8Qtqq40eX7a26xgYiMA+P6EBfTCo9RrvWu5Wguo09Y3A0P3dygXXhb7YK9sXm9rRZXlgWACw==
   /proxy-addr/2.0.6:
     dependencies:
       forwarded: 0.1.2
@@ -4913,6 +4923,7 @@ specifiers:
   novelcovid: ^3.0.0
   opusscript: ^0.0.7
   parse-ms: ^2.1.0
+  project-uptimer: ^1.0.0
   quick-db: ^1.0.5
   quick.db: ^7.1.2
   quickmongo: ^2.0.4
