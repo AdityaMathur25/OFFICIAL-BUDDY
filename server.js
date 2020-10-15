@@ -154,7 +154,7 @@ client.on("message", async message => {
 });
 
 
-project.url("ajbdwk", 20000) //default is 1m (not required)
+//default is 1m (not required)
 
 
 client.login(process.env.ass);
