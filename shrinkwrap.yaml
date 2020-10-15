@@ -16,6 +16,7 @@ dependencies:
   genius-lyrics: 4.0.0
   google-play-scraper: 8.0.2
   imdb-api: 4.2.0
+  json-database.js: 1.0.3
   lavaplayer: 1.6.0
   mongoose: 5.10.9
   node-fetch: 2.6.1
@@ -510,6 +511,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-MY5KFYUru0y74IsgM/9asDwb3ERxWxXEu3CRCZEvE7DtT86y1bR1XgtlSliMrptjz4qbivNGMQSvUBpEFJDp1A==
+  /@octetstream/promisify/2.0.2:
+    dev: false
+    engines:
+      node: 6.x || >=8.x
+    resolution:
+      integrity: sha512-7XHoRB61hxsz8lBQrjC1tq/3OEIgpvGWg6DKAdwi7WRzruwkmsdwmOoUXbU4Dtd4RSOMDwed0SkP3y8UlMt1Bg==
   /@types/cheerio/0.22.22:
     dependencies:
       '@types/node': 14.11.8
@@ -2599,6 +2606,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
+  /json-database.js/1.0.3:
+    dependencies:
+      lodash: 4.17.20
+      promise-fs: 2.1.1
+    dev: false
+    resolution:
+      integrity: sha512-1+j17Knte7seXn44B/H0r3yBKpMbwTORYGfIGbk3vzSEi/tfKuwIEAyOL17ku3viWaBy6BS4zxX6uyqeyb7Y0A==
   /json-schema-traverse/0.4.1:
     dev: false
     resolution:
@@ -3682,6 +3696,14 @@ packages:
       node: 12.x
     resolution:
       integrity: sha512-gm1XT00q0hMsyC8Qtqq40eX7a26xgYiMA+P6EBfTCo9RrvWu5Wguo09Y3A0P3dygXXhb7YK9sXm9rRZXlgWACw==
+  /promise-fs/2.1.1:
+    dependencies:
+      '@octetstream/promisify': 2.0.2
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-43p7e4QzAQ3w6eyN0+gbBL7jXiZFWLWYITg9wIObqkBySu/a5K1EDcQ/S6UyB/bmiZWDA4NjTbcopKLTaKcGSw==
   /proxy-addr/2.0.6:
     dependencies:
       forwarded: 0.1.2
@@ -4915,6 +4937,7 @@ specifiers:
   genius-lyrics: ^4.0.0
   google-play-scraper: ^8.0.2
   imdb-api: ^4.2.0
+  json-database.js: ^1.0.2
   lavaplayer: ^1.2.0
   mongoose: ^5.10.9
   node-fetch: ^2.6.1

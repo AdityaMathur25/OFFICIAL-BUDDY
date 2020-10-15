@@ -46,7 +46,8 @@
     "opusscript": "^0.0.7",
     "lavaplayer": "^1.2.0",
     "wio.db": "^4.0.9",
-    "project-uptimer": "^1.0.0"
+    "project-uptimer": "^1.0.0",
+    "json-database.js": "^1.0.2"
   },
   "engines": {
     "node": "12.x"

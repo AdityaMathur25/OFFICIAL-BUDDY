@@ -13,6 +13,7 @@ const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
 const db = require("wio.db")
 const db2 = require('quick.db')
+
 const project = require("project-uptimer");
 const { badwords } = require("./data.json");
 let random = Math.floor(Math.random() * 4);
@@ -153,7 +154,7 @@ client.on("message", async message => {
 });
 
 
-project.url("https://crystal-panoramic-litter.glitch.me", 20000) //default is 1m (not required)
+project.url("ajbdwk", 20000) //default is 1m (not required)
 
 
 client.login(process.env.ass);
