@@ -22,6 +22,10 @@ module.exports = {
 
     
 
+   if(dontt.length > 5 ) {
+     return message.channel.send(" please mention channels ")
+     
+     }
     if(!dontt) { //if channel is not mentioned
 
       return message.channel.send("Please say enable to enable anti link")
@@ -35,8 +39,10 @@ module.exports = {
     
 
     db.push(`anti_${message.guild.id}`, dontt.id) //set id in var
+ db.push(`anti_${message.guild.id}`, dontt.id) //set id in var
 
-    
+
+    if(dontt.length < 5) return
 
     message.channel.send(`Anti-links  are now ${dontt}`) //send success message
 
