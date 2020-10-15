@@ -18,11 +18,11 @@ module.exports = {
 
     
 
-    let dontent = message.mentions.channel.first//mentioned channel
+    let dontt = message.mentions.channel.first//mentioned channel
 
     
 
-    if(!dontent) { //if channel is not mentioned
+    if(!dontt) { //if channel is not mentioned
 
       return message.channel.send("Please say enable to enable anti link")
 
@@ -34,11 +34,11 @@ module.exports = {
 
     
 
-    db.set(`anti_${message.guild.id}`, dontent.id) //set id in var
+    db.push(`anti_${message.guild.id}`, dontt.id) //set id in var
 
     
 
-    message.channel.send(`Anti-links  are now ${dontent}`) //send success message
+    message.channel.send(`Anti-links  are now ${dontt}`) //send success message
 
   }
 
