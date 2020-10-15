@@ -39,7 +39,7 @@ client.queue = new Map();
 console.log("ready as badass");
 
 client.on("ready", async () => {
-  let sta =  await db.fetch(`status`)
+  let sta =  await db2.fetch(`status`)
  
     client.user.setPresence({
     status: "idle",

@@ -1,5 +1,5 @@
 
-const db = require('wio.db')
+const db = require('quick.db')
 const discord = require("discord.js")
 
 module.exports = {
