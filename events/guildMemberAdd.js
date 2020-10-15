@@ -34,7 +34,7 @@ module.exports.run = async (client, member, message) => {
   let image = db.get(`image_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
   
-  let im = client.channels.cache.get(image)
+  let im = await client.channels.cache.get(image)
   return im.send( attachment )
   
 }; 

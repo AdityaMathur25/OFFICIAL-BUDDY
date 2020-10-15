@@ -18,7 +18,7 @@ module.exports = {
 
     
 
-    let dontent = message.content.includes("enable");//mentioned channel
+    let dontent = message.mentions.channel.first//mentioned channel
 
     
 
@@ -34,7 +34,7 @@ module.exports = {
 
     
 
-    db.set(`antili_${message.guild.id}`, dontent) //set id in var
+    db.set(`anti_${message.guild.id}`, dontent.id) //set id in var
 
     
 
