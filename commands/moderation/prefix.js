@@ -1,4 +1,4 @@
-const db = require('wio.db')
+const db = require('quick.db')
 const { default_prefix } = require("../../config.json")
 
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
      return await message.channel.send("Reseted Prefix ✅")
     }
     
-   await  db.set(`prefix_${message.guild.id}`, args[0])
+    await db.set(`prefix_${message.guild.id}`, args[0])
   await message.channel.send(`Seted Bot Prefix to ${args[0]}`)
     
   }
