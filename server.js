@@ -42,21 +42,18 @@ console.log("ready as badass");
 client.on("ready", async () => {
   const main = db2.get(`status`)
  const activities = [
-
-			` BUDDY'S SERVER !`,
-
+`${main}`,
+   ` BUDDY'S SERVER !`,
 			` !help for commands`,
-
 			` MUSIC|MODERATION|UTILITY COMMANDS!`,
       `ALL IN ONE BOT `,
-      `!invite for invite link of bot`,
-      `${main}`
+      `!invite for invite link of bot`
 
 		];
 
 		let i = 0;
 
-		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: 'PLAYING' }), 1000);
+		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: 'PLAYING' }), 5000);
 
 	
 	
