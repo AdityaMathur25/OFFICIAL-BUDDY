@@ -148,12 +148,9 @@ run: async (client, message, args) => {
         .setThumbnail(song.thumbnail)
 
         .addField('Name', song.title, true)
-
-        .addField('Requested By', song.requester, true)
-
-        .addField('Views', song.views, true)
-
         .addField('Duration', timeString, true)
+          .addField('Requested By', song.requester, true)
+
 
         queue.textChannel.send(noiceEmbed);
 
