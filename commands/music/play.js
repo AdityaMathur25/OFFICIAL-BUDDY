@@ -1,143 +1,177 @@
-const { MessageEmbed, client } = require("discord.js")
+const ytdl = require('ytdl-core-discord');
 
-const ms = require("ms")
+var scrapeYt = require("scrape-yt");
 
+const discord = require('discord.js')
 
-const { Util } = require("discord.js");
-const { YOUTUBE_API_KEY, QUEUE_LIMIT, COLOR } = require("../../config.json");
-const ytdl = require("ytdl-core");
-const YoutubeAPI = require("simple-youtube-api");
-const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
-const { play } = require("../../system/music.js");
-module.exports = {
-  name: "play",
-  description: "Play the song and feel the music",
-  category: "music",
-  aliases:["p"],
- run: async  (client, message, args) => {
-    let embed = new MessageEmbed()
-.setColor(COLOR);
+exports.run = async (client, message, args) => {
 
+    if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
 
-    //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE
-    if (!args.length) {
-      //IF AUTHOR DIDENT GIVE URL OR NAME
-      embed.setAuthor("WRONG SYNTAX : Type `play <URL> or text`")
-      return message.channel.send(embed);
+    let channel = message.member.voice.channel;
+
+    if(!channel) return message.channel.send('You need to join a voice channel to play a music!')
+
+    if (!channel.permissionsFor(message.client.user).has("CONNECT")) return message.channel.send('I don\'t have permission to join the voice channel')
+
+    if (!channel.permissionsFor(message.client.user).has("SPEAK"))return message.channel.send('I don\'t have permission to speak in the voice channel')
+
+    const server = message.client.queue.get(message.guild.id);
+
+    let video = await scrapeYt.search(args.join(' '))
+
+    let result = video[0]
+
+    const song = {
+
+        id: result.id,
+
+        title: result.title,
+
+        duration: result.duration,
+
+        thumbnail: result.thumbnail,
+
+        upload: result.uploadDate,
+
+        views: result.viewCount,
+
+        requester: message.author,
+
+        channel: result.channel.name,
+
+        channelurl: result.channel.url
+
+      };
+
+    var date = new Date(0);
+
+    date.setSeconds(song.duration); // specify value for SECONDS here
+
+    var timeString = date.toISOString().substr(11, 8);
+
+      if (server) {
+
+        server.songs.push(song);
+
+        console.log(server.songs);
+
+        let embed = new discord.MessageEmbed()
+
+        .setTitle('Added to queue!')
+
+        .setColor('#00fff1')
+
+        .addField('Name', song.title, true)
+
+        .setThumbnail(song.thumbnail)
+
+        .addField('Views', song.views, true)
+
+        .addField('Reqeusted By', song.requester, true)
+
+        .addField('Duration', timeString, true)
+
+        return message.channel.send(embed)
+
     }
-
-    const { channel } = message.member.voice;
-        
-    if (!channel) {
-      //IF AUTHOR IS NOT IN VOICE CHANNEL
-      embed.setAuthor("YOU NEED TO BE IN VOICE CHANNEL :/")
-      return message.channel.send(embed);
-    }
-
-    //WE WILL ADD PERMS ERROR LATER :(
-
-    const targetsong = args.join(" ");
-    const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
-    const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
-    const urlcheck = videoPattern.test(args[0]);
- 
-   const serverQueue = message.client.queue.get(message.guild.id);
 
     const queueConstruct = {
-      textChannel: message.channel,
-      connection: null,
-      songs: [],
-      loop: false,
-      volume: 100,
-      playing: true
+
+        textChannel: message.channel,
+
+        voiceChannel: channel,
+
+        connection: null,
+
+        songs: [],
+
+        volume: 2,
+
+        playing: true
+
     };
-    
-    const voteConstruct = {
-      vote: 0,
-      voters: []
-    }
 
-    let songData = null;
-    let song = null;
+    message.client.queue.set(message.guild.id, queueConstruct);
 
-    if (urlcheck) {
-      try {
-        songData = await ytdl.getInfo(args[0]);
-      
-        song = {
-             title: songData.videoDetails.title,
-          url: songData.videoDetails.video_url,
-          duration: songData.videoDetails.lengthSeconds,
-          thumbnail: songData.videoDetails.thumbnail.thumbnails[3].url
-        };
-      } catch (error) {
-        if (message.include === "copyright") {
-          return message
-            .reply("THERE IS COPYRIGHT CONTENT IN VIDEO -_-")
-            .catch(console.error);
-        } else {
-          console.error(error);
+    queueConstruct.songs.push(song);
+
+    const play = async song => {
+
+        const queue = message.client.queue.get(message.guild.id);
+
+        if (!song) {
+
+            queue.voiceChannel.leave();
+
+            message.client.queue.delete(message.guild.id);
+
+            message.channel.send('There are no songs in queue, I\'m leaving the voice channel!')
+
+            return;
+
         }
-      }
-    } else {
-          
-      try {
-        const result = await youtube.searchVideos(targetsong, 1);
-        songData = await ytdl.getInfo(result[0].url);
-      
-        song = {
-          title: songData.videoDetails.title,
-          url: songData.videoDetails.video_url,
-          duration: songData.videoDetails.lengthSeconds,
-          thumbnail: songData.videoDetails.thumbnail.thumbnails[3].url,
-        };
-      } catch (error) {
-        console.log(error)
-        if(error.errors[0].domain === "usageLimits") {
-          return message.channel.send("Your YT API limit is over and it will be restored under 24 hours")
-        }
-      }
-    }
 
-    if (serverQueue) {
-        if(serverQueue.songs.length > Math.floor(QUEUE_LIMIT - 1) && QUEUE_LIMIT !== 0) {
-      return message.channel.send(`You can not add songs more than ${QUEUE_LIMIT} in queue`)
-    }
-      
-    
-      serverQueue.songs.push(song);
-      embed.setAuthor("Added New Song To Queue", client.user.displayAvatarURL())
-      embed.setDescription(`**[${song.title}](${song.url})**`)
-      embed.setThumbnail(song.thumbnail)
-      .setFooter("Likes - " + songData.videoDetails.likes + ", Dislikes - " +  songData.videoDetails.dislikes)
-      
-      return serverQueue.textChannel
-        .send(embed)
-        .catch(console.error);
-    } else {
-      queueConstruct.songs.push(song);
-    }
+        const dispatcher = queue.connection.play(await ytdl(`https://youtube.com/watch?v=${song.id}`, {
 
-    if (!serverQueue)
-      message.client.queue.set(message.guild.id, queueConstruct);
-       
-    if (!serverQueue) {
-      try {
-        queueConstruct.connection = await channel.join();
-        play(queueConstruct.songs[0], message);
-      } catch (error) {
-        console.error(`Could not join voice channel: ${error}`);
+            filter: format => ['251'],
+
+            highWaterMark: 1 << 25
+
+        }), {
+
+            type: 'opus'
+
+        })
+
+            .on('finish', () => {
+
+                queue.songs.shift();
+
+                play(queue.songs[0]);
+
+            })
+
+            .on('error', error => console.error(error));
+
+        dispatcher.setVolumeLogarithmic(queue.volume / 5);
+
+        let noiceEmbed = new discord.MessageEmbed()
+
+        .setTitle('Started Playing')
+
+        .setThumbnail(song.thumbnail)
+
+        .addField('Name', song.title, true)
+
+        .addField('Requested By', song.requester, true)
+
+        .addField('Views', song.views, true)
+
+        .addField('Duration', timeString, true)
+
+        queue.textChannel.send(noiceEmbed);
+
+    };
+
+    try {
+
+        const connection = await channel.join();
+
+        queueConstruct.connection = connection;
+
+        play(queueConstruct.songs[0]);
+
+    } catch (error) {
+
+        console.error(`I could not join the voice channel`);
+
         message.client.queue.delete(message.guild.id);
+
         await channel.leave();
-        return message.channel
-          .send({
-            embed: {
-              description: `😭 | Could not join the channel: ${error}`,
-              color: "#ff2050"
-            }
-          })
-          .catch(console.error);
-      }
+
+        return message.channel.send(`I could not join the voice channel: ${error}`);
+
     }
-  }
-};
+
+}
