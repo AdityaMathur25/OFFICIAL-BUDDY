@@ -8,7 +8,10 @@ module.exports = {
   description: "Change the guild prefix",
   run: async (client, message, args) => {
   
-      const member = message.guild.members.cache.get(args[0]);
-   if(!member)
-     return message.channel.send('provide user id')
+    let ID = args.join(" ")
+     
+   if (!ID) return message.channel.send("You don't enter msg ID");
+    let  r = await message.channel.fetchMessage(ID).then(r => {
+    r.react("👍");
+    })
   }}
