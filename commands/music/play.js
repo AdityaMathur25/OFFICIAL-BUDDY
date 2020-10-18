@@ -4,7 +4,12 @@ var scrapeYt = require("scrape-yt");
 
 const discord = require('discord.js')
 
-exports.run = async (client, message, args) => {
+module.exports = {
+  name: "play",
+  category: "music",
+  description: "play and feel the song",
+  aliases: ["p"],
+run: async (client, message, args) => {
 
     if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
 
@@ -60,7 +65,7 @@ exports.run = async (client, message, args) => {
 
         .setTitle('Added to queue!')
 
-        .setColor('#00fff1')
+        .setColor('RANDOM')
 
         .addField('Name', song.title, true)
 
@@ -86,7 +91,7 @@ exports.run = async (client, message, args) => {
 
         songs: [],
 
-        volume: 2,
+        volume: 100,
 
         playing: true
 
@@ -134,7 +139,7 @@ exports.run = async (client, message, args) => {
 
             .on('error', error => console.error(error));
 
-        dispatcher.setVolumeLogarithmic(queue.volume / 5);
+        dispatcher.setVolumeLogarithmic(queue.volume / 10 );
 
         let noiceEmbed = new discord.MessageEmbed()
 
@@ -175,3 +180,4 @@ exports.run = async (client, message, args) => {
     }
 
 }
+  }
