@@ -40,20 +40,23 @@ client.queue = new Map();
 console.log("ready as badass");
 
 client.on("ready", async () => {
-  let main = await db.get(`status`)
+  const main = db2.get(`status`)
  const activities = [
 
-			` servers!`,
+			` BUDDY'S SERVER !`,
 
-			` channels!`,
+			` !help for commands`,
 
-			` users!`
+			` MUSIC|MODERATION|UTILITY COMMANDS!`,
+      `ALL IN ONE BOT `,
+      `!invite for invite link of bot`,
+      `${main}`
 
 		];
 
 		let i = 0;
 
-		setInterval(() => client.user.setActivity(main + ` | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
+		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: 'PLAYING' }), 1000);
 
 	
 	
