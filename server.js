@@ -40,6 +40,7 @@ client.queue = new Map();
 console.log("ready as badass");
 
 client.on("ready", async () => {
+  let main = await db.get(`status`)
  const activities = [
 
 			` servers!`,
@@ -52,7 +53,7 @@ client.on("ready", async () => {
 
 		let i = 0;
 
-		setInterval(() => client.user.setActivity(`!help | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
+		setInterval(() => client.user.setActivity(main + ` | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
 
 	
 	
