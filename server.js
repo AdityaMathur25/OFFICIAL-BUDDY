@@ -40,15 +40,22 @@ client.queue = new Map();
 console.log("ready as badass");
 
 client.on("ready", async () => {
-  let sta =  await db2.fetch(`status`)
- 
-    client.user.setPresence({
-    status: "idle",
-    activity: {
-      name: sta,
-      type: "PLAYING"
-    }
-  });
+ const activities = [
+
+			` servers!`,
+
+			` channels!`,
+
+			` users!`
+
+		];
+
+		let i = 0;
+
+		setInterval(() => client.user.setActivity(`!help | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
+
+	
+	
 });
 //Stupid kid!
 //define message lol
