@@ -9,9 +9,9 @@ module.exports = {
   run: async (client, message, args) => {
   
     let ID = args.join(" ")
-     
-   if (!ID) return message.channel.send("You don't enter msg ID");
-    let  r = await client.channel.cache.get().fetchMessage(ID).then(r => {
+     let ch = message.mentions.channels.first();//mentioned channel
+ if (!ID) return message.channel.send("You don't enter msg ID");
+    let r = await message.channel.fetch(ID)
     r.react("👍");
-    })
+    
   }}

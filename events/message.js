@@ -25,7 +25,6 @@ module.exports.run = async (client, message) => {
   }
 
   let prefix = db.get(`prefix_${message.guild.id}`);
-  console.log('error')
   if (prefix === null) prefix = default_prefix;
 
   if (!message.content.startsWith(prefix)) return;
