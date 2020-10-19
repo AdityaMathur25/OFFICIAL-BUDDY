@@ -11,7 +11,7 @@ module.exports = {
     let ID = args.join(" ")
      
    if (!ID) return message.channel.send("You don't enter msg ID");
-    let  r = await message.channel.fetchMessage(ID).then(r => {
+    let  r = await client.channel.cache.get().fetchMessage(ID).then(r => {
     r.react("👍");
     })
   }}
