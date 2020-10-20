@@ -48,8 +48,8 @@ client.on("ready", async () => {
 			` MUSIC|MODERATION|UTILITY COMMANDS!`,
       `STAY HOME , STAY SAFE  `,
       `${client.guilds.cache.size} server's `,
-   `${client.users.cache.size} member's `,
-   `${client.channels.cache.size} channels's `
+      `${client.users.cache.size} member's `,
+      `${client.channels.cache.size} channels's `
 
 		];
 
@@ -83,7 +83,7 @@ client.on("ready", async () => {
 		];
 
 		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 7000);
-client.user.setStatus('idle')
+client.user.setStatus(`${stats[i++ % stats.length]}`)
 	
 	
 });
