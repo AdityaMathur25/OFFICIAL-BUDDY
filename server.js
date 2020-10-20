@@ -42,7 +42,7 @@ console.log("ready as badass");
 client.on("ready", async () => {
   const main = db2.get(`status`)
  const activities = [
-`${main}`,
+main,
    ` BUDDY'S SERVER !`,
 			` !help for commands`,
 			` MUSIC|MODERATION|UTILITY COMMANDS!`,
