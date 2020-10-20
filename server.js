@@ -64,14 +64,10 @@ main,
 		];
   const stream = [
 
-'STREAMING',
 `WATCHING`,
- `PLAYING`,
+`Playing`,
 `LISTENING`,
-`WATCHING`,
-`STREAMING`,
-`LISTENING`,
-`WATCHING`
+`Streaming`,
 
 		];
 
