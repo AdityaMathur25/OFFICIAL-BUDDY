@@ -65,20 +65,13 @@ client.on("ready", async () => {
   const stream = [
 
 `STREAMING`,
-
-   `WATCHING`,
-
-			`PLAYING`,
-
-			`LISTENING`,
-
-      `WATCHING`,
-
-      `STREAMING`,
-
-   `LISTENING`,
-
-   `WATCHING`
+`WATCHING`,
+ `PLAYING`,
+`LISTENING`,
+`WATCHING`,
+`STREAMING`,
+`LISTENING`,
+`WATCHING`
 
 		];
 
