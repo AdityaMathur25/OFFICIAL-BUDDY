@@ -12,6 +12,6 @@ module.exports = {
      let ch = message.mentions.channels.first();//mentioned channel
  if (!ID) return message.channel.send("You don't enter msg ID");
     let r = await message.channel.fetch(ID)
-    r.react("👍");
+    message.react("👍");
     
   }}

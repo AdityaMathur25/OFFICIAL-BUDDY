@@ -46,8 +46,8 @@ client.on("ready", async () => {
    ` BUDDY'S SERVER !`,
 			` !help for commands`,
 			` MUSIC|MODERATION|UTILITY COMMANDS!`,
-      `ALL IN ONE BOT `,
-      `!invite for invite link of bot`
+      `STAY HOME , STAY SAFE  `,
+      `${client.guilds.cache.size} server's `
 
 		];
 
