@@ -47,13 +47,42 @@ client.on("ready", async () => {
 			` !help for commands`,
 			` MUSIC|MODERATION|UTILITY COMMANDS!`,
       `STAY HOME , STAY SAFE  `,
-      `${client.guilds.cache.size} server's `
+      `${client.guilds.cache.size} server's `,
+   `${client.users.cache.size} member's `,
+   `${client.channels.cache.size} channels's `
 
 		];
 
 		let i = 0;
+  const stats = [
 
-		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: 'PLAYING' }), 5000);
+`idle`,
+
+   `dnd`,
+
+			` online`,
+		];
+  const stream = [
+
+`STREAMING`,
+
+   `WATCHING`,
+
+			`PLAYING`,
+
+			`LISTENING`,
+
+      `WATCHING`,
+
+      `STREAMING`,
+
+   `LISTENING`,
+
+   `WATCHING`
+
+		];
+
+		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 7000);
 client.user.setStatus('idle')
 	
 	
