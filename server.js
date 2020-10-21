@@ -7,6 +7,7 @@ const {
 const { config } = require("dotenv");
 const { default_prefix, token, COLOR, ownerid } = require("./config.json");
 const fs = require("fs");
+const fetch = require('node-fetch')
 const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
@@ -41,17 +42,26 @@ console.log("ready as badass");
 client.on("ready", async () => {
   const main = db2.get(`status`)
  const activities = [
-   `${main}`,
-			`!help for commands`,
-			`${client.users.cache.size} member's`,
-      `stay home , stay safe `,
-      `over ${client.guilds.cache.size} server's `,
+main,
+   ` BUDDY'S SERVER !`,
+			` !help for commands`,
+			` MUSIC|MODERATION|UTILITY COMMANDS!`,
+      `STAY HOME , STAY SAFE  `,
+      `${client.guilds.cache.size} server's `,
+      `${client.users.cache.size} member's `,
       `${client.channels.cache.size} channels's `
 
 		];
 
 		let i = 0;
-  
+  const stats = [
+
+`idle`,
+
+   `dnd`,
+
+			` online`,
+		];
   const stream = [
 
 `WATCHING`,
@@ -61,8 +71,8 @@ client.on("ready", async () => {
 
 		];
 
-		setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 10000);
-client.user.setStatus('idle')
+		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 7000);
+client.user.setStatus(`${stats[i++ % stats.length]}`)
 	
 	
 });
@@ -169,6 +179,10 @@ client.on("message", async message => {
     }
   }
 });
+setInterval(async () => {
+  await fetch('https://crystal-panoramic-litter.glitch.me').then(console.log('Pinged!'))
+}, 240000)
+
 //default is 1m (not required)
 
 
