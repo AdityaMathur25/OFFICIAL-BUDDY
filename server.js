@@ -62,7 +62,7 @@ client.on("ready", async () => {
 
 		];
 
-		setInterval(() => client.user.setActivity(`  ${activities[activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 10000);
+		setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 10000);
 client.user.setStatus('idle')
 	
 	
