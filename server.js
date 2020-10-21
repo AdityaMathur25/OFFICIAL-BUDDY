@@ -45,22 +45,14 @@ client.on("ready", async () => {
    `${main}`,
 			`!help for commands`,
 			`${client.users.cache.size} member's`,
-      `STAY HOME , STAY SAFE`,
-      `${client.guilds.cache.size} server's `,
-      
+      `stay home , stay safe `,
+      `over ${client.guilds.cache.size} server's `,
       `${client.channels.cache.size} channels's `
 
 		];
 
 		let i = 0;
-  const stats = [
-
-`idle`,
-
-   `dnd`,
-
-			` online`,
-		];
+  
   const stream = [
 
 `WATCHING`,
@@ -70,8 +62,8 @@ client.on("ready", async () => {
 
 		];
 
-		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 7000);
-client.user.setStatus(`${stats[stats.length]}`)
+		setInterval(() => client.user.setActivity(`  ${activities[activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 10000);
+client.user.setStatus('idle')
 	
 	
 });
