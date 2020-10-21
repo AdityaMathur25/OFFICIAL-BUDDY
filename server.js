@@ -7,7 +7,7 @@ const {
 const { config } = require("dotenv");
 const { default_prefix, token, COLOR, ownerid } = require("./config.json");
 const fs = require("fs");
-const fetch = require('node-fetch')
+
 const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
@@ -170,9 +170,7 @@ client.on("message", async message => {
     }
   }
 });
-setInterval(async () => {
-  await fetch('https://crystal-panoramic-litter.glitch.me').then(console.log('Pinged!'))
-}, 240000)
+
 
 //default is 1m (not required)
 
