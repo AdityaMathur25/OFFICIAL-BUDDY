@@ -42,13 +42,12 @@ console.log("ready as badass");
 client.on("ready", async () => {
   const main = db2.get(`status`)
  const activities = [
-main,
-   ` BUDDY'S SERVER !`,
-			` !help for commands`,
-			` MUSIC|MODERATION|UTILITY COMMANDS!`,
-      `STAY HOME , STAY SAFE  `,
+   `${main}`,
+			`!help for commands`,
+			`${client.users.cache.size} member's`,
+      `STAY HOME , STAY SAFE`,
       `${client.guilds.cache.size} server's `,
-      `${client.users.cache.size} member's `,
+      
       `${client.channels.cache.size} channels's `
 
 		];
@@ -72,7 +71,7 @@ main,
 		];
 
 		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 7000);
-client.user.setStatus(`${stats[i++ % stats.length]}`)
+client.user.setStatus(`${stats[stats.length]}`)
 	
 	
 });
