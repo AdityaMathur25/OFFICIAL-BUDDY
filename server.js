@@ -7,7 +7,7 @@ const {
 const { config } = require("dotenv");
 const { default_prefix, token, COLOR, ownerid } = require("./config.json");
 const fs = require("fs");
-
+const fetch =require('node-fetch')
 const { discord, message } = require("discord.js");
 const { CanvasSenpai } = require("canvas-senpai");
 const canva = new CanvasSenpai();
