@@ -139,14 +139,14 @@ run: async (client, message, args) => {
 
             .on('error', error => console.error(error));
 
-        dispatcher.setVolumeLogarithmic(queue.volume / 10 );
+        dispatcher.setVolumeLogarithmic(queue.volume / 100 );
 
         let noiceEmbed = new discord.MessageEmbed()
 
         .setTitle('Started Playing')
 
         .setThumbnail(song.thumbnail)
-.Coloset
+.setColor("#00FFFF")
         .addField('Name', song.title, true)
         .addField('Duration', timeString, true)
           .addField('Requested By', song.requester, true)
