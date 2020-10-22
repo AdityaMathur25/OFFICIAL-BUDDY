@@ -32,6 +32,7 @@ module.exports = {
     );
     embed.setThumbnail(message.guild.iconURL())
     embed.setFooter(`Requested By ${message.author.tag}`)
+    .setTimestamp()
     message.channel.send(embed);
   }
 };
