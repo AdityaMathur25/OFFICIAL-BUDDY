@@ -75,7 +75,7 @@ client.queue = new Map();
 console.log("ready as badass");
 
 client.on("ready", async () => {
-
+function randoms(){
   const main = db2.get(`status`)
 
  const activities = [
@@ -103,10 +103,10 @@ client.on("ready", async () => {
 		];
   const status = stream[Math.floor(Math.random() * stream.length)]
  for (let i = 0; i < activities.length; i++) {
-  setInterval(() => {
+  
     client.user.setActivity(activities[i], {type: status})
-  }, 7000);
-}
+    
+} }
 	client.user.setStatus(`idle`)
 
 	
