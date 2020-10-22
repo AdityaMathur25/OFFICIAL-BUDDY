@@ -101,11 +101,13 @@ client.on("ready", async () => {
 `STREAMING`,
 
 		];
- let  i = 0
-const status = stream[Math.floor(Math.random() * stream.length)]
-
-	setInterval(() => client.user.setActivity(i++ % activities.length, { type: `${status}` }), 15000);
-client.user.setStatus(`idle`)
+  const status = stream[Math.floor(Math.random() * stream.length)]
+ for (let i = 0; i < activities.length; i++) {
+  setInterval(() => {
+    client.user.setActivity(activities[i], {type: status})
+  }, 7000);
+}
+	client.user.setStatus(`idle`)
 
 	
 
