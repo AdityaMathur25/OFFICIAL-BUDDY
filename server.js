@@ -186,48 +186,7 @@ client.on("message", async message => {
 
     return message.channel.send(luck);
   }
-  let afk = new db.table("AFKs"),
-
-      authorStatus = db.get(),
-      mentioned = message.mentions.members.first();
-
   
-
-  if (mentioned) {
-
-    let status = await afk.fetch(mentioned.id);
-
-    
-
-    if (status) {
-
-      const embed = new MessageEmbed()
-
-      .setColor("#00FFFF")
-
-      .setDescription(`This user (${mentioned.user.tag}) is AFK: **${status}**`)
-
-      message.channel.send(embed).then(i => i.delete({timeout: 5000}));
-
-    }
-
-  }
-
-  
-
-  if (authorStatus) {
-
-    const embed = new MessageEmbed()
-
-    .setColor("#00FFFF")
-
-    .setDescription(`**${message.author.tag}** is no longer AFK.`)
-
-    message.channel.send(embed).then(i => i.delete({timeout: 5000}));
-
-    afk.delete(message.author.id)
-
-  }
 });
 
 const { oks } = require("./link.json");
