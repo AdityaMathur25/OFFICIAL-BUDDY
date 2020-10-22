@@ -188,8 +188,7 @@ client.on("message", async message => {
   }
   let afk = new db.table("AFKs"),
 
-      authorStatus = await afk.fetch(message.author.id),
-
+      authorStatus = db.get(),
       mentioned = message.mentions.members.first();
 
   
