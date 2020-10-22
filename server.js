@@ -82,10 +82,12 @@ client.on("ready", async () => {
 
    
    `${main}`,
-   `!help for commands | WATCHING BUDDYS SERVER`,  	
+   `!help for commands`,
+   `WATCHING BUDDYS SERVER`,  	
    `STAY HOME , STAY SAFE  `,
-   `Over ${client.guilds.cache.size} server's | ${client.users.cache.size} member's | ${client.channels.cache.size} channels's`,
-   
+   `Over ${client.guilds.cache.size} server's `,
+   ` Over ${client.users.cache.size} member's`,
+   `${client.channels.cache.size} channels's`
 
 		];
 
@@ -104,9 +106,12 @@ client.on("ready", async () => {
 `STREAMING`,
 
 		];
+ 
+const activity = activities[Math.floor(Math.random() * activities.length)]
 
-		setInterval(() => client.user.setActivity(`  ${activities[i++ % activities.length]}`, { type: `${stream[i++ % stream.length]}` }), 15000);
+const status = stream[Math.floor(Math.random() * stream.length)]
 
+setInterval(() => client.user.setActivity(activity, { type: status }), 5000)
 client.user.setStatus(`idle`)
 
 	
