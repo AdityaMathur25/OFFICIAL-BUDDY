@@ -146,7 +146,7 @@ run: async (client, message, args) => {
         .setTitle('Started Playing')
 
         .setThumbnail(song.thumbnail)
-
+.Coloset
         .addField('Name', song.title, true)
         .addField('Duration', timeString, true)
           .addField('Requested By', song.requester, true)
