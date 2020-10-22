@@ -65,7 +65,19 @@ client.queue = new Map();
 });
 
 console.log("ready as badass");
+ client.on("ready", async () => {
 
+  const main = db.get(`status`)
+
+
+	 client.user.setActivity(`${main}`, { type: `WATCHING` })
+client.user.setStatus(`idle`)
+
+	
+
+	
+
+});
 
 //Stupid kid!
 

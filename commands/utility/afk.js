@@ -9,7 +9,7 @@ module.exports = {
   category: "utility",
   run: async (client, message , args ) => {
     const status = new db.table("AFKs");
-    let afk = await status.fetch(message.author.id);
+    let afk = await status.fetch(message.author.id)|| status.fetch(message.guild.id);
     const embed = new Discord.MessageEmbed().setColor("RED")
     
     if (!afk) {
@@ -19,7 +19,7 @@ module.exports = {
     } else {
       
       embed.setDescription("You are no longer AFK.");
-      status.delete(message.author.id);
+      db.delete(message.author.id);
     }
     
     message.channel.send(embed)
