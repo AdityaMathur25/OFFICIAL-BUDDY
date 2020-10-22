@@ -67,15 +67,29 @@ client.queue = new Map();
 console.log("ready as badass");
 client.on("ready", async () => {
   const main = db.get(`status`);
-  var activevar = [
+  var activities_list = [
     "WATCHING BUDDY'S SERVER",
     "!help for commands",
     "Stay Home , Stay Safe.",
     `Over ${client.guilds.cache.size} Server's`
   ];
+ var stream_list = [
 
-  var activities = activevar[Math.floor(Math.random() * activevar.length)];
-  client.user.setActivity(activities);
+    "PLAYING",
+
+    "STREAMING",
+
+    "Stay Home , Stay Safe.",
+
+    `Over ${client.guilds.cache.size} Server's`
+
+  ];
+
+
+ setInterval(() => {
+        const index = Math.floor(Math.random() * activities_list.length ); // generates a random number between 1 and the length of the activities array list (in this case 5).
+        client.user.setActivity(activities_list[index], {type: "WATCHING"}); // sets bot's activities to one of the phrases in the arraylist.
+    }, 5000); //
   client.user.setStatus(`idle`);
 });
 //Stupid kid!
