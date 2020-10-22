@@ -47,7 +47,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         .setColor('#67ffff')
         .addField('Name', song.title, true)
         .setThumbnail(song.thumbnail)
-        .addField('Views', song.views, true)
+        
         .addField('Reqeusted By', song.requester, true)
         .addField('Duration', timeString, true)
         return message.channel.send(embed)
@@ -58,7 +58,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         voiceChannel: channel,
         connection: null,
         songs: [],
-        volume: 2,
+        volume: 100,
         playing: true
     };
     message.client.queue.set(message.guild.id, queueConstruct);
@@ -85,13 +85,13 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
                 play(queue.songs[0]);
             })
             .on('error', error => console.error(error));
-        dispatcher.setVolumeLogarithmic(queue.volume / 5);
+        dispatcher.setVolumeLogarithmic(queue.volume / 100);
         let noiceEmbed = new discord.MessageEmbed()
         .setTitle('Started Playing')
         .setThumbnail(song.thumbnail)
         .addField('Name', song.title, true)
         .addField('Requested By', song.requester, true)
- .
+ .setColor("#00FFFF")
         .addField('Duration', timeString, true)
         queue.textChannel.send(noiceEmbed);
     };

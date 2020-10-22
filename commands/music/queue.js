@@ -23,15 +23,15 @@ module.exports = {
       embed.setAuthor("There is nothing in the queue");
       return message.channel.send(embed);
     }
-    
+    embed.setTitle(message.guild.name)
     embed.setDescription(
       `${serverQueue.songs
         .map((song, index) => index + 1 + ". " + song.title)
         .join("\n\n")}`,
       { split: true }
     );
-    embed.setThumbnail(client.user.displayAvatarURL())
-    
+    embed.setThumbnail(message.guild.iconURL())
+    embed.setFooter(`Requested By ${message.author.tag}`)
     message.channel.send(embed);
   }
 };
