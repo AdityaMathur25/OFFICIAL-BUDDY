@@ -1,5 +1,4 @@
 const {
-
   Client,
 
   Collection,
@@ -7,7 +6,6 @@ const {
   MessageAttachment,
 
   MessageEmbed
-
 } = require("discord.js");
 
 const { config } = require("dotenv");
@@ -16,7 +14,7 @@ const { default_prefix, token, COLOR, ownerid } = require("./config.json");
 
 const fs = require("fs");
 
-const fetch = require('node-fetch')
+const fetch = require("node-fetch");
 
 const { discord, message } = require("discord.js");
 
@@ -26,9 +24,9 @@ const canva = new CanvasSenpai();
 
 const { addexp } = require("./handlers/xp.js");
 
-const db = require("wio.db")
+const db = require("quick.db");
 
-const db2 = require('quick.db')
+const db2 = require("wio.db");
 
 const project = require("project-uptimer");
 
@@ -41,9 +39,7 @@ let cooldown = {};
 //for image ?
 
 const client = new Client({
-
   disableEveryone: true
-
 });
 
 // for not taging everyone.
@@ -63,54 +59,32 @@ client.queue = new Map();
 // Run the command loader
 
 ["command", "events"].forEach(handler => {
-
   //some error here
 
   require(`./handlers/${handler}`)(client);
-
 });
-
- 
 
 console.log("ready as badass");
 
 client.on("ready", async () => {
-  const main = db2.get(`status`)
+  const main = db.get(`status`);
 
- const activities = [
+  const activities = [
+    `${main}`,
+    `!help for commands`,
+    `WATCHING BUDDYS SERVER`,
+    `STAY HOME , STAY SAFE  `,
+    `Over ${client.guilds.cache.size} server's `,
+    ` Over ${client.users.cache.size} member's`,
+    `${client.channels.cache.size} channels's`
+  ];
+  const stream = [`WATCHING`, `PLAYING`, `LISTENING`, `STREAMING`];
+  let i = 0;
 
-   
-   `${main}`,
-   `!help for commands`,
-   `WATCHING BUDDYS SERVER`,  	
-   `STAY HOME , STAY SAFE  `,
-   `Over ${client.guilds.cache.size} server's `,
-   ` Over ${client.users.cache.size} member's`,
-   `${client.channels.cache.size} channels's`
+  client.user.setActivity(i++ % activities.length, { type: status });
 
-		];
-  const stream = [
-
-`WATCHING`,
-
-`PLAYING`,
-
-`LISTENING`,
-
-`STREAMING`,
-
-		];
-let i = 0
- 
-    client.user.setActivity(i++ % activities.length, {type: status})
-    
-client.user.setStatus(`idle`)
-
-	
-
-}); 
-
-	
+  client.user.setStatus(`idle`);
+});
 
 //Stupid kid!
 
@@ -119,7 +93,6 @@ client.user.setStatus(`idle`)
 //ok im stupid u do it thank you ! mam
 
 client.on("guildCreate", guild => {
-
   let join = new MessageEmbed()
 
     .setColor("#00FFFF")
@@ -139,11 +112,9 @@ client.on("guildCreate", guild => {
   client.channels.cache.get("748936869022007376").send(join);
 
   console.log("NEW SERVER JOIN" + guild.name);
-
 });
 
 client.on("guildDelete", guild => {
-
   let join1 = new discord.MessageEmbed()
 
     .setColor("RED")
@@ -161,17 +132,14 @@ client.on("guildDelete", guild => {
   client.channels.cache.get("748936869022007376").send(join1);
 
   console.log("LEFT FROM SERVER" + guild.name);
-
 });
 
 client.on("message", async message => {
-
   if (message.author.bot) return;
 
   //START
 
   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-
     let confirm = false;
 
     //NOW WE WILL USE FOR LOOP
@@ -179,15 +147,11 @@ client.on("message", async message => {
     var i;
 
     for (i = 0; i < badwords.length; i++) {
-
       if (message.content.toLowerCase().includes(badwords[i].toLowerCase()))
-
         confirm = true;
-
     }
 
     if (confirm) {
-
       message.delete();
 
       let gp = new MessageEmbed()
@@ -203,23 +167,18 @@ client.on("message", async message => {
         .setTimestamp();
 
       return message.channel.send(gp);
-
     }
-
   }
-
 });
 
 client.on("message", async message => {
-
-  let prefix = await db2.get(`prefix_${message.guild.id}`);
+  let prefix = await db.get(`prefix_${message.guild.id}`);
 
   if (prefix === null) prefix = default_prefix;
 
   if (message.mentions.has("@everyone")) return;
 
   if (message.mentions.has(client.user)) {
-
     const luck = new MessageEmbed()
 
       .setAuthor(message.author.username, message.author.displayAvatarURL())
@@ -233,19 +192,17 @@ client.on("message", async message => {
       .setFooter(`REQUESTED BY ${message.author.username}`);
 
     return message.channel.send(luck);
-
-  }})
+  }
+});
 
 const { oks } = require("./link.json");
 
 client.on("message", async message => {
-
   if (message.author.bot) return;
 
   //START
 
   if (!message.member.hasPermission("ADMINISTRATOR")) {
-
     let confirm = false;
 
     //NOW WE WILL USE FOR LOOP
@@ -253,18 +210,12 @@ client.on("message", async message => {
     var i;
 
     for (i = 0; i < oks.length; i++) {
-
       if (message.content.toLowerCase().includes(oks[i].toLowerCase()))
-
         confirm = true;
-
     }
 
     if (confirm) {
-
       message.delete();
-
-     
 
       let gp = new MessageEmbed()
 
@@ -279,18 +230,15 @@ client.on("message", async message => {
         .setTimestamp();
 
       return message.channel.send(gp);
-
     }
-
   }
-
 });
 
 setInterval(async () => {
-
-  await fetch('https://crystal-panoramic-litter.glitch.me').then(console.log('Pinged!'))
-
-}, 240000)
+  await fetch("https://crystal-panoramic-litter.glitch.me").then(
+    console.log("Pinged!")
+  );
+}, 240000);
 
 //default is 1m (not required)
 
