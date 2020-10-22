@@ -40,7 +40,6 @@ run: async (client, message, args) => {
         upload: result.uploadDate,
 
         views: result.viewCount,
-
         requester: message.author,
 
         channel: result.channel.name,
@@ -65,7 +64,7 @@ run: async (client, message, args) => {
 
         .setTitle('Added to queue!')
 
-        .setColor('RANDOM')
+        .setColor('#67ffff')
 
         .addField('Name', song.title, true)
 
