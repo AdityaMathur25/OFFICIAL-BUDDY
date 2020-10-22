@@ -12,7 +12,8 @@ module.exports = {
 
     if(setStatus[1] === 'afk'){
         client.user.setAFK(true);
-        message.channel.send("Your status has been set to afk!");
+        message.channel.send("Your status has been set to afk!")
+      db.set(`${message.guild.id}`, `${message.author.id}`)
     }
 
     else if(setStatus[1] === 'notafk'){
