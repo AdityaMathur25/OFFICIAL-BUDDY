@@ -8,33 +8,25 @@ module.exports = {
   alises: ["afk"],
   category: "utility",
   run: async (client, message , args ) => {
-   let reason = args.join(' ') ? args.join(' ') : 'I am currently afk, I will reply as soon possible.';
+   const setStatus = message.content.split(' ');
 
-    let afklist = client.afk.get(message.author.id);
-
-    if (!afklist) {
-
-        let construct = {
-
-            id: message.author.id,
-
-            reason: reason
-
-        };
-
-        client.afk.set(message.author.id, construct);
-
-      
+    if(setStatus[1] === 'afk'){
+        client.user.setAFK(true);
+        message.channel.send("Your status has been set to afk!");
     }
-    
-    const embed = new MessageEmbed()
-    embed.setDescription(`**${message.author.tag}** now AFK.`)
-      embed.setFooter(`Reason: ${args.join(" ") ? args.join(" ") : "AFK"}`)
-   return 
-      
-     
-    
-    message.channel.send(embed)
-  }
+
+    else if(setStatus[1] === 'notafk'){
+        client.user.setAFK(false);
+        message.channel.send(`Welcome back ${message.author}`);
+    }
+
+    else if(!setStatus[1] || setStatus[1] === undefined){
+        message.channel.send("You did not choose afk or notafk as current status!");
+    }
+
+    else{
+        message.channel.send("You did not choose afk or notafk as current status!");
+    }
+ }
     
     }
