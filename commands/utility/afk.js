@@ -8,11 +8,6 @@ module.exports = {
   alises: ["afk"],
   category: "utility",
   run: async (client, message , args ) => {
-    const status = new db.table("AFKs");
-    let afk = await status.fetch(message.author.id)|| status.fetch(message.guild.id);
-    const embed = new Discord.MessageEmbed().setColor("RED")
-    
-    if (!afk) {
       embed.setDescription(`**${message.author.tag}** now AFK.`)
       embed.setFooter(`Reason: ${args.join(" ") ? args.join(" ") : "AFK"}`)
       status.set(message.author.id, args.join(" ") || `AFK`);
