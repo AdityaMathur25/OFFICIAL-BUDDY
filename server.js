@@ -90,11 +90,6 @@ client.on("ready", async () => {
    `${client.channels.cache.size} channels's`
 
 		];
-
-		let i = 0;
-
- 
-
   const stream = [
 
 `WATCHING`,
@@ -111,7 +106,7 @@ const activity = activities[Math.floor(Math.random() * activities.length)]
 
 const status = stream[Math.floor(Math.random() * stream.length)]
 
-setInterval(() => client.user.setActivity(activity, { type: status }), 5000)
+setInterval(() => client.user.setActivity(activity, { type: status }), 2000)
 client.user.setStatus(`idle`)
 
 	
