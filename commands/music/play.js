@@ -25,6 +25,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
     const song = {
         id: result.id,
         title: result.title,
+      url: result.url,
         duration: result.duration,
         thumbnail: result.thumbnail,
         upload: result.uploadDate,
@@ -90,7 +91,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         .setThumbnail(song.thumbnail)
         .addField('Name', song.title, true)
         .addField('Requested By', song.requester, true)
-        .addField('Views', song.views, true)
+ .
         .addField('Duration', timeString, true)
         queue.textChannel.send(noiceEmbed);
     };
