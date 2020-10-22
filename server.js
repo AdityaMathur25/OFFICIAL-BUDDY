@@ -66,25 +66,6 @@ client.queue = new Map();
 
 console.log("ready as badass");
 
-client.on("ready", async () => {
-  const main = db.get(`status`);
-
-  const activities = [
-    `${main}`,
-    `!help for commands`,
-    `WATCHING BUDDYS SERVER`,
-    `STAY HOME , STAY SAFE  `,
-    `Over ${client.guilds.cache.size} server's `,
-    ` Over ${client.users.cache.size} member's`,
-    `${client.channels.cache.size} channels's`
-  ];
-  const stream = [`WATCHING`, `PLAYING`, `LISTENING`, `STREAMING`];
-  let i = 0;
-
-  client.user.setActivity(i++ % activities.length, { type: status });
-
-  client.user.setStatus(`idle`);
-});
 
 //Stupid kid!
 
@@ -192,6 +173,49 @@ client.on("message", async message => {
       .setFooter(`REQUESTED BY ${message.author.username}`);
 
     return message.channel.send(luck);
+  }
+  let afk = new db.table("AFKs"),
+
+      authorStatus = await afk.fetch(message.author.id),
+
+      mentioned = message.mentions.members.first();
+
+  
+
+  if (mentioned) {
+
+    let status = await afk.fetch(mentioned.id);
+
+    
+
+    if (status) {
+
+      const embed = new MessageEmbed()
+
+      .setColor("#00FFFF")
+
+      .setDescription(`This user (${mentioned.user.tag}) is AFK: **${status}**`)
+
+      message.channel.send(embed).then(i => i.delete({timeout: 5000}));
+
+    }
+
+  }
+
+  
+
+  if (authorStatus) {
+
+    const embed = new MessageEmbed()
+
+    .setColor("#00FFFF")
+
+    .setDescription(`**${message.author.tag}** is no longer AFK.`)
+
+    message.channel.send(embed).then(i => i.delete({timeout: 5000}));
+
+    afk.delete(message.author.id)
+
   }
 });
 
