@@ -8,6 +8,8 @@ let cooldown = {}
 module.exports.run = async (client, message) => {
   if (message.author.bot) return;
   if (!message.guild) return;
+  if (!message.author) return;
+  
 
   addexp(message);
 

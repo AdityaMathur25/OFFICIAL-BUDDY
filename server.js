@@ -65,20 +65,19 @@ client.queue = new Map();
 });
 
 console.log("ready as badass");
- client.on("ready", async () => {
+client.on("ready", async () => {
+  const main = db.get(`status`);
+  var activevar = [
+    "WATCHING BUDDY'S SERVER",
+    "!help for commands",
+    "Stay Home , Stay Safe.",
+    `Over ${client.guilds.cache.size} Server's`
+  ];
 
-  const main = db.get(`status`)
-
-
-	 client.user.setActivity(`${main}`, { type: `WATCHING` })
-client.user.setStatus(`idle`)
-
-	
-
-	
-
+  var activities = activevar[Math.floor(Math.random() * activevar.length)];
+  client.user.setActivity(activities);
+  client.user.setStatus(`idle`);
 });
-
 //Stupid kid!
 
 //define message lol
@@ -186,7 +185,6 @@ client.on("message", async message => {
 
     return message.channel.send(luck);
   }
-  
 });
 
 const { oks } = require("./link.json");
