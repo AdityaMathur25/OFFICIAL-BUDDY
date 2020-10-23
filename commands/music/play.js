@@ -25,7 +25,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
     const song = {
         id: result.id,
         title: result.title,
-         url: result.videoDetails.video_url,
+        url:`https://www.youtube.com/watch?v=${result.id}`,
         duration: result.duration,
         thumbnail: result.thumbnail,
         upload: result.uploadDate,
@@ -90,7 +90,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         let noiceEmbed = new discord.MessageEmbed()
         .setTitle('Started Playing')
         .setThumbnail(song.thumbnail)
-        .addField('Name', `**[${song.title}](${song.url})**`, true)
+        .addField(`${song.title}`,``,true)
         .addField('Requested By', song.requester, true)
  .setColor("#00FFFF")
         .addField('Duration', timeString, true)
