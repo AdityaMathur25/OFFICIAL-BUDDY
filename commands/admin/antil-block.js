@@ -1,5 +1,5 @@
 const D = require('easy-json-database')
-const db = new D('../Black.json')
+const db = new D("../../Black.json")
 module.exports = {
 
   name: "blocklist",
