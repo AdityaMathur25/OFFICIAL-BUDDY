@@ -26,9 +26,7 @@ const { addexp } = require("./handlers/xp.js");
 
 const db = require("quick.db");
 
-const db2 = require("wio.db");
 
-const project = require("project-uptimer");
 
 const { badwords } = require("./data.json");
 

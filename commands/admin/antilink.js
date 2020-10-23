@@ -8,9 +8,9 @@ module.exports = {
 
   category: "settings",
 
-  usage: "setantilink <@message>",
+  usage: "setantilink <@type: enable>",
 
-  description: "Set the welcome message, use {user} to ping new user , {server} to show server name , {members} to show member count",
+  description: "Set anti link to Enable ! ",
 
   aliases:["anl"],
 
