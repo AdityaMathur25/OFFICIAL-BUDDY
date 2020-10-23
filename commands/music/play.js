@@ -48,7 +48,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         .addField('Name', `**[${song.title}](${song.url})**`, true)
         .setThumbnail(song.thumbnail)
         
-        .addField('Reqeusted By', song.requester, true)
+        .setFooter(`REQUESTED BY **${song.requester}**`)
         .addField('Duration', timeString, true)
         .setTimestamp()
         return message.channel.send(embed)
