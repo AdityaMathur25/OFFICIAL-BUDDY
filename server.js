@@ -73,7 +73,7 @@ client.on("ready", async () => {
     "Stay Home , Stay Safe.",
     `Over ${client.guilds.cache.size} Server's`,
     `Over ${client.users.cache.size} member's`,
-    `Over ${client.guilds.cache.size} Server's`
+    `in ${client.channels.cache.size} channel's`
   ];
  var stream_list = [
 
