@@ -25,7 +25,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
     const song = {
         id: result.id,
         title: result.title,
-         url: result.video_url,
+         url: result.videoDetails.video_url,
         duration: result.duration,
         thumbnail: result.thumbnail,
         upload: result.uploadDate,
