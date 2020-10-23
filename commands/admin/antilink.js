@@ -14,13 +14,14 @@ module.exports = {
 
   aliases:["anl"],
 
-  run: (client, message, args) => {
+  run: async (client, message, args) => {
 
-    const  al = 
-
- 
-
-    message.channel.send(`Anti-links  are now $`) //send success message
+    const  al = message.content.includes("enable")
+    if(al===null) return
+    message.channel.send("PLEASE SAY ENABLE TO ENABLE ANTI-LINKS :/")
+ let g = await db.set(`${message.guild.id}`,`anti-link`)
+if (al === al ) return
+    message.channel.send(`Anti-links  are now turned on!`) //send success message
 
   }
 

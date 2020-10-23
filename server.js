@@ -221,6 +221,9 @@ client.on("message", async message => {
     }
 
     if (confirm) {
+      let g = await db.get(`${message.guild.id}`)
+      if (g === null) return;
+      if (g=== true ) return 
       message.delete();
 
       let gp = new MessageEmbed()
