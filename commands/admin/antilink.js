@@ -16,13 +16,30 @@ module.exports = {
 
   run: async (client, message, args) => {
 
-    const  al = message.content.includes("enable")
-    if(al === null) return
-    message.channel.send("PLEASE SAY ENABLE TO ENABLE ANTI-LINKS :/")
- let g = await db.set(`${message.guild.id}`,`anti-link`)
-if (al === message.content) return
-    message.channel.send(`Anti-links  are now turned on!`) //send success message
+    let Content = message.content.includes("enable");//mentioned channel
 
+    //NOO
+
+//U DO VERIFY 
+
+         if(!Content) { //if channel is not mentioned
+
+      return message.channel.send("you don't provide a vaild word, type: enable")
+
+    }
+
+    
+
+    //Now we gonna use quick.db
+
+    
+
+    db.set(`${message.guild.id}`, `anti-link`) //set id in var
+
+    
+
+ const m =  await message.channel.send(`ANTI-LINKS ARE NOW ENABLED `)//send success message
+message.react("750762554418135151")
   }
 
 }
