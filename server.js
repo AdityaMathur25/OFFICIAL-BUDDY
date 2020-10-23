@@ -76,19 +76,19 @@ client.on("ready", async () => {
  var stream_list = [
 
     "PLAYING",
-
     "STREAMING",
-
-    "Stay Home , Stay Safe.",
-
-    `Over ${client.guilds.cache.size} Server's`
+    "WATCHING",
+    "listening"
 
   ];
 
 
  setInterval(() => {
         const index = Math.floor(Math.random() * activities_list.length ); // generates a random number between 1 and the length of the activities array list (in this case 5).
-        client.user.setActivity(activities_list[index], {type: "WATCHING"}); // sets bot's activities to one of the phrases in the arraylist.
+        const stat = Math.floor(Math.random() * stream_list.length ); // generates a random number between 1 and the length of the activities array list (in this case 5).
+
+      
+   client.user.setActivity(activities_list[index], {type: "WATCHING"}); // sets bot's activities to one of the phrases in the arraylist.
     }, 5000); //
   client.user.setStatus(`idle`);
 });
