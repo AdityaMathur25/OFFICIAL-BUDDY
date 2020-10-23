@@ -50,11 +50,11 @@ module.exports = {
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100)
     embed.setDescription(`Seted Volume to ${args[0]}`)
     embed.setTitle(`SERVER VOLUME${message.author.displayAvatarURL()}`)
-    embed.addfield("REQUESTED BY", message.author.username)
+    embed.addField("REQUESTED BY", message.author.username)
     embed.setTimeStamp();
     embed.setFooter("MADED BY BUDDY")
     
     message.channel.send(embed)
-    
+    message.react("750762554418135151")
   }
 };
