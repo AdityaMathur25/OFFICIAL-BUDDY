@@ -1,7 +1,6 @@
 const discord = require("discord.js")
-const   mongoose  = require('quickmongo');
+const   db = require('quick.db');
 
-const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
 module.exports = {
   name: "setlogchannel",
   category: "moderation",

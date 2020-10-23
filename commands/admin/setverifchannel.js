@@ -1,6 +1,5 @@
 const Discord = require("discord.js")
-const   mongoose  = require('quickmongo');
-const db = new mongoose.Database("mongodb+srv://Buddy:12345@cluster0.qqght.gcp.mongodb.net/test");
+const   db  = require('quick.db');
 
 const MessageEmbed = require('discord.js')
 module.exports = {
