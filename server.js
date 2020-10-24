@@ -67,7 +67,8 @@ console.log("ready as badass");
 client.on("ready", async () => {
   const main = db.get(`status`);
   var activities_list = [
-    "WATCHING BUDDY'S SERVER",
+    `${main}`,
+    " BUDDY'S SERVER",
     "!help for commands",
     "Stay Home , Stay Safe.",
     `Over ${client.guilds.cache.size} Server's`,
