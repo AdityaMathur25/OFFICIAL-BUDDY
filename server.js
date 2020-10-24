@@ -25,7 +25,8 @@ const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
 
 const db = require("quick.db");
-
+const jsondb = require("easy-json-database")
+const json = new jsondb("./black.json")
 
 
 const { badwords } = require("./data.json");
@@ -222,6 +223,9 @@ client.on("message", async message => {
       let g = await db.get(`${message.guild.id}`)
       if (g === null) return;
       if (g=== true ) return 
+      let uv = await db.fetch(`black_${message.guild.id}`)
+      if (uv = message.channel ) return;
+      if (uv = null ) return
       message.delete();
 
       let gp = new MessageEmbed()
