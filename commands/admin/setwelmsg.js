@@ -7,6 +7,7 @@ module.exports = {
   usage: "setwelcomemessage <@message>",
   description: "Set the welcome message, use {user} to ping new user , {server} to show server name , {members} to show member count",
   aliases:["msg"],
+  neededperms: "MANAGE_MESSAGES",
   run: (client, message, args) => {
     
     let Content = args.join(" ");//mentioned channel
