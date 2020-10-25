@@ -22,7 +22,7 @@ module.exports = {
     function isCustomEmoji(emoji) {
       return emoji.split(":").length == 1 ? false : true;
     }
-    if (!message.guild.roles.cache.has(args[1]))
+    if (!message.mentions.roles.first(args[1]))
       return message.channel.send(`That role does not exist in this guild!`);
     if (isCustomEmoji(args[2]))
       return message.channel.send(`That is a custom emoji!`);
@@ -42,5 +42,6 @@ module.exports = {
     await msg.react(args[2]);
    db.set(`emoji_${message.guild.id}`, args[2])
     db.set(`id_${msg.id}`)
+    db.set(`role_${message.guild.id}`, args[1])
   },
-};
+}
