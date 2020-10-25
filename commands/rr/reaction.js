@@ -36,9 +36,9 @@ module.exports = {
         title: `Reaction Role!`,
         timestamp: Date.now(),
         description: `React To Get your Role
-            ${args[3]} - ${r}
-            `,
-        color: `RANDOM`,
+      ${args[3]} - ${r}`,
+  
+        color: `YELLOW`,
         footer: message.guild.name + "reaction-role",
       })
     );
