@@ -206,11 +206,8 @@ client.on("message", async message => {
     if (confirm) {
       let g = await db.get(`${message.guild.id}`)
       if (g === null) return;
-      if (g=== true ) return 
-      let uv = await json.fetch(`black_${message.guild.id}`)
-      if (message.channel.id === uv.channel.id ) return;
-      if (uv === null ) return
-        
+      if (g === true ) return 
+       
       message.delete();
 
       let gp = new MessageEmbed()
