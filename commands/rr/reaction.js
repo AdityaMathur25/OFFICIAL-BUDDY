@@ -10,7 +10,7 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
-  run: async (bot, message, args) => {
+  run: async (bot, message, args, client) => {
     if (!message.member.permissions.has("ADMINISTRATOR"))
       return message.channel.send(`You do not have permissions!`);
     if (!args[0])
@@ -22,19 +22,21 @@ module.exports = {
     function isCustomEmoji(emoji) {
       return emoji.split(":").length == 1 ? false : true;
     }
-    if (!message.mentions.roles.first(args[1]))
-      return message.channel.send(`That role does not exist in this guild!`);
+   const r = message.mentions.roles.first(args[1])
+   if (!r) 
+  return message.channel.send(`That role does not exist in this guild!`);
     if (isCustomEmoji(args[2]))
       return message.channel.send(`That is a custom emoji!`);
-    let ch = message.guild.channels.cache.get(args[0]);
+    let ch = message.mentions.channels.first(args[0]);
     if (!ch)
       return message.channel.send(`That channel does not exist in this guild!`);
-    const msg = await ch.send(
+   
+    const msg = await message.channel.send(
       new MessageEmbed({
         title: `Reaction role menu`,
         timestamp: Date.now(),
         description: `Reactions:
-            ${args[2]} - ${message.guild.roles.cache.get(args[1]).name}
+            ${args[2]} - ${r}
             `.trim(),
         color: `RANDOM`,
       })
