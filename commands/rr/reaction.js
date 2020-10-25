@@ -1,17 +1,46 @@
-const db = require('quick.db')
-const discord = require('discord.js')
-const MessageEmbed = require('discord.js')
+const{ Message, Client, MessageEmbed } = require("discord.js");
+const db = require("quick.db")
 module.exports = {
-  name: "setuprr",
-  category: "reaction-role",
-  usage: "prefix <new-prefix>",
-  description: "Change the guild prefix",
-  run: async (client, message, args) => {
   
-    let ID = args.join(" ")
-     let ch = message.mentions.channels.first();//mentioned channel
- if (!ID) return message.channel.send("You don't enter msg ID");
-    let r = await message.channel.fetch(ID)
-    message.react("👍");
-    
-  }}
+  name: "rradd",
+  description: "Add a reaction role",
+  category: "reactionroles",
+  /**
+   * @param {Client} bot
+   * @param {Message} message
+   * @param {String[]} args
+   */
+  run: async (bot, message, args) => {
+    if (!message.member.permissions.has("ADMINISTRATOR"))
+      return message.channel.send(`You do not have permissions!`);
+    if (!args[0])
+      return message.channel.send(`You did not specify your channel id.`);
+    if (!args[1])
+      return message.channel.send(`You did not specify you role id.`);
+    if (!args[2])
+      return message.channel.send(`You did not specify your reaction.`);
+    function isCustomEmoji(emoji) {
+      return emoji.split(":").length == 1 ? false : true;
+    }
+    if (!message.guild.roles.cache.has(args[1]))
+      return message.channel.send(`That role does not exist in this guild!`);
+    if (isCustomEmoji(args[2]))
+      return message.channel.send(`That is a custom emoji!`);
+    let ch = message.guild.channels.cache.get(args[0]);
+    if (!ch)
+      return message.channel.send(`That channel does not exist in this guild!`);
+    const msg = await ch.send(
+      new MessageEmbed({
+        title: `Reaction role menu`,
+        timestamp: Date.now(),
+        description: `Reactions:
+            ${args[2]} - ${message.guild.roles.cache.get(args[1]).name}
+            `.trim(),
+        color: `RANDOM`,
+      })
+    );
+    await msg.react(args[2]);
+   db.set(`emoji_${message.guild.id}`, args[2])
+    db.set(`id_${msg.id}`)
+  },
+};
