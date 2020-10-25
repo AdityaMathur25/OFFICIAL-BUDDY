@@ -17,12 +17,12 @@ module.exports = {
       return message.channel.send(`You did not specify your channel id.`);
     if (!args[1])
       return message.channel.send(`You did not specify you role id.`);
-    if (!args[2])
+    if (!args[3])
       return message.channel.send(`You did not specify your reaction.`);
     function isCustomEmoji(emoji) {
       return emoji.split(":").length == 1 ? false : true;
     }
-   const r = message.mentions.roles.first(args[1])
+   const r = message.mentions.roles.first()
    if (!r) 
   return message.channel.send(`That role does not exist in this guild!`);
     if (isCustomEmoji(args[2]))
@@ -33,17 +33,18 @@ module.exports = {
    
     const msg = await message.channel.send(
       new MessageEmbed({
-        title: `Reaction role menu`,
+        title: `Reaction Role!`,
         timestamp: Date.now(),
-        description: `Reactions:
-            ${args[2]} - ${r}
-            `.trim(),
+        description: `React To Get your Role
+            ${args[3]} - ${r}
+            `,
         color: `RANDOM`,
+        footer: message.guild.name + "reaction-role",
       })
     );
-    await msg.react(args[2]);
+    await msg.react(args[3]);
    db.set(`emoji_${message.guild.id}`, args[2])
     db.set(`id_${msg.id}`)
-    db.set(`role_${message.guild.id}`, args[1])
+    db.set(`role_${message.guild.id}`, r.id)
   },
 }
