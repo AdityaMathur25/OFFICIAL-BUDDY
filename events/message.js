@@ -1,6 +1,6 @@
 const db = require('quick.db')
 const { addexp } = require("../handlers/xp.js");
-const MessageEmbed = require('discord.js')
+const { MessageEmbed, discord} = require('discord.js')
 const { ownerID, ownerID2, default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
@@ -33,19 +33,21 @@ module.exports.run = async (client, message) => {
   if (message.mentions.has(client.user)) {
     const luck = new MessageEmbed()
 
-      .setAuthor(message.author.username, message.author.displayAvatarURL())
+      .setAuthor( "PREFIX ! |" )
 
-      .setTitle("PREFIX HELP! ")
+      .setTitl
+    
 
-      .setDescription(`HEY, MY PREFIX IN THIS SERVER IS **${prefix}**`)
+      .setDescription(`HEY, MY PREFIX IN THIS SERVER IS ` + "`" + prefix +"`")
 
-      .setColor("RANDOM")
+      .setColor("ORANGE")
+    .setThumbnail(message.author.displayAvatarURL({dynamic: true }))
 
       .setFooter(`REQUESTED BY ${message.author.username}`);
 
     return message.channel.send(luck);
   }
-});
+
 
   if (!message.content.startsWith(prefix)) return;
 
