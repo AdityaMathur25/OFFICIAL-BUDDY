@@ -10,7 +10,7 @@ module.exports = {
 
      run: async (client, message, args) => {
 
-        let money = db.fetch(`money_${message.guild.id}`, { sort: '.data' })
+        let money = db.startsWith(`money_${message.guild.id}`, { sort: '.data' })
 
         let content = "";
 
@@ -31,7 +31,7 @@ module.exports = {
 
             .setTimestamp()
 
-            message.channel.send(embed);
+            message.channel.send(content);
 
         }
 
