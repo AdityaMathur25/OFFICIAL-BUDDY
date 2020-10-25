@@ -33,9 +33,8 @@ module.exports.run = async (client, message) => {
   if (message.mentions.has(client.user)) {
     const luck = new MessageEmbed()
 
-      .setAuthor( "PREFIX ! |" )
+      .setAuthor( "PREFIX ! | " + message.guild.name )
 
-      .setTitl
     
 
       .setDescription(`HEY, MY PREFIX IN THIS SERVER IS ` + "`" + prefix +"`")
