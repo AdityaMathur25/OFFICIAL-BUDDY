@@ -46,17 +46,17 @@ module.exports.run = async (client, message) => {
 
     return message.channel.send(luck);
   }
-  let  global = await db.get(`global_${message.guild.id}`)
+  let  global = await db.fetch(`global_${message.guild.id}`)
 
 if (global === null) return;
 
- if(message.channel.name == global && !message.author.bot){
+ if(message.author.bot){
 
    client.guilds.cache.forEach(guild=>{
 
      if(guild == message.guild) return;
 
-     let channel = guild.channels.cache.find(ch=>ch.name === global);
+     let channel = guild.channels.cache.find(ch=>ch.id === global);
 
      if(!channel) return;
 
