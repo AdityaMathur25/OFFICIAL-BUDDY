@@ -29,7 +29,8 @@ module.exports = {
    
     
     embed.setDescription(`Loop is now **${serverQueue.loop ? "Enabled" : "Disabled"}**`)
-    embed.setThumbnail(client.user.displayAvatarURL())
+    embed.setThumbnail(message.author.displayAvatarURL())
+    embed.setFooter(`Requested By ${message.author.username}`)
     message.channel.send(embed)
     
     

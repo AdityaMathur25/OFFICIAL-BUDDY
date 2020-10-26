@@ -62,7 +62,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         songs: [],
         volume: 100,
         playing: true,
-      loop: 
+      loop: false
     };
     message.client.queue.set(message.guild.id, queueConstruct);
     queueConstruct.songs.push(song);
