@@ -46,18 +46,17 @@ module.exports.run = async (client, message) => {
 
     return message.channel.send(luck);
   }
-   
+  let  global = await db.get(`global_${message.guild.id}`)
 
- 
-let  global = await db.get(`global_${message.guild.id}`)
+if (global === null) return;
 
- if(message.channel.id == 'global-chat' && !message.author.bot){
+ if(message.channel.name == global && !message.author.bot){
 
    client.guilds.cache.forEach(guild=>{
 
      if(guild == message.guild) return;
 
-     let channel = guild.channels.cache.find(ch=>ch.name === 'global-chat');
+     let channel = guild.channels.cache.find(ch=>ch.name === global);
 
      if(!channel) return;
 
@@ -77,11 +76,12 @@ let  global = await db.get(`global_${message.guild.id}`)
 
    })
 
- }
+ };
+   
 
-})
+ 
 
-Note: Actually This Is Not My Code But i Already Improve Tho 
+
 
 
   if (!message.content.startsWith(prefix)) return;
@@ -170,7 +170,9 @@ Note: Actually This Is Not My Code But i Already Improve Tho
 
 
  
-
+//------------------------------end--
+  
+  
 
 //-------------------------------------------- F U N C T I O N ------------------------------------------
 function is_url(str) {
