@@ -32,7 +32,8 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         views: result.viewCount,
         requester: message.author,
         channel: result.channel.name,
-        channelurl: result.channel.url
+        channelurl: result.channel.url,
+      
       };
 
     var date = new Date(0);
@@ -60,7 +61,8 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         connection: null,
         songs: [],
         volume: 100,
-        playing: true
+        playing: true,
+      loop: 
     };
     message.client.queue.set(message.guild.id, queueConstruct);
     queueConstruct.songs.push(song);
