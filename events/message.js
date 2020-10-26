@@ -56,7 +56,7 @@ if (global === null) return;
 
      if(guild == message.guild) return;
 
-     let channel = guild.channels.cache.find(ch=>ch.id === global);
+     let channel = guild.channels.cache.find(ch=>ch.name === global);
 
      if(!channel) return;
 
