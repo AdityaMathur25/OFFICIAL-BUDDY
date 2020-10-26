@@ -46,6 +46,42 @@ module.exports.run = async (client, message) => {
 
     return message.channel.send(luck);
   }
+   
+
+ 
+let  global = await db.get(`global_${message.guild.id}`)
+
+ if(message.channel.id == 'global-chat' && !message.author.bot){
+
+   client.guilds.cache.forEach(guild=>{
+
+     if(guild == message.guild) return;
+
+     let channel = guild.channels.cache.find(ch=>ch.name === 'global-chat');
+
+     if(!channel) return;
+
+     let embed = new discord.MessageEmbed()
+
+     .setAuthor(message.author.tag +" | Global Chat", message.author.displayAvatarURL())
+
+     .setColor("#00c1ff")
+
+     .setDescription(message.content)
+
+     .setFooter("Server : "+message.guild.name, (message.guild.iconURL({ dynamic: true })))
+
+     .setTimestamp()
+
+     channel.send(embed)
+
+   })
+
+ }
+
+})
+
+Note: Actually This Is Not My Code But i Already Improve Tho 
 
 
   if (!message.content.startsWith(prefix)) return;
