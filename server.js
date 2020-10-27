@@ -286,9 +286,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
   })
 
-  
+  }})
 
 //default is 1m (not required)
 
 client.login(process.env.ass);
-}})
