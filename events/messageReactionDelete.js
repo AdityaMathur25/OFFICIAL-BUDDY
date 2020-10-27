@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 
-module.exports = async (client, reaction, user) => {
+module.exports.run = async (client, reaction, user) => {
 
         const rr = new db.table("REACTION_ROLES");
 
