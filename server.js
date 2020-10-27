@@ -1,3 +1,5 @@
+const emotfe = require('./emojis.json')
+
 const {
   Client,
 
@@ -38,8 +40,7 @@ let cooldown = {};
 //for image ?
 
 const client = new Client({
-  disableEveryone: true
-});
+   partials: ['MESSAGE', 'CHANNEL', 'REACTION'], disableEveryone: true });
 
 // for not taging everyone.
 
@@ -262,7 +263,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
     .setAuthor(user.username , user.displayAvatarURL())
 
-    .setDescription(`${emote.attention} **It's Looks You Already Have ${reaction.message.guild.roles.cache.get(role).name}** `)
+    .setDescription(`${emotfe.attention} **It's Looks You Already Have ${reaction.message.guild.roles.cache.get(role).name}** `)
 
     .setFooter(reaction.message.guild.name , reaction.message.guild.iconURL())
 
@@ -274,7 +275,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
     .setAuthor(user.username, user.displayAvatarURL())// made by darkboy (discord.gg/devs)
 
-    .setDescription(`${emote.loading} **${reaction.message.guild.roles.cache.get(role).name}** Has Been added to you on ${reaction.message.guild.name}`)
+    .setDescription(`${emotfe.loading} **${reaction.message.guild.roles.cache.get(role).name}** Has Been added to you on ${reaction.message.guild.name}`)
 
     .setFooter(reaction.message.guild.name , reaction.message.guild.iconURL())
 
