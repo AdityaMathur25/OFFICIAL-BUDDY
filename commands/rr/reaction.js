@@ -19,14 +19,10 @@ module.exports = {
       return message.channel.send(`You did not specify you role id.`);
     if (!args[3])
       return message.channel.send(`You did not specify your reaction.`);
-    function isCustomEmoji(emoji) {
-      return emoji.split(":").length == 1 ? false : true;
-    }
+    
    const r = message.mentions.roles.first()
    if (!r) 
   return message.channel.send(`That role does not exist in this guild!`);
-    if (isCustomEmoji(args[2]))
-      return message.channel.send(`That is a custom emoji!`);
     let ch = message.mentions.channels.first(args[0]);
     if (!ch)
       return message.channel.send(`That channel does not exist in this guild!`);

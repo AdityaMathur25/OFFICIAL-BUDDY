@@ -46,37 +46,6 @@ module.exports.run = async (client, message) => {
 
     return message.channel.send(luck);
   }
-  let  global = await db.fetch(`global_${message.guild.id}`)
-
-if (global === null) return;
-
- if(message.author.bot){
-
-   client.guilds.cache.forEach(guild=>{
-
-     if(guild == message.guild) return;
-
-     let channel = guild.channels.cache.find(ch=>ch.name === global);
-
-     if(!channel) return;
-
-     let embed = new discord.MessageEmbed()
-
-     .setAuthor(message.author.tag +" | Global Chat", message.author.displayAvatarURL())
-
-     .setColor("#00c1ff")
-
-     .setDescription(message.content)
-
-     .setFooter("Server : "+message.guild.name, (message.guild.iconURL({ dynamic: true })))
-
-     .setTimestamp()
-
-     channel.send(embed)
-
-   })
-
- };
    
 
  
