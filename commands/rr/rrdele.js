@@ -1,82 +1,72 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+const db = require("quick.db");
 
- const { attention, yes, mention, channele, msg } = require('../../emojis.json')
+module.exports = {
+    name: "rrdel",
+    category: "Moderation",
+    description: "Removes a reaction role from a message.",
+    usage: "rrdel <#channel> <messageID> <emoji>",
+    async run(client, message, args, flags) {
+          const invalidEmbed = new Discord.MessageEmbed()
+            .setAuthor("Reaction Role Delete Command", client.user.displayAvatarURL({
+                format: "png",
+                dynamic: true,
+                size: 2048
+            }))
+            .setColor("#eb0936")
+            .setTitle("Invalid Arguments")
+            .addFields({
+                name: "USAGE",
+                value: "```rrdel <messageID> <emoji>```"
+            }, {
+                name: "EXAMPLES",
+                value: "`rrdel 770636560281632768 🐒`"
+            });
+            
+            if(!args[0]) return message.channel.send(invalidEmbed);
 
- module.exports = {
+            const rr = new db.table('REACTION_ROLES');
 
-    name: "rrdelete",
+            let channel = await rr.get(`rrremove_${message.guild.id}_${args[0]}2`);
 
-    description: "delete reaction role",
-   category: "reaction-role",
+            let messageid = await rr.get(`rerremove_${message.guild.id}_${args[0]}`);
 
-   usage: "rrdelete <#channeL> <MESSAGEID> <ROLE> <EMOJI>",
-aliases: ["rrd"],
-   
+            if(!channel) return message.channel.send({embed: {color:'#de2121', description:"<:tick_no:746298075643117620> Please enter a valid channel."}});
 
-    run: async (client, message, args, db, prefix) => {
+            if(!messageid || isNaN(messageid)) return message.channel.send({embed: {color:'#de2121', description:"<:tick_no:746298075643117620> Please enter a valid Message ID."}});
 
-    if(!args[0]) return message.channel.send(`${prefix}rrdelete (messageid) (emoji)`)
+            let a = client.channels.cache.get(channel).messages.fetch(args[0]);
 
-    let channel = await db.get(`rrremove_${message.guild.id}_${args[0]}2`)
+            if(!a) return message.channel.send({embed: {color:'#de2121', description:"<:tick_no:746298075643117620> The entered Message ID is invalid."}});
+            
+            let customemoji = Discord.Util.parseEmoji(args[1]);
 
-    let messageid = await db.get(`rerremove_${message.guild.id}_${args[0]}`)
+            if(!customemoji) return message.channel.send({embed: {color:'#de2121', description:"<:tick_no:746298075643117620> Please enter a valid emoji for the reaction role."}});
+        
+            let emojicheck = client.emojis.cache.find(emoji => emoji.id === `${customemoji.id}`);
 
-    if(!channel) return message.channel.send(`**Message ID Not Found**`)
+            if(!emojicheck) return message.channel.send({embed: {color:'#de2121', description:"<:tick_no:746298075643117620> The entered emoji is not valid. Please enter the emoji correctly."}});
 
-    if(!messageid) return message.channel.send(`**MessageID Not Found**`)
+            let emote = await rr.get(`rrremove_${message.guild.id}_${args[0]}_${args[1]}`)
 
-    let a = client.channels.cache.get(channel).messages.fetch(args[0])
+            if(!emote) return message.channel.send({embed: {color:'#de2121', description:`<:tick_no:746298075643117620> There is no reaction role with ${customemoji} in this message.`}});
 
-   if(!a) return message.channel.send(`**That's Message ID Invaild**`)
+            client.channels.cache.get(channel).messages.fetch(args[0]).then(darkcodes => {
+            darkcodes.reactions.cache.get(`${emojicheck.id}`).remove() 
+            });
 
-   if(!args[1]) return message.channel.send(`${prefix}rrdelete (mesageid) (emoji)`)
+            let embed = new Discord.MessageEmbed()
+                .setColor('#10de47')
+                .setDescription(`<:tick_yes:746298071951867906> Removed ${emojicheck}.`)
+                message.channel.send(embed)
 
-   let customemoji = Discord.Util.parseEmoji(args[1]);
+                rr.delete(`emoteid_${message.guild.id}_${emojicheck}`)
+                rr.delete(`role_${message.guild.id}_${emojicheck}`)
+                rr.delete(`message_${message.guild.id}_${emojicheck}`)
+                rr.delete(`rrremove_${message.guild.id}_${args[0]}2`)
+                rr.delete(`rrremove_${message.guild.id}_${args[0]}_${args[1]}`)
+                rr.delete(`rerremove_${message.guild.id}_${args[0]}`)
 
-   
 
-   let emojicheck = client.emojis.cache.find(emoji => emoji.id === `${customemoji.id}`);
-
-   if(!emojicheck) return message.channel.send(`this emoji is invaild!`)
-
-   let emote = await db.get(`rrremove_${message.guild.id}_${args[0]}_${args[1]}`)
-
-   if(!emote) return message.channel.send(`theres no emojis with ${emojicheck} on ${args[0]}`)
-
-   client.channels.cache.get(channel).messages.fetch(args[0]).then(darkcodes => {
-
-darkcodes.reactions.cache.get(`${emojicheck.id}`).remove() 
-
-   })
-
-   let embed = new Discord.MessageEmbed()
-
-        .setAuthor(message.author.username, message.author.displayAvatarURL())
-
-        .setDescription(`**Sucsses**
-
-        Removed  **${msg} [Go To Message](https://discord.com/channels/${message.guild.id}/${channel}/${args[0]})**
-
-      ${attention} Reaciton Cleared 
-
-      ${attention} Reaciton Role Removed.`)
-
-        .setFooter(message.guild.name , message.guild.iconURL())
-
-        .setTimestamp()
-
-        message.channel.send(embed)
-
-        db.delete(`emoteid_${message.guild.id}_${emojicheck}`)
-
-        db.delete(`role_${message.guild.id}_${emojicheck}`)
-
-        db.delete(`message_${message.guild.id}_${emojicheck}`)
-
-       db.delete(`rrremove_${message.guild.id}_${args[0]}2`)
-
-       db.delete(`rrremove_${message.guild.id}_${args[0]}_${args[1]}`)
-
-       db.delete(`rerremove_${message.guild.id}_${args[0]}`)
-
- }}
+    }
+}
