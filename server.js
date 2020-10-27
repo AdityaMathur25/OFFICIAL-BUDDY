@@ -72,7 +72,7 @@ client.on("ready", async () => {
     "!help for commands",
     "Stay Home , Stay Safe.",
     `Over ${client.guilds.cache.size} Server's`,
-    `Over ${client.users.cache.size} member's`,
+    `BEST MUSIC BOT !`,
     `in ${client.channels.cache.size} channel's`
   ];
  var stream_list = [
