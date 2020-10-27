@@ -4,6 +4,8 @@ const Discord = require("discord.js")
  module.exports = {
     name: "rradd",
     description: "add reaction role",
+   category: "reaction-role",
+   usage: "rradd <#channeL> <MESSAGEID> <ROLE> <EMOJI>",
     run: async (client, message, args, db, prefix) => {
     if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`**YOU MUST HAVE PERMISSIONS.**`)
     let channel = message.mentions.channels.first();
