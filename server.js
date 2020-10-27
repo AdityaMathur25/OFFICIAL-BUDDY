@@ -40,7 +40,7 @@ let cooldown = {};
 //for image ?
 
 const client = new Client({
-   partials: ['MESSAGE', 'CHANNEL', 'REACTION'], disableEveryone: true });
+   partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
 // for not taging everyone.
 

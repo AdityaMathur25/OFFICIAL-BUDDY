@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
  const { attention, yes, mention, channele, msg } = require('../../emojis.json')
-
+const db = require("quick.db")
  module.exports = {
     name: "rradd",
     description: "add reaction role",
@@ -21,7 +21,7 @@ const Discord = require("discord.js")
     let check = message.guild.roles.cache.find(r => r.name === `${role.name}`)
     if(!check) return message.channel.send(`invaild role!`)
     if(!args[3]) return message.channel.send(`${prefix}rradd ${channel} ${args[1]} ${role.name} <EMOJI> `)
-    let customemoji = Discord.Util.parseEmoji(args[3]);
+    let customemoi = Discord.Util.parseEmoji(args[3]);
     let emojicheck = client.emojis.cache.find(emoji => emoji.id === `${customemoji.id}`);
     if(!emojicheck) return message.channel.send(`this emoji is invaild! (You Cant use discord default emotes)`)
   let embed = new Discord.MessageEmbed()
@@ -40,7 +40,7 @@ const Discord = require("discord.js")
     message.channel.send(embed)
      client.channels.cache.get(`${channel.id}`).messages.fetch(`${args[1]}`).then(a => {
          a.react(emojicheck.id)
-     db.set(`rrremove_${message.guild.id}_${args[1]}`, channel.id)
+     let d = db.set(`rrrremove_${message.guild.id}`, channel.id)
      db.set(`rrremove_${message.guild.id}_${args[1]}_${args[3]}`, emojicheck.id)
      db.set(`rerremove_${message.guild.id}_${args[1]}`, args[1])
      db.set(`emoteid_${message.guild.id}_${emojicheck.id}`, emojicheck.id)
