@@ -37,7 +37,12 @@ category: "music",
       queue.songs = queue.songs.slice(args[0] - 2);
     }
     queue.connection.dispatcher.end();
-    queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
+    let jump = new MessageEmbed()
+    .setTitle(message.author.username + message.guild.name)
+    .setDescription(`JUMP TO SONG number - **${args[0]}**`)
+    .setFooter("REQUESTED BY " + message.author.username)
+    .setTimestamp()
+    queue.textChannel.send(jump).catch(console.error);
   }
 }
     
