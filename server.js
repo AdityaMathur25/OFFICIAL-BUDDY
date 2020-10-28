@@ -54,7 +54,7 @@ client.queue = new Map();
 ["command", "events"].forEach(handler => {
   //some error here
 
-  require(`./handler/${handler}`)(client);
+  require(`./handlers/${handler}`)(client);
 });
 
 console.log("ready as badass");
