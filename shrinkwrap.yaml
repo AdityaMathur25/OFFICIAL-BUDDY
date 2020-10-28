@@ -8,7 +8,7 @@ dependencies:
   colornames: 1.1.1
   common-tags: 1.8.0
   discord-player: 2.3.1
-  discord.js: 12.3.1
+  discord.js: 12.4.1
   dotenv: 8.2.0
   easy-json-database: 1.2.1
   express: 4.17.1
@@ -18,7 +18,6 @@ dependencies:
   google-play-scraper: 8.0.2
   imdb-api: 4.2.0
   json-database.js: 1.0.3
-  lavaplayer: 1.6.0
   node-fetch: 2.6.1
   node-opus: 0.3.3
   node-superfetch: 0.1.10
@@ -29,11 +28,11 @@ dependencies:
   scrape-yt: 1.4.3
   simple-youtube-api: 5.2.1
   something-random-on-discord: 0.0.1
-  srod-v2: 0.0.2
+  srod-v2: 0.0.5
   twemoji-parser: 13.0.0
   yt-search: 2.3.3
-  ytdl-core: 3.4.1
-  ytdl-core-discord: 1.2.3
+  ytdl-core: 4.0.0
+  ytdl-core-discord: 1.2.4
 packages:
   /@aero/centra/1.0.6:
     dev: false
@@ -514,24 +513,14 @@ packages:
       node: 6.x || >=8.x
     resolution:
       integrity: sha512-7XHoRB61hxsz8lBQrjC1tq/3OEIgpvGWg6DKAdwi7WRzruwkmsdwmOoUXbU4Dtd4RSOMDwed0SkP3y8UlMt1Bg==
-  /@types/cheerio/0.22.22:
-    dependencies:
-      '@types/node': 14.11.8
-    dev: false
-    resolution:
-      integrity: sha512-05DYX4zU96IBfZFY+t3Mh88nlwSMtmmzSYaQkKN48T495VV1dkHSah6qYyDTN5ngaS0i0VonH37m+RuzSM0YiA==
   /@types/node/14.11.10:
     dev: false
     resolution:
       integrity: sha512-yV1nWZPlMFpoXyoknm4S56y2nlTAuFYaJuQtYRAOU7xA/FJ9RY0Xm7QOkaYMMmr8ESdHIuUb6oQgR/0+2NqlyA==
-  /@types/node/14.11.2:
+  /@types/node/14.14.5:
     dev: false
     resolution:
-      integrity: sha512-jiE3QIxJ8JLNcb1Ps6rDbysDhN4xa8DJJvuC9prr6w+1tIh+QAbYyNF3tyiZNLDBIuBCf4KEcV2UvQm/V60xfA==
-  /@types/node/14.11.8:
-    dev: false
-    resolution:
-      integrity: sha512-KPcKqKm5UKDkaYPTuXSx8wEP7vE9GnuaXIZKijwRYcePpZFDVuy2a57LarFKiORbHOuTOOwYzxVxcUzsh2P2Pw==
+      integrity: sha512-H5Wn24s/ZOukBmDn03nnGTp18A60ny9AmCwnEcgJiTgSGsCO7k+NWP7zjCCbhlcnVCoI+co52dUAt9GMhOSULw==
   /abbrev/1.1.1:
     dev: false
     resolution:
@@ -795,12 +784,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
-  /axios/0.19.2:
-    dependencies:
-      follow-redirects: 1.5.10
-    dev: false
-    resolution:
-      integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
   /axios/0.20.0:
     dependencies:
       follow-redirects: 1.13.0
@@ -1303,12 +1286,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
-  /debug/3.1.0:
-    dependencies:
-      ms: 2.0.0
-    dev: false
-    resolution:
-      integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   /debug/3.2.6:
     dependencies:
       ms: 2.1.2
@@ -1400,7 +1377,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-yXD83OvQvU5fRGO2awQRABHMVVcwMI866D05ivf0vbWlIXvyrU1flk3Neofb7WdlmR2KZyKLoMCE8SC7w3L8Kw==
-  /discord.js/12.3.1:
+  /discord.js/12.4.1:
     dependencies:
       '@discordjs/collection': 0.1.6
       '@discordjs/form-data': 3.0.1
@@ -1414,7 +1391,7 @@ packages:
     engines:
       node: '>=12.0.0'
     resolution:
-      integrity: sha512-mSFyV/mbvzH12UXdS4zadmeUf8IMQOo/YdunubG1wWt1xjWvtaJz/s9CGsFD2B5pTw1W/LXxxUbrQjIZ/xlUdw==
+      integrity: sha512-KxOB8LOAN3GmrvkD6a6Fr1nlfArIFZ+q7Uqg4T/5duB90GZy9a0/Py2E+Y+eHKP6ZUCR2mbNMLCcHGjahiaNqA==
   /doctrine/3.0.0:
     dependencies:
       esutils: 2.0.3
@@ -1968,14 +1945,6 @@ packages:
       node: '>=4.0'
     resolution:
       integrity: sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
-  /follow-redirects/1.5.10:
-    dependencies:
-      debug: 3.1.0
-    dev: false
-    engines:
-      node: '>=4.0'
-    resolution:
-      integrity: sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
   /forever-agent/0.6.1:
     dev: false
     resolution:
@@ -2079,14 +2048,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-LANAXHU4w51+s3sxcCLjJfsBi/c=
-  /genius-lyrics/3.0.0:
-    dependencies:
-      '@types/cheerio': 0.22.22
-      axios: 0.19.2
-      cheerio: 1.0.0-rc.3
-    dev: false
-    resolution:
-      integrity: sha512-B2Um1u6G0rjf5R09ht31zguG7AFn7eFWBoMVxzITz533gnxtWVdIxrvRLFRQJ0em2Oonj7hTeRog0yanzUpqfQ==
   /genius-lyrics/4.0.0:
     dependencies:
       axios: 0.20.0
@@ -2710,21 +2671,6 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-+t2CbQsLmpN3HeYPBxN+VbZqBOd86njF3cvnueC77pJKVHRjiMI0Ac+pfkB8e17Bw1dGHbMk9hrHst9Bw7ndgw==
-  /lavaplayer/1.6.0:
-    dependencies:
-      '@discordjs/opus': 0.3.2
-      discord.js: 12.3.1
-      genius-lyrics: 3.0.0
-      moment: 2.29.1
-      ms: 2.1.2
-      simple-youtube-api: github.com/RPGTheGreat/simple-youtube-api/1687949eb02121d24775f48a1e547ae10e8c3a25
-      ytdl-core: 3.3.0
-      ytdl-core-discord: 1.2.3
-    dev: false
-    engines:
-      node: 12.x
-    resolution:
-      integrity: sha512-/Tzemp7+UPHjwFb3pqt4ZTSxuPKXUVIPC3qfxtBGrgS/rGf1NhaTtSvcEnlHqE/oTF57Gr6BWc/NT3PZkraJ+g==
   /lazy-cache/0.2.7:
     dev: false
     engines:
@@ -2869,6 +2815,15 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-z6ldnAdhbuWOL6LmMkwptSZGzj+qbRytMKLTbNicwF/bJMjf9U9lqD57RNQUFecvWadEkzy6PDjcNJFFgi19uQ==
+  /m3u8stream/0.8.0:
+    dependencies:
+      miniget: 2.0.2
+      sax: 1.2.4
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-vvSjdkBPdDHzVr2M+aIXbnYys4zX6m3UzxMaxBJr1PpE0e/3sawkLD4EEmz/q9hv87bleotR70cOWR3UBMtskw==
   /matched/0.4.4:
     dependencies:
       arr-union: 3.1.0
@@ -2973,6 +2928,12 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-MX+QfVIPAutz6c+T7WKuFKtjcw0nOyRRh1ubhTDD+z/e/pKcSAsfAV63aQKUgb1MFRT1GyfJeW53N5fHkX0wIA==
+  /miniget/2.0.2:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-rUYQiHXVjisRIuEdvIQxXPsAKp9Gltz5JdLWA8a3c/5265f2bZudg5mGtWcox0HHxkw51v8od/jLsqyYlM8UBw==
   /minimatch/3.0.4:
     dependencies:
       brace-expansion: 1.1.11
@@ -4081,14 +4042,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
-  /srod-v2/0.0.2:
+  /srod-v2/0.0.5:
     dependencies:
-      discord.js: 12.3.1
+      discord.js: 12.4.1
       node-fetch: 2.6.1
       one-liner-joke: 1.2.0
     dev: false
     resolution:
-      integrity: sha512-Y9oPkqJDyDb/gFAvs+C0NAPsaINFeK52FeL8didCy1P7howt5Vx6hb04l8IVCvpkr8kE0mrGbo4ASg1sOEVIYQ==
+      integrity: sha512-4EFSUYtOQLTi7kigN1zC57DehbH3tx1Ss8wHfe8SOuhtljtAgjOPcwUMVROuXhI2AggmkzHm6MHMNqIrRXNk8w==
   /sshpk/1.16.1:
     dependencies:
       asn1: 0.2.4
@@ -4698,14 +4659,14 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-mnYuSw1DvRPnk5Z+SeHnbrcdq2UvrTdaqMM7fo4xyOVFS2HBSrmtbkLXLN1hm1ftRNa28Kx2POtiSg3YRnWkmA==
-  /ytdl-core-discord/1.2.3:
+  /ytdl-core-discord/1.2.4:
     dependencies:
-      '@types/node': 14.11.2
+      '@types/node': 14.14.5
       prism-media: 1.2.2
-      ytdl-core: 3.3.0
+      ytdl-core: 3.4.2
     dev: false
     resolution:
-      integrity: sha512-nJMmJ+t3stBdZnIhb2VQc7gSSbwUCtln9wCi19nKrq8eqiQnKJl94ygkGIFD+7mZUVrGPc4aiuyXfWTlwauosA==
+      integrity: sha512-1FjjwcFHuzDHk3ZJ15GM1gIj874qqLFQ0tTNDYUCsIWCmMzipP5qDjAW4v3sbIzdk22gyLFymh8t8VuYb9a6Lg==
   /ytdl-core/3.3.0:
     dependencies:
       html-entities: 1.3.1
@@ -4717,17 +4678,28 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-jesZn1BCKanWEtVymezoJTMUF0B0Z6OQuf8M61zy0QUoNQprR2SYwzwI6dTOZHURz7wk1ffPgbYLu6BZq0vUsQ==
-  /ytdl-core/3.4.1:
+  /ytdl-core/3.4.2:
     dependencies:
       html-entities: 1.3.1
       m3u8stream: 0.7.1
-      miniget: 2.0.1
+      miniget: 2.0.2
       sax: 1.2.4
     dev: false
     engines:
       node: '>=10'
     resolution:
-      integrity: sha512-eiGprr+w0Uo9no7FdeQja8JySnvBb3M9eV0m+sq37L5+d7YyQZ+xkP+I5yzuw5s2FWnBv5jMnoZmBZLPJmAKbg==
+      integrity: sha512-R6m1XZQK+iXxb9Q9Wo14/K8mti1r4HnKv4zKrbp5FvMG/jDbeV0xQHUHqqDLk+uiDy/VU6fVATm5x2ms0QaF5w==
+  /ytdl-core/4.0.0:
+    dependencies:
+      html-entities: 1.3.1
+      m3u8stream: 0.8.0
+      miniget: 2.0.2
+      sax: 1.2.4
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-609PreLRioAJ9SbRyWZuIRetD6IumTanm3WiJyB4rOCN4r6H/u82P8fSIl9h/3jkjUvK2licyXoz9CLW2cAkhw==
   /ytpl/0.2.4:
     dependencies:
       html-entities: 1.3.1
@@ -4755,16 +4727,6 @@ packages:
       node: '>= 0.10.0'
     resolution:
       integrity: sha1-qLxF9MG0lpnGuQGYuqyqzbzUugQ=
-  github.com/RPGTheGreat/simple-youtube-api/1687949eb02121d24775f48a1e547ae10e8c3a25:
-    dependencies:
-      iso8601-duration: 1.2.0
-      node-fetch: 2.6.1
-    dev: false
-    name: simple-youtube-api
-    resolution:
-      registry: 'https://registry.npmjs.org/'
-      tarball: 'https://codeload.github.com/RPGTheGreat/simple-youtube-api/tar.gz/1687949eb02121d24775f48a1e547ae10e8c3a25'
-    version: 5.2.1
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
@@ -4778,7 +4740,7 @@ specifiers:
   colornames: ^1.1.1
   common-tags: ^1.8.0
   discord-player: ^2.3.1
-  discord.js: ^12.3.1
+  discord.js: ^12.4.0
   dotenv: ^8.2.0
   easy-json-database: ^1.2.1
   express: ^4.17.1
@@ -4788,7 +4750,6 @@ specifiers:
   google-play-scraper: ^8.0.2
   imdb-api: ^4.2.0
   json-database.js: ^1.0.2
-  lavaplayer: ^1.2.0
   node-fetch: ^2.6.1
   node-opus: ^0.3.3
   node-superfetch: ^0.1.10
@@ -4799,8 +4760,8 @@ specifiers:
   scrape-yt: ^1.4.3
   simple-youtube-api: ^5.2.1
   something-random-on-discord: ^0.0.1
-  srod-v2: ^0.0.2
+  srod-v2: ^0.0.5
   twemoji-parser: ^13.0.0
   yt-search: ^2.3.3
-  ytdl-core: ^3.4.0
-  ytdl-core-discord: ^1.2.2
+  ytdl-core: ^4.0.0
+  ytdl-core-discord: ^1.2.4
