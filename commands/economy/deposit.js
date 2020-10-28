@@ -1,69 +1,33 @@
-const Discord = require("discord.js");
-const db = require("quick.db");
-const ms = require("parse-ms");
+const db = require('quick.db');
+const ms = require('parse-ms');
+const Discord = require('discord.js');
 
-module.exports= {
-  name: "deposit",
-  category: "economy",
-  description: "deposit your money to bank",
-  alaises: ["dp"],
-  run: async (bot, message, args) => {
-  if(!message.content.startsWith('e!'))return;  
+module.exports = {
+    name: "daily",
+    description: "Receive a daily award of money",
+    category: "economy",
+    async run (client, message, args) {
+        let user = message.author;
+        let timeout = 86400000;
+        let amount = 1000;
 
-  let user = message.author;
+        let daily = await db.fetch(`daily_${message.guild.id}_${user.id}`);
 
-  let member = db.fetch(`money_${message.guild.id}_${user.id}`)
-  let member2 = db.fetch(`bank_${message.guild.id}_${user.id}`)
+        if(daily !== null && timeout - (Date.now() - daily) > 0){
+            let time = ms(timeout - (Date.now() - daily));
 
-  if (args[0] == 'all') {
-    let money = await db.fetch(`money_${message.guild.id}_${user.id}`)
-    let bank = await db.fetch(`bank_${message.guild.id}_${user.id}`)
-
-    let embedbank = new Discord.RichEmbed()
-    .setColor('#FFFFFF')
-    .setDescription(":cross: You don't have any money to deposit")
-
-    if(money === 0) return message.channel.send(embedbank)
-
-    db.add(`bank_${message.guild.id}_${user.id}`, money)
-    db.subtract(`money_${message.guild.id}_${user.id}`, money)
-    let embed5 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
-  .setDescription(`:white_check_mark:  You have deposited all your coins into your bank`);
-  message.channel.send(embed5)
-  
-  } else {
-  
-  let embed2 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
-  .setDescription(`:cross: Specify an amount to deposit`);
-  
-  if (!args[0]) {
-      return message.channel.send(embed2)
-      .catch(err => console.log(err))
-  }
-  let embed3 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
-  .setDescription(`:cross: You can't deposit negative money`);
-
-  if (message.content.includes('-')) { 
-      return message.channel.send(embed3)
-  }
-  let embed4 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
-  .setDescription(`:cross: You don't have that much money`);
-
-  if (member < args[0]) {
-      return message.channel.send(embed4)
-  }
-
-  let embed5 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
-  .setDescription(`:white_check_mark:  You have deposited ${args[0]} coins into your bank`);
-
-  message.channel.send(embed5)
-  db.add(`bank_${message.guild.id}_${user.id}`, args[0])
-  db.subtract(`money_${message.guild.id}_${user.id}`, args[0])
-  }
-}
+            return message.channel.send(`You've already collected your daily award. Come back in ${time.days}d, ${time.hours}h, ${time.minutes}m, and ${time.seconds}s`)
+        } else {
+            db.add(`money_${message.guild.id}_${user.id}`, amount);
+            db.set(`daily_${message.guild.id}_${user.id}`, Date.now());
+const embed = new Discord.MessageEmbed();
+          embed.setAuthor(  client.user.username , client.user.displayAvatarURL())
+          embed.setTitle("DAILY")
+          embed.setColor("#FF0000")
+          embed.setDescription(`YOU HAVE SUCCESSFULLY COLLECTED ${amount} MONEY!`)
+          embed.setTimestamp()
+          embed.setFooter("MADED BY BUDDY!")
+            message.channel.send(embed)
+        }
+    }
 }
