@@ -25,7 +25,6 @@ dependencies:
   parse-ms: 2.1.0
   quick-db: 1.0.5
   quick.db: 7.1.2
-  quickd-for-vue: 1.0.86
   scrape-yt: 1.4.3
   simple-youtube-api: 5.2.1
   something-random-on-discord: 0.0.1
@@ -2188,16 +2187,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
-  /hg-vcomponents/0.1.10:
-    dependencies:
-      vue: 2.6.12
-      vue-router: 3.4.8
-    dev: false
-    engines:
-      node: '>= 6.0.0'
-      npm: '>= 3.0.0'
-    resolution:
-      integrity: sha512-kuVbiEoNVnpFulUWYdUQ1H114QR8XVAFE5b5WzGnH6f5fpp11NrJilBI1G1Sq7F2Wk5LbKXOD+fU6GO5bPLsXw==
   /himalaya/1.1.0:
     dev: false
     resolution:
@@ -3621,17 +3610,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ItAgjP6CHlC8XN4AAc+K24jDxRmAkkIe5TQp6xyXF5QCCgFlpaknpA3OyLTQ4Dw0c7yq28bcD6SVc7ML/1T/DQ==
-  /quickd-for-vue/1.0.86:
-    dependencies:
-      hg-vcomponents: 0.1.10
-      vue: 2.6.12
-      vue-router: 3.4.8
-    dev: false
-    engines:
-      node: '>= 6.0.0'
-      npm: '>= 3.0.0'
-    resolution:
-      integrity: sha512-FpNQ04+jG6hCQZaB1f4ekvwsaMXcll7i2frKc3TqBxxZFJ1nSlO5RtVoE9oSLpEC1E24PtvEbQlHzZbjNN9sgg==
   /ramda/0.21.0:
     dev: false
     resolution:
@@ -4534,14 +4512,6 @@ packages:
       node: '>= 0.9'
     resolution:
       integrity: sha1-XIgDbPVl5d8FVYv8kR+GVt8hiIQ=
-  /vue-router/3.4.8:
-    dev: false
-    resolution:
-      integrity: sha512-3BsR84AqarcmweXjItxw3jwQsiYNssYg090yi4rlzTnCJxmHtkyCvhNz9Z7qRSOkmiV485KkUCReTp5AjNY4wg==
-  /vue/2.6.12:
-    dev: false
-    resolution:
-      integrity: sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
   /walkdir/0.0.11:
     dev: false
     engines:
@@ -4787,7 +4757,6 @@ specifiers:
   parse-ms: ^2.1.0
   quick-db: ^1.0.5
   quick.db: ^7.1.2
-  quickd-for-vue: ^1.0.86
   scrape-yt: ^1.4.3
   simple-youtube-api: ^5.2.1
   something-random-on-discord: ^0.0.1

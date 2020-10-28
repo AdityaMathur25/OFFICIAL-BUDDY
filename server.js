@@ -20,10 +20,15 @@ const fetch = require("node-fetch");
 
 const { discord, message } = require("discord.js");
 
+const { CanvasSenpai } = require("canvas-senpai");
+
+const canva = new CanvasSenpai();
+
 const { addexp } = require("./handlers/xp.js");
 
 const db = require("quick.db");
-
+const jsondb = require("easy-json-database")
+const json = new jsondb("./black.json")
 
 
 const { badwords } = require("./data.json");
@@ -40,6 +45,7 @@ const client = new Client({ partials: ['message', 'CHANNEL', 'REACTION'] });
 
 // Collections
 
+client.canvas = require("canvacord");
 
 client.commands = new Collection();
 
@@ -230,4 +236,4 @@ setInterval(async () => {
 
 //default is 1m (not required)
 
-client.login(client.process.env.ass);
+client.login(process.env.ass);
