@@ -12,76 +12,35 @@ category: "music",
 
     
 
-     let embed = new MessageEmbed()
+    if (!args.length)
+      return message
+        .reply(`Usage: ${message.client.prefix}${module.exports.name} <Queue Number>`)
+        .catch(console.error);
 
-.setColor(COLOR);
+    if (isNaN(args[0]))
+      return message
+        .reply(`Usage: ${message.client.prefix}${module.exports.name} <Queue Number>`)
+        .catch(console.error);
 
-    const { channel } = message.member.voice;
+    const queue = message.client.queue.get(message.guild.id);
+    if (!queue) return message.channel.send("There is no queue.").catch(console.error);
 
-    if (!channel) {
+    if (args[0] > queue.songs.length)
+      return message.reply(`The queue is only ${queue.songs.length} songs long!`).catch(console.error);
 
-      //IF AUTHOR IS NOT IN VOICE CHANNEL
-
-      embed.setAuthor("YOU NEED TO BE IN VOICE CHANNEL :/")
-
-      return message.channel.send(embed);
-
+    queue.playing = true;
+    if (queue.loop) {
+      for (let i = 0; i < args[0] - 2; i++) {
+        queue.songs.push(queue.songs.shift());
+      }
+    } else {
+      queue.songs = queue.songs.slice(args[0] - 2);
     }
-
-    const serverQueue = message.client.queue.get(message.guild.id);
-
-    if (!serverQueue) {
-
-      embed.setAuthor("There is nothing playing that i could loop")
-
-      return message.channel.send(embed);
-
-    }
-
-     if(!args[0]) {
-
-      embed.setAuthor(`Please Give The Song Number`)
-
-      return message.channel.send(embed)
-
-    }
-
-    
-
-      if(isNaN(args[0])) {
-
-      embed.setAuthor("Please Use Numerical Values Only")
-
-      return message.channel.send(embed)
-
-    }
-
-    
-
-    
-
-    //LETS FIX JUMP COMMAND :D
-
-  if(serverQueue.songs.length < args[0]) {
-
-    embed.setAuthor("Unable To Find This Song in Queue")
-
-    return message.channel.send(embed)  
-
-                                         }
-
-    serverQueue.songs.splice(0, Math.floor(parseInt(args[0]) - 1))
-
-    serverQueue.connection.dispatcher.end()
-
-    
-
-    embed.setDescription(`JUMPED TO THE SONG NUMBER - ${args[0]}`)
-
-    message.channel.send(embed)
-
-    
-
+    queue.connection.dispatcher.end();
+    queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
   }
-
 }
+    
+
+  
+
