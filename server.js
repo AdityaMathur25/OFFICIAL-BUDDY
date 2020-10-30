@@ -226,7 +226,22 @@ setInterval(async () => {
     console.log("Pinged!")
   );
 }, 240000);
-
+client.on('message', async message => { 
+    if(message.channel.name == 'global' && !message.author.bot){
+      client.guilds.cache.forEach(guild=>{
+        if(guild == message.guild) return;
+        let channel = guild.channels.cache.find(ch=>ch.name === 'global');
+        if(!channel) return;
+        let embed = new MessageEmbed()
+        .setAuthor(message.author.tag +" ", message.author.displayAvatarURL())
+        .setColor("#00c1ff")
+        .setDescription(message.content)
+        .setFooter(message.guild.name, (message.guild.iconURL({ dynamic: true })))
+        .setTimestamp()
+        channel.send(embed)
+      })
+    }
+   })
 
 //default is 1m (not required)
 
