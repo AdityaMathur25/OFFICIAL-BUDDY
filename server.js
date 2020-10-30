@@ -89,7 +89,7 @@ client.on("ready", async () => {
         const index = Math.floor(Math.random() * activities_list.length ); // generates a random number between 1 and the length of the activities array list (in this case 5).
         const stat = Math.floor(Math.random() * stream_list.length ); // generates a random number between 1 and the length of the activities array list (in this case 5).
    client.user.setActivity(activities_list[index], {type: stream_list[stat]}); // sets bot's activities to one of the phrases in the arraylist.
-    }, 5000); //
+    }, 25000); //
   client.user.setStatus(`idle`);
 });
 //Stupid kid!
