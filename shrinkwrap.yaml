@@ -9,6 +9,7 @@ dependencies:
   common-tags: 1.8.0
   discord-player: 2.3.1
   discord.js: 12.4.1
+  discord_ticket_maker: 1.3.2
   dotenv: 8.2.0
   easy-json-database: 1.2.1
   express: 4.17.1
@@ -822,6 +823,15 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-4aV1zEknM9g1a6B0mVBx1oIlmYioEJ8gSS3J6EpN1b1bKYEE+N5lmpmXHKNKTi0qjHziSd7XrXwHl1kpqvEcHQ==
+  /better-sqlite3/7.1.1:
+    dependencies:
+      bindings: 1.5.0
+      prebuild-install: 5.3.6
+      tar: 4.4.10
+    dev: false
+    requiresBuild: true
+    resolution:
+      integrity: sha512-AkvGGyhAVZhRBOul2WT+5CB2EuveM3ZkebEKe1wxMqDZUy1XB/1RBgM66t0ybHC4DIni8+pr7NaLqEX87NUTwg==
   /bindings/1.2.1:
     dev: false
     resolution:
@@ -1392,6 +1402,12 @@ packages:
       node: '>=12.0.0'
     resolution:
       integrity: sha512-KxOB8LOAN3GmrvkD6a6Fr1nlfArIFZ+q7Uqg4T/5duB90GZy9a0/Py2E+Y+eHKP6ZUCR2mbNMLCcHGjahiaNqA==
+  /discord_ticket_maker/1.3.2:
+    dependencies:
+      quick.db: 7.1.3
+    dev: false
+    resolution:
+      integrity: sha512-0Lwc1p38BE2Lr8zvjCS+PPVSG1xiKi6aLn+hv1RlzroGL9ateKm53yq2BksYswFM67HpYDC0YD9BBEdKoOL6zA==
   /doctrine/3.0.0:
     dependencies:
       esutils: 2.0.3
@@ -3506,6 +3522,29 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-YmMO7dph9CYKi5IR/BzjOJlRzpxGGVo1EsLSUZ0mt/Mq0HWZIHOKHHcHdT69yG54C9m6i45GpItwRHpk0Py7Uw==
+  /prebuild-install/5.3.6:
+    dependencies:
+      detect-libc: 1.0.3
+      expand-template: 2.0.3
+      github-from-package: 0.0.0
+      minimist: 1.2.5
+      mkdirp-classic: 0.5.3
+      napi-build-utils: 1.0.2
+      node-abi: 2.19.1
+      noop-logger: 0.1.1
+      npmlog: 4.1.2
+      pump: 3.0.0
+      rc: 1.2.8
+      simple-get: 3.1.0
+      tar-fs: 2.1.0
+      tunnel-agent: 0.6.0
+      which-pm-runs: 1.0.0
+    dev: false
+    engines:
+      node: '>=6'
+    hasBin: true
+    resolution:
+      integrity: sha512-s8Aai8++QQGi4sSbs/M1Qku62PFK49Jm1CbgXklGz4nmHveDq0wzJkg7Na5QbnO1uNH8K7iqx2EQ/mV0MZEmOg==
   /prelude-ls/1.1.2:
     dev: false
     engines:
@@ -3610,6 +3649,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ItAgjP6CHlC8XN4AAc+K24jDxRmAkkIe5TQp6xyXF5QCCgFlpaknpA3OyLTQ4Dw0c7yq28bcD6SVc7ML/1T/DQ==
+  /quick.db/7.1.3:
+    dependencies:
+      better-sqlite3: 7.1.1
+      lodash: 4.17.20
+    dev: false
+    resolution:
+      integrity: sha512-0S1fVb9OAZGhkI4ZIc5Oe4yWMwhz20xSsziwd6+yGWKKMsPt+XOfj/gD5CesGxd2WdqBkZFBiP8ZqWDu55HLHA==
   /ramda/0.21.0:
     dev: false
     resolution:
@@ -4741,6 +4787,7 @@ specifiers:
   common-tags: ^1.8.0
   discord-player: ^2.3.1
   discord.js: ^12.4.0
+  discord_ticket_maker: ^1.3.2
   dotenv: ^8.2.0
   easy-json-database: ^1.2.1
   express: ^4.17.1
