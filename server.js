@@ -29,6 +29,9 @@ const { addexp } = require("./handlers/xp.js");
 const db = require("quick.db");
 const jsondb = require("easy-json-database")
 const json = new jsondb("./black.json")
+const { Intents } = require('discord.js');
+const myIntents = new Intents();
+myIntents.add('GUILDS', 'GUILD_MEMBERS','GUILD_INTEGRATIONS','GUILD_MESSAGES');
 
 
 const { badwords } = require("./data.json");
@@ -229,19 +232,19 @@ setInterval(async () => {
  client.on("message", async message => {
   
   //console.log(message.guild.channels.cache.size)
-  let bruh = await client.db.get(`g_${message.guild.id}`);
+  let bruh = await db.get(`g_${message.guild.id}`);
   //console.log(bruh)
   if (message.author.bot) return;
-  if (message.content.startsWith(config.prefix)) return;
+
   let set = bruh//await client.db.get(`g_${message.guild.id}`);
   if (message.channel.id === set) {
     //console.log(message.guild.channels.cache.get(bruh))
     const embed = new MessageEmbed()
-      .setAuthor(message.author.tag +" | Global Chat", message.author.displayAvatarURL())
-      .setColor("#00c1ff")
+      .setAuthor(message.author.tag +" | "+ message.guild.name , message.author.displayAvatarURL())
+      .setColor("#00FFFF")
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
       .setDescription(message.content)
-      .setFooter(message.guild.name, (message.guild.iconURL({ dynamic: true })))//.then(message.delete());
+      .setFooter(message.author.tag, (message.guild.iconURL({ dynamic: true })))//.then(message.delete());
       .setTimestamp()
       setTimeout(() => {
       message.delete()  
@@ -250,7 +253,7 @@ setInterval(async () => {
     client.guilds.cache.forEach(async (g) => {
      //async function wowasync() {
       try {
-        let gl = await client.db.get(`g_${g.id}`)
+        let gl = await db.get(`g_${g.id}`)
         //message.guild.channels.cache.get(bruh).send(embed)
         //console.log(client.db.get(`g_${g.id}`))
         //client.channels.cache.get(client.db.get(`g_${g.id}`)).send(embed);
