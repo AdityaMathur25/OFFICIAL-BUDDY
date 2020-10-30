@@ -38,10 +38,11 @@ category: "music",
     }
     queue.connection.dispatcher.end();
     let jump = new MessageEmbed()
-    .setTitle(message.author.username + message.guild.name)
-    .setDescription(`JUMP TO SONG number - **${args[0]}**`)
+    .setTitle(  message.author.username + " |  "+message.guild.name)
+    .setDescription(`JUMP TO  - **${args[0]}th SONG!**`)
     .setFooter("REQUESTED BY " + message.author.username)
     .setTimestamp()
+    .setColor("#00FFFF")
     queue.textChannel.send(jump).catch(console.error);
   }
 }
