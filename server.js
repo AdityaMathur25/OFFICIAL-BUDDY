@@ -226,22 +226,38 @@ setInterval(async () => {
     console.log("Pinged!")
   );
 }, 240000);
-client.on('message', async message => { 
-    if(message.channel.name ==='global' && !message.author.bot){
-      client.guilds.cache.forEach(guild=>{
-        if(guild == message.guild) return;
-        let channel = guild.channels.cache.find(ch=>ch.name === 'global');
-        if(!channel) return;
-        let embed = new MessageEmbed()
-        .setAuthor(message.author.tag +" ", message.author.displayAvatarURL())
-        .setColor("#00c1ff")
-        .setDescription(message.content)
-        .setFooter(message.guild.name, (message.guild.iconURL({ dynamic: true })))
-        .setTimestamp()
-        channel.send(embed)
-      })
-    }
-   })
+ client.on("message", async message => {
+  
+  //console.log(message.guild.channels.cache.size)
+  let bruh = await client.db.get(`g_${message.guild.id}`);
+  //console.log(bruh)
+  if (message.author.bot) return;
+  if (message.content.startsWith(config.prefix)) return;
+  let set = bruh//await client.db.get(`g_${message.guild.id}`);
+  if (message.channel.id === set) {
+    //console.log(message.guild.channels.cache.get(bruh))
+    const embed = new MessageEmbed()
+      .setAuthor(message.author.tag +" | Global Chat", message.author.displayAvatarURL())
+      .setColor("#00c1ff")
+      .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+      .setDescription(message.content)
+      .setFooter(message.guild.name, (message.guild.iconURL({ dynamic: true })))//.then(message.delete());
+      .setTimestamp()
+      setTimeout(() => {
+      message.delete()  
+      }, 1000)
+    
+    client.guilds.cache.forEach(async (g) => {
+     //async function wowasync() {
+      try {
+        let gl = await client.db.get(`g_${g.id}`)
+        //message.guild.channels.cache.get(bruh).send(embed)
+        //console.log(client.db.get(`g_${g.id}`))
+        //client.channels.cache.get(client.db.get(`g_${g.id}`)).send(embed);
+        client.channels.cache.get(gl).send(embed);
+      } catch (e) {
+        return;
+      }})}})
 
 //default is 1m (not required)
 
