@@ -74,13 +74,13 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
             queue.voiceChannel.leave();
             message.client.queue.delete(message.guild.id);
           let g = new discord.MessageEmbed()
-          .setTitle("MUSIC-PLAYER!"+ message.guild.name)
+          .setTitle("MUSIC-QUEUE! | "+ message.guild.name)
           .setThumbnail(message.guild.iconURL())
           .setColor("BLUE")
           .setDescription("MUSIC QUEUE ENDED!")
           .setFooter("REQUESTD BY "+message.author.username)
           .setTimestamp()
-            message.channel.send('There are no sogs in queue, I\'m leaving the voice ch)
+            message.channel.send(g)
             return;
         }
 
