@@ -62,7 +62,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         songs: [],
         volume: 100,
         playing: true,
-      loop: false
+      loop: false,
     };
     message.client.queue.set(message.guild.id, queueConstruct);
     queueConstruct.songs.push(song);
@@ -80,7 +80,7 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
           .setDescription("MUSIC QUEUE ENDED!")
           .setFooter("REQUESTD BY "+message.author.username)
           .setTimestamp()
-            message.channel.send('There are no sogs in queue, I\'m leaving the voice channel!')
+            message.channel.send('There are no sogs in queue, I\'m leaving the voice ch)
             return;
         }
 
