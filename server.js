@@ -240,11 +240,11 @@ setInterval(async () => {
   if (message.channel.id === set) {
     //console.log(message.guild.channels.cache.get(bruh))
     const embed = new MessageEmbed()
-      .setAuthor(message.author.tag +" | "+ message.guild.name , message.author.displayAvatarURL())
+      .setAuthor(message.author.tag , message.author.displayAvatarURL())
       .setColor("#00FFFF")
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
       .setDescription(message.content)
-      .setFooter(message.author.tag, (message.guild.iconURL({ dynamic: true })))//.then(message.delete());
+      .setFooter(message.author.tag+" | From: " + message.guild.name, (message.guild.iconURL({ dynamic: true })))//.then(message.delete());
       .setTimestamp()
       setTimeout(() => {
       message.delete()  
