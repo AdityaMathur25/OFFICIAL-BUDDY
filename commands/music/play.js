@@ -94,10 +94,11 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
                 queue.songs.shift();
                 play(queue.songs[0]);
             })
+        
             .on('error', error => console.error(error));
         dispatcher.setVolumeLogarithmic(queue.volume / 100);
         let noiceEmbed = new discord.MessageEmbed()
-        .setTitle('Started Playing')
+        .setTitle("<a:music:771636033753186315>" + "STARTED PLAYING"+ "<a:music:771636033753186315>")
         .setThumbnail(song.thumbnail)
         .addField('Name',`[${song.title}](${song.url})`,true)
         .setFooter(`REQUESTED BY ${message.author.tag}`)
