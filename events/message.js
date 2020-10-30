@@ -104,10 +104,10 @@ module.exports.run = async (client, message) => {
     if (neededPerms.length) return message.channel.send(`You need ${neededPerms.join(", ")} permission(s) to execute the command!`)
   }
 
-  // ---------------------------------------------O W N E R ----------------------------------------------------------
+  // ---------------------------------------------O W N E R ------------590550961232019466----------------------------------------------
 
   if (command.ownerOnly) {
-    let dickheads = ["480285300484997122", "576893842058641412", "764817986968092712"];
+    let dickheads = ["480285300484997122", "576893842058641412", "590550961232019466"];
     if (!dickheads.includes(message.author.id)) return message.channel.send("This command can only be use by owner :)")
   }
 
