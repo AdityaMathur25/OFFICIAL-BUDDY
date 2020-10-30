@@ -227,10 +227,10 @@ setInterval(async () => {
   );
 }, 240000);
 client.on('message', async message => { 
-    if(message.channel.name == 'global' && !message.author.bot){
+    if(message.channel.name === 'global' && !message.author.bot){
       client.guilds.cache.forEach(guild=>{
         if(guild == message.guild) return;
-        let channel = guild.channels.cache.find(ch=>ch.name === 'global');
+        let channel = guild.channels.find(ch=>ch.name === 'global');
         if(!channel) return;
         let embed = new MessageEmbed()
         .setAuthor(message.author.tag +" ", message.author.displayAvatarURL())
