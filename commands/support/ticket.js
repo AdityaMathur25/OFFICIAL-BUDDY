@@ -7,6 +7,8 @@ description: "Make a support ticket",
    category: "support",
 run: async (client, message, args) => {
   const reason = args.join(" ")
-
-  ticket.makeTicket(message, reason)
+if (!reason){
+  return message.channel.send("Must provide a vaild reason!")
+  }
+  ticket.makeTicket(message, reason, "it must a little bit late to contact support!")
 }}
