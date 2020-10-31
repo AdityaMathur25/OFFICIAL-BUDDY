@@ -73,6 +73,7 @@ client.on("ready", async () => {
     `${main}`,
     " BUDDY'S SERVER",
     "!help for commands",
+    "HAPPY HELLOWEEN 👻",
     "Stay Home , Stay Safe.",
     "Best music bot || feel the song",
     `Over ${client.guilds.cache.size} Server's`,
