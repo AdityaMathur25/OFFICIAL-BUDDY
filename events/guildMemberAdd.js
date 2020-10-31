@@ -23,12 +23,17 @@ module.exports.run = async (client, member, message) => {
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
-    let newmsg = msg.replace("{user}", member.user);
-    let hg = newmsg.replace("{server}", member.guild.name);
-    let ffg = hg.replace("{members}", member.guild.memberCount);
-    client.channels.cache
+    let newmsg = msg.replace("{user:mention}", member.user);
+   let newmg = newmsg.replace("{user:name}", member.user.username);
+    let hg = newmg.replace("{server}", member.guild.name);
+    let ffg = hg.replace("{member:count}", member.guild.memberCount);
+    let ss = new discord.MessageEmbed()
+    .setDescription(ffg)
+    .setColor("BLUE")
+    .setTimestamp()
+  client.channels.cache
     .get(chx)
-  .send(`${ffg}`)
+  .send(ss)
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let image = db.get(`image_${member.guild.id}`)
