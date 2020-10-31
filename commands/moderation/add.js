@@ -11,7 +11,7 @@ module.exports = {
     const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if (!member)
       return message.channel.send('Please mention a user or provide a valid user ID');
-    if (member.roles.highest.position >= message.member.roles.highest.position)
+   if (member.roles.highest.position >= message.member.roles.highest.position) 
       return message.channel.send('You cannot add a role to someone with an equal or higher role');
 
     const role = message.mentions.roles.first(); 
