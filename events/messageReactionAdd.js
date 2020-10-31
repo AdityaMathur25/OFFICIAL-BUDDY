@@ -1,14 +1,11 @@
-const Discord = require("discord.js");
+ const Discord = require("discord.js");
 const db = require("quick.db");
 
 module.exports.run = async (client, reaction, user) => {
-
     if(user.partial) await user.fetch();
 
     if(reaction.partial) await reaction.fetch();
-
     if(reaction.message.partial) await reaction.message.fetch();
-
     if(user.bot) return;
 
     const rr = new db.table("REACTION_ROLES");
@@ -34,11 +31,13 @@ module.exports.run = async (client, reaction, user) => {
             if(member.roles.cache.has(role)) return user.send(embed)
             const sucsses = new Discord.MessageEmbed()
                 .setColor('#10de47')
+            .setTitle('ADDED ROLE!')
                 .setDescription(`Role: \`${reaction.message.guild.roles.cache.get(role).name}\` has been added to you in **${reaction.message.guild.name}**`)
 
 
             member.roles.add(role) 
             return user.send(sucsses)
+         
     })
     }
 
