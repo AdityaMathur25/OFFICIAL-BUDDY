@@ -263,6 +263,49 @@ setInterval(async () => {
       } catch (e) {
         return;
       }})}})
+client.on('message', async message => {
+
+     if(message.channel.type === 'DM') return;
+
+     let afk = await db.get(`afk_${message.guild.id}_user_${message.author.id}`)
+
+     if(!afk) return;
+
+     if(afk) {
+
+         db.delete(`afk_${message.guild.id}_user_${message.author.id}`)
+
+     message.reply(` Welcome Back I Removed You'r Afk!`)
+
+        }
+
+ })
+
+ client.on('message', async message => {
+
+     if(message.channel.type === 'DM') return;
+
+     if(message.author.bot) return;
+
+     client.users.cache.forEach(async user => {
+
+     let afk = await db.get(`afk_${message.guild.id}_user_${user.id}`)
+
+     let reason = await db.get(`afk_${message.guild.id}_reason_${user.id}`)
+
+      if(!afk) return;
+
+     if (message.mentions.has(afk) && !message.mentions.has(message.guild.id)) {
+
+      //   if(message.authoor.id === `${okayword}`) return;
+
+      message.reply(`<@${afk}> Is Afk with ${reason} Reason`)
+
+    }
+
+})
+
+        })
 
 //default is 1m (not required)
 
