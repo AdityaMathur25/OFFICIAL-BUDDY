@@ -3,7 +3,7 @@ const db = require("quick.db");
 
 module.exports = {
     name: "rrdel",
-    category: "Moderation",
+    category: "reaction-role",
     description: "Removes a reaction role from a message.",
     usage: "rrdel <#channel> <messageID> <emoji>",
     async run(client, message, args, flags) {

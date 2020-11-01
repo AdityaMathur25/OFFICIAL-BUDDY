@@ -3,7 +3,7 @@ const db = require("quick.db");
 
 module.exports = {
     name: "rradd",
-    category: "Moderation",
+    category: "reaction-role",
     description: "Adds a reaction role to a  message.",
     usage: "rradd <#channel> <messageID> <role> <emoji>",
     async run(client, message, args, flags) {
