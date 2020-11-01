@@ -1,14 +1,14 @@
 const discord = require("discord.js")
 const canvacord = require("canvacord")
 module.exports = {
-  name: "rainbow",
+  name: "wanted",
   category:"fun",
-  aliases: ["rn"],
-  description: "Get your pfp with a rainbow",
+  aliases: ["wn"],
+  description: "Get your pfp with a wanted",
   run: async (client, message, args) => {
     let avatar = message.mentions.users.first() ? message.mentions.users.first().displayAvatarURL({size: 512, format: "png"}) : message.author.displayAvatarURL({size: 512, format: "png"})
     
-    let image = await canvacord.gay(avatar)
+    let image = await canvacord.Canvas.wanted(avatar)
     let attachment = new discord.MessageAttachment(image, "rainbow.png")
     message.channel.send(attachment)
   }
