@@ -1,6 +1,6 @@
 const db = require("quick.db")
 module.exports = {
-  name: "setafj",
+  name: "setafk",
   category: "support",
   description: "if u are bussy use this command",
   usage: "!setafk <@reason>",
@@ -11,7 +11,7 @@ module.exports = {
          db.set(`afk_${message.guild.id}_reason_${message.author.id}`, args[1])
          db.set(`afk_${message.guild.id}_f_${message.author.id}`, message.author.id)
 
-         message.channel.send(`${message.author} You'r Afk With ${args[1]} Reason.!`)
+       return  message.channel.send(`${message.author} You'r Afk With ${args[1]} Reason.!`)
 
     
     
