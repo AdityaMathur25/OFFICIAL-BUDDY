@@ -309,4 +309,4 @@ client.on('message', async message => {
 
 //default is 1m (not required)
 
-client.login(process.env.ass);
+client.login(process.env.token);
