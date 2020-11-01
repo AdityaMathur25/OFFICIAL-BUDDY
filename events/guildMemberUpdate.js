@@ -1,7 +1,7 @@
 const db = require("quick.db")
 const { discord, MessageEmbed } = require("discord.js")
 const  { COLOR } = require("../config.json")
-module.exports.run = async( oldMember, newMember) => {
+module.exports.run = async( oldMember, newMember) =>{
   let channel = await db.get(`logchannel_${oldMember.guild.id}`)
  let avatar = new MessageEmbed()
  .setauthor(newMember.displayAvatarURL({dynamic: true }) + oldMember.username)
