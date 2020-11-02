@@ -3,18 +3,19 @@ const Discord = require('discord.js')
 const db = require("quick.db")
 module.exports = {
 
-    commands: 'suggest',
+    name: 'suggest',
 
     description: 'Sends a suggestion to the suggestions channel',
-
+category: "support",
     run: async(message, args) => {
 
-        let { member, channel, client } = message
+        let { member,  client } = message
 
-        const content = args.join(' ')
+        const content = message.content
 
-        if (channel != '738495918738767893') {
-let channel = await db.get(`suggest${message.guild.id}`)
+        
+let channel = await db.get(`suggest_${message.guild.id}`)
+if (channel != channel) {
             message.channel.send(':Fail: You must type the command in <#738495918738767893> to send your suggestion.') //replace this with your bot commands channel
 
             return
@@ -43,15 +44,15 @@ let channel = await db.get(`suggest${message.guild.id}`)
 
         .setFooter(`Suggestion from ${member.user.tag}`, member.user.displayAvatarURL())
 
-        .setTitle(content, ':kek:')
+        .setTitle("SUGGESTION | From: " + message.guild.name)
 
-        .setDescription('Type `-suggest` in <#738495918738767893>') // suggestions channel
+        .setDescription('Type `suggest` in') // suggestions channel
 
         .setColor('#fff600') 
 
         .setTimestamp()
 
-        const channelId = '765232763552137274' // suggestions channel
+        const channelId = channel // suggestions channel
 
         channel = member.guild.channels.cache.get(channelId)
 

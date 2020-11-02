@@ -6,12 +6,11 @@ module.exports = {
 
   name: "setsuggest",
 
-  category: "owner",
+  category: "Administration",
 
-  usage: "setwelcome <#channel>",
+  usage: "setsugesstion <#channel>",
 
   description: "Set the welcome channel",
-ownerOnly: true,
   run: (client, message, args) => {
 
     
@@ -32,7 +31,7 @@ ownerOnly: true,
 
     
 
-    db.set(`welchannel_${message.guild.id}`, channel.id) //set id in var
+    db.set(`suggest_${message.guild.id}`, channel.id) //set id in var
 
     
 
