@@ -1,4 +1,4 @@
-const MessageEmbed = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const COLOR = require("../../config.json")
 module.exports = {
     name: "skip",
@@ -7,10 +7,9 @@ module.exports = {
   category: "music",
     aliases: ["sk"],
   
-  run: async function (client, msg, message, args) {
+  run: async(client, message, args) => {
 let embed = new MessageEmbed()
-.setColor(COLOR);
-
+.setColor("BLUE");
 
     const { channel } = message.member.voice;
 
