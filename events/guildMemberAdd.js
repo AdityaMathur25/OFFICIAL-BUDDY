@@ -1,7 +1,7 @@
 const db = require("quick.db")
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
-const { discord, MessageAttachment } = require("discord.js")
+const { discord, MessageAttachment, MessageEmbed } = require("discord.js")
 
 
 module.exports.run = async (client, member, message) => {
@@ -27,7 +27,7 @@ module.exports.run = async (client, member, message) => {
    let newmg = newmsg.replace("{user:name}", member.user.username);
     let hg = newmg.replace("{server}", member.guild.name);
     let ffg = hg.replace("{member:count}", member.guild.memberCount);
-    let ss = new discord.MessageEmbed()
+    let ss = new MessageEmbed()
     .setDescription(ffg)
     .setColor("BLUE")
     .setTimestamp()
