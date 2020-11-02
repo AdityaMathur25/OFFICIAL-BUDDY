@@ -64,7 +64,15 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         playing: true,
       loop: false,
     };
+  const voteConstruct = {
+
+      vote: 2,
+
+      voters: []
+
+    }
     message.client.queue.set(message.guild.id, queueConstruct);
+  message.client.vote.set(message.guild.id, voteConstruct)
   queueConstruct.songs.push(song);
 
 
