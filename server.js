@@ -49,6 +49,7 @@ const client = new Client({ partials: ['message', 'CHANNEL', 'REACTION'] });
 // Collections
 
 client.canvas = require("canvacord");
+client.vote = new Map();
 
 client.commands = new Collection();
 

@@ -54,6 +54,13 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
         .setTimestamp()
         return message.channel.send(embed)
     }
+  const voteConstruct = {
+
+      vote: 0,
+
+      voters: []
+
+    }
 
     const queueConstruct = {
         textChannel: message.channel,
@@ -65,7 +72,8 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
       loop: false,
     };
     message.client.queue.set(message.guild.id, queueConstruct);
-    queueConstruct.songs.push(song);
+      message.client.vote.set(message.guild.id, voteConstruct);
+  queueConstruct.songs.push(song);
 
 
     const play = async song => {
