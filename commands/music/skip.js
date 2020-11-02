@@ -1,5 +1,5 @@
 const MessageEmbed = require("discord.js")
-const Color = required
+const COLOR = require("../../config.json")
 module.exports = {
     name: "skip",
     description: "To skip the current music",

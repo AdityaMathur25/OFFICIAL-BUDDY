@@ -117,6 +117,8 @@ if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
     };
 
 
+     
+   
     try {
         const connection = await channel.join();
         queueConstruct.connection = connection;
