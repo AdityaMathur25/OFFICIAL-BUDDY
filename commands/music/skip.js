@@ -65,6 +65,6 @@ vote.vote++
     message.channel.send(embed);
 
   
-  
+  let g = await message.client.vote.delete(message.guild.id)
   
   }}
