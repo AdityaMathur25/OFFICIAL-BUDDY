@@ -13,8 +13,8 @@ module.exports = {
     run: async (client, message, args) => {
 
         let suggestion = args.slice(0).join(" ");
-let channel = db.get(``)
-        let SuggestionChannel = message.guild.channels.cache.find(channel => channel.name === "『💡』suggestions");
+let channel =  db.get(`sschannel_${message.guild.id}`);
+        let SuggestionChannel = client.channels.cache.get(channel)
 
       
 
@@ -39,12 +39,15 @@ let channel = db.get(``)
             .setFooter(`${message.author.tag} | ID: ${message.author.id}`)
 
             .setTimestamp()
+ 
 
+   
         SuggestionChannel.send(embed).then(msg => {
 
             msg.react("✅")
 
             msg.react("❎")
+          
 
         message.channel.send("Your suggestion has been sent!");
 
