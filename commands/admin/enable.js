@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const { oks } = require("../../link.json");
 
 const  db = require("quick.db")
 module.exports = {
@@ -28,9 +29,7 @@ module.exports = {
       return message.channel.send("give channel for sending welcome image")
 
     }
-    let image = 
-
-    
+   
 
     //Now we gonna use quick.db
 
