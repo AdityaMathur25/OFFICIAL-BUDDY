@@ -28,6 +28,7 @@ module.exports = {
       return message.channel.send("give channel for sending welcome image")
 
     }
+    let image = 
 
     
 

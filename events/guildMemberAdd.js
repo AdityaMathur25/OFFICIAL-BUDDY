@@ -17,6 +17,7 @@ module.exports.run = async (client, member, message) => {
     "https://wallpapercave.com/wp/wp5700007.jpg",
     "https://wallpapercave.com/wp/wp5243211.jpg"
   ];
+  
   let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
   let data = await canva.welcome(member, { link: `${images[random]}` });
   const attachment = new MessageAttachment(data, "welcome-image.png");
