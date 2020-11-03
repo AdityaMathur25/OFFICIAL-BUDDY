@@ -21,7 +21,7 @@ module.exports = {
     const Bots = guild.members.cache.filter(member => member.user.bot).size;
 
     const embed = new MessageEmbed()
-      .setTitle(guild.name + " Information!")
+      .setTitle(guild.name + " serverinfo!")
       .setColor(COLOR)
       .setThumbnail(guild.iconURL())
       .addField('Name', guild.name, true)
