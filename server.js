@@ -235,7 +235,7 @@ setInterval(async () => {
  client.on("message", async message => {
   
   //console.log(message.guild.channels.cache.size)
-  let bruh = await db.get(`g_${message.guild.id}`);
+  let bruh = await db.fetch(`g_${message.guild.id}`);
   //console.log(bruh)
   if (message.author.bot) return;
 
@@ -243,7 +243,7 @@ setInterval(async () => {
   if (message.channel.id === set) {
     //console.log(message.guild.channels.cache.get(bruh))
     const embed = new MessageEmbed()
-      .setAuthor(message.author.tag , message.author.displayAvatarURL())
+      .setTitle(`${message.member.roles.highest.name || "USER"} | ` + message.author.username )
       .setColor("#00FFFF")
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
       .setDescription(message.content)

@@ -9,6 +9,7 @@ module.exports = {
   category: "music",
   description: "play and feel the song",
   aliases: ["p"],
+  cooldown: 20000,
 run: async (client, message, args) => {
 if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
     let channel = message.member.voice.channel;
