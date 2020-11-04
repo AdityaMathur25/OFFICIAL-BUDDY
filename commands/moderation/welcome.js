@@ -10,20 +10,21 @@ module.exports = {
     
     let channel = message.mentions.channels.first()
     let enable = args.join("").includes("enable")//mentioned channel
-  if(enable === enable.includes("disable")) {
-    }
+ let enable2  = args.join("").includes("disable") 
     
     if(!channel) { //if channel is not mentioned
       return message.channel.send("Please Mention the channel first ")
     }
     
     //Now we gonna use quick.db
-   if(!enable){
+   if(!enable && !enable2){
       return message.channel.send("type enable if u want to enable image else type disable")
       }
-    
+    if(enable2 === true){
+      enable === false
+      }
     db.set(`welchannel_${message.guild.id}`, channel.id + enable) //set id in var
     
-    message.channel.send(`Welcome Channel is seted as ${channel}`) //send success message
+    message.channel.send(`Welcome Channel is seted as ${channel} , image is : ${enable}`) //send success message
   }
 }

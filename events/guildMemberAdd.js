@@ -28,31 +28,34 @@ module.exports.run = async (client, member, message) => {
    let newmg = newmsg.replace("{user:name}", member.user.username);
     let hg = newmg.replace("{server}", member.guild.name);
     let ffg = hg.replace("{member:count}", member.guild.memberCount);
-    let ss = new MessageEmbed()
-    .setDescription(ffg)
-    .setColor("BLUE")
-   .setTimestamp()
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let image = db.get(`image_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
 
+if(chx === true ){
   
-    let ss2 = new MessageEmbed()
+  const g = client.channels.cache.get(chx)
+  let ss = new MessageEmbed()
 
     .setDescription(ffg)
+
     .setColor("BLUE")
-.setImage(attachment)
+
    .setTimestamp()
+.setImage(attachment)
+  let tr =  g.send(ss)
+   
+  if(chx === false ){
+   let ss2 = new MessageEmbed()
 
-  
-  const g = client.channels.cache
+    .setDescription(ffg)
 
-    .get(chx)
+    .setColor("BLUE")
 
-  .send(ss)
-   g.edit(ss2)
-
+   .setTimestamp() 
+  tr.edit  
+    }}
  
 
  
