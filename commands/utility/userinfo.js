@@ -21,8 +21,7 @@ module.exports = {
       dnd: 'Do Not Disturb',
       idle: 'Idle',
       offline: 'Offline/Invisible',
-    };
-
+    };if ( member.presence.clientStatus.desktop === "pc") member.presence.clientStatus.web === "Web" 
     const embed = new MessageEmbed()
       .setTitle(member.user.username + " Information!")
       .setColor(COLOR)
@@ -30,7 +29,7 @@ module.exports = {
       .addField('Full Name', member.user.tag, true)
       .addField('ID', `${member.id}`, true)
       .addField('Status', statuses[member.presence.status], true)
-    .addField('USING:', member.presence.clientStatus, true)
+    .addField('USING:', act , true)
       .addField(`Highest Role`, `${member.roles.highest || "No Role!"}`, true)
       .addField(`Roles Count`, message.guild.members.cache.get(member.user.id).roles.cache.size || "No Roles!", true)
       .addField(`Avatar Url`, `[Link](${member.user.displayAvatarURL()})`, true)
