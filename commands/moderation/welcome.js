@@ -23,8 +23,8 @@ module.exports = {
     if(enable2 === true){
       enable === false
       }
-    db.set(`welchannel_${message.guild.id}`, channel.id + enable) //set id in var
-    
+    db.set(`welchannel_${message.guild.id}`, channel.id ) //set id in var
+    db.set(`enabel_${message.guild.id}`, enable )
     message.channel.send(`Welcome Channel is seted as ${channel} , image is : ${enable}`) //send success message
   }
 }

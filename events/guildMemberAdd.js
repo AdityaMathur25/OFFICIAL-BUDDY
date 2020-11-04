@@ -30,7 +30,7 @@ module.exports.run = async (client, member, message) => {
     let ffg = hg.replace("{member:count}", member.guild.memberCount);
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
-  let image = db.get(`image_${member.guild.id}`)
+  let image = db.get(`enabel_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
 
   
@@ -42,9 +42,20 @@ module.exports.run = async (client, member, message) => {
     .setColor("BLUE")
 
    .setTimestamp()
-.setImage(attachment)
+
+ 
   let tr =  g.send(ss)
-   
+   if(image === true){
+      let ss2 = new MessageEmbed()
+
+    .setDescription(ffg)
+
+    .setColor("BLUE")
+
+   .setTimestamp()
+ 
+     
+     }
     
  
 
