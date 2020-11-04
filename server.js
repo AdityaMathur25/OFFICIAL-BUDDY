@@ -235,7 +235,7 @@ setInterval(async () => {
  client.on("message", async message => {
   
   //console.log(message.guild.channels.cache.size)
-  let bruh = await db.fetch(`g_${message.guild.id}`);
+  let bruh = await db.get(`g_${message.guild.id}`);
   //console.log(bruh)
   if (message.author.bot) return;
 
