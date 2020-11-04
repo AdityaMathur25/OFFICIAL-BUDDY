@@ -31,17 +31,30 @@ module.exports.run = async (client, member, message) => {
     let ss = new MessageEmbed()
     .setDescription(ffg)
     .setColor("BLUE")
-    .setTimestamp()
-  client.channels.cache
-    .get(chx)
-  .send(ss)
+   .setTimestamp()
   
   let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let image = db.get(`image_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
+
   
-  let im = await client.channels.cache.get(image)
-  return im.send( attachment )
+    let ss2 = new MessageEmbed()
+
+    .setDescription(ffg)
+    .setColor("BLUE")
+.setImage(attachment)
+   .setTimestamp()
+
   
+  const g = client.channels.cache
+
+    .get(chx)
+
+  .send(ss)
+   g.edit(ss2)
+
+ 
+
+ 
 }; 
   
