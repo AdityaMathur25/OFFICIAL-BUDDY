@@ -51,10 +51,10 @@ module.exports.run = async (client, member, message) => {
     .setDescription(ffg)
 
     .setColor("BLUE")
-
+.setImage(attachment)
    .setTimestamp()
  
-     
+    tr.edit(ss2) 
      }
     
  
