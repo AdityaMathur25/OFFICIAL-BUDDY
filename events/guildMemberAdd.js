@@ -33,7 +33,6 @@ module.exports.run = async (client, member, message) => {
   let image = db.get(`image_${member.guild.id}`)
   let gg = client.channels.cache.get(dumb)
 
-if(chx === true ){
   
   const g = client.channels.cache.get(chx)
   let ss = new MessageEmbed()
@@ -46,16 +45,7 @@ if(chx === true ){
 .setImage(attachment)
   let tr =  g.send(ss)
    
-  if(chx === false ){
-   let ss2 = new MessageEmbed()
-
-    .setDescription(ffg)
-
-    .setColor("BLUE")
-
-   .setTimestamp() 
-  tr.edit  
-    }}
+    
  
 
  
