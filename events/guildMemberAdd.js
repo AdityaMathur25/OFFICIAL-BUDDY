@@ -43,7 +43,7 @@ module.exports.run = async (client, member, message) => {
    .setTimestamp()
 
  
-  const g = client.channels.cache.get(chx).send(ss)
+  const g = client.channels.cache.get(chx).send(ss).then(m => {
    if(image === true){
       let ss2 = new MessageEmbed()
 
@@ -53,9 +53,9 @@ module.exports.run = async (client, member, message) => {
 .setImage(attachment)
    .setTimestamp()
  
-    g.edit(ss2) 
+    m.edit(ss2) 
      }
-    
+    })
  
 
  
