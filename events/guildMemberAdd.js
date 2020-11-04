@@ -34,7 +34,6 @@ module.exports.run = async (client, member, message) => {
   let gg = client.channels.cache.get(dumb)
 
   
-  const g = client.channels.cache.get(chx)
   let ss = new MessageEmbed()
 
     .setDescription(ffg)
@@ -44,7 +43,7 @@ module.exports.run = async (client, member, message) => {
    .setTimestamp()
 
  
-  let tr =  g.send(ss)
+  const g = client.channels.cache.get(chx).send(ss)
    if(image === true){
       let ss2 = new MessageEmbed()
 
@@ -54,7 +53,7 @@ module.exports.run = async (client, member, message) => {
 .setImage(attachment)
    .setTimestamp()
  
-    tr.edit(ss2) 
+    g.edit(ss2) 
      }
     
  
