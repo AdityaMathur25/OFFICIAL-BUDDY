@@ -31,7 +31,7 @@ const jsondb = require("easy-json-database")
 const json = new jsondb("./black.json")
 const { Intents } = require('discord.js');
 const myIntents = new Intents();
-myIntents.add('GUILDS', 'GUILD_MEMBERS','GUILD_INTEGRATIONS','GUILD_MESSAGES');
+myIntents.add('GUILDS', 'GUILD_MEMBERS','GUILD_INTEGRATIONS','GUILD_MESSAGES', 'GUILD_PRESENCES' );
 
 
 const { badwords } = require("./data.json");
