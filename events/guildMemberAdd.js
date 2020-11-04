@@ -20,7 +20,7 @@ module.exports.run = async (client, member, message) => {
   
   let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
   let data = await canva.welcome(member, { link: `${images[random]}` });
-  const attachment = new MessageAttachment(data);
+  const attachment = new MessageAttachment(data, "welcome.png");
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
