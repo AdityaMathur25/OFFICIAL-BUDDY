@@ -44,7 +44,8 @@
     "json-database.js": "^1.0.2",
     "scrape-yt": "^1.4.3",
     "easy-json-database": "^1.2.1",
-    "discord_ticket_maker": "^1.3.2"
+    "discord_ticket_maker": "^1.3.2",
+    "youtube-notification": "^1.1.0"
   },
   "engines": {
     "node": "12.x"

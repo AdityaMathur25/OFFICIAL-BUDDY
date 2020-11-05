@@ -31,6 +31,7 @@ dependencies:
   something-random-on-discord: 0.0.1
   srod-v2: 0.0.5
   twemoji-parser: 13.0.0
+  youtube-notification: 1.1.0
   yt-search: 2.3.3
   ytdl-core: 4.0.0
   ytdl-core-discord: 1.2.4
@@ -785,6 +786,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
+  /axios/0.19.2:
+    dependencies:
+      follow-redirects: 1.5.10
+    dev: false
+    resolution:
+      integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
   /axios/0.20.0:
     dependencies:
       follow-redirects: 1.13.0
@@ -1296,6 +1303,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
+  /debug/3.1.0:
+    dependencies:
+      ms: 2.0.0
+    dev: false
+    resolution:
+      integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   /debug/3.2.6:
     dependencies:
       ms: 2.1.2
@@ -1961,6 +1974,14 @@ packages:
       node: '>=4.0'
     resolution:
       integrity: sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
+  /follow-redirects/1.5.10:
+    dependencies:
+      debug: 3.1.0
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
   /forever-agent/0.6.1:
     dev: false
     resolution:
@@ -4691,6 +4712,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-eC7CHvQDNF+DCoCMo9UTr1YGUgg=
+  /youtube-notification/1.1.0:
+    dependencies:
+      axios: 0.19.2
+      express: 4.17.1
+      xml2js: 0.4.23
+    dev: false
+    resolution:
+      integrity: sha512-0v2lQqLWrKK1p6hSiWwGRcBxiEsczrqpam7fhNgSfskHERXSG8HYZrkk7MY+0SabKPV9bROZabCAyOtSqgkiYA==
   /yt-search/2.3.3:
     dependencies:
       async.parallellimit: 0.5.2
@@ -4809,6 +4838,7 @@ specifiers:
   something-random-on-discord: ^0.0.1
   srod-v2: ^0.0.5
   twemoji-parser: ^13.0.0
+  youtube-notification: ^1.1.0
   yt-search: ^2.3.3
   ytdl-core: ^4.0.0
   ytdl-core-discord: ^1.2.4

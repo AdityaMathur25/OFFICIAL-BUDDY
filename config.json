@@ -4,6 +4,6 @@
   "COLOR": "#00FFFF",
   "QUEUE_LIMIT": "10",
   "default_prefix": "!",
-  "ownerID": "576893842058641412",
-  "ownerID2": "480285300484997122"
+   "CHANNEL_ID": ["INSANEBUDDY?uid=f_XzgsZiyj4JJ_rtl-gWTg"],
+  "SERVER_CHANNEL_ID": "747851548100395018"
 }

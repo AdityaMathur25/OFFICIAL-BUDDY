@@ -12,7 +12,7 @@ const {
 
 const { config } = require("dotenv");
 
-const { default_prefix, token, COLOR, ownerid } = require("./config.json");
+const { default_prefix, token, COLOR, CHANNEL_ID, SERVER_CHANNEL_ID } = require("./config.json");
 
 const fs = require("fs");
 
@@ -32,6 +32,7 @@ const json = new jsondb("./black.json")
 const { Intents } = require('discord.js');
 const myIntents = new Intents();
 myIntents.add('GUILDS', 'GUILD_MEMBERS','GUILD_INTEGRATIONS','GUILD_MESSAGES', 'GUILD_PRESENCES' );
+const YouTubeNotifier = require('youtube-notification');
 
 
 const { badwords } = require("./data.json");
@@ -263,6 +264,25 @@ setInterval(async () => {
       } catch (e) {
         return;
       }})}})
-//default is 1m (not required)
+const notifier = new YouTubeNotifier({
+
+  hubCallback: 'https://necessary-probable-slouch.glitch.me/yt',
+
+  secret: 'JOIN_MY_SERVER_OR_DIE'
+
+});
+notifier.on('notified', data => {
+
+  console.log('New Video');
+
+  client.channels.cache.get(SERVER_CHANNEL_ID).send(
+
+    `**${data.channel.name}** just uploaded a new video - **${data.video.link}**`
+
+  );
+
+});
+
+
 
 client.login(process.env.token);
