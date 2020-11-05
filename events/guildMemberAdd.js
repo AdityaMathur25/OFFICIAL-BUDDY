@@ -31,7 +31,7 @@ module.exports.run = async (client, member, message) => {
   
   let image = db.get(`enabel_${member.guild.id}`)
  
-  
+  const attach = new MessageAttachment(data, "welcome.png")
   let ss = new MessageEmbed()
 
     .setDescription(ffg)
@@ -48,7 +48,7 @@ module.exports.run = async (client, member, message) => {
     .setDescription(ffg)
 
     .setColor("BLUE")
-.setImage(data)
+.setFooter(attach)
    .setTimestamp()
  
     m.edit(ss2) 
