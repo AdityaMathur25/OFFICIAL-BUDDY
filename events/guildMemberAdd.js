@@ -20,7 +20,7 @@ module.exports.run = async (client, member, message) => {
   
   let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
   let data = await canva.welcome(member, { link: `${images[random]}` });
-  const attachment = new MessageAttachment(data, "welcome.png");
+  
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
@@ -29,10 +29,8 @@ module.exports.run = async (client, member, message) => {
     let hg = newmg.replace("{server}", member.guild.name);
     let ffg = hg.replace("{member:count}", member.guild.memberCount);
   
-  let dumb = await db.fetch(`welchannel_${member.guild.id}`)
   let image = db.get(`enabel_${member.guild.id}`)
-  let gg = client.channels.cache.get(dumb, "welcome.png")
-
+ 
   
   let ss = new MessageEmbed()
 
@@ -50,7 +48,7 @@ module.exports.run = async (client, member, message) => {
     .setDescription(ffg)
 
     .setColor("BLUE")
-.setImage(attachment)
+.setImage(data)
    .setTimestamp()
  
     m.edit(ss2) 
