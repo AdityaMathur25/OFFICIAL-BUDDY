@@ -277,7 +277,7 @@ notifier.on('notified', data => {
 
   client.channels.cache.get(SERVER_CHANNEL_ID).send(
 
-    `**${data.channel.name}** just uploaded a new video - **${data.video.link}**`
+    ` @everyone **${data.channel.name}** just uploaded a new video - **${data.video.link}**`
 
   );
 
