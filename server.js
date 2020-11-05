@@ -1,4 +1,4 @@
-const emotfe = require('./emojis.json')
+const emotfe = require("./emojis.json");
 
 const {
   Client,
@@ -12,7 +12,13 @@ const {
 
 const { config } = require("dotenv");
 
-const { default_prefix, token, COLOR, CHANNEL_ID, SERVER_CHANNEL_ID } = require("./config.json");
+const {
+  default_prefix,
+  token,
+  COLOR,
+  CHANNEL_ID,
+  SERVER_CHANNEL_ID
+} = require("./config.json");
 
 const fs = require("fs");
 
@@ -27,13 +33,18 @@ const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
 
 const db = require("quick.db");
-const jsondb = require("easy-json-database")
-const json = new jsondb("./black.json")
-const { Intents } = require('discord.js');
+const jsondb = require("easy-json-database");
+const json = new jsondb("./black.json");
+const { Intents } = require("discord.js");
 const myIntents = new Intents();
-myIntents.add('GUILDS', 'GUILD_MEMBERS','GUILD_INTEGRATIONS','GUILD_MESSAGES', 'GUILD_PRESENCES' );
-const YouTubeNotifier = require('youtube-notification');
-
+myIntents.add(
+  "GUILDS",
+  "GUILD_MEMBERS",
+  "GUILD_INTEGRATIONS",
+  "GUILD_MESSAGES",
+  "GUILD_PRESENCES"
+);
+const YouTubeNotifier = require("youtube-notification");
 
 const { badwords } = require("./data.json");
 
@@ -43,7 +54,7 @@ let cooldown = {};
 
 //for image ?
 
-const client = new Client({ partials: ['message', 'CHANNEL', 'REACTION'] });
+const client = new Client({ partials: ["message", "CHANNEL", "REACTION"] });
 
 // for not taging everyone.
 
@@ -82,21 +93,15 @@ client.on("ready", async () => {
     `Over ${client.users.cache.size} Member's`,
     `in ${client.channels.cache.size} channel's`
   ];
- var stream_list = [
+  var stream_list = ["PLAYING", "STREAMING", "WATCHING", "LISTENING"];
 
-    "PLAYING",
-    "STREAMING",
-    "WATCHING",
-    "LISTENING"
-
-  ];
-
-
- setInterval(() => {
-        const index = Math.floor(Math.random() * activities_list.length ); // generates a random number between 1 and the length of the activities array list (in this case 5).
-        const stat = Math.floor(Math.random() * stream_list.length ); // generates a random number between 1 and the length of the activities array list (in this case 5).
-   client.user.setActivity(activities_list[index], {type: stream_list[stat]}); // sets bot's activities to one of the phrases in the arraylist.
-    }, 17000); //
+  setInterval(() => {
+    const index = Math.floor(Math.random() * activities_list.length); // generates a random number between 1 and the length of the activities array list (in this case 5).
+    const stat = Math.floor(Math.random() * stream_list.length); // generates a random number between 1 and the length of the activities array list (in this case 5).
+    client.user.setActivity(activities_list[index], {
+      type: stream_list[stat]
+    }); // sets bot's activities to one of the phrases in the arraylist.
+  }, 17000); //
   client.user.setStatus(`idle`);
 });
 //Stupid kid!
@@ -184,7 +189,6 @@ client.on("message", async message => {
   }
 });
 
-
 const { oks } = require("./link.json");
 
 client.on("message", async message => {
@@ -205,10 +209,10 @@ client.on("message", async message => {
     }
 
     if (confirm) {
-      let g = await db.get(`${message.guild.id}`)
+      let g = await db.get(`${message.guild.id}`);
       if (g === null) return;
-      if (g === true ) return 
-       
+      if (g === true) return;
+
       message.delete();
 
       let gp = new MessageEmbed()
@@ -233,56 +237,56 @@ setInterval(async () => {
     console.log("Pinged!")
   );
 }, 240000);
- client.on("message", async message => {
-  
+client.on("message", async message => {
   //console.log(message.guild.channels.cache.size)
   let bruh = await db.fetch(`g_${message.guild.id}`);
   //console.log(bruh)
   if (message.author.bot) return;
 
-  let set = bruh//await client.db.get(`g_${message.guild.id}`);
+  let set = bruh; //await client.db.get(`g_${message.guild.id}`);
   if (message.channel.id === set) {
     //console.log(message.guild.channels.cache.get(bruh))
     const embed = new MessageEmbed()
-   .setTitle(message.author.username + " | ID: " + message.author.id)      .setColor("#00FFFF")
+      .setTitle(message.author.username + " | ID: " + message.author.id)
+      .setColor("#00FFFF")
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
       .setDescription(message.content)
-      .setFooter(message.author.tag+" | From: " + message.guild.name, (message.guild.iconURL({ dynamic: true })))//.then(message.delete());
-      .setTimestamp()
-      setTimeout(() => {
-      message.delete()  
-      }, 1000)
-    
-    client.guilds.cache.forEach(async (g) => {
-     //async function wowasync() {
+      .setFooter(
+        message.author.tag + " | From: " + message.guild.name,
+        message.guild.iconURL({ dynamic: true })
+      ) //.then(message.delete());
+      .setTimestamp();
+    setTimeout(() => {
+      message.delete();
+    }, 1000);
+
+    client.guilds.cache.forEach(async g => {
+      //async function wowasync() {
       try {
-        let gl = await db.get(`g_${g.id}`)
+        let gl = await db.get(`g_${g.id}`);
         //message.guild.channels.cache.get(bruh).send(embed)
         //console.log(client.db.get(`g_${g.id}`))
         //client.channels.cache.get(client.db.get(`g_${g.id}`)).send(embed);
         client.channels.cache.get(gl).send(embed);
       } catch (e) {
         return;
-      }})}})
+      }
+    });
+  }
+});
 const notifier = new YouTubeNotifier({
+  hubCallback: "https://necessary-probable-slouch.glitch.me/yt",
 
-  hubCallback: 'https://necessary-probable-slouch.glitch.me/yt',
-
-  secret: 'JOIN_MY_SERVER_OR_DIE'
-
+  secret: "JOIN_MY_SERVER_OR_DIE"
 });
-notifier.on('notified', data => {
+notifier.on("notified", data => {
+  console.log("New Video");
 
-  console.log('New Video');
-
-  client.channels.cache.get(SERVER_CHANNEL_ID).send(
-
-    ` @everyone **${data.channel.name}** just uploaded a new video - **${data.video.link}**`
-
-  );
-
+  client.channels.cache
+    .get(SERVER_CHANNEL_ID)
+    .send(
+      ` @everyone **${data.channel.name}** just uploaded a new video - **${data.video.link}**`
+    );
 });
-
-
 
 client.login(process.env.token);
