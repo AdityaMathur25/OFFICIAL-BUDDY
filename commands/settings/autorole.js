@@ -2,11 +2,11 @@
 // autorole.jsconst Discord = require("discord.js");
 const { stat } = require("fs");
  const db = require('quick.db')
- const prefix = "$"
+ const Discord = require("discord.js")
  module.exports = {
     name: "autorole",
     description: "set auto-partner channel",
-    run: async (client, message, args) => {
+    run: async (client, message, prefix, args) => {
         let missing = new Discord.MessageEmbed()
 .setTitle(`**Missing Permissions**`)
 .setDescription(`
@@ -16,7 +16,7 @@ const { stat } = require("fs");
 .setTimestamp()
  
 if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(missing)
-let command = args[0];
+let command = args[0]
 let embed = new Discord.MessageEmbed()
 .setTitle(`**Auto Role Command**`)
 .setDescription(`
