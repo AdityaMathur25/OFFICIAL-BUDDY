@@ -1,28 +1,34 @@
 const { MessageEmbed } = require("discord.js");
 
+const fetch = require("node-fetch");
+
 module.exports = {
 
-  name: "cuddle",
+  name: "slap",
 
-  description: "Cuddle with somebody",
+  description: "Slap somebody",
 
   category: "images",
 
-  async execute(bot, message, args) {
+  async execute(bot, message) {
 
-    const data = await bot.neko.sfw.cuddle();
+    const data = await fetch("https://nekos.life/api/v2/img/slap").then((res) =>
+
+      res.json()
+
+    );
 
     const user = message.mentions.users.first() || message.author;
 
-    const cuddled = message.author.id === user.id ? "themselfs" : user.username;
+    const slapped = message.author.id === user.id ? "themselfs" : user.username;
 
     const embed = new MessageEmbed()
-
-      .setTitle(`${message.author.username} Cuddles with ${cuddled}`)
 
       .setFooter(message.author.username)
 
       .setColor("BLUE")
+
+      .setTitle(`${message.author.username} Slapped ${slapped}`)
 
       .setDescription(`[Click here if the image failed to load.](${data.url})`)
 
@@ -30,7 +36,7 @@ module.exports = {
 
       .setTimestamp();
 
-    message.channel.send(embed);
+    message.channel.send({ embed });
 
   },
 
