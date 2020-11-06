@@ -31,14 +31,15 @@ module.exports.run = async (client, member, message) => {
   
   let image = db.get(`enabel_${member.guild.id}`)
  
-  const attach = new MessageAttachment(data.toBuffer(), "welcome.png")
+  const attach = new MessageAttachment(data, "welcome.png")
   
   if(!image) {
     console.log(`${member.guild.name} Doesn't have a welcome banner`);
   } else {
     const ss2 = new MessageEmbed()
           .setDescription(ffg)
-          .setImage(attach)
+          .attachFiles(attach)
+          .setImage("attachment://welcome.png")
           .setColor("BLUE")
           .setTimestamp()
     client.channels.cache.get(chx).send(ss2)
