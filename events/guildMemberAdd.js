@@ -45,7 +45,7 @@ module.exports.run = async (client, member, message) => {
    if(image === true){
       let ss2 = new MessageEmbed()
 
-    .setDescription(ffg + data)
+    .setDescription(ffg + attach)
 
     .setColor("BLUE")
    .setTimestamp()
