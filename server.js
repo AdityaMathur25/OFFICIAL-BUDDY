@@ -233,7 +233,7 @@ client.on("message", async message => {
 });
 
 setInterval(async () => {
-  await fetch("https://crystal-panoramic-litter.glitch.me").then(
+  await fetch("https://cosmic-humorous-fall.glitch.me").then(
     console.log("Pinged!")
   );
 }, 240000);
