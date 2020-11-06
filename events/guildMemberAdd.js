@@ -38,7 +38,7 @@ module.exports.run = async (client, member, message) => {
   } else {
     const ss2 = new MessageEmbed()
           .setDescription(ffg)
-          //.setImage(attach)
+          .setImage(attach)
           .setColor("BLUE")
           .setTimestamp()
     client.channels.cache.get(chx).send(ss2)
