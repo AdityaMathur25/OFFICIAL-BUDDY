@@ -32,26 +32,23 @@ module.exports.run = async (client, member, message) => {
   let image = db.get(`enabel_${member.guild.id}`)
  
   const attach = new MessageAttachment(data, "welcome.png")
+
  if(image === false) {
   let ss = new MessageEmbed()
 
     .setDescription(ffg)
-    .setImage(attach)
-
     .setColor("BLUE")
-
-   .setTimestamp()
+    .setTimestamp()
  
   const g = client.channels.cache.get(chx).send(ss).then(m => {
    if(image === true){
       let ss2 = new MessageEmbed()
-
-    .setDescription(ffg + attach)
-
-    .setColor("BLUE")
-   .setTimestamp()
+          .setDescription(ffg)
+          .setImage(attach)
+          .setColor("BLUE")
+          .setTimestamp()
  
-    m.edit(ss2) 
+      message.channel.send(ss2)
      }
     })}
  
