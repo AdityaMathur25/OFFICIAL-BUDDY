@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'hug',
-  category:"fun",
+  category:"images",
     description: 'just hug someone',
     run: (client, message, args) => {
    

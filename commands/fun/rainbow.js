@@ -2,7 +2,7 @@ const discord = require("discord.js")
 const canvacord = require("canvacord")
 module.exports = {
   name: "wanted",
-  category:"fun",
+  category:"images",
   aliases: ["wn"],
   description: "Get your pfp with a wanted",
   run: async (client, message, args) => {

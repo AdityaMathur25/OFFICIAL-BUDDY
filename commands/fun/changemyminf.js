@@ -11,7 +11,7 @@ module.exports = {
 
     name: "changemymind",
 
-    category: "fun",
+    category: "images",
 
     description: "Generate A Fake Change My Mind Image!",
 

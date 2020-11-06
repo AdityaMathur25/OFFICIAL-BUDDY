@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports ={
   name:"kiss",
   description:"kiss some one",
-  category:"fun",
+  category:"images",
   
   run: async (client, message, args) => {
 

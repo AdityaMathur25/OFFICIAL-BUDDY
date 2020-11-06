@@ -4,7 +4,7 @@ const { MessageAttachment } = require("discord.js")
 module.exports= {
   name:"Invert",
   description:"invert some one",
-  category:"fun",
+  category:"images",
   aliases:["in"],
 run: async (client, message, args) => {
 async function create() {

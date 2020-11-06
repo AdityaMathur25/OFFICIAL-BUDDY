@@ -9,7 +9,7 @@ module.exports = {
 
         aliases: [''],
 
-        category: "fun",
+        category: "images",
 
         description : "Sends A Tweet",
 

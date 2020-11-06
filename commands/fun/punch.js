@@ -2,7 +2,7 @@ const Discord = require ("discord.js");
 module.exports = {
  name:"punch",
   description:"punch some one",
-  category:"fun",
+  category:"images",
   run: async (client, message, arg) => {
        var member= message.mentions.members.first();
         var images = [
