@@ -36,6 +36,7 @@ module.exports.run = async (client, member, message) => {
   let ss = new MessageEmbed()
 
     .setDescription(ffg)
+    .setImage(attach)
 
     .setColor("BLUE")
 
