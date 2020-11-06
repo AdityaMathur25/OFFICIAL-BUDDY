@@ -31,7 +31,7 @@ module.exports.run = async (client, member, message) => {
   
   let image = db.get(`enabel_${member.guild.id}`)
  
-  const attach = new MessageAttachment(data, "welcome.png")
+  const attach = new MessageAttachment(data.toBuffer(), "welcome.png")
   
   if(!image) {
     console.log(`${member.guild.name} Doesn't have a welcome banner`);
