@@ -9,7 +9,7 @@ const {
 
   MessageEmbed
 } = require("discord.js");
-
+const webhook = require("./upvote.js")
 const { config } = require("dotenv");
 
 const {
