@@ -236,7 +236,7 @@ setInterval(async () => {
   await fetch("https://cosmic-humorous-fall.glitch.me").then(
     console.log("Pinged!")
   );
-}, 20000);
+}, 60000);
 client.on("message", async message => {
   //console.log(message.guild.channels.cache.size)
   let bruh = await db.fetch(`g_${message.guild.id}`);
