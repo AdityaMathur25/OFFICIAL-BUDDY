@@ -46,7 +46,8 @@ module.exports.run = async (client, member, message) => {
   }
 let role = db.get(`aurole_${message.guild.id}`)
 if(!role) return;
-var roles = member.guild.roles.cache.find(role => role.id === );
+var roles = member.guild.roles.cache.find(role => role.id === role)
+member.roles.add(roles);
  
    
  

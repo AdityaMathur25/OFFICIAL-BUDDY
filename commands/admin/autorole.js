@@ -7,10 +7,7 @@ name: "autorole",
   usage: "ar enable/disabe role maximum 3 roles.",
    authorPermission: ["MANAGE_ROLES"],
   run: async(client, message, args) =>{
-    let enable = args.join(" ").includes("enable")
-    if(!enable){
-     return message.channel.send("invalid arguments do : enable/disable")
-      }
+   
     let role = message.mentions.roles.first();
     if(!role){
       return message.channel.send("INVALID ARGUMENT: MENTION ROLE FOR AUTOROLE!")
