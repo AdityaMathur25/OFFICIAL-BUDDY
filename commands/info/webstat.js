@@ -4,7 +4,7 @@ module.exports = {
 
     name: "webstat",
 
-    description: "monitor  your website ",
+    description: "monitor info your website ",
 
     category: "info",
 
@@ -12,3 +12,7 @@ module.exports = {
 
  run: async (client, message, args ) => {
 
+ let g = db.fetch(`url_${message.author.id}`)
+  message.channel.send(g) 
+
+  }}

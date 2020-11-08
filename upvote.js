@@ -1,3 +1,20 @@
-const client = require("./server.js")
-const Discord = require('discord.js')
-const webhook = new Discord.WebhookClient('774662430470832150', 'Wk8WQr397WBLNbyRfWznDqacnIz2yompaJBXAldfp03ImK3toPyML4zfxtLJ3FhK4iFo')
+const { client }  = require("./server.js")
+const { Discord, message } = require('discord.js')
+
+
+
+
+//----- montioring -----
+const db = require("quick.db")
+const fetch = require("node-fetch") 
+let url = db.get(`url`)
+  
+setInterval(async () => {
+
+  await fetch(url).then(
+
+    console.log("website ping!")
+
+  );
+
+}, 60000);

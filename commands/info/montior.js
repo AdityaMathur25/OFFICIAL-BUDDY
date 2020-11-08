@@ -13,7 +13,7 @@ module.exports = {
       if (!url){
         return message.channel.send(`not provided a vaild url`)
    }
-    db.set(`url_${message.author.id}`, url)
+    db.set(`url`, url + message.author.id)
 
   
    return message.channel.send("Successfully Added Your website To Monitoring")
