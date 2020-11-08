@@ -4,13 +4,7 @@ const db = require("quick.db");
 
 const Color = `RANDOM`;
 
-module.exports.run = async (client, message, channel) => {
- if (
-    channel.type === "category" ||
-    channel.type === "dm" ||
-    channel.type === "unknown"
-  )
-    return;
+module.exports.run = async (client, channel) => {
 
   let Channel = await db.fetch(`Logging_${channel.guild.id}`);
   if (Channel === null) return;
