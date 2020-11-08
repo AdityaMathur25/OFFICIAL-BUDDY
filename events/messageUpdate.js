@@ -4,11 +4,7 @@ const db = require("quick.db");
 
 const Color = `RANDOM`;
 
- 
-
-module.exoprts.run = async( oldMessage, newMessage, client) => {
-
-
+module.exports.run = async (client, oldMessage, newMessage) => {
 
   if (oldMessage.content.toLowerCase() === newMessage.content.toLowerCase())
 
