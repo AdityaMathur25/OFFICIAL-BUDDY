@@ -10,7 +10,7 @@ module.exports = {
 
   category: "images",
 
-  async execute(bot, message) {
+  run: async (bot, message) => {
 
     const data = await fetch("https://nekos.life/api/v2/img/smug").then((res) =>
 
