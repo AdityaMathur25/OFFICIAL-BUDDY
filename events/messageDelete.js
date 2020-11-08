@@ -26,4 +26,4 @@ module.exports.run= async(client, message) => {
 
   return client.channels.cache.get(Channel).send(Embed);
 
-}
+} 
