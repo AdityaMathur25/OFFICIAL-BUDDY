@@ -1,7 +1,12 @@
-Channel Create :
+const { MessageEmbed } = require("discord.js");
 
-client.on("channelCreate", async channel => {
+const db = require("quick.db");
 
+const Color = `RANDOM`;
+
+ 
+
+module.exports.run= async(client, message, channel) => {
   if (
 
     channel.type === "category" ||
@@ -110,4 +115,4 @@ client.on("channelCreate", async channel => {
 
   return client.channels.cache.get(Channel).send(Embed);
 
-});
+};
