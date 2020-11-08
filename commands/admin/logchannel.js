@@ -13,7 +13,7 @@ module.exports = {
     let channel = message.mentions.channels.first()
     if(!channel) return message.channel.send("you need to specify the log channel")
     
-    let logchannel = db.fetch(`logchannel_${message.guild.id}`)
+    let logchannel = db.fetch(`Logging_${message.guild.id}`)
     
     if(logchannel === channel.id) {
       return message.channel.send("you cant specify the same channel, this channel is already the log channel")
