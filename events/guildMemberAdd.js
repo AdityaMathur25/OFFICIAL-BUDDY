@@ -44,8 +44,11 @@ module.exports.run = async (client, member, message) => {
           .setTimestamp()
     client.channels.cache.get(chx).send(ss2)
   }
+let role = db.get(`aurole_${message.guild.id}`)
+if(!role) return;
+var roles = member.guild.roles.cache.find(role => role.id === );
  
-
+   
  
 }; 
   
