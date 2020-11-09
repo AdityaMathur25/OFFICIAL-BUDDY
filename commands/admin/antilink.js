@@ -17,7 +17,11 @@ module.exports = {
   run: async (client, message, args) => {
 
     let Content = message.content.includes("enable");//mentioned channel
+if(Content === message.content.includes("disable") ){
+  await db.delete(`${message.guild.id}`, `anti-link`) //set id in var
 
+ return message.channel.send("successfully disabled anti links!")
+  }
     //NOO
 
 //U DO VERIFY 
