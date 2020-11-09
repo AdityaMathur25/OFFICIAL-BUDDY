@@ -16,22 +16,16 @@ module.exports = {
 
   run: async (client, message, args) => {
 
-    let Content = message.content.includes("enable");//mentioned channel
-if(Content === message.content.includes("disable") ){
-  await db.delete(`${message.guild.id}`, `anti-link`) //set id in var
-
- return message.channel.send("successfully disabled anti links!")
-  }
+    let Content = message.content.includes("enable");//mentioned channel,setantilink disable,setantilink disable
     //NOO
 
 //U DO VERIFY 
 
          if(!Content) { //if channel is not mentioned
 
-      return message.channel.send("you don't provide a vaild word, type: enable")
+      return message.channel.send("you don't provide a vaild word, type: enable/ disable")
 
     }
-
     
 
     //Now we gonna use quick.db
