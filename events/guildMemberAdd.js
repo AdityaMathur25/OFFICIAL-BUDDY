@@ -44,7 +44,7 @@ module.exports.run = async (client, member, message) => {
           .setTimestamp()
     client.channels.cache.get(chx).send(ss2)
   }
-let role = db.get(`aurole_${message.guild.id}`)
+let role = await db.get(`aurole_${message.guild.name}`)
 if(!role) return;
 var roles = member.guild.roles.cache.find(role => role.id === role)
 member.roles.add(roles);
