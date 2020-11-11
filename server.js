@@ -239,11 +239,10 @@ setInterval(async () => {
 }, 60000);
 
 const notifier = new YouTubeNotifier({
-  hubCallback: "https://necessary-probable-slouch.glitch.me/yt",
+  hubCallback: "https://cosmic-humorous-fall.glitch.me/yt",
 
   secret: "JOIN_MY_SERVER_OR_DIE"
 });
-notifier.setup();
 notifier.on("notified", data => {
   console.log("New Video");
 
