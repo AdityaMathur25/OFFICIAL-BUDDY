@@ -243,6 +243,7 @@ const notifier = new YouTubeNotifier({
 
   secret: "JOIN_MY_SERVER_OR_DIE"
 });
+notifier.setup();
 notifier.on("notified", data => {
   console.log("New Video");
 
