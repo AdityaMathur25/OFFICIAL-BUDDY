@@ -70,7 +70,20 @@ client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands");
 
 client.queue = new Map();
-
+const path = require('path');
+	const {
+  GiveawaysManager
+} = require("discord-giveaways");
+const manager = new GiveawaysManager(client, {
+  storage: "./giveaways.json",
+  updateCountdownEvery: 5000,
+  default: {
+    botsCanWin: false,
+    embedColor: "#ff0000",
+    reaction: "🎁"
+  }
+});
+client.giveawaysManager = manager;
 // Run the command loader
 
 ["command", "events"].forEach(handler => {
@@ -237,21 +250,81 @@ setInterval(async () => {
     console.log("Pinged!")
   );
 }, 60000);
+client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction) => {
 
-const notifier = new YouTubeNotifier({
-  hubCallback: "https://cosmic-humorous-fall.glitch.me/yt",
+  if (member.user.bot) return;
 
-  secret: "JOIN_MY_SERVER_OR_DIE"
-});
-notifier.setup();
-notifier.on("notified", data => {
-  console.log("New Video");
+  let conditionRole;
 
-  client.channels.cache
-    .get(SERVER_CHANNEL_ID)
-    .send(
-      ` @everyone **${data.channel.name}** just uploaded a new video - **${data.video.link}**`
-    );
-});
+  let conditionsRoles = require(path.resolve(path.join(__dirname + 'commands/giveaway/database/conditionRole.json')));
+
+  if (conditionsRoles[giveaway.messageID]) {
+
+    conditionRole = conditionsRoles[giveaway.messageID].conditionRole;
+
+  }
+
+  if (conditionRole != 'none') {
+
+    if (member.roles.cache.find(r => r.id === conditionRole)) {
+
+      member.send(
+
+        new MessageEmbed()
+
+        .setAuthor(member.user.tag, member.user.displayAvatarURL({
+
+          format: 'png',
+
+          dynamic: 'true'
+
+        }))
+
+        .setColor('GREEN')
+
+        .setDescription(`Your entry for [this giveaway](https://discordapp.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${giveaway.messageID}) has been approved. **Good luck !**`)
+
+        .setFooter(`Giveaway by ${reaction.message.author.tag}`)
+
+        .setTimestamp()
+
+      );
+
+      return;
+
+    } else {
+
+      reaction.users.remove(member.id)
+
+      let role = reaction.message.guild.roles.cache.find(r => r.id === conditionRole);
+
+      member.send(
+
+        new MessageEmbed()
+
+        .setAuthor(member.user.tag, member.user.displayAvatarURL({
+
+          format: 'png',
+
+          dynamic: 'true'
+
+        }))
+
+        .setColor('RED')
+
+        .setDescription(`Your entry for [this giveaway](https://discordapp.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${giveaway.messageID}) has been denied. To enter, you need the \`${role.name}\` role.`)
+
+        .setFooter(`Giveaway by ${reaction.message.author.tag}`)
+
+        .setTimestamp()
+
+      );
+
+      return;
+
+    }
+
+  }
+  })
 
 client.login(process.env.token);
