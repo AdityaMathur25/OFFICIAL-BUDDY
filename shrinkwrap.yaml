@@ -21,7 +21,6 @@ dependencies:
   imdb-api: 4.4.0
   json-database.js: 1.0.3
   mcpi: 0.5.9
-  mojang-api: 0.0.2
   node-fetch: 2.6.1
   node-opus: 0.3.3
   node-superfetch: 0.1.10
@@ -3032,12 +3031,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
-  /mojang-api/0.0.2:
-    dependencies:
-      request: 2.88.2
-    dev: false
-    resolution:
-      integrity: sha1-xiS5SHy+5qfOhIIs+WZ1fnwvxmU=
   /moment-duration-format/2.3.2:
     dev: false
     resolution:
@@ -4805,7 +4798,6 @@ specifiers:
   imdb-api: ^4.4.0
   json-database.js: ^1.0.2
   mcpi: ^0.5.9
-  mojang-api: ^0.0.2
   node-fetch: ^2.6.1
   node-opus: ^0.3.3
   node-superfetch: ^0.1.10
