@@ -133,7 +133,7 @@ client.on("guildCreate", guild => {
 });
 
 client.on("guildDelete", guild => {
-  let join1 = new discord.MessageEmbed()
+  let join1 = new MessageEmbed()
 
     .setColor("RED")
 
