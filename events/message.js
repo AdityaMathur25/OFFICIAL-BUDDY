@@ -45,8 +45,40 @@ module.exports.run = async (client, message) => {
       .setFooter(`REQUESTED BY ${message.author.username}`);
 
     return message.channel.send(luck);
+  };
+  let bruh = await db.fetch(`g_${message.guild.id}`);
+  if (message.author.bot) return;
+
+  let set = bruh; //await client.db.get(`g_${message.guild.id}`);
+  if (message.channel.id === set) {
+    const embed = new MessageEmbed()
+      .setTitle(message.author.username + " | ID: " + message.author.id)
+      .setColor("#00FFFF")
+      .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+      .setDescription(message.content)
+      .setFooter(
+        message.author.tag + " | From: " + message.guild.name,
+        message.guild.iconURL({ dynamic: true })
+      ) //.then(message.delete());
+      .setTimestamp();
+    setTimeout(() => {
+      message.delete();
+    }, 1000);
+
+    client.guilds.cache.forEach(async g => {
+      //async function wowasync() {
+      try {
+        let gl = await db.get(`g_${g.id}`);
+        //message.guild.channels.cache.get(bruh).send(embed)
+        //console.log(client.db.get(`g_${g.id}`))
+        //client.channels.cache.get(client.db.get(`g_${g.id}`)).send(embed);
+        client.channels.cache.get(gl).send(embed);
+      } catch (e) {
+        return;
+      }
+    });
   }
-   
+});
 
  
 
