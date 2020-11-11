@@ -20,6 +20,7 @@ dependencies:
   google-play-scraper: 8.0.2
   imdb-api: 4.4.0
   json-database.js: 1.0.3
+  mcpi: 0.5.9
   mojang-api: 0.0.2
   node-fetch: 2.6.1
   node-opus: 0.3.3
@@ -2880,6 +2881,13 @@ packages:
       node: '>= 0.12.0'
     resolution:
       integrity: sha1-Vte36xgDPwz5vFLrIJD6x9weifo=
+  /mcpi/0.5.9:
+    dev: false
+    engines:
+      node: '>=6.0.0'
+      npm: '>=3.8.9'
+    resolution:
+      integrity: sha1-UUu+g+4wCFW+waEG3Y4lx7KiMrs=
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -4796,6 +4804,7 @@ specifiers:
   google-play-scraper: ^8.0.2
   imdb-api: ^4.4.0
   json-database.js: ^1.0.2
+  mcpi: ^0.5.9
   mojang-api: ^0.0.2
   node-fetch: ^2.6.1
   node-opus: ^0.3.3
