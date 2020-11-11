@@ -31,6 +31,7 @@ dependencies:
   something-random-on-discord: 0.0.1
   srod-v2: 0.0.5
   twemoji-parser: 13.0.0
+  urban.js: 2.4.3
   youtube-notification: 1.1.0
   yt-search: 2.4.2
   ytdl-core: 4.0.3
@@ -4034,6 +4035,11 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-Qu+VC3EwYLldKa1fCxuuvULvSJOKEgk9pi8dZeCVK7TqBfUNTH4sFkk4joj8afVSfAYgJoSOetjx9QWOJ5mYoQ==
+  /snekfetch/3.6.4:
+    deprecated: use node-fetch instead
+    dev: false
+    resolution:
+      integrity: sha512-NjxjITIj04Ffqid5lqr7XdgwM7X61c/Dns073Ly170bPQHLm6jkmelye/eglS++1nfTWktpP6Y2bFXjdPlQqdw==
   /something-random-on-discord/0.0.1:
     dependencies:
       node-fetch: 2.6.1
@@ -4483,6 +4489,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
+  /urban.js/2.4.3:
+    dependencies:
+      snekfetch: 3.6.4
+    dev: false
+    resolution:
+      integrity: sha512-z0/pIIxQitwkHW4hpTFhOK56wNZVgtTHv2doJlO5mNkh1D6lAMOw9363Sz4la1IPKoiT3sYSBG8HiLZBs9mhdA==
   /uri-js/4.4.0:
     dependencies:
       punycode: 2.1.1
@@ -4775,6 +4787,7 @@ specifiers:
   something-random-on-discord: ^0.0.1
   srod-v2: ^0.0.5
   twemoji-parser: ^13.0.0
+  urban.js: ^2.4.3
   youtube-notification: ^1.1.0
   yt-search: ^2.4.2
   ytdl-core: ^4.0.2
