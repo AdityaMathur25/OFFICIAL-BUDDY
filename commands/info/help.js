@@ -96,6 +96,7 @@ let emojis = "<a:arrowslogo:751462628412358736>"
 
 
       return message.channel.send(emx);
+     
     }
   }
 };
