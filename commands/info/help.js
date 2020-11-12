@@ -79,7 +79,7 @@ let prefix = await db.get(`prefix_${message.guild.id}`)
       for(const [key, value] of Object.entries(com)) {
         let category = key;
 
-        let desc = "`" + value.join("`, `") + "`";
+        let desc = `Total commands${com.length}` + "`" + value.join("`, `") + "`";
 let emojis = "<a:arrowslogo:751462628412358736>"
         emx.addField(`${emojis}${category.toUpperCase()}[${value.length}]`, desc);
       }
@@ -93,7 +93,6 @@ let emojis = "<a:arrowslogo:751462628412358736>"
 
         emx.addField("Custom Commands", array.join(", "))
       }
-
 
       return message.channel.send(emx);
      
