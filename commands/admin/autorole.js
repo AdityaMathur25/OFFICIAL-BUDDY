@@ -12,7 +12,7 @@ name: "autorole",
     if(!role){
       return message.channel.send("INVALID ARGUMENT: MENTION ROLE FOR AUTOROLE!")
       }
-   db.set(`aurole_${message.guild.name}`, [{role:role.id}])
+   db.set(`aurole_${message.guild.id}`, [{role:role.id}])
     return message.channel.send("successfully setup auto-role !")
     
     
