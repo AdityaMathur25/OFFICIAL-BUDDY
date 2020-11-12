@@ -24,7 +24,7 @@ module.exports = {
 
         if(!reason) reason = 'Unspecified';
 
-        member.ban(`${reason}`)
+        member.ban({reason: reason})
         .catch(err => {
             console.log(err)
             if(err) return message.channel.send('Something went wrong')
@@ -38,6 +38,7 @@ module.exports = {
         .addField('Reason', reason)
         .setFooter('Time banned', bot.user.displayAvatarURL())
         .setTimestamp()
+          .setColor("RANDOM")
 
         message.channel.send(banembed);
 
