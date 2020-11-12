@@ -60,7 +60,8 @@ let prefix = await db.get(`prefix_${message.guild.id}`)
     
       let emx = new MessageEmbed()
          .setTitle("HELP MENU")
-      .setDescription(`IF YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name`)
+      .setDescription(`IF YOU WANT TO KNOW INFO SPECIFIC COMMAND TYPE >${prefix}help cmd>name
+TOTAL COMMANDS ${client.commands.size}`)
         .setColor("#00FFFF")
         .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL());
