@@ -24,6 +24,6 @@ if(!pollDescription){
         let msgEmbed = await chx.send(embedPoll);
         await msgEmbed.react('👍')
         await msgEmbed.react('👎')
-    return message.channel.send("SUCCESSFULLY ADDED POLL In"+ )
+    return message.channel.send("SUCCESSFULLY ADDED POLL In"+ pollChannel)
     
     }}
