@@ -15,12 +15,15 @@ if(!pollDescription){
   return message.channel.send("PROVIDE YOUR TEXT!")
   }
         let embedPoll = new MessageEmbed()
-        .setTitle('NEW POLL! ')
+        .setTitle('NEW POLL! | '+ message.guild.name)
+        .setThumbnail(message.guild.iconURL())
         .setDescription(pollDescription)
         .setColor('RANDOM')
+        .setTimestamp()
       let  chx =  client.channels.cache.get(pollChannel.id)
         let msgEmbed = await chx.send(embedPoll);
         await msgEmbed.react('👍')
-        await msgEmbed.react('👎'
+        await msgEmbed.react('👎')
+    return message.channel.send("SUCCESSFULLY ADDED POLL In"+ )
     
-    )}}
+    }}
