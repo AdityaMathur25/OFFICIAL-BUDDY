@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 
 const db = require("quick.db");
-
-module.exports.run = async (client, reaction, user) => {
+const default_prefix = require("../config.json")
+module.exports.run = async (client,  message, args) => {
 
 const main = await db.get(`status`);
 
@@ -12,7 +12,7 @@ const main = await db.get(`status`);
 
     " BUDDY'S SERVER",
 
-    "!help for commands",
+    `!help For Commands! `,
 
     "HAPPY HELLOWEEN 👻",
 
