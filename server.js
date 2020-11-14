@@ -33,8 +33,6 @@ const canva = new CanvasSenpai();
 const { addexp } = require("./handlers/xp.js");
 
 const db = require("quick.db");
-const jsondb = require("easy-json-database");
-const json = new jsondb("./black.json");
 const { Intents } = require("discord.js");
 const myIntents = new Intents();
 myIntents.add(
@@ -80,7 +78,7 @@ const manager = new GiveawaysManager(client, {
   default: {
     botsCanWin: false,
     embedColor: "#ff0000",
-    reaction: "🎁"
+    reaction: "🎊"
   }
 });
 client.giveawaysManager = manager;
