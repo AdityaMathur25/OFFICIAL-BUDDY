@@ -12,19 +12,36 @@ module.exports.run = async (client, oldState, newState) => {
 
     // Return if it's not enabled.
 
-    if (oldState.channel.id === modlog.channel) return;
 
     // This will prevent any chaos when deleting some message inside the modlog.
 
     let toggle = modlog.toggle;
 
     if (!toggle || toggle == null || toggle == false) return;
-if(oldState){
+if(oldState === oldState.member.voice.channel){
     const embed = new MessageEmbed()
-.setTitle("MEMBER JOIN VOICECHANNEL!")
-    .setDescription(`${oldState.author} joined voice channel in \n> ${oldState.channel}`)
-    .setColor("RANDOM")
+.setTitle("MEMBER LEFT VC!")
+    .setDescription(`${oldState.member} Left voice channel  \n> ${oldState.channel}`)
+    .setColor("RED")
     .setTimestamp()
-    .setFooter(oldState.guild.name+" | NAME: "+ oldState.author.tag)
+    .setFooter(oldState.guild.name+" | NAME: "+ oldState.member.username)
+    client.channels.cache.get(modlog.channel).send(embed)
+}
+  if(newState === newState.member.voice.channel){
+
+    const embed = new MessageEmbed()
+
+.setTitle("MEMBER JOIN VC!")
+
+    .setDescription(`${newState.member} Join voice channel  \n> ${newState.channel}`)
+
+    .setColor("GREEN")
+
+    .setTimestamp()
+
+    .setFooter(newState.guild.name+" | NAME: "+ newState.member.username)
+
+    client.channels.cache.get(modlog.channel).send(embed)
+
 }
 }
