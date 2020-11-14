@@ -2,19 +2,17 @@ const {MessageEmbed} = require("discord.js");
 
 const db = require("quick.db");
 
-module.exports.run = async (client, message) => {
-
-    if (message.partial) await message.fetch();
+module.exports.run = async (client, newMessage, oldMessage) => {
 
     // In before, this will help you to fetch or get the previous content since the bot get started.
 
-    let modlog = db.get(`moderation.${message.guild.id}.modlog`);
+    let modlog = db.get(`moderation.${oldMessage.guild.id}.modlog`);
 
     if (!modlog) return;
 
     // Return if it's not enabled.
 
-    if (message.channel.id === modlog.channel) return;
+    if (oldMessage.channel.id === modlog.channel) return;
 
     // This will prevent any chaos when deleting some message inside the modlog.
 
@@ -23,15 +21,19 @@ module.exports.run = async (client, message) => {
     if (!toggle || toggle == null || toggle == false) return;
 
     const embed = new MessageEmbed()
-.setThumbnail(message.author.displayAvatarURL({dynamic: true}) )
-    .setTitle("Message Deleted")
 
-    .setDescription(`Message deleted in <#${message.channel.id}>`)
-.addField("DELETED BY :", `${message.author}`, true)
-    .addField("MESSAGE :", `\n> ${message.content}`, true)
+.setThumbnail(oldMessage.author.displayAvatarURL({dynamic: true}) )
 
+    .setTitle("Message EDITED")
+
+    .setDescription(`Message deleted in <#${oldMessage.channel.id}>`)
+    .addField("BEFORE :", `\n> ${newMessage.content}`, true)
+    .addField("AFTER :", `\n> ${oldMessage.content}`, true)
+   
     .setTimestamp()
-.setFooter(message.guild.name)
+
+.setFooter(oldMessage.guild.name+ " | EDITOR: " + oldMessage.author.username)
+
     .setColor("RANDOM")
 
     return client.channels.cache.get(modlog.channel).send(embed);
