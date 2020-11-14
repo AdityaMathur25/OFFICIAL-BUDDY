@@ -26,11 +26,12 @@ module.exports.run = async (client, message) => {
 .setThumbnail(message.author.displayAvatarURL({dynamic: true}) )
     .setTitle("Message Deleted")
 
-    .setDescription(`Message deleted in <#${message.channel.id}`)
-.addField(`by **${message.author.tag}${message.content}`)
+    .setDescription(`Message deleted in <#${message.channel.id}>`)
+.addField("DELETED BY :", `${message.author}`, true)
+    .addField("MESSAGE :", `\n>${message.content}`, true)
 
     .setTimestamp()
-
+.setFooter(message.guild.name)
     .setColor("RANOM")
 
     return client.channels.cache.get(modlog.channel).send(embed);
