@@ -18,7 +18,7 @@ module.exports.run = async (client, oldState, newState) => {
     let toggle = modlog.toggle;
 
     if (!toggle || toggle == null || toggle == false) return;
-if(oldState === oldState.member.voice.channel){
+if(oldState === true){
     const embed = new MessageEmbed()
 .setTitle("MEMBER LEFT VC!")
     .setDescription(`${oldState.member} Left voice channel  \n> ${oldState.channel}`)
@@ -27,7 +27,7 @@ if(oldState === oldState.member.voice.channel){
     .setFooter(oldState.guild.name+" | NAME: "+ oldState.member.username)
     client.channels.cache.get(modlog.channel).send(embed)
 }
-  if(newState === newState.member.voice.channel){
+   if(newState === true){
 
     const embed = new MessageEmbed()
 
@@ -44,4 +44,5 @@ if(oldState === oldState.member.voice.channel){
     client.channels.cache.get(modlog.channel).send(embed)
 
 }
-}
+   
+  }
