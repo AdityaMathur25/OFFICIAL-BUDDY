@@ -92,31 +92,6 @@ client.giveawaysManager = manager;
   require(`./handlers/${handler}`)(client);
 });
 
-console.log("ready as badass");
-client.on("ready", async () => {
-  const main = await db.get(`status`);
-  var activities_list = [
-    `${main}`,
-    " BUDDY'S SERVER",
-    "!help for commands",
-    "HAPPY HELLOWEEN 👻",
-    "Stay Home , Stay Safe.",
-    "Best music bot || feel the song",
-    `Over ${client.guilds.cache.size} Server's`,
-    `Over ${client.users.cache.size} Member's`,
-    `in ${client.channels.cache.size} channel's`
-  ];
-  var stream_list = ["PLAYING", "STREAMING", "WATCHING", "LISTENING"];
-
-  setInterval(() => {
-    const index = Math.floor(Math.random() * activities_list.length); // generates a random number between 1 and the length of the activities array list (in this case 5).
-    const stat = Math.floor(Math.random() * stream_list.length); // generates a random number between 1 and the length of the activities array list (in this case 5).
-    client.user.setActivity(activities_list[index], {
-      type: stream_list[stat]
-    }); // sets bot's activities to one of the phrases in the arraylist.
-  }, 17000); //
-  client.user.setStatus(`idle`);
-});
 //Stupid kid!
 
 //define message lol
@@ -245,11 +220,6 @@ client.on("message", async message => {
   }
 });
 
-setInterval(async () => {
-  await fetch("https://cosmic-humorous-fall.glitch.me").then(
-    console.log("Pinged!")
-  );
-}, 60000);
 client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction) => {
 
   if (member.user.bot) return;
