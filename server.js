@@ -296,5 +296,4 @@ client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction)
   })
 
 
-
 client.login(process.env.token);
