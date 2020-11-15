@@ -44,7 +44,9 @@ module.exports.run = async (client, member, message) => {
           .setTimestamp()
     client.channels.cache.get(chx).send(ss2)
   } 
-   
+ let role = await db.get(`at_${member.guild.id}`) 
+ if(!role) return;
+     member.roles.add(role)
  
 }; 
   
