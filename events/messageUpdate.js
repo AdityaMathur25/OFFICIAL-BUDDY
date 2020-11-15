@@ -2,10 +2,10 @@ const {MessageEmbed} = require("discord.js");
 
 const db = require("quick.db");
 
-module.exports.run = async (client, newMessage, oldMessage) => {
+module.exports.run = async (client, oldMessage, newMessage) => {
 
     // In before, this will help you to fetch or get the previous content since the bot get started.
-
+  if (oldMessage.content.toLowerCase() === newMessage.content.toLowerCase())return;
     let modlog = db.get(`moderation.${oldMessage.guild.id}.modlog`);
 
     if (!modlog) return;
@@ -20,22 +20,13 @@ module.exports.run = async (client, newMessage, oldMessage) => {
 
     if (!toggle || toggle == null || toggle == false) return;
 
-    const embed = new MessageEmbed()
-
-.setThumbnail(oldMessage.author.displayAvatarURL({dynamic: true}) )
-
-    .setTitle("MESSAGE EDITED")
-
-    .setDescription(`Message Edited In <#${oldMessage.channel.id}>`)
-    .addField("BEFORE :", `\n> ${newMessage.content}`, true)
-    .addField("AFTER :", `\n> ${oldMessage.content}`, true)
-   
-    .setTimestamp()
-
-.setFooter(oldMessage.guild.name+ " | EDITOR: " + oldMessage.author.username)
-
+   let Embed = new MessageEmbed()
     .setColor("RANDOM")
-
-    return client.channels.cache.get(modlog.channel).send(embed);
+    .setTitle(`Message Edited!`)
+    .setDescription(`A Message Is Edited | Author : <@${oldMessage.author.id}>`)
+    .addField(`Old`, oldMessage.content, true)
+    .addField(`New`, newMessage.content, true)
+    .setTimestamp();
+    return client.channels.cache.get(modlog.channel).send(Embed);
 
 }

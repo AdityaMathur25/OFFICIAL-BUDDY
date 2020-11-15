@@ -22,18 +22,13 @@ module.exports.run = async (client, message) => {
 
     if (!toggle || toggle == null || toggle == false) return;
 
-    const embed = new MessageEmbed()
-.setThumbnail(message.author.displayAvatarURL({dynamic: true}) )
-    .setTitle("Message Deleted")
-
-    .setDescription(`Message deleted in <#${message.channel.id}>`)
-.addField("DELETED BY :", `${message.author}`, true)
-    .addField("MESSAGE :", `\n> ${message.content}`, true)
-
-    .setTimestamp()
-.setFooter(message.guild.name)
+  let Embed = new MessageEmbed()
     .setColor("RANDOM")
+    .setTitle(`Message Deleted!`)
+    .setDescription(`A Message Is Deleted | Author : <@${message.author.id}>`)
+    .addField(`Message`, message.content, true)
+    .setTimestamp();
 
-    return client.channels.cache.get(modlog.channel).send(embed);
+    return client.channels.cache.get(modlog.channel).send(Embed);
 
 }
