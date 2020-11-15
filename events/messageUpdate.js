@@ -24,9 +24,9 @@ module.exports.run = async (client, newMessage, oldMessage) => {
 
 .setThumbnail(oldMessage.author.displayAvatarURL({dynamic: true}) )
 
-    .setTitle("Message EDITED")
+    .setTitle("MESSAGE EDITED")
 
-    .setDescription(`Message deleted in <#${oldMessage.channel.id}>`)
+    .setDescription(`Message Edited In <#${oldMessage.channel.id}>`)
     .addField("BEFORE :", `\n> ${newMessage.content}`, true)
     .addField("AFTER :", `\n> ${oldMessage.content}`, true)
    
