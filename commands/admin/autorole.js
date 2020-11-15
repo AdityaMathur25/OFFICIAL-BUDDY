@@ -33,10 +33,50 @@ let role = message.mentions.roles.first()
 
 .setFooter("❌ Mention role ")
 
-if(!role) 
+if(!role){
 return message.channel.send(men)
- await db.set(`ar_${message.guild.id}`, role.id) 
+  }
+ await db.set(`ar_${message.guild.id}`, [{role:role.id}]) 
+       let Enabled = new MessageEmbed()
+              .setTitle("✅ SUCCESSFULLY ✅")
+
+.setDescription("AUTOROLE IS NOW /n> ENABLED!")
+
+.setColor("GREEN")
+
+.setTimestamp()
+
+.setFooter("✅ SUCCESSES ✅ ")
+   return message.channel.send(Enabled)    
+
+       
        }
+     if (args[0] === "disable") {
+let wr = db.get(`ar_${message.guild.id}`)
+
+     let men = new MessageEmbed()
+.setTitle("❌ WRONG USAGE")
+     .setDescription("it seems like you not set role to disable it :( /n> use enable to setup auto role!")
+     .setTimestamp()
+     .setFooter("❌ FIRST ENABLE THE AUTOROLE!")
+     if(!wr || wr== false){
+     return message.channel.send(men)
+}
+   let success = new MessageEmbed()     
+ await db.delete(`ar_${message.guild.id}`)
+       .setTitle("✅ SUCCESSFULLY ✅")
+
+.setDescription("AUTOROLE IS NOW /n> DISABLED!")
+
+.setColor("GREEN")
+
+.setTimestamp()
+
+.setFooter("✅ SUCCESSES ✅ ")
+   return message.channel.send(success)    
+
+       }
+
     
     
   
