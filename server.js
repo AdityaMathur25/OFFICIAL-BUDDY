@@ -294,6 +294,40 @@ client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction)
 
   }
   })
+ let modlog = db.get(`ai.${.guild.id}.modlog`);
+
+    
+client.on("message", async message => {
+
+if (message.channel.name == modlog) {
+
+if (message.author.bot) return;
+
+message.content = message.content.replace(/@(everyone)/gi, "everyone").replace(/@(here)/gi, "here");
+
+if (message.content.includes(`@`)) {
+
+return message.channel.send(`**:x: Please dont mention anyone**`);
+
+ }
+
+  message.channel.startTyping();
+
+if (!message.content) return message.channel.send("Please say something.");
+
+fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(message.content)}&botname=${client.user.username}&ownername=DEVELOPER_NAME`)
+
+    .then(res => res.json())
+
+    .then(data => {
+
+        message.channel.send(`> ${message.content} \n <@${message.author.id}> ${data.message}`);
+
+    });
+
+      message.channel.stopTyping();
+
+}})
 
 
 client.login(process.env.token);
