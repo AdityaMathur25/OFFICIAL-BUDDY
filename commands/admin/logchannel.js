@@ -14,7 +14,6 @@ module.exports = {
     }
 
     let toggling = ["disable", "enable"];
-
     if (!toggling.includes(args[0])) {
 
         return message.channel.send("Please provide a valid options. Either **disable** or **enable** it.");
