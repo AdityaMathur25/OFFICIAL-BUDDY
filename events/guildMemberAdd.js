@@ -4,7 +4,7 @@ const canva = new CanvasSenpai();
 const { discord, MessageAttachment, MessageEmbed } = require("discord.js")
 const canvas = require('discord-canvas')
     const welcomeCanvas = new canvas.Welcome()
-  const universalColor = ""
+  const universalColor = "#00FFFF"
   
 
 module.exports.run = async (client, member, message) => {
