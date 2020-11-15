@@ -43,12 +43,7 @@ module.exports.run = async (client, member, message) => {
           .setColor("BLUE")
           .setTimestamp()
     client.channels.cache.get(chx).send(ss2)
-  }
-let role = db.push(`aurole_${message.guild.id}`) 
-if(!role) return;
-var roles = member.guild.roles.cache.find(role => role.id === role)
-member.roles.add(roles);
- 
+  } 
    
  
 }; 
