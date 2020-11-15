@@ -1,5 +1,6 @@
 dependencies:
   '@discordjs/opus': 0.3.2
+  alexa-bot-api: 0.1.4
   ascii-table: 0.0.9
   axios: 0.21.0
   canvacord: 5.0.8
@@ -578,6 +579,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-lRF8RORchjpKG50/WFf8xmg7sgCLFiYNNnqdKflk63whMQcWR5ngGjiSXkL9bjxy6B2npOK2HSMN49jEBMSkag==
+  /alexa-bot-api/0.1.4:
+    dependencies:
+      md5: 2.3.0
+      superagent: 5.3.1
+    dev: false
+    engines:
+      node: '>=0.12'
+    resolution:
+      integrity: sha512-iestQCk3OZnILgrQJdW53sVPgVcTOf9BxPlr2E6SV3aFc+auLiQJQ1anMPgBxAHdoGeFc83zJ8tKK9rF3d+nLQ==
   /ansi-escapes/3.2.0:
     dev: false
     engines:
@@ -1046,6 +1056,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
+  /charenc/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
   /cheerio/0.22.0:
     dependencies:
       css-select: 1.2.0
@@ -1171,6 +1185,10 @@ packages:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
+  /component-emitter/1.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
   /compress-commons/1.2.2:
     dependencies:
       buffer-crc32: 0.2.13
@@ -1222,6 +1240,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
+  /cookiejar/2.1.2:
+    dev: false
+    resolution:
+      integrity: sha512-Mw+adcfzPxcPeI+0WlvRrr/3lGVO0bD75SxX6811cxSh1Wbxx7xZBGK1eVtDf6si8rg2lhnUjsVLMFMfbRIuwA==
   /copy/0.3.2:
     dependencies:
       async-each: 1.0.3
@@ -1275,6 +1297,10 @@ packages:
       node: '>=4.8'
     resolution:
       integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==
+  /crypt/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
   /css-select/1.2.0:
     dependencies:
       boolbase: 1.0.0
@@ -1856,6 +1882,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
+  /fast-safe-stringify/2.0.7:
+    dev: false
+    resolution:
+      integrity: sha512-Utm6CdzT+6xsDk2m8S6uL8VHxNwI6Jub+e9NYTcAms28T84pTa25GJQV9j0CY0N1rM8hK4x6grpF2BQf+2qwVA==
   /fetch-blob/2.1.1:
     dev: false
     engines:
@@ -2025,6 +2055,20 @@ packages:
       node: '>= 0.12'
     resolution:
       integrity: sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==
+  /form-data/3.0.0:
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.27
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-CKMFDglpbMi6PyN+brwB9Q/GOw0eAnsrEZDgcsH5Krhz5Od/haKHAX0NmQfha2zPPz0JpWzA7GJHGSnvCRLWsg==
+  /formidable/1.2.2:
+    dev: false
+    resolution:
+      integrity: sha512-V8gLm+41I/8kguQ4/o1D3RIHRmhYFG4pnNyonvua+40rqcEmT4+V71yaZ3B457xbbgCsCfjSPi65u/W6vK1U5Q==
   /fortnite-9812/1.0.4:
     dependencies:
       node-fetch: 2.6.1
@@ -2920,6 +2964,14 @@ packages:
       npm: '>=3.8.9'
     resolution:
       integrity: sha1-UUu+g+4wCFW+waEG3Y4lx7KiMrs=
+  /md5/2.3.0:
+    dependencies:
+      charenc: 0.0.2
+      crypt: 0.0.2
+      is-buffer: 1.1.6
+    dev: false
+    resolution:
+      integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -2970,6 +3022,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
+  /mime/2.4.6:
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-RZKhC3EmpBchfTGBVb8fb+RL2cWyw/32lshnsETttkBAyAUXSGHxbEJWWRXc751DrIxG1q04b8QwMbAwkRPpUA==
   /mimic-fn/1.2.0:
     dev: false
     engines:
@@ -3682,6 +3741,12 @@ packages:
       node: '>=0.6'
     resolution:
       integrity: sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
+  /qs/6.9.4:
+    dev: false
+    engines:
+      node: '>=0.6'
+    resolution:
+      integrity: sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
   /quick-db/1.0.5:
     dependencies:
       archiver: 1.3.0
@@ -4276,6 +4341,24 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-JAIuSG878c3KCUKDt2nEctO3KJc=
+  /superagent/5.3.1:
+    dependencies:
+      component-emitter: 1.3.0
+      cookiejar: 2.1.2
+      debug: 4.2.0
+      fast-safe-stringify: 2.0.7
+      form-data: 3.0.0
+      formidable: 1.2.2
+      methods: 1.1.2
+      mime: 2.4.6
+      qs: 6.9.4
+      readable-stream: 3.6.0
+      semver: 7.3.2
+    dev: false
+    engines:
+      node: '>= 7.0.0'
+    resolution:
+      integrity: sha512-wjJ/MoTid2/RuGCOFtlacyGNxN9QLMgcpYLDQlWFIhhdJ93kNscFonGvrpAHSCVjRVj++DGCglocF7Aej1KHvQ==
   /supports-color/5.5.0:
     dependencies:
       has-flag: 3.0.0
@@ -4810,6 +4893,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@discordjs/opus': ^0.3.2
+  alexa-bot-api: ^0.1.4
   ascii-table: ^0.0.9
   axios: ^0.21.0
   canvacord: ^5.0.8

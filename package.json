@@ -50,7 +50,8 @@
     "discord-giveaways": "^4.2.1",
     "mcapi": "",
     "mcpi": "^0.5.9",
-    "discord-canvas": "^1.3.2"
+    "discord-canvas": "^1.3.2",
+    "alexa-bot-api": "^0.1.4"
   },
   "engines": {
     "node": "12.x"
