@@ -162,7 +162,6 @@ module.exports.run = async (client, message) => {
   //-----------------------------------------------------------------------------------------------------------------
 
   if (command) command.run(client, message, args);
- if (command) command.excute(client, message, args);
 
 
 
