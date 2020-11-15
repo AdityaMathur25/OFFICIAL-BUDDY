@@ -2,10 +2,7 @@ const db = require("quick.db")
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
 const { discord, MessageAttachment, MessageEmbed } = require("discord.js")
-const canvas = require('discord-canvas')
-    const welcomeCanvas = new canvas.Welcome()
-  const universalColor = "#00FFFF"
-  
+
 
 module.exports.run = async (client, member, message) => {
   
@@ -22,45 +19,8 @@ module.exports.run = async (client, member, message) => {
   ];
   
   let random = Math.floor(Math.random() * 5); //no i dont want 4 image 1 omly
- //------ image ----
-  let imagese = await welcomeCanvas
-
-        .setUsername(member.user.username)
-
-        .setDiscriminator(member.user.discriminator)
-
-        .setMemberCount(member.guild.memberCount)
-
-        .setGuildName(member.guild.name)
-
-        .setAvatar(member.user.displayAvatarURL({
-
-            format: 'png'
-
-        }))
-
-        .setColor("border", universalColor)
-
-        .setColor("username-box", universalColor)
-
-        .setColor("discriminator-box", universalColor)
-
-        .setColor("message-box", universalColor)
-
-        .setColor("title", universalColor)
-
-        .setColor("avatar", universalColor)
-
-        .setBackground(images)
-
-        .toAttachment()
-
-    let attachment = new MessageAttachment(imagese.toBuffer(), "welcome-image.png");
+  let data = await canva.welcome(member, { link: `${images[random]}` });
   
-  
-  
-  
-  //----------- end -------
   let msg = db.get(`welmsg_${member.guild.id}`)
   if(msg === null)
     msg = `WELCOME TO THE SERVER ${member.user},have a nice with other members !`
@@ -71,13 +31,14 @@ module.exports.run = async (client, member, message) => {
   
   let image = db.get(`enabel_${member.guild.id}`)
  
+  const attach = new MessageAttachment(data, "welcome.png")
   
   if(!image) {
     console.log(`${member.guild.name} Doesn't have a welcome banner`);
   } else {
     const ss2 = new MessageEmbed()
           .setDescription(ffg)
-          .attachFiles(attachment)
+          .attachFiles(attach)
           .setImage("attachment://welcome.png")
           .setColor("BLUE")
           .setTimestamp()
