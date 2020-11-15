@@ -2,7 +2,7 @@ const db = require("quick.db")
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
 const { discord, MessageAttachment, MessageEmbed } = require("discord.js")
-
+const Canvas = require("discord-canvas")
 
 module.exports.run = async (client, member, message) => {
   
@@ -32,6 +32,37 @@ module.exports.run = async (client, member, message) => {
   let image = db.get(`enabel_${member.guild.id}`)
  
   const attach = new MessageAttachment(data, "welcome.png")
+  
+  let sending = await new Canvas.Welcome()
+
+  .setUsername("xixi52")
+
+  .setDiscriminator("0001")
+
+  .setMemberCount("140")
+
+  .setGuildName("Server DEV")
+
+  .setAvatar("https://www.site.com/avatar.jpg")
+
+  .setColor("border", "#8015EA")
+
+  .setColor("username-box", "#8015EA")
+
+  .setColor("discriminator-box", "#8015EA")
+
+  .setColor("message-box", "#8015EA")
+
+  .setColor("title", "#8015EA")
+
+  .setColor("avatar", "#8015EA")
+
+  .setBackground("https://www.site.com/background.jpg")
+
+  .toAttachment();
+
+let attachment = new MessageAttachment(sending.toBuffer(), "welcome-image.png");
+  
   
   if(!image) {
     console.log(`${member.guild.name} Doesn't have a welcome banner`);
