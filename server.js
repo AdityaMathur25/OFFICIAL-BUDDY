@@ -293,21 +293,6 @@ client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction)
 
   }
   })
-client.on("message", async message => {
-  let ChannelID =  db.get(`ai.${message.guild.id}.modlog`);
-    if (message.author.bot || message.webhookID || message.channel.type === "dm") return;
-        if (ChannelID !== message.channel.id) return;
-    
-    try {
-        const res = await Got(`https://api.snowflakedev.xyz/chatbot?message=${discord.Util.escapeMarkdown(message.content)}`); // https://discord.gg/uqB8kxh
-        const json = await JSON.parse(res.body);
-        return message.channel.send(json.message);
-    } catch (error) {
-        return message.channel.send(`Something Went Wrong, Try Again Later!`).then(() => console.log(error));
-    };
-});
-    
-
 
 
 client.login(process.env.token);
