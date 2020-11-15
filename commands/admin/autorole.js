@@ -14,18 +14,19 @@ name: "autorole",
     if (!toggling.includes(args[0])) {
 let wrong = new MessageEmbed()
 .setTitle("❌ WRONG USAGE")
-.setDescription("INVALID ARGUMENT: YOU NEED TO TYPE- /n> Enable Either /n> Disable")
+.setDescription("INVALID ARGUMENT: YOU NEED TO TYPE - Enable Either - Disable")
 .setColor("RED")
 .setTimestamp()
 .setFooter("❌ Enable/disable AutoRole")
 return message.channel.send(wrong)
       }
      if (args[0] === "enable") {
-     let men = new MessageEmbed()
+     
 let role = message.mentions.roles.first()
+let men = new MessageEmbed()
 .setTitle("❌ WRONG USAGE")
 
-.setDescription("INVALID ARGUMENT: YOU NEED TO MENTION A ROLE  Or type: /n> Disable")
+.setDescription("INVALID ARGUMENT: YOU NEED TO MENTION A ROLE  Or type:  Disable")
 
 .setColor("RED")
 
@@ -40,7 +41,7 @@ return message.channel.send(men)
        let Enabled = new MessageEmbed()
               .setTitle("✅ SUCCESSFULLY ✅")
 
-.setDescription("AUTOROLE IS NOW /n> ENABLED!")
+.setDescription("AUTOROLE IS NOW : ENABLED!")
 
 .setColor("GREEN")
 
@@ -56,17 +57,18 @@ let wr = db.get(`ar_${message.guild.id}`)
 
      let men = new MessageEmbed()
 .setTitle("❌ WRONG USAGE")
-     .setDescription("it seems like you not set role to disable it :( /n> use enable to setup auto role!")
+     .setDescription("it seems like you not set role to disable it :(  use enable to setup auto role!")
      .setTimestamp()
+     .setColor("RED")
      .setFooter("❌ FIRST ENABLE THE AUTOROLE!")
-     if(!wr || wr== false){
+     if(!wr || wr === false || wr === null){
      return message.channel.send(men)
 }
    let success = new MessageEmbed()     
- await db.delete(`ar_${message.guild.id}`)
+ 
        .setTitle("✅ SUCCESSFULLY ✅")
 
-.setDescription("AUTOROLE IS NOW /n> DISABLED!")
+.setDescription("AUTOROLE IS NOW  DISABLED!")
 
 .setColor("GREEN")
 
@@ -74,7 +76,7 @@ let wr = db.get(`ar_${message.guild.id}`)
 
 .setFooter("✅ SUCCESSES ✅ ")
    return message.channel.send(success)    
-
+await db.delete(`ar_${message.guild.id}`)
        }
 
     
