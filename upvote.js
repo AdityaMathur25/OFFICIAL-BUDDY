@@ -1,4 +1,4 @@
-const { client }  = require("./server.js")
+const { Client }  = require("./server.js")
 const { Discord, message } = require('discord.js')
 const db = require("quick.db")
 const fetch = require("node-fetch")
@@ -11,4 +11,5 @@ setInterval(async () => {
 
   );
 
-}, 120000);
+}, 60000);
+const bot = new Client({ partials: ["message", "CHANNEL", "REACTION"] });
