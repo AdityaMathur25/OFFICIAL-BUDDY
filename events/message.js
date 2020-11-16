@@ -13,19 +13,76 @@ module.exports.run = async (client, message) => {
 
   addexp(message);
 
+
+  //START
+
+  if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+    let confirm = false;
+
+    //NOW WE WILL USE FOR LOOP
+
+    var i;
+
+    for (i = 0; i < badwords.length; i++) {
+      if (message.content.toLowerCase().includes(badwords[i].toLowerCase()))
+        confirm = true;
+    }
+
+    if (confirm) {
+      message.delete();
+
+      let gp = new MessageEmbed()
+
+        .setTitle("**ANTI-BADWORD**")
+
+        .setDescription(` YOU ARE NOT ALLOWED TO SEND BAD WORDS HERE!`)
+
+        .setFooter("STOP USING BAD WORDS")
+
+        .setColor("GREEN")
+
+        .setTimestamp();
+
+      return message.channel.send(gp);
+   
+const { oks } = require("../link.json");
+
+
+  //START
+
   if (!message.member.hasPermission("ADMINISTRATOR")) {
+    let confirm = false;
 
+    //NOW WE WILL USE FOR LOOP
 
+    var i;
 
-    message.content.split(" ").forEach(m => {
-      if (is_url(m)) {
+    for (i = 0; i < oks.length; i++) {
+      if (message.content.toLowerCase().includes(oks[i].toLowerCase()))
+        confirm = true;
+    }
 
+    if (confirm) {
+      let g = await db.get(`${message.guild.id}`);
+      if (g === null) return;
+      if (g === true) return;
 
-      }
-    })
+      message.delete();
 
-  }
-  
+      let gp = new MessageEmbed()
+
+        .setTitle("**ANTI-LINK**")
+
+        .setDescription(` YOU ARE NOT ALLOWED TO SEND link HERE!`)
+
+        .setFooter("STOP USING LINKS")
+
+        .setColor("GREEN")
+
+        .setTimestamp();
+
+      return message.channel.send(gp);
+
 
   let prefix = db.get(`prefix_${message.guild.id}`);
   if (prefix === null) prefix = default_prefix;
